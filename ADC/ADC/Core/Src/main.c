@@ -47,6 +47,7 @@
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
+#include "lcd_pincinato.h"
 #include "stdio.h"
 #include "string.h"
 #include "lcd_driver.h"
@@ -82,13 +83,10 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	char buf[100]= " Please write something";
-	char rxBuf[100];
-	char msg[102];
   static uint32_t data_pot1;
   static uint32_t data_pot2;
-	HAL_StatusTypeDef RxResult;
-	bool adcStatus;
+	char pot1[5]="";
+	char pot2[5]="";
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -124,47 +122,29 @@ int main(void)
 	lcd_clear();
 	HAL_TIM_Base_Start(&htim3);
 	HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
-	//HAL_UART_Transmit(&huart2,(uint8_t*) buf, strlen((const char *) &buf), 100);
-	HAL_UART_Transmit_DMA(&huart2,(uint8_t*) buf, strlen((const char *) &buf));
 	HAL_GPIO_WritePin(LedBlue_GPIO_Port,LedBlue_Pin,GPIO_PIN_SET);
 	HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_SET);
-
   while (1)
   {
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-	/*	RxResult = HAL_UART_Receive(&huart2,(uint8_t*) rxBuf,1,100);
-		if (!RxResult){
-			rxBuf[1]=0x00;
-			lcd_setString(0,8,(const char *) &rxBuf,LCD_FONT_8,false);
-			lcd_show();
-			char pot[5]="";
-			sprintf(pot, "%d", data_pot1);		
-	    HAL_UART_Transmit_DMA(&huart2,(uint8_t*) pot, strlen((const char *) &pot));
-		}*/
-		if (getAdcValue(&POT_1_HANDLE,&data_pot1) != true) {}
-		else {
-			char pot[6]="";
-			sprintf(pot, "%d", data_pot1);		
-			lcd_clear();
-			lcd_setString(0,8,(const char *) &pot,LCD_FONT_8,false);
-			lcd_show();
+	
+	if (getAdcValue(&POT_1_HANDLE,&data_pot1))  
+		{
+			sprintf(pot1, "%d", data_pot1);					
 			htim3.Instance->CCR1 =data_pot1*999/4095;
+			if(getAdcValue(&POT_2_HANDLE,&data_pot2)){
+				sprintf(pot2, "%d", data_pot2);
+				//lcd_clear();
+				lcd_setString(0,8,(const char *) &pot1,LCD_FONT_8,false);
+				lcd_setString(80,16,(const char *) &pot2,LCD_FONT_8,false);
+				drawEachPixelGraph(data_pot2);
+			}
 		}
-		/*
-		if (getAdcValue(&POT_2_HANDLE,&data_pot2) != true) {}
-		else {
-			char pot2[5]="";
-			sprintf(pot2, "%d", data_pot2);		
-			lcd_clear();
-			lcd_setString(10,16,(const char *) &pot2,LCD_FONT_8,false);
-			lcd_show();
-		}		*/
-		
+	HAL_Delay(50);
 	}
   /* USER CODE END 3 */
-
 }
 
 /**
@@ -238,14 +218,14 @@ void SystemClock_Config(void)
 
 bool getAdcValue(ADC_HandleTypeDef* hadc, uint32_t * const data){
 	
-	HAL_StatusTypeDef adcStatus;
+		HAL_StatusTypeDef adcStatus;
 		HAL_ADC_Start(hadc);
 		adcStatus= HAL_ADC_PollForConversion(hadc,100);
 		if (adcStatus != HAL_OK) {
 			return false;
 		}
 		else {
-			*data= HAL_ADC_GetValue(&POT_1_HANDLE);
+			*data= HAL_ADC_GetValue(hadc);
 			return true;
 		}
 }

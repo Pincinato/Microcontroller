@@ -6,7 +6,7 @@
   ******************************************************************************
   ** This notice applies to any and all portions of this file
   * that are not between comment pairs USER CODE BEGIN and
-  * USER CODE END. Other portions of this file, whether 
+  * USER CODE END. Other portions of this file, whether
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
@@ -42,6 +42,7 @@
 #include "adc.h"
 #include "dma.h"
 #include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -49,6 +50,7 @@
 #include "stdio.h"
 #include "string.h"
 #include "lcd_driver.h"
+#include "stdbool.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -56,7 +58,7 @@
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 #define POT_1_HANDLE hadc1
-#define POT_2_HANDLE hadc2 
+#define POT_2_HANDLE hadc2
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -65,6 +67,7 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 
+ bool getAdcValue(ADC_HandleTypeDef* hadc,uint32_t * const data);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -79,11 +82,13 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	char buf[100]= " Please write something";
-	char rxBuf[100];
-	char msg[102];
-	HAL_StatusTypeDef RxResult;
-	HAL_StatusTypeDef adcStatus;
+        char buf[100]= " Please write something";
+        char rxBuf[100];
+        char msg[102];
+  static uint32_t data_pot1;
+  static uint32_t data_pot2;
+        HAL_StatusTypeDef RxResult;
+        bool adcStatus;
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -109,28 +114,56 @@ int main(void)
   MX_USART2_UART_Init();
   MX_ADC2_Init();
   MX_ADC1_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	lcd_init ();
-	lcd_clear();
-	//HAL_UART_Transmit(&huart2,(uint8_t*) buf, strlen((const char *) &buf), 100);
-	HAL_UART_Transmit_DMA(&huart2,(uint8_t*) buf, strlen((const char *) &buf));
-	msg[0]='$';
-	msg[1]='0';
-	uint32_t count=0;
+        lcd_init ();
+        lcd_clear();
+        HAL_TIM_Base_Start(&htim3);
+        HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
+        //HAL_UART_Transmit(&huart2,(uint8_t*) buf, strlen((const char *) &buf), 100);
+        HAL_UART_Transmit_DMA(&huart2,(uint8_t*) buf, strlen((const char *) &buf));
+        HAL_GPIO_WritePin(LedBlue_GPIO_Port,LedBlue_Pin,GPIO_PIN_SET);
+        HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_SET);
+
   while (1)
   {
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-	HAL_ADC_Start(&POT_1_HANDLE);
-	adcStatus= HAL_ADC_PollForConversion(&POT_1_HANDLE);
-	if (adcStatus != HAL_OK) {data->pot1 = HAL_ADC_GetValue(&POT_1_HANDLE);}
-	else {}	
-  }
+        /*	RxResult = HAL_UART_Receive(&huart2,(uint8_t*) rxBuf,1,100);
+                if (!RxResult){
+                        rxBuf[1]=0x00;
+                        lcd_setString(0,8,(const char *) &rxBuf,LCD_FONT_8,false);
+                        lcd_show();
+                        char pot[5]="";
+                        sprintf(pot, "%d", data_pot1);
+            HAL_UART_Transmit_DMA(&huart2,(uint8_t*) pot, strlen((const char *) &pot));
+                }*/
+                if (getAdcValue(&POT_1_HANDLE,&data_pot1) != true) {}
+                else {
+                        char pot[6]="";
+                        sprintf(pot, "%d", data_pot1);
+                        //lcd_clear();
+                        lcd_setString(0,8,(const char *) &pot,LCD_FONT_8,false);
+                        //lcd_show();
+                        htim3.Instance->CCR1 =data_pot1*999/4095;
+                }
+                /*
+                if (getAdcValue(&POT_2_HANDLE,&data_pot2) != true) {}
+                else {
+                        char pot2[5]="";
+                        sprintf(pot2, "%d", data_pot2);
+                        lcd_clear();
+                        lcd_setString(10,16,(const char *) &pot2,LCD_FONT_8,false);
+                        lcd_show();
+                }		*/
+
+        }
+        HAL_Delay(500);
   /* USER CODE END 3 */
 
 }
@@ -145,13 +178,13 @@ void SystemClock_Config(void)
   RCC_OscInitTypeDef RCC_OscInitStruct;
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
 
-    /**Configure the main internal regulator output voltage 
+    /**Configure the main internal regulator output voltage
     */
   __HAL_RCC_PWR_CLK_ENABLE();
 
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
-    /**Initializes the CPU, AHB and APB busses clocks 
+    /**Initializes the CPU, AHB and APB busses clocks
     */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
@@ -168,14 +201,14 @@ void SystemClock_Config(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Activate the Over-Drive mode 
+    /**Activate the Over-Drive mode
     */
   if (HAL_PWREx_EnableOverDrive() != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Initializes the CPU, AHB and APB busses clocks 
+    /**Initializes the CPU, AHB and APB busses clocks
     */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
@@ -189,11 +222,11 @@ void SystemClock_Config(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Configure the Systick interrupt time 
+    /**Configure the Systick interrupt time
     */
   HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
 
-    /**Configure the Systick 
+    /**Configure the Systick
     */
   HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
 
@@ -203,6 +236,20 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
+
+bool getAdcValue(ADC_HandleTypeDef* hadc, uint32_t * const data){
+
+        HAL_StatusTypeDef adcStatus;
+                HAL_ADC_Start(hadc);
+                adcStatus= HAL_ADC_PollForConversion(hadc,100);
+                if (adcStatus != HAL_OK) {
+                        return false;
+                }
+                else {
+                        *data= HAL_ADC_GetValue(&POT_1_HANDLE);
+                        return true;
+                }
+}
 /* USER CODE END 4 */
 
 /**
@@ -230,7 +277,7 @@ void _Error_Handler(char *file, int line)
   * @retval None
   */
 void assert_failed(uint8_t* file, uint32_t line)
-{ 
+{
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */

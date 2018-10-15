@@ -48,7 +48,7 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>UART\</OutputDirectory>
+          <OutputDirectory>.\ADC\</OutputDirectory>
           <OutputName>ADC</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F446xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;    ../Drivers/STM32F4xx_HAL_Driver/Inc;    ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;    ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;    ../Drivers/CMSIS/Include;    ..\..\..\..\Library\Library\inc</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;..\..\..\..\Library\Library\inc;..\Library\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -549,7 +549,12 @@
             <File>
               <FileName>lcd_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\Library\Library\src\lcd_driver.c</FilePath>
+              <FilePath>..\Library\src\lcd_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_pincinato.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Library\src\lcd_pincinato.c</FilePath>
             </File>
           </Files>
         </Group>
