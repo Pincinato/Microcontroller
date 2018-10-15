@@ -1,0 +1,28 @@
+--cpu=Cortex-M4.fp
+".\gpio-lcd\startup_stm32f446xx.o"
+".\gpio-lcd\main.o"
+".\gpio-lcd\gpio.o"
+".\gpio-lcd\spi.o"
+".\gpio-lcd\stm32f4xx_it.o"
+".\gpio-lcd\stm32f4xx_hal_msp.o"
+".\gpio-lcd\stm32f4xx_hal_spi.o"
+".\gpio-lcd\stm32f4xx_hal_tim.o"
+".\gpio-lcd\stm32f4xx_hal_tim_ex.o"
+".\gpio-lcd\stm32f4xx_hal_rcc.o"
+".\gpio-lcd\stm32f4xx_hal_rcc_ex.o"
+".\gpio-lcd\stm32f4xx_hal_flash.o"
+".\gpio-lcd\stm32f4xx_hal_flash_ex.o"
+".\gpio-lcd\stm32f4xx_hal_flash_ramfunc.o"
+".\gpio-lcd\stm32f4xx_hal_gpio.o"
+".\gpio-lcd\stm32f4xx_hal_dma_ex.o"
+".\gpio-lcd\stm32f4xx_hal_dma.o"
+".\gpio-lcd\stm32f4xx_hal_pwr.o"
+".\gpio-lcd\stm32f4xx_hal_pwr_ex.o"
+".\gpio-lcd\stm32f4xx_hal_cortex.o"
+".\gpio-lcd\stm32f4xx_hal.o"
+".\gpio-lcd\system_stm32f4xx.o"
+".\gpio-lcd\lcd_driver.o"
+--library_type=microlib --strict --scatter ".\gpio-LCD\gpio-LCD.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "gpio-LCD.map" -o .\gpio-LCD\gpio-LCD.axf

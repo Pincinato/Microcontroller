@@ -1,0 +1,14 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$main_8c.html#a70af21c671abfcc773614a9a4f63d920" title="System Clock Configuration. " alt="" coords="104,5,247,32"/>
+<area shape="rect" id="node4" href="$gpio_8c.html#ac724e431d2af879252de35615be2bdea" title="MX_GPIO_Init" alt="" coords="124,56,227,83"/>
+<area shape="rect" id="node5" href="$spi_8c.html#af81398f9775695df0b172367651ca3e6" title="MX_SPI1_Init" alt="" coords="126,107,225,133"/>
+<area shape="rect" id="node6" href="$lcd__driver_8c.html#a6842775ba83d166f02b8fef8bb63b1e6" title="lcd_init" alt="" coords="144,157,207,184"/>
+<area shape="rect" id="node7" href="$lcd__driver_8c.html#ad235a86241458b1e7b8771688bfdaf9a" title="lcd_clear" alt="" coords="311,183,386,209"/>
+<area shape="rect" id="node8" href="$lcd__driver_8c.html#ae6ba6c6161cf3ec1ade0a72595cda0ce" title="lcd_setLine" alt="" coords="131,259,219,285"/>
+<area shape="rect" id="node10" href="$lcd__driver_8c.html#aa6b1e5b4910ace65815c78a3da51f964" title="lcd_setString" alt="" coords="126,309,225,336"/>
+<area shape="rect" id="node12" href="$lcd__driver_8c.html#a3d045005d00fc4525d582d0f7559a313" title="lcd_show" alt="" coords="137,360,213,387"/>
+<area shape="rect" id="node13" href="$lcd__driver_8c.html#a5a18286d5a8b9cb3a7149987b595fc03" title="sendData" alt="" coords="137,411,214,437"/>
+<area shape="rect" id="node3" href="$main_8c.html#a829116a51f1db1a72ebd1120f60719d5" title="This function is executed in case of error occurrence. " alt="" coords="295,56,403,83"/>
+<area shape="rect" id="node9" href="$lcd__driver_8c.html#aa76a5521efe086a9d26cbf44af732e8b" title="lcd_setPixel" alt="" coords="302,259,395,285"/>
+<area shape="rect" id="node11" href="$lcd__driver_8c.html#a4f59541ea134603bee01a883f996e4ba" title="lcd_setChar" alt="" coords="303,309,394,336"/>
+</map>
