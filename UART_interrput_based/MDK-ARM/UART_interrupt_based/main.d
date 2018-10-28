@@ -39,8 +39,9 @@
 .\uart_interrupt_based\main.o: ../Core/Inc/tim.h
 .\uart_interrupt_based\main.o: ../Core/Inc/usart.h
 .\uart_interrupt_based\main.o: ../Core/Inc/gpio.h
-.\uart_interrupt_based\main.o: ..\..\Library\Library\inc\interface_USART_pincinato.h
+.\uart_interrupt_based\main.o: ..\..\Library\Library\inc\interface_ADC_pincinato.h
 .\uart_interrupt_based\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\uart_interrupt_based\main.o: ..\..\Library\Library\inc\interface_USART_pincinato.h
 .\uart_interrupt_based\main.o: ..\..\Library\Library\inc\structs_pincinato.h
 .\uart_interrupt_based\main.o: ..\Library\inc\lcd_pincinato.h
 .\uart_interrupt_based\main.o: ..\Library\inc\lcd_driver.h

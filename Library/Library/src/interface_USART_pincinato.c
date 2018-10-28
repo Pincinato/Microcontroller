@@ -19,9 +19,9 @@
 #define ERRORR_NO_OPTION 10 // option choose not avalaible
 #define ERRORR_BUFFER 20 //buffer does not contain a valid data
 #define ERRORR_TABLE 30 // table is NULL
-#define OPTION_HIGH "Hig"
-#define OPTION_NORMAL "Nor"
-#define OPTION_LOW "Low"
+#define OPTION_HIGH "Hig" //?Hig150!
+#define OPTION_NORMAL "Nor" // ?Nor100!
+#define OPTION_LOW "Low" // ?Low90!
 #define OPTION_ACTUAL_CONFIGURATION "Act"
 #define OPTION_INFO_ANOMALY "Anm"
 
@@ -33,7 +33,9 @@ bool receiverStart=false;
 short receiverCount=0;
 	
 bool initInterface(Table *A, UART_HandleTypeDef *huart){
-
+		
+  MX_USART2_UART_Init();
+  MX_DMA_Init();
 	setUart(huart);
 	setTable(A);
 	return (checkTable() && checkUart());
@@ -57,7 +59,7 @@ void check_RX(void){
 	RxResult=HAL_UART_Receive(&huart2,(uint8_t*) rxBuf,1,100);
   if (!RxResult){
       rxBuf[1]=0x00;
-			if(rxBuf[0]=='?'){receiverStart=true;}
+			if(rxBuf[0]=='?'){receiverStart=true;} //msg should be btw ? and ! example ?Act!
 			if(receiverStart && (rxBuf[0]!='?')){		
 				if(rxBuf[0]=='!'){
 					receiverStart=false;

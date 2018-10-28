@@ -47,11 +47,11 @@
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
+#include "interface_ADC_pincinato.h"
 #include "interface_USART_pincinato.h"
 #include "lcd_pincinato.h"
 #include "stdio.h"
 #include "string.h"
-#include "lcd_driver.h"
 #include "stdbool.h"
 #include "structs_pincinato.h"
 /* USER CODE END Includes */
@@ -60,7 +60,7 @@
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-#define POT_1_HANDLE hadc1
+//#define POT_1_HANDLE hadc1
 #define POT_2_HANDLE hadc2 
 
 
@@ -68,6 +68,7 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 void ClearString(void);
@@ -86,10 +87,7 @@ void ClearString(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  static uint32_t data_pot1;
-  static uint32_t data_pot2;
-	char pot1[5]="";
-	char pot2[5]="";
+  static uint32_t adc_in;
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -116,13 +114,12 @@ int main(void)
   MX_ADC2_Init();
   MX_ADC1_Init();
   MX_TIM3_Init();
+  MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	lcd_init ();
-	lcd_clear();
 	HAL_TIM_Base_Start(&htim3);
 	HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
 	HAL_GPIO_WritePin(LedBlue_GPIO_Port,LedBlue_Pin,GPIO_PIN_SET);
@@ -130,6 +127,10 @@ int main(void)
 	Table myTable;
 	initTable(&myTable);
 	initInterface(&myTable,&huart2);
+	initLCD();
+	initADCInterface();
+	setFs(10);
+	startADCInterface();
   while (1)
   {
   /* USER CODE END WHILE */
@@ -137,19 +138,10 @@ int main(void)
   /* USER CODE BEGIN 3 */
 	
 	check_RX();
-	if (getAdcValue(&POT_1_HANDLE,&data_pot1))  
-		{
-			sprintf(pot1, "%d", data_pot1);					
-			htim3.Instance->CCR1 =data_pot1*999/4095;
-			if(getAdcValue(&POT_2_HANDLE,&data_pot2)){
-				sprintf(pot2, "%d", data_pot2);
-				//lcd_clear();
-				lcd_setString(0,8,(const char *) &pot1,LCD_FONT_8,false);
-				lcd_setString(80,16,(const char *) &pot2,LCD_FONT_8,false);
-				drawEachPixelGraph(data_pot2);
+	 if(getADCValue (&adc_in)){
+				drawEachPixelGraph(adc_in);
 			}
-		}
-	HAL_Delay(50);
+	//HAL_Delay(10);
 	}
   /* USER CODE END 3 */
 

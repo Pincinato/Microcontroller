@@ -49,10 +49,10 @@
 
 /* Private define ------------------------------------------------------------*/
 
-#define POT_1_Pin GPIO_PIN_0
-#define POT_1_GPIO_Port GPIOA
 #define POT_2_Pin GPIO_PIN_1
 #define POT_2_GPIO_Port GPIOA
+#define ADC_Input_Pin GPIO_PIN_4
+#define ADC_Input_GPIO_Port GPIOA
 #define LCD_SCK_Pin GPIO_PIN_5
 #define LCD_SCK_GPIO_Port GPIOA
 #define LCD_RESET_Pin GPIO_PIN_6

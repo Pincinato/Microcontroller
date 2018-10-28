@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\UART_interrupt_based\</OutputDirectory>
-          <OutputName>ADC</OutputName>
+          <OutputName>UART_interrupt_based</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F446xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;..\..\..\..\Library\Library\inc;..\Library\inc;..\..\Library\Library\inc</IncludePath>
+              <IncludePath>../Core/Inc;     ../Drivers/STM32F4xx_HAL_Driver/Inc;     ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;     ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;     ../Drivers/CMSIS/Include;     ..\..\..\..\Library\Library\inc;     ..\Library\inc;     ..\..\Library\Library\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -565,6 +565,11 @@
               <FileName>structs_pincinato.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Library\Library\src\structs_pincinato.c</FilePath>
+            </File>
+            <File>
+              <FileName>interface_ADC_pincinato.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Library\Library\src\interface_ADC_pincinato.c</FilePath>
             </File>
           </Files>
         </Group>

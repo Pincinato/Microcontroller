@@ -44,5 +44,10 @@ void drawEachPixelGraph(uint32_t y){
 void drawGraph(uint32_t *y,uint32_t size){
 	
 }
+void initLCD(){
+  MX_SPI1_Init();	
+	lcd_init ();
+	lcd_clear();
+}
 
 /****** END OF FILE ******/
