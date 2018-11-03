@@ -9,6 +9,10 @@
 #include "adc.h"
 #include "tim.h"
 
+#define ADCBUFFERLENGTH 10
+#define TIMER_ADC htim5
+#define ADC_INPUT hadc1
+
 void initADCInterface(void);
 void startADCInterface(void);
 void stopADCInterface(void);
@@ -19,6 +23,7 @@ bool ADCIsFull(void);
 bool IncludeADCValue(uint32_t value);
 void clearBuffer(void);
 void checkEndBuffer(void);
+void interruptTimerADCCallback(void);
 
 #ifdef __cplusplus
 }

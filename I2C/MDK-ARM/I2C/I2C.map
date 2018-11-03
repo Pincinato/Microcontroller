@@ -2004,24 +2004,24 @@ Image Symbol Table
     activeMenu                               0x20000068   Data           4  lcd_menu.o(.data)
     userDrawItemCallback2                    0x2000006c   Data           4  lcd_menu.o(.data)
     userData                                 0x20000070   Data           4  lcd_menu.o(.data)
-    .bss                                     0x20000074   Section     1280  main.o(.bss)
-    myData                                   0x20000074   Data        1280  main.o(.bss)
-    .bss                                     0x20000574   Section      144  adc.o(.bss)
-    .bss                                     0x20000604   Section       84  i2c.o(.bss)
-    .bss                                     0x20000658   Section       88  spi.o(.bss)
-    .bss                                     0x200006b0   Section      120  tim.o(.bss)
-    .bss                                     0x20000728   Section      160  usart.o(.bss)
-    .bss                                     0x200007c8   Section      512  lcd_driver.o(.bss)
-    displayBuffer                            0x200007c8   Data         512  lcd_driver.o(.bss)
-    .bss                                     0x200009c8   Section      200  button.o(.bss)
-    filterSet                                0x200009c8   Data         200  button.o(.bss)
-    .bss                                     0x20000a90   Section       60  joystick.o(.bss)
-    up                                       0x20000a90   Data          12  joystick.o(.bss)
-    down                                     0x20000a9c   Data          12  joystick.o(.bss)
-    left                                     0x20000aa8   Data          12  joystick.o(.bss)
-    right                                    0x20000ab4   Data          12  joystick.o(.bss)
-    center                                   0x20000ac0   Data          12  joystick.o(.bss)
-    STACK                                    0x20000ad0   Section     1024  startup_stm32f446xx.o(STACK)
+    .bss                                     0x20000074   Section     2480  main.o(.bss)
+    myData                                   0x20000074   Data        2480  main.o(.bss)
+    .bss                                     0x20000a24   Section      144  adc.o(.bss)
+    .bss                                     0x20000ab4   Section       84  i2c.o(.bss)
+    .bss                                     0x20000b08   Section       88  spi.o(.bss)
+    .bss                                     0x20000b60   Section      120  tim.o(.bss)
+    .bss                                     0x20000bd8   Section      160  usart.o(.bss)
+    .bss                                     0x20000c78   Section      512  lcd_driver.o(.bss)
+    displayBuffer                            0x20000c78   Data         512  lcd_driver.o(.bss)
+    .bss                                     0x20000e78   Section      200  button.o(.bss)
+    filterSet                                0x20000e78   Data         200  button.o(.bss)
+    .bss                                     0x20000f40   Section       60  joystick.o(.bss)
+    up                                       0x20000f40   Data          12  joystick.o(.bss)
+    down                                     0x20000f4c   Data          12  joystick.o(.bss)
+    left                                     0x20000f58   Data          12  joystick.o(.bss)
+    right                                    0x20000f64   Data          12  joystick.o(.bss)
+    center                                   0x20000f70   Data          12  joystick.o(.bss)
+    STACK                                    0x20000f80   Section     1024  startup_stm32f446xx.o(STACK)
 
     Global Symbols
 
@@ -2320,15 +2320,15 @@ Image Symbol Table
     uwTickPrio                               0x20000054   Data           4  stm32f4xx_hal.o(.data)
     uwTick                                   0x20000058   Data           4  stm32f4xx_hal.o(.data)
     SystemCoreClock                          0x2000005c   Data           4  system_stm32f4xx.o(.data)
-    hadc1                                    0x20000574   Data          72  adc.o(.bss)
-    hadc2                                    0x200005bc   Data          72  adc.o(.bss)
-    hi2c1                                    0x20000604   Data          84  i2c.o(.bss)
-    hspi1                                    0x20000658   Data          88  spi.o(.bss)
-    htim2                                    0x200006b0   Data          60  tim.o(.bss)
-    htim3                                    0x200006ec   Data          60  tim.o(.bss)
-    huart2                                   0x20000728   Data          64  usart.o(.bss)
-    hdma_usart2_tx                           0x20000768   Data          96  usart.o(.bss)
-    __initial_sp                             0x20000ed0   Data           0  startup_stm32f446xx.o(STACK)
+    hadc1                                    0x20000a24   Data          72  adc.o(.bss)
+    hadc2                                    0x20000a6c   Data          72  adc.o(.bss)
+    hi2c1                                    0x20000ab4   Data          84  i2c.o(.bss)
+    hspi1                                    0x20000b08   Data          88  spi.o(.bss)
+    htim2                                    0x20000b60   Data          60  tim.o(.bss)
+    htim3                                    0x20000b9c   Data          60  tim.o(.bss)
+    huart2                                   0x20000bd8   Data          64  usart.o(.bss)
+    hdma_usart2_tx                           0x20000c18   Data          96  usart.o(.bss)
+    __initial_sp                             0x20001380   Data           0  startup_stm32f446xx.o(STACK)
 
 
 
@@ -2530,7 +2530,7 @@ Memory Map of the image
     0x08004a80   0x08004a80   0x00000020   Data   RO         4917    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004aa0, Size: 0x00000ed0, Max: 0x00020000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004aa0, Size: 0x00001380, Max: 0x00020000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2543,17 +2543,17 @@ Memory Map of the image
     0x20000060   0x08004b00   0x00000001   Data   RW         4400    .data               button.o
     0x20000061   0x08004b01   0x00000003   PAD
     0x20000064   0x08004b04   0x00000010   Data   RW         4536    .data               lcd_menu.o
-    0x20000074        -       0x00000500   Zero   RW           22    .bss                main.o
-    0x20000574        -       0x00000090   Zero   RW          286    .bss                adc.o
-    0x20000604        -       0x00000054   Zero   RW          365    .bss                i2c.o
-    0x20000658        -       0x00000058   Zero   RW          411    .bss                spi.o
-    0x200006b0        -       0x00000078   Zero   RW          459    .bss                tim.o
-    0x20000728        -       0x000000a0   Zero   RW          515    .bss                usart.o
-    0x200007c8        -       0x00000200   Zero   RW         4279    .bss                lcd_driver.o
-    0x200009c8        -       0x000000c8   Zero   RW         4399    .bss                button.o
-    0x20000a90        -       0x0000003c   Zero   RW         4490    .bss                joystick.o
-    0x20000acc   0x08004b14   0x00000004   PAD
-    0x20000ad0        -       0x00000400   Zero   RW            1    STACK               startup_stm32f446xx.o
+    0x20000074        -       0x000009b0   Zero   RW           22    .bss                main.o
+    0x20000a24        -       0x00000090   Zero   RW          286    .bss                adc.o
+    0x20000ab4        -       0x00000054   Zero   RW          365    .bss                i2c.o
+    0x20000b08        -       0x00000058   Zero   RW          411    .bss                spi.o
+    0x20000b60        -       0x00000078   Zero   RW          459    .bss                tim.o
+    0x20000bd8        -       0x000000a0   Zero   RW          515    .bss                usart.o
+    0x20000c78        -       0x00000200   Zero   RW         4279    .bss                lcd_driver.o
+    0x20000e78        -       0x000000c8   Zero   RW         4399    .bss                button.o
+    0x20000f40        -       0x0000003c   Zero   RW         4490    .bss                joystick.o
+    0x20000f7c   0x08004b14   0x00000004   PAD
+    0x20000f80        -       0x00000400   Zero   RW            1    STACK               startup_stm32f446xx.o
 
 
 ==============================================================================
@@ -2572,7 +2572,7 @@ Image component sizes
        240         26          0          0         60       2792   joystick.o
        804         58        916          0        512      13955   lcd_driver.o
        510         46          0         16          0       6682   lcd_menu.o
-      1240        180         36         80       1280     739000   main.o
+      1240        180         36         80       2480     739000   main.o
        172         44          0          0         88       1997   spi.o
         36          8        452          0       1024        892   startup_stm32f446xx.o
        184         28          0         12          0       5089   stm32f4xx_hal.o
@@ -2595,7 +2595,7 @@ Image component sizes
        240         68          0          0        160       2145   usart.o
 
     ----------------------------------------------------------------------
-     13824       1046       1472        116       3676     878174   Object Totals
+     13824       1046       1472        116       4876     878174   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         24          0          4          3          4          0   (incl. Padding)
 
@@ -2652,14 +2652,14 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     17632       1148       1472        116       3676     867922   Grand Totals
-     17632       1148       1472        116       3676     867922   ELF Image Totals
+     17632       1148       1472        116       4876     867922   Grand Totals
+     17632       1148       1472        116       4876     867922   ELF Image Totals
      17632       1148       1472        116          0          0   ROM Totals
 
 ==============================================================================
 
     Total RO  Size (Code + RO Data)                19104 (  18.66kB)
-    Total RW  Size (RW Data + ZI Data)              3792 (   3.70kB)
+    Total RW  Size (RW Data + ZI Data)              4992 (   4.88kB)
     Total ROM Size (Code + RO Data + RW Data)      19220 (  18.77kB)
 
 ==============================================================================

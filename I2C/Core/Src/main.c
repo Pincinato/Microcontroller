@@ -66,7 +66,7 @@
 #define temperatureSensorRegisterTemp 0x00
 #define acellSlaveAdress 0x98
 #define accelXoutRegister 0x00
-#define filterItemCount 50
+#define filterItemCount 100
 
 typedef struct FilterData_{
   float sum;

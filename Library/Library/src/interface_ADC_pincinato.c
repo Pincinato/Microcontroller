@@ -17,10 +17,6 @@
 #include "string.h"
 //#include "lcd_pincinato.h"
 
-#define ADCBUFFERLENGTH 10
-#define TIMER_ADC htim5
-#define ADC_INPUT hadc1
-
 uint32_t ADCBuf[ADCBUFFERLENGTH];
 uint32_t last_read = 0;
 uint32_t last_added = 0;
@@ -28,7 +24,7 @@ uint32_t last_added = 0;
 void initADCInterface(void){
 
 	MX_TIM5_Init();
-  MX_ADC1_Init();
+        MX_ADC1_Init();
 }
 void startADCInterface(void){
 
@@ -41,14 +37,6 @@ void stopADCInterface(void){
 	HAL_ADC_Stop_IT(&ADC_INPUT);
 }
 
-bool setFs(uint32_t valueInHz){	
-	TIMER_ADC.Instance->CCR1=(100000/valueInHz)/2;
-	TIMER_ADC.Instance->ARR = (100000/valueInHz); //100000= 100Khz = time after pre scale
-	TIMER_ADC.Instance->CNT=0;
-	return true;
-
-	
-}
 bool getADCValue(uint32_t *valueDestination){
 
 	bool ACK =false;
@@ -101,11 +89,8 @@ void checkEndBuffer(void){
 	}
 }
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-    if (htim->Instance == TIMER_ADC.Instance)
-    {
-			HAL_ADC_Start_IT(&ADC_INPUT);
-    }
+void interruptTimerADCCallback(void){
+    HAL_ADC_Start_IT(&ADC_INPUT);
 }
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* AdcHandle){
