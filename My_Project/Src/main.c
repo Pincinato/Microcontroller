@@ -41,6 +41,7 @@
 #include "stm32f4xx_hal.h"
 #include "adc.h"
 #include "dma.h"
+#include "i2c.h"
 #include "spi.h"
 #include "tim.h"
 #include "usart.h"
@@ -137,27 +138,33 @@ int main(void)
 	startADCInterface();
 	initACCELInterface();
 	startACCELInterface();
+	lcd_clear();
+	lcd_setString(2,10," Start ",LCD_FONT_8,false);
+	lcd_show();
+	HAL_Delay(100);
+	accel_Category categ;
   while (1)
   {
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-	
 	check_RX();
+	readAccel();
 	 if(getADCValue (&adc_in)){
 				//drawEachPixelGraph(adc_in);
 			}
-	  lcd_clear(); //--test propose 
-		getACCELCategory(&distance);
-	  sprintf(buf, "%.5f",distance);
+	  //lcd_clear(); //--test propose 
+		if(getDistance(&distance)){
+		//if(getACCELCategory(&categ)){
+	  sprintf(buf, "Y: %.5f",distance);
+	  //sprintf(buf, "Cat: %i",categ);
 		strcat(buf,"g");
 		lcd_setString(2,10,"                 ",LCD_FONT_8,false);
-		lcd_setString(2,10,"X: ",LCD_FONT_8,false);	
-		lcd_setString(10,10,(const char*) &buf,LCD_FONT_8,false);	
-		HAL_Delay(100);
+		lcd_setString(2,10,(const char*) &buf,LCD_FONT_8,false);
 	  lcd_show();
-		HAL_Delay(100);
+		}
 	}
+	HAL_Delay(100);
   /* USER CODE END 3 */
 
 }

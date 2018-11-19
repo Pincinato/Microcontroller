@@ -38,6 +38,7 @@ my_project\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 my_project\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 my_project\main.o: ../Inc/adc.h
 my_project\main.o: ../Inc/dma.h
+my_project\main.o: ../Inc/i2c.h
 my_project\main.o: ../Inc/spi.h
 my_project\main.o: ../Inc/tim.h
 my_project\main.o: ../Inc/usart.h
@@ -46,7 +47,6 @@ my_project\main.o: ..\..\Library\Library\inc\interrupt_TIMER_pincinato.h
 my_project\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 my_project\main.o: ..\..\Library\Library\inc\interface_ADC_pincinato.h
 my_project\main.o: ..\..\Library\Library\inc\interface_ACCEL_pincinato.h
-my_project\main.o: ../Inc/i2c.h
 my_project\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 my_project\main.o: ..\..\Library\Library\inc\interface_USART_pincinato.h
 my_project\main.o: ..\..\Library\Library\inc\structs_pincinato.h

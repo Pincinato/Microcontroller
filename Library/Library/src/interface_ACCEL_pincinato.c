@@ -27,25 +27,57 @@ void initACCELInterface(void){
 
 void startACCELInterface(void){
     HAL_TIM_Base_Start_IT(&TIMER_ACCEL);
+    AccelProcess.calibrationY=0;
+    while(!calibrate()){
+        readAccel();
+    }
 }
 
 void stopACCELInterface(void){
     HAL_TIM_Base_Stop_IT(&TIMER_ACCEL);
 }
 
+bool calibrate(void){
+    bool ACK=false;
+    if(count_interrupt>=10){
+        AccelProcess.calibrationY=AccelProcess.Accelerometer_Y;
+        clearIntegration();
+        ACK=true;
+    }
+    return ACK;
+}
 float getACCELX(void){
     return AccelProcess.Accelerometer_X;
 }
 
-bool getACCELCategory(double* valueDestination){
-
-    double PI = 3.14159;
-    double gravity = 9806.65;
-    *valueDestination = (gravity*((double)AccelProcess.Temp_Displacement))/(2*PI);
-    return true;
+bool getDistance(double* valueDestination){
+    bool ACK=false;
+		int timeAnalisys=3;//seconds;
+    if(count_interrupt>=timeAnalisys){
+        *valueDestination=AccelProcess.DistanceY.sum;
+        clearIntegration();
+        ACK=true;
+    }
+    return ACK;
 }
-void clearData(void){
 
+bool getACCELCategory(accel_Category* valueDestination){
+    bool ACK=false;
+    double distance;
+    int low =3;
+    int medium=6;
+    if(getDistance(&distance)){
+        if(distance<=low){*valueDestination=Category_LOW; }
+        else if(distance<=medium){*valueDestination=Category_MEDIUM;}
+        else if(distance>=medium){*valueDestination=Category_HIGH;}
+        ACK=true;
+    }
+    return ACK;
+}
+
+void clearFilter(void){
+
+    readValid=false;
     AccelProcess.Accelerometer_X=0;
     AccelProcess.Accelerometer_Y=0;
     AccelProcess.Accelerometer_Z=0;
@@ -60,7 +92,28 @@ void clearData(void){
        AccelProcess.Y.data[i]=0;
        AccelProcess.Z.data[i]=0;
     }
+}
 
+
+void clearIntegration(void){
+
+    count_interrupt=0;
+    AccelProcess.VelocityY.index=0;
+    AccelProcess.VelocityY.n_1=0;
+    AccelProcess.VelocityY.sum=0;
+    AccelProcess.DistanceY.index=0;
+    AccelProcess.DistanceY.n_1=0;
+    AccelProcess.DistanceY.sum=0;
+    for(uint8_t i=0;i<integrationLength;i++){
+       AccelProcess.VelocityY.data[i]=0;
+       AccelProcess.DistanceY.data[i]=0;
+    }
+}
+
+void clearData(void){
+
+    clearIntegration();
+    clearFilter();
 }
 
 float valueToG(uint8_t value){
@@ -74,20 +127,54 @@ float valueToG(uint8_t value){
 }
 
 float filterAdd(FilterData *filter, float value){
+
         filter->sum -= filter->data[filter->index]; // throw away last value in ring
         filter->sum += value;                   // add new value to the sum of all values
         filter->data[filter->index++] = value;    // store current value and increment list index
-  if (filter->index >= filterItemCount) { // wrap around after last index
-    filter->index = 0;
+        if (filter->index >= filterItemCount) { // wrap around after last index
+           filter->index = 0;
         }
   return filter->sum / filterItemCount;	  // return average value
 }
 
-void interruptTimerACCELCallback(void){
+float integrate(IntegrationData *integral, float n){
+
+  float t=0.1;
+  float integration= integral->n_1*t + ((n-integral->n_1)*t)/2 ;
+  integral->sum += integration;
+  integral->data[integral->index++] = integration;    // store current value and increment list index
+  if (integral->index >= integrationLength) { // wrap around after last index
+    integral->index = 0;
+  }
+  integral->n_1=n;
+  return integral->sum;	  // return average value
+}
+
+float integrateDistance(IntegrationData *integral, float n){
+
+  float t=0.1;
+  float integration= integral->n_1*t + ((n-integral->n_1)*t)/2 ;
+  if(integration<0){
+      integration=integration*(-1);
+  }
+  integral->sum += integration;
+  integral->data[integral->index++] = integration;    // store current value and increment list index
+  if (integral->index >= integrationLength) { // wrap around after last index
+    integral->index = 0;
+    __HAL_GPIO_EXTI_GENERATE_SWIT(GPIO_PIN_0); //Signal to indicates end of a buffer
+  }
+  integral->n_1=n;
+  return integral->sum;	  // return average value
+}
+
+bool readAccel(void){
+	
+	bool ret = readValid;
+	if(readValid==true){
         float value;
         uint8_t bufRX[4]="";
         HAL_StatusTypeDef i2cstatus =HAL_I2C_Master_Transmit(&ACCELEROMETER, acellSlaveAdress,(uint8_t *)accelXoutRegister,1,10);
-        if( i2cstatus	 == HAL_OK){
+       	if( i2cstatus	 == HAL_OK){
                 i2cstatus =HAL_I2C_Master_Receive(&ACCELEROMETER, acellSlaveAdress,(uint8_t *)&bufRX[0],3,100);
                 if( i2cstatus	 == HAL_OK){
                         if ((((uint8_t)bufRX[0]>>7) &0x01)==0){
@@ -97,13 +184,31 @@ void interruptTimerACCELCallback(void){
                         if ((((uint8_t)bufRX[1]>>7) &0x01)==0){
                                 value = valueToG(((uint8_t)bufRX[1]<<2)>>2);
                                 AccelProcess.Accelerometer_Y=filterAdd(&AccelProcess.Y,value);
+                                AccelProcess.Accelerometer_Y-=AccelProcess.calibrationY;
                         }
                         if ((((uint8_t)bufRX[2]>>7) &0x01)==0){
                                 value = valueToG(((uint8_t)bufRX[2]<<2)>>2);
                                 AccelProcess.Accelerometer_Z=filterAdd(&AccelProcess.Z,value);
                         }
-                        AccelProcess.Temp_Displacement=filterAdd(&AccelProcess.SquareSumX2Y2Z2,sqrt(AccelProcess.Accelerometer_Z*AccelProcess.Accelerometer_Z+AccelProcess.Accelerometer_Y*AccelProcess.Accelerometer_Y+AccelProcess.Accelerometer_X*AccelProcess.Accelerometer_X));
+                        integrateDistance(&AccelProcess.DistanceY,integrate(&AccelProcess.VelocityY,AccelProcess.Accelerometer_Y));
                 }
         }
+	readValid=false;
+	}
+ 	return ret;
+}
+
+
+void interruptTimerACCELCallback(void){
+        readValid=true;
+				TIMER_ACCEL.Instance->SR = (TIMER_ACCEL.Instance->SR & 0xfe) ;
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+
+    if(GPIO_Pin==GPIO_PIN_0){
+        count_interrupt++;
+    }
+
 }
 /****** END OF FILE ******/
