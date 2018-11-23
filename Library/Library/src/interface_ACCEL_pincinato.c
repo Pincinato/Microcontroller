@@ -15,7 +15,7 @@
   */
 #include "interface_ACCEL_pincinato.h"
 #include "string.h"
-//#include "lcd_pincinato.h"
+#include "lcd_pincinato.h"
 
 void initACCELInterface(void){
     uint8_t accelSetupData[4]={STATUSREGISTER,0,STATUSREGISTER,1};

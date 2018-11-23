@@ -41,3 +41,6 @@ my_project\interface_accel_pincinato.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm3
 my_project\interface_accel_pincinato.o: ../Inc/tim.h
 my_project\interface_accel_pincinato.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 my_project\interface_accel_pincinato.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+my_project\interface_accel_pincinato.o: ..\..\Library\Library\inc\lcd_pincinato.h
+my_project\interface_accel_pincinato.o: ..\..\Library\Library\inc\lcd_driver.h
+my_project\interface_accel_pincinato.o: ../Inc/spi.h

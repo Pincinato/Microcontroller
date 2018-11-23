@@ -9,22 +9,44 @@
 #include "adc.h"
 #include "tim.h"
 
-#define ADCBUFFERLENGTH 10
+#define ADCBUFFERLENGTH 400
+#define lowFilterItemCount 5
 #define TIMER_ADC htim5
 #define ADC_INPUT hadc1
 
+typedef struct BiquadsFilter_{
+   
+	 float a0;
+	 float a1;
+	 float a2;
+	 float b1;
+	 float b2;
+	 uint32_t n_1;
+	 uint32_t n_2;
+	 float dataN_1;
+	 float dataN_2;
+   int index;
+   float data[ADCBUFFERLENGTH];
+} BiquadsFilter;
+ 
+  typedef struct ProcessData__{    
+		BiquadsFilter HighPass;
+		BiquadsFilter LowPass;
+ } _ProcessData;
+
+static _ProcessData ADCprocess;
+static bool readyToUpdate;
+void initFilter(void);
 void initADCInterface(void);
 void startADCInterface(void);
 void stopADCInterface(void);
-bool setFs(uint32_t valueInHz);
-bool getADCValue(uint32_t *valueDestination);
-bool ADCIsEmpty(void);
-bool ADCIsFull(void);
-bool IncludeADCValue(uint32_t value);
-void clearBuffer(void);
-void checkEndBuffer(void);
+void clearBiquadsFilter(BiquadsFilter * filter);
 void interruptTimerADCCallback(void);
-
+float FilterComputeUint(BiquadsFilter *filter, uint32_t adcValue);
+void FilterComputeFloat(BiquadsFilter *filter, float value);
+float getHeartRate(void);
+bool updateHeartRate(float* destinationValue);
+void setCoef(BiquadsFilter * filter,float Acoef[],float Bcoef[]);
 #ifdef __cplusplus
 }
 #endif

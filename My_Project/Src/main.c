@@ -93,6 +93,7 @@ int main(void)
   static uint32_t adc_in;
 	char buf[20]="";
 	double distance;
+	float HeartRate=0.0;
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -148,21 +149,21 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-	check_RX();
-	readAccel();
-	 if(getADCValue (&adc_in)){
-				//drawEachPixelGraph(adc_in);
-			}
-	  //lcd_clear(); //--test propose 
-		if(getDistance(&distance)){
-		//if(getACCELCategory(&categ)){
-	  sprintf(buf, "Y: %.5f",distance);
-	  //sprintf(buf, "Cat: %i",categ);
-		strcat(buf,"g");
+	//check_RX();
+	//readAccel();
+	if(updateHeartRate(&HeartRate)){
+	/*	sprintf(buf, "HR: %.5f",HeartRate);
 		lcd_setString(2,10,"                 ",LCD_FONT_8,false);
 		lcd_setString(2,10,(const char*) &buf,LCD_FONT_8,false);
-	  lcd_show();
-		}
+	  lcd_show();*/
+	}
+	  //lcd_clear(); //--test propose 
+		//if(getDistance(&distance)){
+		//if(getACCELCategory(&categ)){
+	  //sprintf(buf, "Y: %.5f",distance);
+	  //sprintf(buf, "Cat: %i",categ);
+		//strcat(buf,"g");
+		//}
 	}
 	HAL_Delay(100);
   /* USER CODE END 3 */
