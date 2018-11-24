@@ -9,7 +9,8 @@
 #include "adc.h"
 #include "tim.h"
 
-#define ADCBUFFERLENGTH 400
+
+#define ADCBUFFERLENGTH 800
 #define lowFilterItemCount 5
 #define TIMER_ADC htim5
 #define ADC_INPUT hadc1
@@ -28,10 +29,17 @@ typedef struct BiquadsFilter_{
    int index;
    float data[ADCBUFFERLENGTH];
 } BiquadsFilter;
- 
+
+  typedef struct _FilterData_{
+   float sum;
+   int index;
+   float data[lowFilterItemCount];
+ } AverageFilterData;
+	
   typedef struct ProcessData__{    
 		BiquadsFilter HighPass;
 		BiquadsFilter LowPass;
+		AverageFilterData HR;
  } _ProcessData;
 
 static _ProcessData ADCprocess;
@@ -41,9 +49,10 @@ void initADCInterface(void);
 void startADCInterface(void);
 void stopADCInterface(void);
 void clearBiquadsFilter(BiquadsFilter * filter);
+void claerAverageFilter (AverageFilterData *filter);
 void interruptTimerADCCallback(void);
-float FilterComputeUint(BiquadsFilter *filter, uint32_t adcValue);
-void FilterComputeFloat(BiquadsFilter *filter, float value);
+float FilterCompute(BiquadsFilter *filter, uint32_t adcValue);
+float FilterAverageAdd(AverageFilterData *filter, float value);
 float getHeartRate(void);
 bool updateHeartRate(float* destinationValue);
 void setCoef(BiquadsFilter * filter,float Acoef[],float Bcoef[]);

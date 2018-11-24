@@ -127,8 +127,6 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	//HAL_TIM_Base_Start(&htim3);
-	//HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
 	HAL_GPIO_WritePin(LedBlue_GPIO_Port,LedBlue_Pin,GPIO_PIN_SET);
 	HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_SET);
 	Table myTable;
@@ -143,6 +141,7 @@ int main(void)
 	lcd_setString(2,10," Start ",LCD_FONT_8,false);
 	lcd_show();
 	HAL_Delay(100);
+	lcd_clear();
 	accel_Category categ;
   while (1)
   {
@@ -150,20 +149,22 @@ int main(void)
 
   /* USER CODE BEGIN 3 */
 	//check_RX();
-	//readAccel();
+	readAccel();
 	if(updateHeartRate(&HeartRate)){
-	/*	sprintf(buf, "HR: %.5f",HeartRate);
-		lcd_setString(2,10,"                 ",LCD_FONT_8,false);
-		lcd_setString(2,10,(const char*) &buf,LCD_FONT_8,false);
-	  lcd_show();*/
+		sprintf(buf, "HR: %d",(uint32_t)HeartRate);
+		lcd_setString(2,5,"       ",LCD_FONT_8,false);
+		lcd_setString(2,5,(const char*) &buf,LCD_FONT_8,false);
+	  lcd_show();
 	}
-	  //lcd_clear(); //--test propose 
-		//if(getDistance(&distance)){
+	if(getDistance(&distance)){
 		//if(getACCELCategory(&categ)){
-	  //sprintf(buf, "Y: %.5f",distance);
+	  sprintf(buf, "Y: %.5f",distance);
 	  //sprintf(buf, "Cat: %i",categ);
-		//strcat(buf,"g");
-		//}
+		strcat(buf,"g");
+		lcd_setString(2,20,"          ",LCD_FONT_8,false);
+		lcd_setString(2,20,(const char*) &buf,LCD_FONT_8,false);
+	  lcd_show();
+		}
 	}
 	HAL_Delay(100);
   /* USER CODE END 3 */
