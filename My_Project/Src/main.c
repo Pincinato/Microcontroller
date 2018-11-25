@@ -90,7 +90,6 @@ void ClearString(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  static uint32_t adc_in;
 	char buf[20]="";
 	double distance;
 	float HeartRate=0.0;
@@ -142,7 +141,6 @@ int main(void)
 	lcd_show();
 	HAL_Delay(100);
 	lcd_clear();
-	accel_Category categ;
   while (1)
   {
   /* USER CODE END WHILE */
@@ -166,7 +164,6 @@ int main(void)
 	  lcd_show();
 		}
 	}
-	HAL_Delay(100);
   /* USER CODE END 3 */
 
 }

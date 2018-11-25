@@ -18,8 +18,8 @@
 #include "lcd_pincinato.h"
 
 void initACCELInterface(void){
-		initIntegration(&AccelProcess.VelocityY,&AccelProcess.DataVelocityY[0],integrationLength,0.1);
-		initIntegration(&AccelProcess.DistanceY,&AccelProcess.DataDistanceY[0],integrationLength,0.1);
+		initIntegration(&AccelProcess.VelocityY,&AccelProcess.DataVelocityY[0],integrationLength,0.01);//fs 100 hz ->ts =0.01
+		initIntegration(&AccelProcess.DistanceY,&AccelProcess.DataDistanceY[0],integrationLength,0.01);// at the end to complete itnegration 10 x ts -> 0.1 s of measurement
 		initAverageFilter(&AccelProcess.Y,&AccelProcess.DataY[0],filterItemCount);
     uint8_t accelSetupData[4]={STATUSREGISTER,0,STATUSREGISTER,1};
     HAL_I2C_Master_Transmit(&ACCELEROMETER, acellSlaveAdress,&accelSetupData[0],2,10);

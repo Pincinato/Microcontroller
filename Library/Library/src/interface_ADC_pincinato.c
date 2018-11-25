@@ -62,7 +62,7 @@ float getHeartRate(){
 	}
 	normalize(&ADCprocess.HighPass.data[0],ADCBUFFERLENGTH);	
 	//Detect heart bit
-	while((heart_bits<2) & (localThreshold>0.55)){ //Adaptive threshold at lower 0.55
+	while((heart_bits<3) & (localThreshold> (float)0.55)){ //Adaptive threshold at lower 0.55
 		for(int i=0;i<ADCBUFFERLENGTH;i=i+40){
 			bool once_flag=false; 
 			for(int j=i;j<i+40;j++){ //interval in which the max heart freq is contained -> avoid count of two peaks too close.
@@ -72,8 +72,8 @@ float getHeartRate(){
 				}
 			}
 		}
-		if(heart_bits<2){
-			localThreshold=localThreshold-0.05; //decrement of 0.05
+		if(heart_bits<3){
+			localThreshold=localThreshold - (float)0.05; //decrement of 0.05
 		}
 	}
 	//Compute Heart rate
