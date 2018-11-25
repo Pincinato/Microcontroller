@@ -108,22 +108,14 @@ bool readAccel(void){
        	if( i2cstatus	 == HAL_OK){
                 i2cstatus =HAL_I2C_Master_Receive(&ACCELEROMETER, acellSlaveAdress,(uint8_t *)&bufRX[0],3,100);
                 if( i2cstatus	 == HAL_OK){
-                        /*if ((((uint8_t)bufRX[0]>>7) &0x01)==0){
-                                value = valueToG(((uint8_t)bufRX[0]<<2)>>2);
-                                AccelProcess.Accelerometer_X=filterAdd(&AccelProcess.X,value);
-                        }*/
                         if ((((uint8_t)bufRX[1]>>7) &0x01)==0){
                                 value = valueToG(((uint8_t)bufRX[1]<<2)>>2);
                                 AccelProcess.Accelerometer_Y=filterAverageCompute(&AccelProcess.Y,value);
                                 AccelProcess.Accelerometer_Y-=AccelProcess.calibrationY;
-                        }/*
-                        if ((((uint8_t)bufRX[2]>>7) &0x01)==0){
-                                value = valueToG(((uint8_t)bufRX[2]<<2)>>2);
-                                AccelProcess.Accelerometer_Z=filterAdd(&AccelProcess.Z,value);
-                        }*/
+                        }
                         integrationRelativeDistance(&AccelProcess.DistanceY,integrationCompute(&AccelProcess.VelocityY,AccelProcess.Accelerometer_Y));
 												if(AccelProcess.DistanceY.index == 0){
-													__HAL_GPIO_EXTI_GENERATE_SWIT(GPIO_PIN_0); //Signal to indicates end of a buffer
+													count_interrupt++;; // counts end of a buffer
 												}
                 }
         }
@@ -137,12 +129,12 @@ void interruptTimerACCELCallback(void){
         readValid=true;
 				TIMER_ACCEL.Instance->SR = (TIMER_ACCEL.Instance->SR & 0xfe) ;
 }
-
+/*
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 
     if(GPIO_Pin==GPIO_PIN_0){
-        count_interrupt++;
+        //count_interrupt++;
     }
 
-}
+}*/
 /****** END OF FILE ******/
