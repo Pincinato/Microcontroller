@@ -421,6 +421,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\Library\Library\src\structs_pincinato.c</FilePath>
             </File>
+            <File>
+              <FileName>filter_math_pincinato.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Library\Library\src\filter_math_pincinato.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

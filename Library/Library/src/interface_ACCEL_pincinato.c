@@ -18,11 +18,12 @@
 #include "lcd_pincinato.h"
 
 void initACCELInterface(void){
+		initIntegration(&AccelProcess.VelocityY,&AccelProcess.DataVelocityY[0],integrationLength,0.1);
+		initIntegration(&AccelProcess.DistanceY,&AccelProcess.DataDistanceY[0],integrationLength,0.1);
     uint8_t accelSetupData[4]={STATUSREGISTER,0,STATUSREGISTER,1};
     HAL_I2C_Master_Transmit(&ACCELEROMETER, acellSlaveAdress,&accelSetupData[0],2,10);
     HAL_I2C_Master_Transmit(&ACCELEROMETER, acellSlaveAdress,&accelSetupData[2],2,10);
     clearData();
-    //MX_TIM3_Init();
 }
 
 void startACCELInterface(void){
@@ -41,7 +42,9 @@ bool calibrate(void){
     bool ACK=false;
     if(count_interrupt>=10){
         AccelProcess.calibrationY=AccelProcess.Accelerometer_Y;
-        clearIntegration();
+				count_interrupt=0;
+        clearIntegration(&AccelProcess.VelocityY);
+				clearIntegration(&AccelProcess.DistanceY);
         ACK=true;
     }
     return ACK;
@@ -55,7 +58,9 @@ bool getDistance(double* valueDestination){
 		int timeAnalisys=3;//seconds;
     if(count_interrupt>=timeAnalisys){
         *valueDestination=AccelProcess.DistanceY.sum;
-        clearIntegration();
+				count_interrupt=0;
+        clearIntegration(&AccelProcess.VelocityY);
+				clearIntegration(&AccelProcess.DistanceY);
         ACK=true;
     }
     return ACK;
@@ -94,25 +99,10 @@ void clearFilter(void){
     }
 }
 
-
-void clearIntegration(void){
-
-    count_interrupt=0;
-    AccelProcess.VelocityY.index=0;
-    AccelProcess.VelocityY.n_1=0;
-    AccelProcess.VelocityY.sum=0;
-    AccelProcess.DistanceY.index=0;
-    AccelProcess.DistanceY.n_1=0;
-    AccelProcess.DistanceY.sum=0;
-    for(uint8_t i=0;i<integrationLength;i++){
-       AccelProcess.VelocityY.data[i]=0;
-       AccelProcess.DistanceY.data[i]=0;
-    }
-}
-
 void clearData(void){
-
-    clearIntegration();
+		count_interrupt=0;
+    clearIntegration(&AccelProcess.VelocityY);
+    clearIntegration(&AccelProcess.DistanceY);
     clearFilter();
 }
 
@@ -137,38 +127,7 @@ float filterAdd(FilterData *filter, float value){
   return filter->sum / filterItemCount;	  // return average value
 }
 
-float integrate(IntegrationData *integral, float n){
-
-  float t=0.1;
-  float integration= integral->n_1*t + ((n-integral->n_1)*t)/2 ;
-  integral->sum += integration;
-  integral->data[integral->index++] = integration;    // store current value and increment list index
-  if (integral->index >= integrationLength) { // wrap around after last index
-    integral->index = 0;
-  }
-  integral->n_1=n;
-  return integral->sum;	  // return average value
-}
-
-float integrateDistance(IntegrationData *integral, float n){
-
-  float t=0.1;
-  float integration= integral->n_1*t + ((n-integral->n_1)*t)/2 ;
-  if(integration<0){
-      integration=integration*(-1);
-  }
-  integral->sum += integration;
-  integral->data[integral->index++] = integration;    // store current value and increment list index
-  if (integral->index >= integrationLength) { // wrap around after last index
-    integral->index = 0;
-    __HAL_GPIO_EXTI_GENERATE_SWIT(GPIO_PIN_0); //Signal to indicates end of a buffer
-  }
-  integral->n_1=n;
-  return integral->sum;	  // return average value
-}
-
 bool readAccel(void){
-	
 	bool ret = readValid;
 	if(readValid==true){
         float value;
@@ -190,7 +149,10 @@ bool readAccel(void){
                                 value = valueToG(((uint8_t)bufRX[2]<<2)>>2);
                                 AccelProcess.Accelerometer_Z=filterAdd(&AccelProcess.Z,value);
                         }
-                        integrateDistance(&AccelProcess.DistanceY,integrate(&AccelProcess.VelocityY,AccelProcess.Accelerometer_Y));
+                        integrationRelativeDistance(&AccelProcess.DistanceY,integrationCompute(&AccelProcess.VelocityY,AccelProcess.Accelerometer_Y));
+												if(AccelProcess.DistanceY.index == 0){
+													__HAL_GPIO_EXTI_GENERATE_SWIT(GPIO_PIN_0); //Signal to indicates end of a buffer
+												}
                 }
         }
 	readValid=false;

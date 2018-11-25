@@ -39,6 +39,7 @@ my_project\interface_adc_pincinato.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f
 my_project\interface_adc_pincinato.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 my_project\interface_adc_pincinato.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 my_project\interface_adc_pincinato.o: ../Inc/tim.h
+my_project\interface_adc_pincinato.o: ..\..\Library\Library\inc\filter_math_pincinato.h
 my_project\interface_adc_pincinato.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 my_project\interface_adc_pincinato.o: ..\..\Library\Library\inc\lcd_pincinato.h
 my_project\interface_adc_pincinato.o: ..\..\Library\Library\inc\lcd_driver.h

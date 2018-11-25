@@ -9,6 +9,7 @@
 #include "i2c.h"
 #include "tim.h"
 #include "math.h"
+#include "filter_math_pincinato.h"
 
 
 #define STATUSREGISTER 0x07
@@ -29,14 +30,14 @@
    int index;
    float data[filterItemCount];
  } FilterData;
-
+/*
  typedef struct IntegrationData_{
    int index;
    float n_1;
    float sum;
    float data[integrationLength];
  } IntegrationData;
-
+*/
  typedef struct ProcessData_{
     float Accelerometer_X;
     float calibrationY;
@@ -47,7 +48,9 @@
     FilterData Y;
     FilterData Z;
     IntegrationData VelocityY;
+		float DataVelocityY[integrationLength];
     IntegrationData DistanceY;
+		float DataDistanceY[integrationLength];
  } ProcessData;
 
 static ProcessData AccelProcess;
@@ -62,10 +65,10 @@ bool getACCELCategory(accel_Category* valueDestination);
 bool getDistance(double* valueDestination);
 void clearData(void);
 void clearFilter(void);
-void clearIntegration(void);
-float filterAdd(FilterData *filter, float value);
-float integrate(IntegrationData *integral, float n);
-float integrateDistance(IntegrationData *integral, float n);
+//void clearIntegration(void);
+//float filterAdd(FilterData *filter, float value);
+//float integrate(IntegrationData *integral, float n);
+//float integrateDistance(IntegrationData *integral, float n);
 float valueToG(uint8_t value);
 float getACCELX(void);
 void interruptTimerACCELCallback(void);

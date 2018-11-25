@@ -6,6 +6,7 @@
 "my_project\lcd_driver.o"
 "my_project\lcd_pincinato.o"
 "my_project\structs_pincinato.o"
+"my_project\filter_math_pincinato.o"
 "my_project\main.o"
 "my_project\gpio.o"
 "my_project\adc.o"

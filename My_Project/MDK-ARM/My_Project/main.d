@@ -46,6 +46,7 @@ my_project\main.o: ../Inc/gpio.h
 my_project\main.o: ..\..\Library\Library\inc\interrupt_TIMER_pincinato.h
 my_project\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 my_project\main.o: ..\..\Library\Library\inc\interface_ADC_pincinato.h
+my_project\main.o: ..\..\Library\Library\inc\filter_math_pincinato.h
 my_project\main.o: ..\..\Library\Library\inc\interface_ACCEL_pincinato.h
 my_project\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 my_project\main.o: ..\..\Library\Library\inc\interface_USART_pincinato.h
