@@ -16,20 +16,14 @@
 #define TIMER_ADC htim5
 #define ADC_INPUT hadc1
 
-  typedef struct _FilterData_{
-   float sum;
-   int index;
-   float data[lowFilterItemCount];
- } AverageFilterData;
-	
-  typedef struct ProcessData__{    
+typedef struct ProcessData__{    
 		BiquadsFilter HighPass;
 		float Highbuf[ADCBUFFERLENGTH];
 		BiquadsFilter LowPass;
 		float Lowbuf[ADCBUFFERLENGTH];
-		AverageFilterData HR;
+		AverageFilter HR;
 		float HR_threshold;
-		///float HRbuf[lowFilterItemCount];
+		float HRbuf[lowFilterItemCount];
  } _ProcessData;
 
 static _ProcessData ADCprocess;
@@ -38,11 +32,10 @@ void initFilter(void);
 void initADCInterface(void);
 void startADCInterface(void);
 void stopADCInterface(void);
-void claerAverageFilter (AverageFilterData *filter);
 void interruptTimerADCCallback(void);
-float FilterAverageAdd(AverageFilterData *filter, float value);
 float getHeartRate(void);
 bool updateHeartRate(float* destinationValue);
+ 
 #ifdef __cplusplus
 }
 #endif

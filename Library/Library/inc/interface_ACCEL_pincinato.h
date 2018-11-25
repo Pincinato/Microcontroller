@@ -15,6 +15,8 @@
 #define STATUSREGISTER 0x07
 #define acellSlaveAdress 0x98
 #define accelXoutRegister 0x00
+#define accelYoutRegister 0x01
+#define accelZoutRegister 0x02
 #define TIMER_ACCEL htim3
 #define ACCELEROMETER hi2c1
 #define filterItemCount 30
@@ -24,29 +26,17 @@
 #define Category_MEDIUM 0xc0
 #define Category_LOW 0x0f
 
- typedef struct FilterData_{
-   float sum;
-   bool filterControl;
-   int index;
-   float data[filterItemCount];
- } FilterData;
-/*
- typedef struct IntegrationData_{
-   int index;
-   float n_1;
-   float sum;
-   float data[integrationLength];
- } IntegrationData;
-*/
+
  typedef struct ProcessData_{
     float Accelerometer_X;
     float calibrationY;
     float Accelerometer_Y;
     float Accelerometer_Z;
     float Temp_Displacement;
-    FilterData X;
-    FilterData Y;
-    FilterData Z;
+    AverageFilter X;
+    AverageFilter Y;
+	  float DataY[filterItemCount];
+    AverageFilter Z;
     IntegrationData VelocityY;
 		float DataVelocityY[integrationLength];
     IntegrationData DistanceY;
@@ -64,11 +54,6 @@ void stopACCELInterface(void);
 bool getACCELCategory(accel_Category* valueDestination);
 bool getDistance(double* valueDestination);
 void clearData(void);
-void clearFilter(void);
-//void clearIntegration(void);
-//float filterAdd(FilterData *filter, float value);
-//float integrate(IntegrationData *integral, float n);
-//float integrateDistance(IntegrationData *integral, float n);
 float valueToG(uint8_t value);
 float getACCELX(void);
 void interruptTimerACCELCallback(void);

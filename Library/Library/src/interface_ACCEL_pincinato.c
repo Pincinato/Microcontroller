@@ -20,6 +20,7 @@
 void initACCELInterface(void){
 		initIntegration(&AccelProcess.VelocityY,&AccelProcess.DataVelocityY[0],integrationLength,0.1);
 		initIntegration(&AccelProcess.DistanceY,&AccelProcess.DataDistanceY[0],integrationLength,0.1);
+		initAverageFilter(&AccelProcess.Y,&AccelProcess.DataY[0],filterItemCount);
     uint8_t accelSetupData[4]={STATUSREGISTER,0,STATUSREGISTER,1};
     HAL_I2C_Master_Transmit(&ACCELEROMETER, acellSlaveAdress,&accelSetupData[0],2,10);
     HAL_I2C_Master_Transmit(&ACCELEROMETER, acellSlaveAdress,&accelSetupData[2],2,10);
@@ -80,30 +81,12 @@ bool getACCELCategory(accel_Category* valueDestination){
     return ACK;
 }
 
-void clearFilter(void){
-
-    readValid=false;
-    AccelProcess.Accelerometer_X=0;
-    AccelProcess.Accelerometer_Y=0;
-    AccelProcess.Accelerometer_Z=0;
-    AccelProcess.X.sum=0;
-    AccelProcess.Y.sum=0;
-    AccelProcess.Z.sum=0;
-    AccelProcess.X.index=0;
-    AccelProcess.Y.index=0;
-    AccelProcess.Z.index=0;
-    for(uint8_t i=0;i<filterItemCount;i++){
-       AccelProcess.X.data[i]=0;
-       AccelProcess.Y.data[i]=0;
-       AccelProcess.Z.data[i]=0;
-    }
-}
-
 void clearData(void){
 		count_interrupt=0;
     clearIntegration(&AccelProcess.VelocityY);
     clearIntegration(&AccelProcess.DistanceY);
-    clearFilter();
+    clearAverageFilter(&AccelProcess.Y,0);
+		readValid=false;
 }
 
 float valueToG(uint8_t value){
@@ -116,17 +99,6 @@ float valueToG(uint8_t value){
         return returnValue;
 }
 
-float filterAdd(FilterData *filter, float value){
-
-        filter->sum -= filter->data[filter->index]; // throw away last value in ring
-        filter->sum += value;                   // add new value to the sum of all values
-        filter->data[filter->index++] = value;    // store current value and increment list index
-        if (filter->index >= filterItemCount) { // wrap around after last index
-           filter->index = 0;
-        }
-  return filter->sum / filterItemCount;	  // return average value
-}
-
 bool readAccel(void){
 	bool ret = readValid;
 	if(readValid==true){
@@ -136,19 +108,19 @@ bool readAccel(void){
        	if( i2cstatus	 == HAL_OK){
                 i2cstatus =HAL_I2C_Master_Receive(&ACCELEROMETER, acellSlaveAdress,(uint8_t *)&bufRX[0],3,100);
                 if( i2cstatus	 == HAL_OK){
-                        if ((((uint8_t)bufRX[0]>>7) &0x01)==0){
+                        /*if ((((uint8_t)bufRX[0]>>7) &0x01)==0){
                                 value = valueToG(((uint8_t)bufRX[0]<<2)>>2);
                                 AccelProcess.Accelerometer_X=filterAdd(&AccelProcess.X,value);
-                        }
+                        }*/
                         if ((((uint8_t)bufRX[1]>>7) &0x01)==0){
                                 value = valueToG(((uint8_t)bufRX[1]<<2)>>2);
-                                AccelProcess.Accelerometer_Y=filterAdd(&AccelProcess.Y,value);
+                                AccelProcess.Accelerometer_Y=filterAverageCompute(&AccelProcess.Y,value);
                                 AccelProcess.Accelerometer_Y-=AccelProcess.calibrationY;
-                        }
+                        }/*
                         if ((((uint8_t)bufRX[2]>>7) &0x01)==0){
                                 value = valueToG(((uint8_t)bufRX[2]<<2)>>2);
                                 AccelProcess.Accelerometer_Z=filterAdd(&AccelProcess.Z,value);
-                        }
+                        }*/
                         integrationRelativeDistance(&AccelProcess.DistanceY,integrationCompute(&AccelProcess.VelocityY,AccelProcess.Accelerometer_Y));
 												if(AccelProcess.DistanceY.index == 0){
 													__HAL_GPIO_EXTI_GENERATE_SWIT(GPIO_PIN_0); //Signal to indicates end of a buffer

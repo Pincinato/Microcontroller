@@ -66,7 +66,6 @@ float filterBiquadsCompute(BiquadsFilter *filter, uint32_t value){
     }
     return filter->dataN_1;
 }
-/*
 
 void initAverageFilter(AverageFilter * filter,float *d_data,int sizeBuffer){
 
@@ -94,7 +93,6 @@ float filterAverageCompute(AverageFilter *filter, float value){
   return filter->sum /filter->sizeBuffer;	  // return average value
 }
 
-*/
 void initIntegration(IntegrationData * integration,float *d_data,int sizeBuffer,float time){
 
     integration->data=d_data;
