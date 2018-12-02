@@ -28,17 +28,16 @@
 Table *localTable=NULL;
 UART_HandleTypeDef *localUart=NULL;
 char msgToSend[30]="";
-char msgReceived[10]="";
-bool receiverStart=false;
-short receiverCount=0;
+char msgReceived[7]="";
+char lastMsg[7]="";
 	
 bool initInterface(Table *A, UART_HandleTypeDef *huart){
 		
   MX_USART2_UART_Init();
-  MX_DMA_Init();
+  MX_DMA_Init();	
 	setUart(huart);
 	setTable(A);
-	return (checkTable() && checkUart());
+	return (checkTable() && checkUart() &&(HAL_UART_Receive_DMA(&huart2,(uint8_t*) msgReceived,5)==HAL_OK));
 }
 
 
@@ -53,32 +52,19 @@ void setTable(Table * A){
 }
 
 void check_RX(void){
-	
-  HAL_StatusTypeDef RxResult;
-	char rxBuf[3]="";
-	RxResult=HAL_UART_Receive(&huart2,(uint8_t*) rxBuf,1,100);
-  if (!RxResult){
-      rxBuf[1]=0x00;
-			if(rxBuf[0]=='?'){receiverStart=true;} //msg should be btw ? and ! example ?Act!
-			if(receiverStart && (rxBuf[0]!='?')){		
-				if(rxBuf[0]=='!'){
-					receiverStart=false;
-					msgReceived[receiverCount]=0;
-					selectOption(msgReceived);
-					clearMsg(msgReceived);
-					receiverCount=0;
-				}
-				else {
-					msgReceived[receiverCount]=rxBuf[0];
-					receiverCount++;
-					if(receiverCount>9){
-						receiverCount=0;
-					  clearMsg(msgReceived);
-						receiverStart=false;
-					}
-				}
+	bool newMsg=false;
+	if((msgReceived[0]=='?') && (msgReceived[4]=='!')){//ex ?Act!
+		for(int i = 0; i<5;i++){
+			if(lastMsg[i]!=msgReceived[i]){newMsg=true;}
+		}
+		if(newMsg==true){
+			selectOption(msgReceived);
+			for(int i = 0; i<5;i++){
+				lastMsg[i]=msgReceived[i];
+			}
 		}
 	}
+	HAL_UART_Receive_DMA(&huart2,(uint8_t*) msgReceived,5);
 }
 
 void selectOption(const char * buf){
@@ -240,5 +226,6 @@ void clearMsg(char *toClear){
 		toClear[i]=0;
 	}
 }
+
 
 /****** END OF FILE ******/

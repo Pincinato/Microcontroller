@@ -178,32 +178,9 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-		/*
-	//check_RX();
-	readAccel();
-	if(updateHeartRate(&HeartRate)){
-		sprintf(buf, "HR: %d",(uint32_t)HeartRate);
-		lcd_setString(2,5,"       ",LCD_FONT_8,false);
-		lcd_setString(2,5,(const char*) &buf,LCD_FONT_8,false);
-	  lcd_show();
-	}
-	if(getDistance(&distance)){
-		//if(getACCELCategory(&categ)){
-	  sprintf(buf, "Y: %.5f",distance);
-	  //sprintf(buf, "Cat: %i",categ);
-		strcat(buf,"g");
-		lcd_setString(2,20,"          ",LCD_FONT_8,false);
-		lcd_setString(2,20,(const char*) &buf,LCD_FONT_8,false);
-	  lcd_show();
-		}
-	}
-	
-	*/
-	
-	//TESTTTTTt
+
 		joystick.sample(&joystick);
 		updateData(&myData);
-		//HAL_Delay(5);
 		if (msMenuTicks >= 100) {  // LCD display ok with 50ms, otherwise stray characters
 			msMenuTicks = 0;
       nextNavigation = (menu_navigation) joystick.getDirection(&joystick);
@@ -212,7 +189,6 @@ int main(void)
 			handleEvent((int) event, &myData);
 		}		
 	}
-	//
   /* USER CODE END 3 */
 
 }
@@ -366,6 +342,7 @@ void updateData(AppData *data) {
 						}
 			break;
 		case 4: check_RX();
+						sprintf(data->current.bufInfo, "Usb connection");
 			break;
 		default:
 			break;

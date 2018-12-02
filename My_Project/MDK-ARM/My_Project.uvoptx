@@ -152,102 +152,6 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>68</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>134241866</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\..\Library\Library\src\interface_ADC_pincinato.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\My_Project\../../Library/Library/src/interface_ADC_pincinato.c\68</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>35</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>134243274</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\..\Library\Library\src\interface_ADC_pincinato.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\My_Project\../../Library/Library/src/interface_ADC_pincinato.c\35</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>39</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>134243314</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\..\Library\Library\src\interface_ADC_pincinato.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\My_Project\../../Library/Library/src/interface_ADC_pincinato.c\39</Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>40</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>134243320</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\..\Library\Library\src\interface_ADC_pincinato.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\My_Project\../../Library/Library/src/interface_ADC_pincinato.c\40</Expression>
-        </Bp>
-        <Bp>
-          <Number>4</Number>
-          <Type>0</Type>
-          <LineNumber>129</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>134240496</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\..\Library\Library\src\interface_ACCEL_pincinato.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\My_Project\../../Library/Library/src/interface_ACCEL_pincinato.c\129</Expression>
-        </Bp>
-        <Bp>
-          <Number>5</Number>
-          <Type>0</Type>
-          <LineNumber>332</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134243450</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>../Src/main.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\My_Project\../Src/main.c\332</Expression>
-        </Bp>
-        <Bp>
-          <Number>6</Number>
-          <Type>0</Type>
           <LineNumber>64</LineNumber>
           <EnabledFlag>0</EnabledFlag>
           <Address>0</Address>
@@ -260,6 +164,102 @@
           <Filename>..\..\Library\Library\src\interface_ADC_pincinato.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>68</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134242574</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\..\Library\Library\src\interface_ADC_pincinato.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\My_Project\../../Library/Library/src/interface_ADC_pincinato.c\68</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>35</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134243982</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\..\Library\Library\src\interface_ADC_pincinato.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\My_Project\../../Library/Library/src/interface_ADC_pincinato.c\35</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>39</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134244022</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\..\Library\Library\src\interface_ADC_pincinato.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\My_Project\../../Library/Library/src/interface_ADC_pincinato.c\39</Expression>
+        </Bp>
+        <Bp>
+          <Number>4</Number>
+          <Type>0</Type>
+          <LineNumber>40</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134244028</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\..\Library\Library\src\interface_ADC_pincinato.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\My_Project\../../Library/Library/src/interface_ADC_pincinato.c\40</Expression>
+        </Bp>
+        <Bp>
+          <Number>5</Number>
+          <Type>0</Type>
+          <LineNumber>129</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134241212</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\..\Library\Library\src\interface_ACCEL_pincinato.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\My_Project\../../Library/Library/src/interface_ACCEL_pincinato.c\129</Expression>
+        </Bp>
+        <Bp>
+          <Number>6</Number>
+          <Type>0</Type>
+          <LineNumber>332</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134244366</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>../Src/main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\My_Project\../Src/main.c\332</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -332,6 +332,31 @@
           <count>13</count>
           <WinNumber>1</WinNumber>
           <ItemText>ECGprocess</ItemText>
+        </Ww>
+        <Ww>
+          <count>14</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>RxResult</ItemText>
+        </Ww>
+        <Ww>
+          <count>15</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>receiverStart</ItemText>
+        </Ww>
+        <Ww>
+          <count>16</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>msgReceived</ItemText>
+        </Ww>
+        <Ww>
+          <count>17</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>lastMsg</ItemText>
+        </Ww>
+        <Ww>
+          <count>18</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>newMsg</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
@@ -584,7 +609,7 @@
 
   <Group>
     <GroupName>Application/User</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -712,7 +737,7 @@
 
   <Group>
     <GroupName>Drivers/STM32F4xx_HAL_Driver</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -960,7 +985,7 @@
 
   <Group>
     <GroupName>Drivers/CMSIS</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
