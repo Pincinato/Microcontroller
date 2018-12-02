@@ -39,7 +39,7 @@ static void renderingScrollBar(Menu * const menu)
 
 static void renderingMenuPage(Menu * const menu)
 {
-    char tempLcdString[MENU_CHARACTERS_PER_LINE] = {};
+    char tempLcdString[MENU_CHARACTERS_PER_LINE] = "";
 
     if(menu->cursorPosition > menu->pageAnchor + 2)
         menu->pageAnchor++;

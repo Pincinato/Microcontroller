@@ -12,7 +12,7 @@
 
 
 #define ADCBUFFERLENGTH 800
-#define lowFilterItemCount 5
+//#define lowFilterItemCount 5
 #define TIMER_ADC htim5
 #define ADC_INPUT hadc1
 
@@ -21,9 +21,6 @@ typedef struct ProcessData__{
 		float Highbuf[ADCBUFFERLENGTH];
 		BiquadsFilter LowPass;
 		float Lowbuf[ADCBUFFERLENGTH];
-		AverageFilter HR;
-		float HR_threshold;
-		float HRbuf[lowFilterItemCount];
  } _ProcessData;
 
 static _ProcessData ADCprocess;
@@ -33,8 +30,12 @@ void initADCInterface(void);
 void startADCInterface(void);
 void stopADCInterface(void);
 void interruptTimerADCCallback(void);
-float getHeartRate(void);
-bool updateHeartRate(float* destinationValue);
+bool getReadyToUpdate(void);
+void setReadyToUpdate(bool value);
+const float *getADCData(void);
+int getADCDataSize(void);
+void normalizeADCData(void);
+void removeADCUnstableValues(void);
  
 #ifdef __cplusplus
 }

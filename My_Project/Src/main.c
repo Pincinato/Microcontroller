@@ -48,25 +48,52 @@
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
-#include "interrupt_TIMER_pincinato.h"
-#include "interface_ACCEL_pincinato.h"
-#include "interface_ADC_pincinato.h"
-#include "interface_USART_pincinato.h"
-#include "lcd_pincinato.h"
+#include "joystick.h"
+#include "lcd_menu.h"
+#include "lcd_menu_definition.h"
 #include "stdio.h"
 #include "string.h"
 #include "stdbool.h"
 #include "structs_pincinato.h"
+#include "lcd_pincinato.h"
+#include "interrupt_TIMER_pincinato.h"
+#include "interface_ACCEL_pincinato.h"
+//#include "interface_ADC_pincinato.h"
+#include "interface_ECG_pincinato.h"
+#include "interface_USART_pincinato.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+
+//TEST
+typedef struct MainProcessData_{
+ 
+	char bufInfo[20];
+	double distance;
+	float HeartRate;
+	
+} MainProcessData;
+
+typedef struct AppData_{
+	MainProcessData current;
+	MainProcessData previous;
+} AppData;
+
+volatile uint32_t msMenuTicks=0;
+static AppData myData;
+static int MainEvent;
+static int last_MainEvent;
+//
+
 /* Private variables ---------------------------------------------------------*/
 //#define POT_1_HANDLE hadc1
 #define POT_2_HANDLE hadc2 
 
-
+void drawMenuItem_Callback2(int event, void* data);
+void handleEvent(int event, AppData *data);
+void updateData(AppData *data);
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -75,7 +102,6 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 void ClearString(void);
- bool getAdcValue(ADC_HandleTypeDef* hadc,uint32_t * const data);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -90,9 +116,7 @@ void ClearString(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	char buf[20]="";
-	double distance;
-	float HeartRate=0.0;
+	
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -117,10 +141,10 @@ int main(void)
   MX_SPI1_Init();
   MX_USART2_UART_Init();
   MX_ADC2_Init();
-  MX_ADC1_Init();
   MX_TIM3_Init();
   MX_TIM5_Init();
   MX_I2C1_Init();
+  MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE END 2 */
 
@@ -132,20 +156,29 @@ int main(void)
 	initTable(&myTable);
 	initInterface(&myTable,&huart2);
 	initLCD();
-	initADCInterface();
-	startADCInterface();
+	initECGInterface();
+	//startECGInterface();
 	initACCELInterface();
-	startACCELInterface();
+	//startACCELInterface();
 	lcd_clear();
 	lcd_setString(2,10," Start ",LCD_FONT_8,false);
 	lcd_show();
 	HAL_Delay(100);
 	lcd_clear();
+	//TEST
+	menu_setMainMenu(&mainMenu);
+	Joystick joystick;
+  Joystick_init(&joystick);
+  menu_navigation nextNavigation = MENU_NOP;
+	menu_event event = MENU_NO_EVENT;
+	menu_registerDrawMenuItem2(drawMenuItem_Callback2, (void *) &myData); 
+	//
   while (1)
   {
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
+		/*
 	//check_RX();
 	readAccel();
 	if(updateHeartRate(&HeartRate)){
@@ -164,6 +197,22 @@ int main(void)
 	  lcd_show();
 		}
 	}
+	
+	*/
+	
+	//TESTTTTTt
+		joystick.sample(&joystick);
+		updateData(&myData);
+		//HAL_Delay(5);
+		if (msMenuTicks >= 100) {  // LCD display ok with 50ms, otherwise stray characters
+			msMenuTicks = 0;
+      nextNavigation = (menu_navigation) joystick.getDirection(&joystick);
+      event = menu_update(nextNavigation);
+      menu_show();
+			handleEvent((int) event, &myData);
+		}		
+	}
+	//
   /* USER CODE END 3 */
 
 }
@@ -236,21 +285,97 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
-
-bool getAdcValue(ADC_HandleTypeDef* hadc, uint32_t * const data){
-	
-		HAL_StatusTypeDef adcStatus;
-		HAL_ADC_Start(hadc);
-		adcStatus= HAL_ADC_PollForConversion(hadc,100);
-		if (adcStatus != HAL_OK) {
-			return false;
-		}
-		else {
-			*data= HAL_ADC_GetValue(hadc);
-			return true;
-		}
+void drawMenuItem_Callback2(int event, void* data){
+  
+	char buf[20]="";
+	last_MainEvent=MainEvent;
+	MainEvent=event;
+  AppData* ad = data; //!< Convert to our application data structure 
+	strcat(buf,ad->current.bufInfo);
+	lcd_setString(2,10,(const char*) &buf,LCD_FONT_8,false);			
 }
 
+
+/**
+* @param event The menu event to be handled
+* @param *data Pointer to the application data
+*/
+void handleEvent(int event, AppData *data) {
+}
+
+/**
+* Updates all data
+* @param data Pointer to application data
+*/
+void updateData(AppData *data) {
+	
+	double distance=0.0;
+	float HeartRate=0.0;
+	  // Keep all data of last process image
+	data->previous = data->current;
+
+	if(last_MainEvent != MainEvent){
+		switch (MainEvent) {
+		case 1: stopECGInterface();
+						startACCELInterface();
+			break;
+		case 2:	stopACCELInterface();
+						startECGInterface();
+			break;
+		case 3: startACCELInterface();
+						startECGInterface();
+			break;
+		case 4: stopACCELInterface();
+						stopECGInterface();
+			break;
+		default:stopACCELInterface();
+						stopECGInterface();
+			break;
+		}
+	}
+	switch (MainEvent) {
+		case 1: readAccel();
+						if(getDistance(&distance)){
+							if(distance!=data->current.distance ){
+								sprintf(data->current.bufInfo, "Y: %.5f",distance);
+								strcat(data->current.bufInfo,"g");
+								data->current.distance=distance;
+							}
+						}
+			break;
+		case 2:	if(updateHeartRate(&HeartRate)){
+							if(HeartRate!=data->current.HeartRate){
+								sprintf(data->current.bufInfo, "HR: %d",(uint32_t)HeartRate);
+								data->current.HeartRate=HeartRate;
+							}
+						}
+			break;
+		case 3: readAccel();
+						if(getDistance(&distance)){
+							if(distance!=data->current.distance ){
+								sprintf(data->current.bufInfo, "Y: %.5f",distance);
+								strcat(data->current.bufInfo,"g");
+								data->current.distance=distance;
+							}
+						}
+						if(updateHeartRate(&HeartRate)){
+							if(HeartRate!=data->current.HeartRate){
+								sprintf(data->current.bufInfo, "HR: %d",(uint32_t)HeartRate);
+								data->current.HeartRate=HeartRate;
+							}
+						}
+			break;
+		case 4: check_RX();
+			break;
+		default:
+			break;
+		}
+		
+}
+
+void HAL_SYSTICK_Callback(void) {
+	msMenuTicks++;
+}
 /* USER CODE END 4 */
 
 /**

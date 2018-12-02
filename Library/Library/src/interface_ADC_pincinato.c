@@ -27,11 +27,8 @@ void initADCInterface(void){
 	float coef_B_HighPass[2]={ -1.7786300789392977, 0.8008009266036016};
 	initBiquadsFilter(&ADCprocess.HighPass,&ADCprocess.Highbuf[0],ADCBUFFERLENGTH,&coef_A_HighPass[0],&coef_B_HighPass[0]);
 	initBiquadsFilter(&ADCprocess.LowPass,&ADCprocess.Lowbuf[0],ADCBUFFERLENGTH,&coef_A_LowPass[0],&coef_B_LowPass[0]);
-	initAverageFilter(&ADCprocess.HR,&ADCprocess.HRbuf[0],lowFilterItemCount);
-	clearAverageFilter(&ADCprocess.HR,60);
-	ADCprocess.HR_threshold=0.75;
-
 }
+
 void startADCInterface(void){
 
 	initFilter();
@@ -49,50 +46,36 @@ void initFilter(void){
 	clearBiquadsFilter(&ADCprocess.LowPass);
 }
 
-float getHeartRate(){
-	
-	static float ret;
-	int heart_bits=0;
-	int fs=200;
+const float *getADCData(void){
+	return &ADCprocess.HighPass.data[0];
+}
+
+
+int getADCDataSize(void){
+	int bufSize =ADCBUFFERLENGTH;
+	return bufSize;
+}
+
+void removeADCUnstableValues(void){
 	int z=0;
-	float localThreshold=ADCprocess.HR_threshold;
 	while(ADCprocess.HighPass.data[z]>0){ // delete initial invalid data
 		ADCprocess.HighPass.data[z]=0;
 		++z;
 	}
-	normalize(&ADCprocess.HighPass.data[0],ADCBUFFERLENGTH);	
-	//Detect heart bit
-	while((heart_bits<3) & (localThreshold> (float)0.55)){ //Adaptive threshold at lower 0.55
-		for(int i=0;i<ADCBUFFERLENGTH;i=i+40){
-			bool once_flag=false; 
-			for(int j=i;j<i+40;j++){ //interval in which the max heart freq is contained -> avoid count of two peaks too close.
-				if((ADCprocess.HighPass.data[j]>localThreshold)& (!once_flag)){
-					once_flag=true;
-					heart_bits++;
-				}
-			}
-		}
-		if(heart_bits<3){
-			localThreshold=localThreshold - (float)0.05; //decrement of 0.05
-		}
-	}
-	//Compute Heart rate
-	ret =((heart_bits)/((ADCBUFFERLENGTH-z)/fs))*60;
-	return ret; //qty of bit / time of measure *60 - bpm
-
 }
 
-bool updateHeartRate(float* destinationValue){
-	bool ack=false;
-	if (readyToUpdate){
-		*destinationValue=filterAverageCompute(&ADCprocess.HR,getHeartRate());
-		readyToUpdate=false;
-		ack=true;		
-		startADCInterface();
-	}
-	return ack;
+void normalizeADCData(void){
+	normalize(&ADCprocess.HighPass.data[0],ADCBUFFERLENGTH);
 }
 
+
+bool getReadyToUpdate(void){
+	return readyToUpdate;
+}
+
+void setReadyToUpdate(bool value){
+	readyToUpdate=value;
+}
 void interruptTimerADCCallback(void){
     HAL_ADC_Start_IT(&ADC_INPUT);
 }

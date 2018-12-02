@@ -15,6 +15,7 @@
 #define MENU_MAX_ENTRIES 10
 #define MENU_CHARACTERS_PER_LINE 22
 #define MENU_OPTIONS_PER_PAGE 3
+#pragma anon_unions
 
 typedef enum{MENU_NOP, MENU_UP, MENU_DOWN, MENU_BACKWARD, MENU_FORWARD, MENU_SELECT}menu_navigation; /* TODO name */
 //$dnd1 add MENU_LED_BLUE_EVENT

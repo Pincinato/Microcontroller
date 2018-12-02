@@ -311,7 +311,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F446xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;     ../Drivers/STM32F4xx_HAL_Driver/Inc;     ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;     ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;     ../Drivers/CMSIS/Include;     ..\..\Library\Library\inc</IncludePath>
+              <IncludePath>../Inc;         ../Drivers/STM32F4xx_HAL_Driver/Inc;         ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;         ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;         ../Drivers/CMSIS/Include;         ..\..\Library\Library\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -425,6 +425,31 @@
               <FileName>filter_math_pincinato.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Library\Library\src\filter_math_pincinato.c</FilePath>
+            </File>
+            <File>
+              <FileName>interface_ECG_pincinato.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Library\Library\src\interface_ECG_pincinato.c</FilePath>
+            </File>
+            <File>
+              <FileName>joystick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Library\Library\src\joystick.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_menu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Library\Library\src\lcd_menu.c</FilePath>
+            </File>
+            <File>
+              <FileName>button.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Library\Library\src\button.c</FilePath>
+            </File>
+            <File>
+              <FileName>button_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Library\Library\src\button_driver.c</FilePath>
             </File>
           </Files>
         </Group>

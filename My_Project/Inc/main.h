@@ -50,16 +50,28 @@
 
 /* Private define ------------------------------------------------------------*/
 
+#define SWITCH_RIGHT_Pin GPIO_PIN_0
+#define SWITCH_RIGHT_GPIO_Port GPIOC
+#define SWITCH_LEFT_Pin GPIO_PIN_1
+#define SWITCH_LEFT_GPIO_Port GPIOC
 #define POT_2_Pin GPIO_PIN_1
 #define POT_2_GPIO_Port GPIOA
-#define ADC_Input_Pin GPIO_PIN_4
-#define ADC_Input_GPIO_Port GPIOA
+#define SWITCH_UP_Pin GPIO_PIN_4
+#define SWITCH_UP_GPIO_Port GPIOA
 #define LCD_SCK_Pin GPIO_PIN_5
 #define LCD_SCK_GPIO_Port GPIOA
 #define LCD_RESET_Pin GPIO_PIN_6
 #define LCD_RESET_GPIO_Port GPIOA
 #define LCD_MOSI_Pin GPIO_PIN_7
 #define LCD_MOSI_GPIO_Port GPIOA
+#define SWITCH_DOWN_Pin GPIO_PIN_0
+#define SWITCH_DOWN_GPIO_Port GPIOB
+#define ADC_Input_Pin GPIO_PIN_1
+#define ADC_Input_GPIO_Port GPIOB
+#define LO__Input_Pin GPIO_PIN_14
+#define LO__Input_GPIO_Port GPIOB
+#define LO__InputB15_Pin GPIO_PIN_15
+#define LO__InputB15_GPIO_Port GPIOB
 #define LedGreen_Pin GPIO_PIN_7
 #define LedGreen_GPIO_Port GPIOC
 #define LCD_A0_Pin GPIO_PIN_8
@@ -68,8 +80,8 @@
 #define LedBlue_GPIO_Port GPIOA
 #define LED_RED_Pin GPIO_PIN_4
 #define LED_RED_GPIO_Port GPIOB
-#define SW_CENTER_Pin GPIO_PIN_5
-#define SW_CENTER_GPIO_Port GPIOB
+#define SWITCH_CENTER_Pin GPIO_PIN_5
+#define SWITCH_CENTER_GPIO_Port GPIOB
 #define LCD_CS_N_Pin GPIO_PIN_6
 #define LCD_CS_N_GPIO_Port GPIOB
 

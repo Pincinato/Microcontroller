@@ -4,7 +4,7 @@
 
 #define MAX_NUMBER_OF_FILTERS 10
 
-static InputFilter filterSet[MAX_NUMBER_OF_FILTERS] = {};
+static InputFilter filterSet[MAX_NUMBER_OF_FILTERS];
 static uint8_t initializedFilters = 0;
 
 static void Button_sample(Button *const _this)

@@ -19,8 +19,8 @@
 #define accelZoutRegister 0x02
 #define TIMER_ACCEL htim3
 #define ACCELEROMETER hi2c1
-#define filterItemCount 30
-#define integrationLength 10
+#define filterItemCount 300
+#define integrationLength 100 //  0.01*integrationLength= time of measurament.
 #define accel_Category uint8_t
 #define Category_HIGH 0xaa
 #define Category_MEDIUM 0xc0
