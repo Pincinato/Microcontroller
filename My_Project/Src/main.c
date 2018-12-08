@@ -145,6 +145,7 @@ int main(void)
   MX_TIM5_Init();
   MX_I2C1_Init();
   MX_ADC1_Init();
+  MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE END 2 */
 
@@ -267,8 +268,32 @@ void drawMenuItem_Callback2(int event, void* data){
 	last_MainEvent=MainEvent;
 	MainEvent=event;
   AppData* ad = data; //!< Convert to our application data structure 
-	strcat(buf,ad->current.bufInfo);
-	lcd_setString(2,10,(const char*) &buf,LCD_FONT_8,false);			
+	int compare = strcmp(ad->current.bufInfo,ad->previous.bufInfo);
+	/*
+	if((last_MainEvent == MainEvent) && (compare!=0)){
+		strcat(buf,ad->current.bufInfo);
+		lcd_setString(2,10,(const char*) &buf,LCD_FONT_8,false);
+	}		
+	else if((last_MainEvent == MainEvent) && (compare==0)){
+	
+	} */
+	if (last_MainEvent != MainEvent){
+		switch (MainEvent) {
+			case 1: lcd_setString(2,10, "Calibrating ...",LCD_FONT_8,false); 
+							sprintf(ad->current.bufInfo, "Calibrating ...");
+				break;
+			case 2: lcd_setString(2,10, "Doing 1 measure ...",LCD_FONT_8,false);
+							sprintf(ad->current.bufInfo, "Doing 1 measure ...");
+				break;
+			case 3:
+				break;
+			case 4: lcd_setString(2,10, "Usb connection",LCD_FONT_8,false);
+							sprintf(ad->current.bufInfo, "Usb connection");
+				break;
+			default:
+				break;
+		}
+	}
 }
 
 
@@ -342,7 +367,6 @@ void updateData(AppData *data) {
 						}
 			break;
 		case 4: check_RX();
-						sprintf(data->current.bufInfo, "Usb connection");
 			break;
 		default:
 			break;

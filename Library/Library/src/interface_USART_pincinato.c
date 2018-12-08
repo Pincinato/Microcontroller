@@ -28,16 +28,21 @@
 Table *localTable=NULL;
 UART_HandleTypeDef *localUart=NULL;
 char msgToSend[30]="";
-char msgReceived[7]="";
-char lastMsg[7]="";
-	
+char msgReceived[10]="";
+char lastMsg[10]="";
+char bufMsg[9]="";
+bool receiverStart=false;
+short receiverCount=0;
+
 bool initInterface(Table *A, UART_HandleTypeDef *huart){
 		
   MX_USART2_UART_Init();
   MX_DMA_Init();	
 	setUart(huart);
 	setTable(A);
-	return (checkTable() && checkUart() &&(HAL_UART_Receive_DMA(&huart2,(uint8_t*) msgReceived,5)==HAL_OK));
+	HAL_UART_Receive_DMA(&huart2,(uint8_t*) bufMsg,8);//circular
+	receiverCount=0;
+	return (checkTable() && checkUart());
 }
 
 
@@ -52,19 +57,26 @@ void setTable(Table * A){
 }
 
 void check_RX(void){
+	
 	bool newMsg=false;
-	if((msgReceived[0]=='?') && (msgReceived[4]=='!')){//ex ?Act!
+	int index=1;
+	if(bufMsg[0]=='?'){//ex ?Act!
+		while((bufMsg[index]!='!')&&(index<10)){
+			msgReceived[index-1]=bufMsg[index];
+			++index;
+		}
 		for(int i = 0; i<5;i++){
 			if(lastMsg[i]!=msgReceived[i]){newMsg=true;}
 		}
 		if(newMsg==true){
-			selectOption(msgReceived);
+			selectOption(&msgReceived[0]);
 			for(int i = 0; i<5;i++){
 				lastMsg[i]=msgReceived[i];
 			}
 		}
+		clearMsg(bufMsg,8);
 	}
-	HAL_UART_Receive_DMA(&huart2,(uint8_t*) msgReceived,5);
+	clearMsg(msgReceived,10);
 }
 
 void selectOption(const char * buf){
@@ -126,7 +138,7 @@ void sendActualConfig(void) {
 	char Normal[4]="";
 	char High[4]="";
 	char Edited[2]="";
-	clearMsg(msgToSend);
+	clearMsg(msgToSend,30);
 	if(checkUart()){
 		if(localTable->HasBeenEdited){Edited[0]=0x31;}
 		else{Edited[0]=0x30;}
@@ -149,7 +161,7 @@ void sendActualConfig(void) {
 
 void sendHeartExercise(const char * heartRate, const char * typeExercise){
 
-	clearMsg(msgToSend);
+	clearMsg(msgToSend,30);
 	if(checkUart()){
 		strcat(msgToSend,"HR ");
 		strcat(msgToSend,heartRate);
@@ -163,7 +175,7 @@ void sendHeartExercise(const char * heartRate, const char * typeExercise){
 
 void ACK(void){
 	
-	clearMsg(msgToSend);
+	clearMsg(msgToSend,30);
 	if(checkUart()){
 		strcat(msgToSend,"ACK");
 		HAL_UART_Transmit_DMA(localUart,(uint8_t*) msgToSend,strlen((const char *) &msgToSend));
@@ -173,7 +185,7 @@ void ACK(void){
 
 void NACK(uint32_t error){
 	
-	clearMsg(msgToSend);
+	clearMsg(msgToSend,30);
 	if(checkUart()){
 		sprintf(msgToSend, "%d", error);
 		HAL_UART_Transmit_DMA(localUart,(uint8_t*) msgToSend,strlen((const char *) &msgToSend));
@@ -219,9 +231,9 @@ bool checkTable(void){
 	return true;
 }
 
-void clearMsg(char *toClear){
+void clearMsg(char *toClear,int size){
 
-	for(int i= 0;i< strlen(toClear);i++)
+	for(int i= 0;i< size;i++)
 	{
 		toClear[i]=0;
 	}

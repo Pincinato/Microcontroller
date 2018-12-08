@@ -26,7 +26,7 @@ void ACK(void);
 void NACK(uint32_t error);
 void sendActualConfig(void);
 void sendHeartExercise(const char * heartRate, const char * typeExercise);
-void clearMsg(char *toClear);
+void clearMsg(char *toClear,int size);
 
 
 
