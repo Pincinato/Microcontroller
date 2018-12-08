@@ -12,6 +12,7 @@
 "my_project\lcd_menu.o"
 "my_project\button.o"
 "my_project\button_driver.o"
+"my_project\interface_analysis_pincinato.o"
 "my_project\main.o"
 "my_project\gpio.o"
 "my_project\adc.o"

@@ -60,3 +60,4 @@ my_project\main.o: ..\..\Library\Library\inc\interface_ACCEL_pincinato.h
 my_project\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 my_project\main.o: ..\..\Library\Library\inc\interface_ECG_pincinato.h
 my_project\main.o: ..\..\Library\Library\inc\interface_USART_pincinato.h
+my_project\main.o: ..\..\Library\Library\inc\interface_ANALYSIS_pincinato.h

@@ -5,6 +5,7 @@
 
 static Menu *activeMenu = NULL;
 static bool optionIsRunning = false;
+static bool optionWasRunning = false; //Added by Thiago Pincinato
 
 void menu_setMainMenu(Menu *const menu)
 {
@@ -65,12 +66,13 @@ static void renderingMenuPage(Menu * const menu)
 
 static void renderingMenu(Menu * const menu)
 {
-    lcd_clear();
-    lcd_setSymbol8(0, 0, LCD_MENU_SYMBOL, false);
-    lcd_setString(14, 0, menu->description, LCD_FONT_8, false);
-    renderingMenuPage(menu);
-    renderingScrollBar(menu);
-    lcd_show();
+		lcd_clear();
+		lcd_setSymbol8(0, 0, LCD_MENU_SYMBOL, false);
+		lcd_setString(14, 0, menu->description, LCD_FONT_8, false);
+		renderingMenuPage(menu);
+		renderingScrollBar(menu);
+		lcd_show();
+
 }
 
 
@@ -87,13 +89,18 @@ void menu_registerDrawMenuItem2(menuUserDrawItem2 func, void* data){
 
 static void renderingAction(MenuEntry *const entry)
 {
-    lcd_clear();
-    //$DND ?? where ?? lcd_runningMan(120, 0, false);
-    lcd_setSymbol8(0,0, LCD_PLAY_SYMBOL, false);
-    lcd_setString(14,0,entry->description, LCD_FONT_8, false);
-    lcd_setFrame(0, 8, 127, 31);
-    userDrawItemCallback2((int) entry->event,userData);	
-    lcd_show();
+		
+		//$DND ?? where ?? lcd_runningMan(120, 0, false);
+		if((optionWasRunning==false) && (optionIsRunning==true)){ //Added by Thiago Pincinato
+			lcd_clear();
+			lcd_setSymbol8(0,0, LCD_PLAY_SYMBOL, false);
+			lcd_setString(14,0,entry->description, LCD_FONT_8, false);
+			lcd_setFrame(0, 8, 127, 31);
+			lcd_show();
+		}
+		else{ lcd_show();}
+		userDrawItemCallback2((int) entry->event,userData);	
+		optionWasRunning=optionIsRunning;
 }
 
 void menu_show()
@@ -118,6 +125,7 @@ menu_event menu_update(menu_navigation navigation)
     if (optionIsRunning) {
         if (navigation == MENU_SELECT) {
             optionIsRunning = false;
+						optionWasRunning = false; //Added by Thiago Pincinato
             return MENU_STOP_EVENT;
         }
     } else {

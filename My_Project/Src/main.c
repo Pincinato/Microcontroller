@@ -61,6 +61,8 @@
 //#include "interface_ADC_pincinato.h"
 #include "interface_ECG_pincinato.h"
 #include "interface_USART_pincinato.h"
+#include "interface_ANALYSIS_pincinato.h"
+
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -153,20 +155,21 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 	HAL_GPIO_WritePin(LedBlue_GPIO_Port,LedBlue_Pin,GPIO_PIN_SET);
 	HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_SET);
+	
+	//Init Pincinato's Interface
 	Table myTable;
 	initTable(&myTable);
 	initInterface(&myTable,&huart2);
+	initANALYSISInterface(&myTable);
 	initLCD();
 	initECGInterface();
-	//startECGInterface();
 	initACCELInterface();
-	//startACCELInterface();
 	lcd_clear();
 	lcd_setString(2,10," Start ",LCD_FONT_8,false);
 	lcd_show();
 	HAL_Delay(100);
 	lcd_clear();
-	//TEST
+	//Menu initialization
 	menu_setMainMenu(&mainMenu);
 	Joystick joystick;
   Joystick_init(&joystick);
@@ -186,7 +189,7 @@ int main(void)
 			msMenuTicks = 0;
       nextNavigation = (menu_navigation) joystick.getDirection(&joystick);
       event = menu_update(nextNavigation);
-      menu_show();
+			menu_show();
 			handleEvent((int) event, &myData);
 		}		
 	}
@@ -268,24 +271,24 @@ void drawMenuItem_Callback2(int event, void* data){
 	last_MainEvent=MainEvent;
 	MainEvent=event;
   AppData* ad = data; //!< Convert to our application data structure 
-	int compare = strcmp(ad->current.bufInfo,ad->previous.bufInfo);
-	/*
-	if((last_MainEvent == MainEvent) && (compare!=0)){
+	//if((last_MainEvent == MainEvent) && (compare!=0)){
 		strcat(buf,ad->current.bufInfo);
 		lcd_setString(2,10,(const char*) &buf,LCD_FONT_8,false);
-	}		
-	else if((last_MainEvent == MainEvent) && (compare==0)){
+	//}		
+	//else if((last_MainEvent == MainEvent) && (compare==0)){
 	
-	} */
+	//} 
 	if (last_MainEvent != MainEvent){
 		switch (MainEvent) {
-			case 1: lcd_setString(2,10, "Calibrating ...",LCD_FONT_8,false); 
-							sprintf(ad->current.bufInfo, "Calibrating ...");
+			case 1: lcd_setString(2,10, "Calibrating ...   ",LCD_FONT_8,false); 
+							lcd_show();
+							sprintf(ad->current.bufInfo, "Calibrating ...   ");
 				break;
 			case 2: lcd_setString(2,10, "Doing 1 measure ...",LCD_FONT_8,false);
 							sprintf(ad->current.bufInfo, "Doing 1 measure ...");
 				break;
-			case 3:
+			case 3:	lcd_setString(2,10, "Calibrating ...",LCD_FONT_8,false);
+							sprintf(ad->current.bufInfo, "Calibrating ...");
 				break;
 			case 4: lcd_setString(2,10, "Usb connection",LCD_FONT_8,false);
 							sprintf(ad->current.bufInfo, "Usb connection");
@@ -312,25 +315,36 @@ void updateData(AppData *data) {
 	
 	double distance=0.0;
 	float HeartRate=0.0;
+	char bufHR[9]="";
+	char bufActivity[9]="";
+	bool abnormality;
 	  // Keep all data of last process image
 	data->previous = data->current;
 
 	if(last_MainEvent != MainEvent){
-		switch (MainEvent) {
-		case 1: stopECGInterface();
-						startACCELInterface();
+		switch (last_MainEvent) {
+		case 1: stopACCELInterface();
 			break;
-		case 2:	stopACCELInterface();
-						startECGInterface();
+		case 2:	stopECGInterface();
 			break;
-		case 3: startACCELInterface();
-						startECGInterface();
-			break;
-		case 4: stopACCELInterface();
-						stopECGInterface();
+		case 3: stopANALYSISInterface();						
+						HAL_GPIO_WritePin(LedBlue_GPIO_Port,LedBlue_Pin,GPIO_PIN_SET);
+						HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_SET);
 			break;
 		default:stopACCELInterface();
 						stopECGInterface();
+						stopANALYSISInterface();
+			break;
+		}
+		switch (MainEvent) {
+		case 1: startACCELInterface();
+			break;
+		case 2:	startECGInterface();
+			break;
+		case 3: startANALYSISInterface();
+						HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_RESET);
+			break;
+		default:
 			break;
 		}
 	}
@@ -339,8 +353,8 @@ void updateData(AppData *data) {
 						if(getDistance(&distance)){
 							if(distance!=data->current.distance ){
 								sprintf(data->current.bufInfo, "Y: %.5f",distance);
-								strcat(data->current.bufInfo,"g");
-								data->current.distance=distance;
+								strcat(data->current.bufInfo,"g     ");
+								data->current.distance=distance;// +data->previous.distance;
 							}
 						}
 			break;
@@ -351,22 +365,19 @@ void updateData(AppData *data) {
 							}
 						}
 			break;
-		case 3: readAccel();
-						if(getDistance(&distance)){
-							if(distance!=data->current.distance ){
-								sprintf(data->current.bufInfo, "Y: %.5f",distance);
-								strcat(data->current.bufInfo,"g");
-								data->current.distance=distance;
-							}
-						}
-						if(updateHeartRate(&HeartRate)){
-							if(HeartRate!=data->current.HeartRate){
-								sprintf(data->current.bufInfo, "HR: %d",(uint32_t)HeartRate);
-								data->current.HeartRate=HeartRate;
-							}
-						}
+		case 3: if(getAnalysis(&bufHR[0],&bufActivity[0],&abnormality)){
+							sprintf(data->current.bufInfo,"HR: ");
+							strcat(data->current.bufInfo,bufHR);
+							strcat(data->current.bufInfo," Act: ");
+							strcat(data->current.bufInfo,bufActivity);
+							if(abnormality){
+								HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_SET);
+								HAL_GPIO_WritePin(LedBlue_GPIO_Port,LedBlue_Pin,GPIO_PIN_RESET);						
+							}						
+			}							
 			break;
 		case 4: check_RX();
+						sprintf(data->current.bufInfo,"USB connection");
 			break;
 		default:
 			break;
