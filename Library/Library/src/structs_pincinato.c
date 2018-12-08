@@ -20,9 +20,9 @@
 
 void initTable(Table *A){
 
-	A->High_HeartRate=60; // initial High value
+	A->High_HeartRate=100; // initial High value
 	A->Normal_HeartRate=80; // initial normal value
-	A->Low_HeartRate=100; // initial low level
+	A->Low_HeartRate=60; // initial low level
 	A->HasBeenEdited=false;
 }
 

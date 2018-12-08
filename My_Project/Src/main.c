@@ -284,14 +284,17 @@ void drawMenuItem_Callback2(int event, void* data){
 							lcd_show();
 							sprintf(ad->current.bufInfo, "Calibrating ...   ");
 				break;
-			case 2: lcd_setString(2,10, "Doing 1 measure ...",LCD_FONT_8,false);
-							sprintf(ad->current.bufInfo, "Doing 1 measure ...");
+			case 2: lcd_setString(2,10, "Doing 1 measure     ",LCD_FONT_8,false);
+							lcd_show();
+							sprintf(ad->current.bufInfo, "Doing 1 measure    ");
 				break;
 			case 3:	lcd_setString(2,10, "Calibrating ...",LCD_FONT_8,false);
+							lcd_show();
 							sprintf(ad->current.bufInfo, "Calibrating ...");
 				break;
 			case 4: lcd_setString(2,10, "Usb connection",LCD_FONT_8,false);
-							sprintf(ad->current.bufInfo, "Usb connection");
+							lcd_show();
+							sprintf(ad->current.bufInfo, "Usb connection      ");
 				break;
 			default:
 				break;
@@ -360,7 +363,7 @@ void updateData(AppData *data) {
 			break;
 		case 2:	if(updateHeartRate(&HeartRate)){
 							if(HeartRate!=data->current.HeartRate){
-								sprintf(data->current.bufInfo, "HR: %d",(uint32_t)HeartRate);
+								sprintf(data->current.bufInfo, "HR: %d          ",(uint32_t)HeartRate);
 								data->current.HeartRate=HeartRate;
 							}
 						}
