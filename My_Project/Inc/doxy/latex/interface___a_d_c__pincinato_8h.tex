@@ -1,0 +1,241 @@
+\hypertarget{interface___a_d_c__pincinato_8h}{}\section{C\+:/\+Users/\+T\+H\+P/\+Desktop/\+Unibern/2018\+\_\+02/\+Subjects/\+Programming\+\_\+\+Microcontroller/\+Paeks/samples/\+My\+\_\+\+Project/\+Library/\+Library/inc/interface\+\_\+\+A\+D\+C\+\_\+pincinato.h File Reference}
+\label{interface___a_d_c__pincinato_8h}\index{C\+:/\+Users/\+T\+H\+P/\+Desktop/\+Unibern/2018\+\_\+02/\+Subjects/\+Programming\+\_\+\+Microcontroller/\+Paeks/samples/\+My\+\_\+\+Project/\+Library/\+Library/inc/interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{C\+:/\+Users/\+T\+H\+P/\+Desktop/\+Unibern/2018\+\_\+02/\+Subjects/\+Programming\+\_\+\+Microcontroller/\+Paeks/samples/\+My\+\_\+\+Project/\+Library/\+Library/inc/interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}adc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tim.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}filter\+\_\+math\+\_\+pincinato.\+h\char`\"{}}\newline
+Include dependency graph for interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{interface___a_d_c__pincinato_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{interface___a_d_c__pincinato_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_process_data____}{Process\+Data\+\_\+\+\_\+}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{interface___a_d_c__pincinato_8h_a2ddc9b0b00b7c686d5208fc298aeadb2}{A\+D\+C\+B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+TH}}~800
+\item 
+\#define \mbox{\hyperlink{interface___a_d_c__pincinato_8h_a295555015d57939bf54b7372373e5c81}{T\+I\+M\+E\+R\+\_\+\+A\+DC}}~\mbox{\hyperlink{tim_8h_acefaeaaa3856ddddae7083b2d220fe4b}{htim5}}
+\item 
+\#define \mbox{\hyperlink{interface___a_d_c__pincinato_8h_a3cb1c4aa16f6ccb5ce78a1eb772e92d3}{A\+D\+C\+\_\+\+I\+N\+P\+UT}}~\mbox{\hyperlink{adc_8h_a22b804736f5648d52f639b2647d4ed13}{hadc1}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_process_data____}{Process\+Data\+\_\+\+\_\+}} \mbox{\hyperlink{interface___a_d_c__pincinato_8h_ab6662b6cd1bbe98ecf5fe7862aeac573}{\+\_\+\+Process\+Data}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interface___a_d_c__pincinato_8h_ac0efe9596a654400ef8be8720c3138d7}{init\+Filter}} (void)
+\begin{DoxyCompactList}\small\item\em init\+Filter clear filters \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___a_d_c__pincinato_8h_aed3bcce7592bec2169be4a6ef9f7c73d}{init\+A\+D\+C\+Interface}} (void)
+\begin{DoxyCompactList}\small\item\em init\+A\+D\+C\+Interface initializes A\+DC intefac; initializes filter, set A and B Biquads coeff \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___a_d_c__pincinato_8h_a7be941a43b4f439c481e71bd6c4efdeb}{start\+A\+D\+C\+Interface}} (void)
+\begin{DoxyCompactList}\small\item\em start\+A\+D\+C\+Interface call initfilter() and start interruption timer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___a_d_c__pincinato_8h_a5404ec7b3bbcea85079e7c0c8ff9cbd9}{stop\+A\+D\+C\+Interface}} (void)
+\begin{DoxyCompactList}\small\item\em stop\+A\+D\+C\+Interface stop A\+DC and timer interruption \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___a_d_c__pincinato_8h_a3600f4f837c16ec2da1f17790e310f25}{interrupt\+Timer\+A\+D\+C\+Callback}} (void)
+\begin{DoxyCompactList}\small\item\em interrupt\+Timer\+A\+D\+C\+Callback handle interruption and start A\+DC interruption \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{interface___a_d_c__pincinato_8h_a74cb317cbdd6810ff93997cbe6a881ce}{get\+Ready\+To\+Update}} (void)
+\begin{DoxyCompactList}\small\item\em get\+Ready\+To\+Update return the value that indicates if the interface is ready to update \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___a_d_c__pincinato_8h_ae7da2b0ec678a1583297f19380546ab4}{set\+Ready\+To\+Update}} (bool value)
+\begin{DoxyCompactList}\small\item\em set\+Ready\+To\+Update set the variable ready\+To\+Update \end{DoxyCompactList}\item 
+const float $\ast$ \mbox{\hyperlink{interface___a_d_c__pincinato_8h_a6dec733976b8a15c23944c88d2dff910}{get\+A\+D\+C\+Data}} (void)
+\begin{DoxyCompactList}\small\item\em get\+A\+D\+C\+Data returns a poitner to the float array of the filtered signal \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interface___a_d_c__pincinato_8h_a298b475ed50e670d32558405967a7436}{get\+A\+D\+C\+Data\+Size}} (void)
+\begin{DoxyCompactList}\small\item\em get\+A\+D\+C\+Data\+Size returns the size of the array given by get\+A\+D\+C\+Data \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___a_d_c__pincinato_8h_ad4f62ce5e9ded73b93486cec97ecd1dd}{normalize\+A\+D\+C\+Data}} (void)
+\begin{DoxyCompactList}\small\item\em normalize\+A\+D\+C\+Data normalize the actual filtered signal \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___a_d_c__pincinato_8h_aabea500a29263bf4eeb8228943a75d15}{remove\+A\+D\+C\+Unstable\+Values}} (void)
+\begin{DoxyCompactList}\small\item\em remove\+A\+D\+C\+Unstable\+Values removes initial unstable values due to the I\+IR filters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{interface___a_d_c__pincinato_8h_a3cb1c4aa16f6ccb5ce78a1eb772e92d3}\label{interface___a_d_c__pincinato_8h_a3cb1c4aa16f6ccb5ce78a1eb772e92d3}} 
+\index{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}!A\+D\+C\+\_\+\+I\+N\+P\+UT@{A\+D\+C\+\_\+\+I\+N\+P\+UT}}
+\index{A\+D\+C\+\_\+\+I\+N\+P\+UT@{A\+D\+C\+\_\+\+I\+N\+P\+UT}!interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{A\+D\+C\+\_\+\+I\+N\+P\+UT}{ADC\_INPUT}}
+{\footnotesize\ttfamily \#define A\+D\+C\+\_\+\+I\+N\+P\+UT~\mbox{\hyperlink{adc_8h_a22b804736f5648d52f639b2647d4ed13}{hadc1}}}
+
+
+
+Definition at line 25 of file interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h.
+
+\mbox{\Hypertarget{interface___a_d_c__pincinato_8h_a2ddc9b0b00b7c686d5208fc298aeadb2}\label{interface___a_d_c__pincinato_8h_a2ddc9b0b00b7c686d5208fc298aeadb2}} 
+\index{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}!A\+D\+C\+B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+TH@{A\+D\+C\+B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+TH}}
+\index{A\+D\+C\+B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+TH@{A\+D\+C\+B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+TH}!interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{A\+D\+C\+B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+TH}{ADCBUFFERLENGTH}}
+{\footnotesize\ttfamily \#define A\+D\+C\+B\+U\+F\+F\+E\+R\+L\+E\+N\+G\+TH~800}
+
+
+
+Definition at line 22 of file interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h.
+
+\mbox{\Hypertarget{interface___a_d_c__pincinato_8h_a295555015d57939bf54b7372373e5c81}\label{interface___a_d_c__pincinato_8h_a295555015d57939bf54b7372373e5c81}} 
+\index{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}!T\+I\+M\+E\+R\+\_\+\+A\+DC@{T\+I\+M\+E\+R\+\_\+\+A\+DC}}
+\index{T\+I\+M\+E\+R\+\_\+\+A\+DC@{T\+I\+M\+E\+R\+\_\+\+A\+DC}!interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{T\+I\+M\+E\+R\+\_\+\+A\+DC}{TIMER\_ADC}}
+{\footnotesize\ttfamily \#define T\+I\+M\+E\+R\+\_\+\+A\+DC~\mbox{\hyperlink{tim_8h_acefaeaaa3856ddddae7083b2d220fe4b}{htim5}}}
+
+
+
+Definition at line 24 of file interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h.
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{interface___a_d_c__pincinato_8h_ab6662b6cd1bbe98ecf5fe7862aeac573}\label{interface___a_d_c__pincinato_8h_ab6662b6cd1bbe98ecf5fe7862aeac573}} 
+\index{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}!\+\_\+\+Process\+Data@{\+\_\+\+Process\+Data}}
+\index{\+\_\+\+Process\+Data@{\+\_\+\+Process\+Data}!interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+Process\+Data}{\_ProcessData}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_process_data____}{Process\+Data\+\_\+\+\_\+}}  \mbox{\hyperlink{interface___a_d_c__pincinato_8h_ab6662b6cd1bbe98ecf5fe7862aeac573}{\+\_\+\+Process\+Data}}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{interface___a_d_c__pincinato_8h_a6dec733976b8a15c23944c88d2dff910}\label{interface___a_d_c__pincinato_8h_a6dec733976b8a15c23944c88d2dff910}} 
+\index{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}!get\+A\+D\+C\+Data@{get\+A\+D\+C\+Data}}
+\index{get\+A\+D\+C\+Data@{get\+A\+D\+C\+Data}!interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{get\+A\+D\+C\+Data()}{getADCData()}}
+{\footnotesize\ttfamily const float$\ast$ get\+A\+D\+C\+Data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+get\+A\+D\+C\+Data returns a poitner to the float array of the filtered signal 
+
+\begin{DoxyReturn}{Returns}
+pointer to an array of float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface___a_d_c__pincinato_8h_a298b475ed50e670d32558405967a7436}\label{interface___a_d_c__pincinato_8h_a298b475ed50e670d32558405967a7436}} 
+\index{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}!get\+A\+D\+C\+Data\+Size@{get\+A\+D\+C\+Data\+Size}}
+\index{get\+A\+D\+C\+Data\+Size@{get\+A\+D\+C\+Data\+Size}!interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{get\+A\+D\+C\+Data\+Size()}{getADCDataSize()}}
+{\footnotesize\ttfamily int get\+A\+D\+C\+Data\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+get\+A\+D\+C\+Data\+Size returns the size of the array given by get\+A\+D\+C\+Data 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface___a_d_c__pincinato_8h_a74cb317cbdd6810ff93997cbe6a881ce}\label{interface___a_d_c__pincinato_8h_a74cb317cbdd6810ff93997cbe6a881ce}} 
+\index{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}!get\+Ready\+To\+Update@{get\+Ready\+To\+Update}}
+\index{get\+Ready\+To\+Update@{get\+Ready\+To\+Update}!interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{get\+Ready\+To\+Update()}{getReadyToUpdate()}}
+{\footnotesize\ttfamily bool get\+Ready\+To\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+get\+Ready\+To\+Update return the value that indicates if the interface is ready to update 
+
+\begin{DoxyReturn}{Returns}
+true if it is ready, otherwise false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface___a_d_c__pincinato_8h_aed3bcce7592bec2169be4a6ef9f7c73d}\label{interface___a_d_c__pincinato_8h_aed3bcce7592bec2169be4a6ef9f7c73d}} 
+\index{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}!init\+A\+D\+C\+Interface@{init\+A\+D\+C\+Interface}}
+\index{init\+A\+D\+C\+Interface@{init\+A\+D\+C\+Interface}!interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{init\+A\+D\+C\+Interface()}{initADCInterface()}}
+{\footnotesize\ttfamily void init\+A\+D\+C\+Interface (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+init\+A\+D\+C\+Interface initializes A\+DC intefac; initializes filter, set A and B Biquads coeff 
+
+\mbox{\Hypertarget{interface___a_d_c__pincinato_8h_ac0efe9596a654400ef8be8720c3138d7}\label{interface___a_d_c__pincinato_8h_ac0efe9596a654400ef8be8720c3138d7}} 
+\index{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}!init\+Filter@{init\+Filter}}
+\index{init\+Filter@{init\+Filter}!interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{init\+Filter()}{initFilter()}}
+{\footnotesize\ttfamily void init\+Filter (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+init\+Filter clear filters 
+
+\mbox{\Hypertarget{interface___a_d_c__pincinato_8h_a3600f4f837c16ec2da1f17790e310f25}\label{interface___a_d_c__pincinato_8h_a3600f4f837c16ec2da1f17790e310f25}} 
+\index{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}!interrupt\+Timer\+A\+D\+C\+Callback@{interrupt\+Timer\+A\+D\+C\+Callback}}
+\index{interrupt\+Timer\+A\+D\+C\+Callback@{interrupt\+Timer\+A\+D\+C\+Callback}!interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{interrupt\+Timer\+A\+D\+C\+Callback()}{interruptTimerADCCallback()}}
+{\footnotesize\ttfamily void interrupt\+Timer\+A\+D\+C\+Callback (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+interrupt\+Timer\+A\+D\+C\+Callback handle interruption and start A\+DC interruption 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{interface___a_d_c__pincinato_8h_a3600f4f837c16ec2da1f17790e310f25_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{interface___a_d_c__pincinato_8h_ad4f62ce5e9ded73b93486cec97ecd1dd}\label{interface___a_d_c__pincinato_8h_ad4f62ce5e9ded73b93486cec97ecd1dd}} 
+\index{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}!normalize\+A\+D\+C\+Data@{normalize\+A\+D\+C\+Data}}
+\index{normalize\+A\+D\+C\+Data@{normalize\+A\+D\+C\+Data}!interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{normalize\+A\+D\+C\+Data()}{normalizeADCData()}}
+{\footnotesize\ttfamily void normalize\+A\+D\+C\+Data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+normalize\+A\+D\+C\+Data normalize the actual filtered signal 
+
+\mbox{\Hypertarget{interface___a_d_c__pincinato_8h_aabea500a29263bf4eeb8228943a75d15}\label{interface___a_d_c__pincinato_8h_aabea500a29263bf4eeb8228943a75d15}} 
+\index{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}!remove\+A\+D\+C\+Unstable\+Values@{remove\+A\+D\+C\+Unstable\+Values}}
+\index{remove\+A\+D\+C\+Unstable\+Values@{remove\+A\+D\+C\+Unstable\+Values}!interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{remove\+A\+D\+C\+Unstable\+Values()}{removeADCUnstableValues()}}
+{\footnotesize\ttfamily void remove\+A\+D\+C\+Unstable\+Values (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+remove\+A\+D\+C\+Unstable\+Values removes initial unstable values due to the I\+IR filters. 
+
+\mbox{\Hypertarget{interface___a_d_c__pincinato_8h_ae7da2b0ec678a1583297f19380546ab4}\label{interface___a_d_c__pincinato_8h_ae7da2b0ec678a1583297f19380546ab4}} 
+\index{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}!set\+Ready\+To\+Update@{set\+Ready\+To\+Update}}
+\index{set\+Ready\+To\+Update@{set\+Ready\+To\+Update}!interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{set\+Ready\+To\+Update()}{setReadyToUpdate()}}
+{\footnotesize\ttfamily void set\+Ready\+To\+Update (\begin{DoxyParamCaption}\item[{bool}]{value }\end{DoxyParamCaption})}
+
+
+
+set\+Ready\+To\+Update set the variable ready\+To\+Update 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & bool value that will be attribuated to ready\+To\+Update \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface___a_d_c__pincinato_8h_a7be941a43b4f439c481e71bd6c4efdeb}\label{interface___a_d_c__pincinato_8h_a7be941a43b4f439c481e71bd6c4efdeb}} 
+\index{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}!start\+A\+D\+C\+Interface@{start\+A\+D\+C\+Interface}}
+\index{start\+A\+D\+C\+Interface@{start\+A\+D\+C\+Interface}!interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{start\+A\+D\+C\+Interface()}{startADCInterface()}}
+{\footnotesize\ttfamily void start\+A\+D\+C\+Interface (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+start\+A\+D\+C\+Interface call initfilter() and start interruption timer 
+
+\mbox{\Hypertarget{interface___a_d_c__pincinato_8h_a5404ec7b3bbcea85079e7c0c8ff9cbd9}\label{interface___a_d_c__pincinato_8h_a5404ec7b3bbcea85079e7c0c8ff9cbd9}} 
+\index{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}!stop\+A\+D\+C\+Interface@{stop\+A\+D\+C\+Interface}}
+\index{stop\+A\+D\+C\+Interface@{stop\+A\+D\+C\+Interface}!interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h@{interface\+\_\+\+A\+D\+C\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{stop\+A\+D\+C\+Interface()}{stopADCInterface()}}
+{\footnotesize\ttfamily void stop\+A\+D\+C\+Interface (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+stop\+A\+D\+C\+Interface stop A\+DC and timer interruption 
+

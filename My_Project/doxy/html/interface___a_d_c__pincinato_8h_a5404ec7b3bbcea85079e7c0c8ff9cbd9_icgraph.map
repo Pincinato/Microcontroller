@@ -1,0 +1,4 @@
+<map id="stopADCInterface" name="stopADCInterface">
+<area shape="rect" id="node2" href="$interface___e_c_g__pincinato_8c.html#adc2a8dc3b4aaa39924bf189917b58da0" title="stopECGInterface stop ADC interface " alt="" coords="176,5,300,32"/>
+<area shape="rect" id="node3" href="$interface___a_n_a_l_y_s_i_s__pincinato_8c.html#af84609686f3da4bb636a7faa4d2f9204" title="stopANALYSISInterface stop ECG and ACCEL interface " alt="" coords="348,5,508,32"/>
+</map>

@@ -4,35 +4,45 @@
   * @file           : main.c
   * @brief          : Main program body
   ******************************************************************************
-  ** This notice applies to any and all portions of this file
+  * This notice applies to any and all portions of this file
   * that are not between comment pairs USER CODE BEGIN and
   * USER CODE END. Other portions of this file, whether 
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2018 STMicroelectronics
+  * Copyright (c) 2018 STMicroelectronics International N.V. 
+  * All rights reserved.
   *
-  * Redistribution and use in source and binary forms, with or without modification,
-  * are permitted provided that the following conditions are met:
-  *   1. Redistributions of source code must retain the above copyright notice,
-  *      this list of conditions and the following disclaimer.
-  *   2. Redistributions in binary form must reproduce the above copyright notice,
-  *      this list of conditions and the following disclaimer in the documentation
-  *      and/or other materials provided with the distribution.
-  *   3. Neither the name of STMicroelectronics nor the names of its contributors
-  *      may be used to endorse or promote products derived from this software
-  *      without specific prior written permission.
+  * Redistribution and use in source and binary forms, with or without 
+  * modification, are permitted, provided that the following conditions are met:
   *
-  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  * 1. Redistribution of source code must retain the above copyright notice, 
+  *    this list of conditions and the following disclaimer.
+  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  *    this list of conditions and the following disclaimer in the documentation
+  *    and/or other materials provided with the distribution.
+  * 3. Neither the name of STMicroelectronics nor the names of other 
+  *    contributors to this software may be used to endorse or promote products 
+  *    derived from this software without specific written permission.
+  * 4. This software, including modifications and/or derivative works of this 
+  *    software, must execute solely and exclusively on microcontroller or
+  *    microprocessor devices manufactured by or for STMicroelectronics.
+  * 5. Redistribution and use of this software other than as permitted under 
+  *    this license is void and will automatically terminate your rights under 
+  *    this license. 
+  *
+  * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS" 
+  * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT 
+  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+  * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
+  * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT 
+  * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, 
+  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *
   ******************************************************************************
   */
@@ -41,6 +51,7 @@
 #include "stm32f4xx_hal.h"
 #include "adc.h"
 #include "dma.h"
+#include "fatfs.h"
 #include "i2c.h"
 #include "spi.h"
 #include "tim.h"
@@ -58,11 +69,9 @@
 #include "lcd_pincinato.h"
 #include "interrupt_TIMER_pincinato.h"
 #include "interface_ACCEL_pincinato.h"
-//#include "interface_ADC_pincinato.h"
 #include "interface_ECG_pincinato.h"
 #include "interface_USART_pincinato.h"
 #include "interface_ANALYSIS_pincinato.h"
-
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -72,7 +81,9 @@
 //TEST
 typedef struct MainProcessData_{
  
-	char bufInfo[20];
+	
+	char bufHR[9];
+	char bufActivity[9];
 	double distance;
 	float HeartRate;
 	
@@ -89,9 +100,13 @@ static int MainEvent;
 static int last_MainEvent;
 //
 
+FIL myfile;
+FATFS fs = {0};
+
 /* Private variables ---------------------------------------------------------*/
 //#define POT_1_HANDLE hadc1
 #define POT_2_HANDLE hadc2 
+
 
 void drawMenuItem_Callback2(int event, void* data);
 void handleEvent(int event, AppData *data);
@@ -148,6 +163,7 @@ int main(void)
   MX_I2C1_Init();
   MX_ADC1_Init();
   MX_SPI2_Init();
+  MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE END 2 */
 
@@ -169,6 +185,19 @@ int main(void)
 	lcd_show();
 	HAL_Delay(100);
 	lcd_clear();
+	
+/*
+	//SD test
+	disk_initialize(fs.drv);
+	f_mount(&fs,"SDCARD",FA_WRITE);
+	f_open(&myfile,"data.txt",FA_WRITE);
+	uint32_t written;
+	f_write(&myfile,"test ",5,&written);
+	f_close(&myfile);
+	f_mount(0,NULL,FA_WRITE);	
+	
+*/	
+	
 	//Menu initialization
 	menu_setMainMenu(&mainMenu);
 	Joystick joystick;
@@ -267,34 +296,41 @@ void SystemClock_Config(void)
 
 void drawMenuItem_Callback2(int event, void* data){
   
-	char buf[20]="";
+	char buf[30]="";
 	last_MainEvent=MainEvent;
 	MainEvent=event;
   AppData* ad = data; //!< Convert to our application data structure 
-	//if((last_MainEvent == MainEvent) && (compare!=0)){
-		strcat(buf,ad->current.bufInfo);
-		lcd_setString(2,10,(const char*) &buf,LCD_FONT_8,false);
-	//}		
-	//else if((last_MainEvent == MainEvent) && (compare==0)){
-	
-	//} 
+	if(last_MainEvent == MainEvent){
+			switch (MainEvent) {
+			case 1:  sprintf(buf, "%.5f g",ad->current.distance);
+								lcd_setString(12,10,(const char*) &buf,LCD_FONT_8,false);
+				break;
+			case 2:		sprintf(buf, "%d          ",(uint32_t)ad->current.HeartRate);
+								lcd_setString(20,10,(const char*) &buf,LCD_FONT_8,false);
+				break;
+			case 3:	lcd_setString(20,10,"        ",LCD_FONT_8,false);
+							lcd_setString(20,10,(const char*) &ad->current.bufHR,LCD_FONT_8,false);
+							lcd_setString(28,20,"        ",LCD_FONT_8,false);
+							lcd_setString(28,20,(const char*) &ad->current.bufActivity,LCD_FONT_8,false);
+				break;
+			case 4: 
+				break;
+			default:
+				break;
+		}
+	}		
 	if (last_MainEvent != MainEvent){
 		switch (MainEvent) {
 			case 1: lcd_setString(2,10, "Calibrating ...   ",LCD_FONT_8,false); 
 							lcd_show();
-							sprintf(ad->current.bufInfo, "Calibrating ...   ");
 				break;
 			case 2: lcd_setString(2,10, "Doing 1 measure     ",LCD_FONT_8,false);
 							lcd_show();
-							sprintf(ad->current.bufInfo, "Doing 1 measure    ");
-				break;
 			case 3:	lcd_setString(2,10, "Calibrating ...",LCD_FONT_8,false);
 							lcd_show();
-							sprintf(ad->current.bufInfo, "Calibrating ...");
 				break;
 			case 4: lcd_setString(2,10, "Usb connection",LCD_FONT_8,false);
 							lcd_show();
-							sprintf(ad->current.bufInfo, "Usb connection      ");
 				break;
 			default:
 				break;
@@ -334,6 +370,7 @@ void updateData(AppData *data) {
 						HAL_GPIO_WritePin(LedBlue_GPIO_Port,LedBlue_Pin,GPIO_PIN_SET);
 						HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_SET);
 			break;
+		case 4: 
 		default:stopACCELInterface();
 						stopECGInterface();
 						stopANALYSISInterface();
@@ -341,11 +378,19 @@ void updateData(AppData *data) {
 		}
 		switch (MainEvent) {
 		case 1: startACCELInterface();
+						data->current.distance=0;
+						lcd_setString(2,10, "Y:              ",LCD_FONT_8,false); 
+						lcd_show();
 			break;
 		case 2:	startECGInterface();
+						lcd_setString(2,10, "HR:              ",LCD_FONT_8,false); 
+						lcd_show();
 			break;
 		case 3: startANALYSISInterface();
-						HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_RESET);
+						HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_RESET);						
+						lcd_setString(2,10, "HR:              ",LCD_FONT_8,false); 					
+						lcd_setString(2,20, "Act:              ",LCD_FONT_8,false); 
+						lcd_show();
 			break;
 		default:
 			break;
@@ -355,24 +400,19 @@ void updateData(AppData *data) {
 		case 1: readAccel();
 						if(getDistance(&distance)){
 							if(distance!=data->current.distance ){
-								sprintf(data->current.bufInfo, "Y: %.5f",distance);
-								strcat(data->current.bufInfo,"g     ");
-								data->current.distance=distance;// +data->previous.distance;
+								data->current.distance=distance+data->previous.distance;// +data->previous.distance;
 							}
 						}
 			break;
 		case 2:	if(updateHeartRate(&HeartRate)){
 							if(HeartRate!=data->current.HeartRate){
-								sprintf(data->current.bufInfo, "HR: %d          ",(uint32_t)HeartRate);
 								data->current.HeartRate=HeartRate;
 							}
 						}
 			break;
 		case 3: if(getAnalysis(&bufHR[0],&bufActivity[0],&abnormality)){
-							sprintf(data->current.bufInfo,"HR: ");
-							strcat(data->current.bufInfo,bufHR);
-							strcat(data->current.bufInfo," Act: ");
-							strcat(data->current.bufInfo,bufActivity);
+							strcpy(data->current.bufHR,bufHR);
+							strcpy(data->current.bufActivity,bufActivity);
 							if(abnormality){
 								HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_SET);
 								HAL_GPIO_WritePin(LedBlue_GPIO_Port,LedBlue_Pin,GPIO_PIN_RESET);						
@@ -380,7 +420,6 @@ void updateData(AppData *data) {
 			}							
 			break;
 		case 4: check_RX();
-						sprintf(data->current.bufInfo,"USB connection");
 			break;
 		default:
 			break;

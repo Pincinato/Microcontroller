@@ -1,0 +1,10 @@
+<map id="Library/Library/src/interface_ADC_pincinato.c" name="Library/Library/src/interface_ADC_pincinato.c">
+<area shape="rect" id="node2" href="$interface___a_d_c__pincinato_8h.html" title="interface_ADC_pincinato.h" alt="" coords="273,95,447,121"/>
+<area shape="rect" id="node11" href="$lcd__pincinato_8h.html" title="lcd_pincinato.h" alt="" coords="139,95,248,121"/>
+<area shape="rect" id="node5" href="$adc_8h.html" title="adc.h" alt="" coords="81,169,135,196"/>
+<area shape="rect" id="node8" href="$tim_8h.html" title="tim.h" alt="" coords="160,169,211,196"/>
+<area shape="rect" id="node9" href="$filter__math__pincinato_8h.html" title="filter_math_pincinato.h" alt="" coords="397,169,549,196"/>
+<area shape="rect" id="node7" href="$main_8h.html" title=": Header for main.c file. This file contains the common defines of the application. " alt="" coords="88,244,149,271"/>
+<area shape="rect" id="node12" href="$lcd__driver_8h.html" title="lcd_driver.h" alt="" coords="235,169,322,196"/>
+<area shape="rect" id="node14" href="$spi_8h.html" title="spi.h" alt="" coords="5,169,56,196"/>
+</map>

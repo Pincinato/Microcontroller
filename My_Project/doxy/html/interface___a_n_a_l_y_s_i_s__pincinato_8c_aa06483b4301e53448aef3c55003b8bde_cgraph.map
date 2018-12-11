@@ -1,0 +1,7 @@
+<map id="startANALYSISInterface" name="startANALYSISInterface">
+<area shape="rect" id="node2" href="$interface___a_c_c_e_l__pincinato_8h.html#aa4357f6d1cf423e55671a0378d3c324e" title="startACCELInterface Start interruption time and makes a callibration. " alt="" coords="215,5,355,32"/>
+<area shape="rect" id="node3" href="$interface___e_c_g__pincinato_8h.html#a3cb06487d698938baa28442d8c73d8b5" title="startECGInterface start ADC interface " alt="" coords="223,56,348,83"/>
+<area shape="rect" id="node6" href="$interface___a_n_a_l_y_s_i_s__pincinato_8c.html#a9736507fb7f0458e69a59134b0edd2e4" title="clearANALYSISData clear all data , including AnalysisProcess " alt="" coords="215,107,356,133"/>
+<area shape="rect" id="node4" href="$interface___a_d_c__pincinato_8h.html#a7be941a43b4f439c481e71bd6c4efdeb" title="startADCInterface call initfilter() and start interruption timer " alt="" coords="404,56,528,83"/>
+<area shape="rect" id="node5" href="$interface___a_d_c__pincinato_8c.html#ac0efe9596a654400ef8be8720c3138d7" title="initFilter clear filters " alt="" coords="576,56,644,83"/>
+</map>

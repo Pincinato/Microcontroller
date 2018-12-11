@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['sd_5fgpio',['SD_GPIO',['../_platform_8h.html#a80db5e04c05397d0f875d6f066dc28a9',1,'Platform.h']]],
+  ['sd_5fspi',['SD_SPI',['../_platform_8h.html#a0d6ab92fd466d15972072f7fc72fe1b7',1,'Platform.h']]],
+  ['spi2_5fcs_5fgpio_5fport',['SPI2_CS_GPIO_Port',['../main_8h.html#ad2875a38a73431ff5df574415e4517f0',1,'main.h']]],
+  ['spi2_5fcs_5fpin',['SPI2_CS_Pin',['../main_8h.html#a1cefd73847ad433f624034a5e3b03f79',1,'main.h']]],
+  ['spi_5fsd_5fpin_5fmiso',['SPI_SD_PIN_MISO',['../_platform_8h.html#a535f24d6da7ece0ae5d29f2495731982',1,'Platform.h']]],
+  ['spi_5fsd_5fpin_5fmosi',['SPI_SD_PIN_MOSI',['../_platform_8h.html#a984966074c7dcc5152fcdb8ae3b67082',1,'Platform.h']]],
+  ['spi_5fsd_5fpin_5fsck',['SPI_SD_PIN_SCK',['../_platform_8h.html#aa07a04d848b38827fd5397881298a92c',1,'Platform.h']]],
+  ['statusregister',['STATUSREGISTER',['../interface___a_c_c_e_l__pincinato_8h.html#add97d4e095476a27ddf936822b5f1bbd',1,'interface_ACCEL_pincinato.h']]],
+  ['switch_5fcenter_5fgpio_5fport',['SWITCH_CENTER_GPIO_Port',['../main_8h.html#a30bab443bc005c6d8bda0586b42c0e4b',1,'main.h']]],
+  ['switch_5fcenter_5fpin',['SWITCH_CENTER_Pin',['../main_8h.html#a5720ca9abbb36f2cf19e7813fafd37e6',1,'main.h']]],
+  ['switch_5fdown_5fgpio_5fport',['SWITCH_DOWN_GPIO_Port',['../main_8h.html#ae76acb2eaac2f7cdc9ec9aab2d4885b2',1,'main.h']]],
+  ['switch_5fdown_5fpin',['SWITCH_DOWN_Pin',['../main_8h.html#ad039ac1b284751bbe9ed07cf7ee40301',1,'main.h']]],
+  ['switch_5fleft_5fgpio_5fport',['SWITCH_LEFT_GPIO_Port',['../main_8h.html#a3d154aa9ca4d5562d1836fff6c6aa581',1,'main.h']]],
+  ['switch_5fleft_5fpin',['SWITCH_LEFT_Pin',['../main_8h.html#abb659625724ea98453a5e193d33c66fc',1,'main.h']]],
+  ['switch_5fright_5fgpio_5fport',['SWITCH_RIGHT_GPIO_Port',['../main_8h.html#ab74048af6f7e1b0462ed815ee026e159',1,'main.h']]],
+  ['switch_5fright_5fpin',['SWITCH_RIGHT_Pin',['../main_8h.html#ae2f744343ecfa5e1667ef68ab5a4e73a',1,'main.h']]],
+  ['switch_5fup_5fgpio_5fport',['SWITCH_UP_GPIO_Port',['../main_8h.html#a1a4a5f94c629ca88c411a7964d648023',1,'main.h']]],
+  ['switch_5fup_5fpin',['SWITCH_UP_Pin',['../main_8h.html#a789955dda0fefefaa54a97d31408ae74',1,'main.h']]]
+];

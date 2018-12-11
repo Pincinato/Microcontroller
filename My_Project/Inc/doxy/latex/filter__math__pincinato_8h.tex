@@ -1,0 +1,292 @@
+\hypertarget{filter__math__pincinato_8h}{}\section{C\+:/\+Users/\+T\+H\+P/\+Desktop/\+Unibern/2018\+\_\+02/\+Subjects/\+Programming\+\_\+\+Microcontroller/\+Paeks/samples/\+My\+\_\+\+Project/\+Library/\+Library/inc/filter\+\_\+math\+\_\+pincinato.h File Reference}
+\label{filter__math__pincinato_8h}\index{C\+:/\+Users/\+T\+H\+P/\+Desktop/\+Unibern/2018\+\_\+02/\+Subjects/\+Programming\+\_\+\+Microcontroller/\+Paeks/samples/\+My\+\_\+\+Project/\+Library/\+Library/inc/filter\+\_\+math\+\_\+pincinato.\+h@{C\+:/\+Users/\+T\+H\+P/\+Desktop/\+Unibern/2018\+\_\+02/\+Subjects/\+Programming\+\_\+\+Microcontroller/\+Paeks/samples/\+My\+\_\+\+Project/\+Library/\+Library/inc/filter\+\_\+math\+\_\+pincinato.\+h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for filter\+\_\+math\+\_\+pincinato.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{filter__math__pincinato_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{filter__math__pincinato_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_biquads_filter__}{Biquads\+Filter\+\_\+}}
+\item 
+struct \mbox{\hyperlink{struct_average_filter__}{Average\+Filter\+\_\+}}
+\item 
+struct \mbox{\hyperlink{struct___integratal_data__}{\+\_\+\+Integratal\+Data\+\_\+}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_biquads_filter__}{Biquads\+Filter\+\_\+}} \mbox{\hyperlink{filter__math__pincinato_8h_a431282902bc1cfeb168d1acf574331bb}{Biquads\+Filter}}
+\item 
+typedef struct \mbox{\hyperlink{struct_average_filter__}{Average\+Filter\+\_\+}} \mbox{\hyperlink{filter__math__pincinato_8h_a05751bcbb0782121ff05ae3b7fc37dac}{Average\+Filter}}
+\item 
+typedef struct \mbox{\hyperlink{struct___integratal_data__}{\+\_\+\+Integratal\+Data\+\_\+}} \mbox{\hyperlink{filter__math__pincinato_8h_a614628710e855bdeb4949c83265e87e6}{Integration\+Data}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{filter__math__pincinato_8h_a0943af2024c7552aed64fe01f1bd8e15}{normalize}} (float $\ast$vec, int size)
+\begin{DoxyCompactList}\small\item\em normalize Normalize a arry of float value \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{filter__math__pincinato_8h_a1e56653839d2baf5ac7f9f2c315e0d3f}{init\+Biquads\+Filter}} (\mbox{\hyperlink{filter__math__pincinato_8h_a431282902bc1cfeb168d1acf574331bb}{Biquads\+Filter}} $\ast$filter, float $\ast$d\+\_\+data, int size\+Buffer, float Acoef\mbox{[}$\,$\mbox{]}, float Bcoef\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em init\+Biquads\+Filter init filter parameters and pointer to respective data \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{filter__math__pincinato_8h_a27ddcf224a294fc542ec5484c6b890bb}{filter\+Biquads\+Compute}} (\mbox{\hyperlink{filter__math__pincinato_8h_a431282902bc1cfeb168d1acf574331bb}{Biquads\+Filter}} $\ast$filter, uint32\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em filter\+Biquads\+Compute Include the value in the filter and compute the filter operation \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{filter__math__pincinato_8h_a19f7f1bff5682407199b7be0a56bc415}{clear\+Biquads\+Filter}} (\mbox{\hyperlink{filter__math__pincinato_8h_a431282902bc1cfeb168d1acf574331bb}{Biquads\+Filter}} $\ast$filter)
+\begin{DoxyCompactList}\small\item\em clear\+Biquads\+Filter Set all entry to zero \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{filter__math__pincinato_8h_ae7f97bd805fd61dd0a6bf31e92160672}{init\+Average\+Filter}} (\mbox{\hyperlink{filter__math__pincinato_8h_a05751bcbb0782121ff05ae3b7fc37dac}{Average\+Filter}} $\ast$filter, float $\ast$d\+\_\+data, int size\+Buffer)
+\begin{DoxyCompactList}\small\item\em init\+Average\+Filter init filter parameters and pointer to respective data \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{filter__math__pincinato_8h_a9d94b029f2d1ca252c8cdc925ef9c492}{clear\+Average\+Filter}} (\mbox{\hyperlink{filter__math__pincinato_8h_a05751bcbb0782121ff05ae3b7fc37dac}{Average\+Filter}} $\ast$filter, float inital\+Value)
+\begin{DoxyCompactList}\small\item\em clear\+Average\+Filter Set all entry to init value \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{filter__math__pincinato_8h_a63b52e2d6e8763a3cb94cd22bde95731}{filter\+Average\+Compute}} (\mbox{\hyperlink{filter__math__pincinato_8h_a05751bcbb0782121ff05ae3b7fc37dac}{Average\+Filter}} $\ast$filter, float value)
+\begin{DoxyCompactList}\small\item\em filter\+Average\+Compute include the value in the filter and compute the average \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{filter__math__pincinato_8h_ad38cea898eb6470b1635c10c349e2123}{integration\+Relative\+Distance}} (\mbox{\hyperlink{filter__math__pincinato_8h_a614628710e855bdeb4949c83265e87e6}{Integration\+Data}} $\ast$integral, float n)
+\begin{DoxyCompactList}\small\item\em integration\+Relative\+Distance Integrates values, regardingless the signal.\+No negative values in the integration. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{filter__math__pincinato_8h_a59bc40beff6775ed45d464b5d9d1870a}{integration\+Compute}} (\mbox{\hyperlink{filter__math__pincinato_8h_a614628710e855bdeb4949c83265e87e6}{Integration\+Data}} $\ast$integral, float n)
+\begin{DoxyCompactList}\small\item\em integration\+Compute include the value in the integration and compute the integration \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{filter__math__pincinato_8h_a5c31ca586593b15d003e69b87986d9ec}{init\+Integration}} (\mbox{\hyperlink{filter__math__pincinato_8h_a614628710e855bdeb4949c83265e87e6}{Integration\+Data}} $\ast$integration, float $\ast$d\+\_\+data, int size\+Buffer, float time)
+\begin{DoxyCompactList}\small\item\em init\+Integration initializes the Integration\+Data parameters and pointer to respective data \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{filter__math__pincinato_8h_ab6bd98a7ea0dac0508536be926f14d1e}{clear\+Integration}} (\mbox{\hyperlink{filter__math__pincinato_8h_a614628710e855bdeb4949c83265e87e6}{Integration\+Data}} $\ast$integration)
+\begin{DoxyCompactList}\small\item\em clear\+Integration Set all entry to zero \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{filter__math__pincinato_8h_a05751bcbb0782121ff05ae3b7fc37dac}\label{filter__math__pincinato_8h_a05751bcbb0782121ff05ae3b7fc37dac}} 
+\index{filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}!Average\+Filter@{Average\+Filter}}
+\index{Average\+Filter@{Average\+Filter}!filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{Average\+Filter}{AverageFilter}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_average_filter__}{Average\+Filter\+\_\+}}  \mbox{\hyperlink{filter__math__pincinato_8h_a05751bcbb0782121ff05ae3b7fc37dac}{Average\+Filter}}}
+
+\mbox{\Hypertarget{filter__math__pincinato_8h_a431282902bc1cfeb168d1acf574331bb}\label{filter__math__pincinato_8h_a431282902bc1cfeb168d1acf574331bb}} 
+\index{filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}!Biquads\+Filter@{Biquads\+Filter}}
+\index{Biquads\+Filter@{Biquads\+Filter}!filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{Biquads\+Filter}{BiquadsFilter}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_biquads_filter__}{Biquads\+Filter\+\_\+}}  \mbox{\hyperlink{filter__math__pincinato_8h_a431282902bc1cfeb168d1acf574331bb}{Biquads\+Filter}}}
+
+\mbox{\Hypertarget{filter__math__pincinato_8h_a614628710e855bdeb4949c83265e87e6}\label{filter__math__pincinato_8h_a614628710e855bdeb4949c83265e87e6}} 
+\index{filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}!Integration\+Data@{Integration\+Data}}
+\index{Integration\+Data@{Integration\+Data}!filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{Integration\+Data}{IntegrationData}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct___integratal_data__}{\+\_\+\+Integratal\+Data\+\_\+}}  \mbox{\hyperlink{filter__math__pincinato_8h_a614628710e855bdeb4949c83265e87e6}{Integration\+Data}}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{filter__math__pincinato_8h_a9d94b029f2d1ca252c8cdc925ef9c492}\label{filter__math__pincinato_8h_a9d94b029f2d1ca252c8cdc925ef9c492}} 
+\index{filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}!clear\+Average\+Filter@{clear\+Average\+Filter}}
+\index{clear\+Average\+Filter@{clear\+Average\+Filter}!filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{clear\+Average\+Filter()}{clearAverageFilter()}}
+{\footnotesize\ttfamily void clear\+Average\+Filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{filter__math__pincinato_8h_a05751bcbb0782121ff05ae3b7fc37dac}{Average\+Filter}} $\ast$}]{filter,  }\item[{float}]{inital\+Value }\end{DoxyParamCaption})}
+
+
+
+clear\+Average\+Filter Set all entry to init value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & filter to be cleared \\
+\hline
+{\em inital\+Value} & float value that will be used to initialize \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{filter__math__pincinato_8h_a19f7f1bff5682407199b7be0a56bc415}\label{filter__math__pincinato_8h_a19f7f1bff5682407199b7be0a56bc415}} 
+\index{filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}!clear\+Biquads\+Filter@{clear\+Biquads\+Filter}}
+\index{clear\+Biquads\+Filter@{clear\+Biquads\+Filter}!filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{clear\+Biquads\+Filter()}{clearBiquadsFilter()}}
+{\footnotesize\ttfamily void clear\+Biquads\+Filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{filter__math__pincinato_8h_a431282902bc1cfeb168d1acf574331bb}{Biquads\+Filter}} $\ast$}]{filter }\end{DoxyParamCaption})}
+
+
+
+clear\+Biquads\+Filter Set all entry to zero 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Biquads filter that will be cleared \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{filter__math__pincinato_8h_ab6bd98a7ea0dac0508536be926f14d1e}\label{filter__math__pincinato_8h_ab6bd98a7ea0dac0508536be926f14d1e}} 
+\index{filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}!clear\+Integration@{clear\+Integration}}
+\index{clear\+Integration@{clear\+Integration}!filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{clear\+Integration()}{clearIntegration()}}
+{\footnotesize\ttfamily void clear\+Integration (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{filter__math__pincinato_8h_a614628710e855bdeb4949c83265e87e6}{Integration\+Data}} $\ast$}]{integration }\end{DoxyParamCaption})}
+
+
+
+clear\+Integration Set all entry to zero 
+
+
+\begin{DoxyParams}{Parameters}
+{\em integration} & Integration\+Data that will be cleared \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{filter__math__pincinato_8h_a63b52e2d6e8763a3cb94cd22bde95731}\label{filter__math__pincinato_8h_a63b52e2d6e8763a3cb94cd22bde95731}} 
+\index{filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}!filter\+Average\+Compute@{filter\+Average\+Compute}}
+\index{filter\+Average\+Compute@{filter\+Average\+Compute}!filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{filter\+Average\+Compute()}{filterAverageCompute()}}
+{\footnotesize\ttfamily float filter\+Average\+Compute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{filter__math__pincinato_8h_a05751bcbb0782121ff05ae3b7fc37dac}{Average\+Filter}} $\ast$}]{filter,  }\item[{float}]{value }\end{DoxyParamCaption})}
+
+
+
+filter\+Average\+Compute include the value in the filter and compute the average 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & filter to be computed \\
+\hline
+{\em value} & float value to be add in the filter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float with last value of the filter 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filter__math__pincinato_8h_a27ddcf224a294fc542ec5484c6b890bb}\label{filter__math__pincinato_8h_a27ddcf224a294fc542ec5484c6b890bb}} 
+\index{filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}!filter\+Biquads\+Compute@{filter\+Biquads\+Compute}}
+\index{filter\+Biquads\+Compute@{filter\+Biquads\+Compute}!filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{filter\+Biquads\+Compute()}{filterBiquadsCompute()}}
+{\footnotesize\ttfamily float filter\+Biquads\+Compute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{filter__math__pincinato_8h_a431282902bc1cfeb168d1acf574331bb}{Biquads\+Filter}} $\ast$}]{filter,  }\item[{uint32\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+filter\+Biquads\+Compute Include the value in the filter and compute the filter operation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Biquads filter pointer in which the operation will take place. \\
+\hline
+{\em value} & uin32\+\_\+t value to be add in the filter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float with the last result of the filter 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filter__math__pincinato_8h_ae7f97bd805fd61dd0a6bf31e92160672}\label{filter__math__pincinato_8h_ae7f97bd805fd61dd0a6bf31e92160672}} 
+\index{filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}!init\+Average\+Filter@{init\+Average\+Filter}}
+\index{init\+Average\+Filter@{init\+Average\+Filter}!filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{init\+Average\+Filter()}{initAverageFilter()}}
+{\footnotesize\ttfamily void init\+Average\+Filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{filter__math__pincinato_8h_a05751bcbb0782121ff05ae3b7fc37dac}{Average\+Filter}} $\ast$}]{filter,  }\item[{float $\ast$}]{d\+\_\+data,  }\item[{int}]{size\+Buffer }\end{DoxyParamCaption})}
+
+
+
+init\+Average\+Filter init filter parameters and pointer to respective data 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & pointer to the filter that will be initialized \\
+\hline
+{\em d\+\_\+data} & float $\ast$ to the buffer that contains the filter values \\
+\hline
+{\em size\+Buffer} & size of the d\+\_\+data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{filter__math__pincinato_8h_a1e56653839d2baf5ac7f9f2c315e0d3f}\label{filter__math__pincinato_8h_a1e56653839d2baf5ac7f9f2c315e0d3f}} 
+\index{filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}!init\+Biquads\+Filter@{init\+Biquads\+Filter}}
+\index{init\+Biquads\+Filter@{init\+Biquads\+Filter}!filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{init\+Biquads\+Filter()}{initBiquadsFilter()}}
+{\footnotesize\ttfamily void init\+Biquads\+Filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{filter__math__pincinato_8h_a431282902bc1cfeb168d1acf574331bb}{Biquads\+Filter}} $\ast$}]{filter,  }\item[{float $\ast$}]{d\+\_\+data,  }\item[{int}]{size\+Buffer,  }\item[{float}]{Acoef\mbox{[}$\,$\mbox{]},  }\item[{float}]{Bcoef\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+init\+Biquads\+Filter init filter parameters and pointer to respective data 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & Biquads\+Filter pointer to the filter that will be initialized \\
+\hline
+{\em d\+\_\+data} & float $\ast$ to the buffer that contains the filter values \\
+\hline
+{\em size\+Buffer} & size of the d\+\_\+data \\
+\hline
+{\em Acoef} & A Coefficient of the filter \\
+\hline
+{\em Bcoef} & B Coefficient of the filter \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{filter__math__pincinato_8h_a5c31ca586593b15d003e69b87986d9ec}\label{filter__math__pincinato_8h_a5c31ca586593b15d003e69b87986d9ec}} 
+\index{filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}!init\+Integration@{init\+Integration}}
+\index{init\+Integration@{init\+Integration}!filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{init\+Integration()}{initIntegration()}}
+{\footnotesize\ttfamily void init\+Integration (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{filter__math__pincinato_8h_a614628710e855bdeb4949c83265e87e6}{Integration\+Data}} $\ast$}]{integration,  }\item[{float $\ast$}]{d\+\_\+data,  }\item[{int}]{size\+Buffer,  }\item[{float}]{time }\end{DoxyParamCaption})}
+
+
+
+init\+Integration initializes the Integration\+Data parameters and pointer to respective data 
+
+
+\begin{DoxyParams}{Parameters}
+{\em integration} & Integration\+Data pointer to the filter that will be initialized \\
+\hline
+{\em d\+\_\+data} & float $\ast$ to the buffer that contains the filter values \\
+\hline
+{\em size\+Buffer} & size of the d\+\_\+data \\
+\hline
+{\em time} & sets time of integration \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{filter__math__pincinato_8h_a59bc40beff6775ed45d464b5d9d1870a}\label{filter__math__pincinato_8h_a59bc40beff6775ed45d464b5d9d1870a}} 
+\index{filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}!integration\+Compute@{integration\+Compute}}
+\index{integration\+Compute@{integration\+Compute}!filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{integration\+Compute()}{integrationCompute()}}
+{\footnotesize\ttfamily float integration\+Compute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{filter__math__pincinato_8h_a614628710e855bdeb4949c83265e87e6}{Integration\+Data}} $\ast$}]{integral,  }\item[{float}]{n }\end{DoxyParamCaption})}
+
+
+
+integration\+Compute include the value in the integration and compute the integration 
+
+
+\begin{DoxyParams}{Parameters}
+{\em integral} & Integartion\+Data to be computed \\
+\hline
+{\em n} & float value to be add in the integration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float value of the last integration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filter__math__pincinato_8h_ad38cea898eb6470b1635c10c349e2123}\label{filter__math__pincinato_8h_ad38cea898eb6470b1635c10c349e2123}} 
+\index{filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}!integration\+Relative\+Distance@{integration\+Relative\+Distance}}
+\index{integration\+Relative\+Distance@{integration\+Relative\+Distance}!filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{integration\+Relative\+Distance()}{integrationRelativeDistance()}}
+{\footnotesize\ttfamily float integration\+Relative\+Distance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{filter__math__pincinato_8h_a614628710e855bdeb4949c83265e87e6}{Integration\+Data}} $\ast$}]{integral,  }\item[{float}]{n }\end{DoxyParamCaption})}
+
+
+
+integration\+Relative\+Distance Integrates values, regardingless the signal.\+No negative values in the integration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em integral} & Integration data to be computed \\
+\hline
+{\em n} & float value to be add in the integration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float value of the last relative integration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{filter__math__pincinato_8h_a0943af2024c7552aed64fe01f1bd8e15}\label{filter__math__pincinato_8h_a0943af2024c7552aed64fe01f1bd8e15}} 
+\index{filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}!normalize@{normalize}}
+\index{normalize@{normalize}!filter\+\_\+math\+\_\+pincinato.\+h@{filter\+\_\+math\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{normalize()}{normalize()}}
+{\footnotesize\ttfamily void normalize (\begin{DoxyParamCaption}\item[{float $\ast$}]{vec,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+normalize Normalize a arry of float value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & float $\ast$ to an array, which contains the value to be normalized and after function call, will have the normalized array \\
+\hline
+{\em size} & int that indicates the size of the array \\
+\hline
+\end{DoxyParams}

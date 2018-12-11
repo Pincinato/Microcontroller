@@ -1,0 +1,37 @@
+var sd__spi__stm32_8c =
+[
+    [ "ACMD13", "sd__spi__stm32_8c.html#a4be8f501d86d24b02923846db618fc71", null ],
+    [ "ACMD23", "sd__spi__stm32_8c.html#aa38144d651e2880f92c65bb683621f78", null ],
+    [ "ACMD41", "sd__spi__stm32_8c.html#a9b6fdfed1b57ac31269b6b9987e0761b", null ],
+    [ "CMD0", "sd__spi__stm32_8c.html#a938c1466755f12fb04ac0d1b775584d1", null ],
+    [ "CMD1", "sd__spi__stm32_8c.html#aca9979f299fa78c1128d778084478673", null ],
+    [ "CMD10", "sd__spi__stm32_8c.html#ae7b800ed8e7bd52e6f570a5ce72b8104", null ],
+    [ "CMD12", "sd__spi__stm32_8c.html#a8d6283c9b060afbaa0e6d1ff7e5ea7b8", null ],
+    [ "CMD16", "sd__spi__stm32_8c.html#aaeab261b94f2031ba41a1d4d857c3541", null ],
+    [ "CMD17", "sd__spi__stm32_8c.html#a6bbfe7dc16a19b7f40efcf554b5666ad", null ],
+    [ "CMD18", "sd__spi__stm32_8c.html#a3d32c27a6be061b865ba539127278f14", null ],
+    [ "CMD23", "sd__spi__stm32_8c.html#a14506e981f38b6177bc36f72c2ca18b1", null ],
+    [ "CMD24", "sd__spi__stm32_8c.html#a252300302c6f7960df547a7f5c25be85", null ],
+    [ "CMD25", "sd__spi__stm32_8c.html#aee2c673fba987178f4642531fdeefe9e", null ],
+    [ "CMD55", "sd__spi__stm32_8c.html#a78289a7a85ffcfddd626694105dc0780", null ],
+    [ "CMD58", "sd__spi__stm32_8c.html#aa7a26b2cf17e1ff5967820a1fa41a7aa", null ],
+    [ "CMD8", "sd__spi__stm32_8c.html#ac75b3e0ad1fb013ea946fb49bbe65668", null ],
+    [ "CMD9", "sd__spi__stm32_8c.html#a1fac6a251d7e7dc204d21639bf521459", null ],
+    [ "DESELECT", "sd__spi__stm32_8c.html#a1cbd972fc333e07d29999e284020c362", null ],
+    [ "rcvr_spi_m", "sd__spi__stm32_8c.html#a317ab656a06a309fbb136df11cb83535", null ],
+    [ "SELECT", "sd__spi__stm32_8c.html#a56e8d2ffde94d0c5fdf14b772a32a77f", null ],
+    [ "SOCKINS", "sd__spi__stm32_8c.html#a293d517245047871e5ba4eaebae946a7", null ],
+    [ "SOCKPORT", "sd__spi__stm32_8c.html#a796ac77ab43c13837383eeefc717981e", null ],
+    [ "SOCKWP", "sd__spi__stm32_8c.html#a572cdb8c6d4db7fa9fcf995c55f9e60b", null ],
+    [ "xmit_spi", "sd__spi__stm32_8c.html#ae53eb472945c81aa68af66d586fa0523", null ],
+    [ "socket_state_t", "sd__spi__stm32_8c.html#a60904603bafdb507dd0c1ad4739634d0", null ],
+    [ "speed_setting", "sd__spi__stm32_8c.html#a473f9fa08123ec01555678edbb649cae", [
+      [ "INTERFACE_SLOW", "sd__spi__stm32_8c.html#a473f9fa08123ec01555678edbb649caea0fd02c3a7a5bc00586845a761370aae6", null ],
+      [ "INTERFACE_FAST", "sd__spi__stm32_8c.html#a473f9fa08123ec01555678edbb649caea39186fe727162c9baad91082f1ce6351", null ]
+    ] ],
+    [ "disk_initialize", "sd__spi__stm32_8c.html#a8e429a29bdbb73f5bc9e2ab2335a5112", null ],
+    [ "disk_read", "sd__spi__stm32_8c.html#a42043c0f462756dbdf1f3bd1bdb5fa50", null ],
+    [ "disk_status", "sd__spi__stm32_8c.html#a21ad8e9a107ea2000705a3edfebaaa2d", null ],
+    [ "disk_timerproc", "sd__spi__stm32_8c.html#a045f8898a243c16aca4e64e069c49c03", null ],
+    [ "disk_write", "sd__spi__stm32_8c.html#a0045ef2f87f7c45d77bcdef38eae7b67", null ]
+];

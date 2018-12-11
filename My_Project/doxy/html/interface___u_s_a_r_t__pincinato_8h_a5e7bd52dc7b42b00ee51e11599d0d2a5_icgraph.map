@@ -1,0 +1,6 @@
+<map id="checkTable" name="checkTable">
+<area shape="rect" id="node2" href="$interface___u_s_a_r_t__pincinato_8c.html#ac2c3281fb230399f4ee052bea898eb0b" title="initInterface initialized variables of the interface, UART, DMA " alt="" coords="145,5,233,32"/>
+<area shape="rect" id="node4" href="$interface___u_s_a_r_t__pincinato_8c.html#a11dc5c5d9820318d1fa0e221e3576ef8" title="selectOption recognize the message sent via UART&#45;dma " alt="" coords="141,56,236,83"/>
+<area shape="rect" id="node3" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point. " alt="" coords="299,5,349,32"/>
+<area shape="rect" id="node5" href="$interface___u_s_a_r_t__pincinato_8c.html#a6b4ec711b761ea5e19f31087f16c42d7" title="check_RX check if there is a valid message in the buffer " alt="" coords="284,56,364,83"/>
+</map>

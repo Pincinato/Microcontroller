@@ -1,0 +1,4 @@
+<map id="MX_SPI1_Init" name="MX_SPI1_Init">
+<area shape="rect" id="node2" href="$lcd__pincinato_8c.html#a08529d00f32f8441dc7669b1a1d3783c" title="initLCD" alt="" coords="152,5,216,32"/>
+<area shape="rect" id="node3" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point. " alt="" coords="264,31,315,57"/>
+</map>

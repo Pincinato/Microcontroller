@@ -1,0 +1,289 @@
+\hypertarget{interface___u_s_a_r_t__pincinato_8h}{}\section{C\+:/\+Users/\+T\+H\+P/\+Desktop/\+Unibern/2018\+\_\+02/\+Subjects/\+Programming\+\_\+\+Microcontroller/\+Paeks/samples/\+My\+\_\+\+Project/\+Library/\+Library/inc/interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.h File Reference}
+\label{interface___u_s_a_r_t__pincinato_8h}\index{C\+:/\+Users/\+T\+H\+P/\+Desktop/\+Unibern/2018\+\_\+02/\+Subjects/\+Programming\+\_\+\+Microcontroller/\+Paeks/samples/\+My\+\_\+\+Project/\+Library/\+Library/inc/interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{C\+:/\+Users/\+T\+H\+P/\+Desktop/\+Unibern/2018\+\_\+02/\+Subjects/\+Programming\+\_\+\+Microcontroller/\+Paeks/samples/\+My\+\_\+\+Project/\+Library/\+Library/inc/interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}usart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}dma.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}structs\+\_\+pincinato.\+h\char`\"{}}\newline
+Include dependency graph for interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{interface___u_s_a_r_t__pincinato_8h__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_a7542806c4e2857a7b4320416799ccf2c}{check\+Uart}} (void)
+\begin{DoxyCompactList}\small\item\em check\+Uart Check if a Uart was configured \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_a5e7bd52dc7b42b00ee51e11599d0d2a5}{check\+Table}} (void)
+\begin{DoxyCompactList}\small\item\em check\+Table Check if a \mbox{\hyperlink{struct_table}{Table}} was assigned to the local \mbox{\hyperlink{struct_table}{Table}} \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_ac2c3281fb230399f4ee052bea898eb0b}{init\+Interface}} (\mbox{\hyperlink{struct_table}{Table}} $\ast$A, U\+A\+R\+T\+\_\+\+Handle\+Type\+Def $\ast$huart)
+\begin{DoxyCompactList}\small\item\em init\+Interface initialized variables of the interface, U\+A\+RT, D\+MA \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_ac27270939a09a2eff9e489bc36164966}{set\+Uart}} (U\+A\+R\+T\+\_\+\+Handle\+Type\+Def $\ast$huart)
+\begin{DoxyCompactList}\small\item\em set\+Uart set the local $\ast$\+Uart \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_a2146c3905247040a35d456ae5544afdb}{set\+Table}} (\mbox{\hyperlink{struct_table}{Table}} $\ast$A)
+\begin{DoxyCompactList}\small\item\em set\+Table set local \mbox{\hyperlink{struct_table}{Table}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_a6b4ec711b761ea5e19f31087f16c42d7}{check\+\_\+\+RX}} (void)
+\begin{DoxyCompactList}\small\item\em check\+\_\+\+RX check if there is a valid message in the buffer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_a11dc5c5d9820318d1fa0e221e3576ef8}{select\+Option}} (const char $\ast$buf)
+\begin{DoxyCompactList}\small\item\em select\+Option recognize the message sent via U\+A\+R\+T-\/dma \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_a8ca82e85fc10f4a8edd496189ca0d7ce}{get\+Option\+And\+Value}} (const char $\ast$buf, char $\ast$const opt, uint32\+\_\+t $\ast$int\+Value)
+\begin{DoxyCompactList}\small\item\em get\+Option\+And\+Value Split the message of Uart in an option and a value \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_ae061c49c68d069f820bc57d628fdb14c}{set\+High}} (uint32\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em set\+High set High value of local table \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_adee19e4d8632a8eee2f6988b265f5198}{set\+Normal}} (uint32\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em set\+Normal set Normal value of local table \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_af4d502660568b0f74a3df9232cda8ae0}{set\+Low}} (uint32\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em set\+Low set Low value of local table \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_acb371df4a5baf1653834e8a129f74f78}{A\+CK}} (void)
+\begin{DoxyCompactList}\small\item\em A\+CK send an A\+CK to the U\+A\+RT via D\+MA. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_a4db953487d5941de34d94622ca65ee3b}{N\+A\+CK}} (uint32\+\_\+t error)
+\begin{DoxyCompactList}\small\item\em N\+A\+CK send an N\+A\+CK to the U\+A\+RT via D\+MA. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_a4b8d23b41c5050ac13d61ceb25551f85}{send\+Actual\+Config}} (void)
+\begin{DoxyCompactList}\small\item\em send\+Actual\+Config send actual values of local\+Table \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_a679d5f90b8fdc1be49125a35c373cdfd}{send\+Heart\+Exercise}} (const char $\ast$heart\+Rate, const char $\ast$type\+Exercise)
+\begin{DoxyCompactList}\small\item\em send\+Heart\+Exercise send the heart rate and exercise via U\+A\+RT \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___u_s_a_r_t__pincinato_8h_a76d5b69e096504f0c2307de48102599f}{clear\+Msg}} (char $\ast$to\+Clear, int size)
+\begin{DoxyCompactList}\small\item\em clear\+Msg clear buffer \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_acb371df4a5baf1653834e8a129f74f78}\label{interface___u_s_a_r_t__pincinato_8h_acb371df4a5baf1653834e8a129f74f78}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!A\+CK@{A\+CK}}
+\index{A\+CK@{A\+CK}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{A\+C\+K()}{ACK()}}
+{\footnotesize\ttfamily void A\+CK (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+A\+CK send an A\+CK to the U\+A\+RT via D\+MA. 
+
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_a6b4ec711b761ea5e19f31087f16c42d7}\label{interface___u_s_a_r_t__pincinato_8h_a6b4ec711b761ea5e19f31087f16c42d7}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!check\+\_\+\+RX@{check\+\_\+\+RX}}
+\index{check\+\_\+\+RX@{check\+\_\+\+RX}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{check\+\_\+\+R\+X()}{check\_RX()}}
+{\footnotesize\ttfamily void check\+\_\+\+RX (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+check\+\_\+\+RX check if there is a valid message in the buffer 
+
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_a5e7bd52dc7b42b00ee51e11599d0d2a5}\label{interface___u_s_a_r_t__pincinato_8h_a5e7bd52dc7b42b00ee51e11599d0d2a5}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!check\+Table@{check\+Table}}
+\index{check\+Table@{check\+Table}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{check\+Table()}{checkTable()}}
+{\footnotesize\ttfamily bool check\+Table (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+check\+Table Check if a \mbox{\hyperlink{struct_table}{Table}} was assigned to the local \mbox{\hyperlink{struct_table}{Table}} 
+
+\begin{DoxyReturn}{Returns}
+true if it was; otherwise false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_a7542806c4e2857a7b4320416799ccf2c}\label{interface___u_s_a_r_t__pincinato_8h_a7542806c4e2857a7b4320416799ccf2c}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!check\+Uart@{check\+Uart}}
+\index{check\+Uart@{check\+Uart}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{check\+Uart()}{checkUart()}}
+{\footnotesize\ttfamily bool check\+Uart (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+check\+Uart Check if a Uart was configured 
+
+\begin{DoxyReturn}{Returns}
+true if it was; otherwise false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_a76d5b69e096504f0c2307de48102599f}\label{interface___u_s_a_r_t__pincinato_8h_a76d5b69e096504f0c2307de48102599f}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!clear\+Msg@{clear\+Msg}}
+\index{clear\+Msg@{clear\+Msg}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{clear\+Msg()}{clearMsg()}}
+{\footnotesize\ttfamily void clear\+Msg (\begin{DoxyParamCaption}\item[{char $\ast$}]{to\+Clear,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+clear\+Msg clear buffer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em to\+Clear} & buffer to clear \\
+\hline
+{\em size} & size of the buffer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_a8ca82e85fc10f4a8edd496189ca0d7ce}\label{interface___u_s_a_r_t__pincinato_8h_a8ca82e85fc10f4a8edd496189ca0d7ce}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!get\+Option\+And\+Value@{get\+Option\+And\+Value}}
+\index{get\+Option\+And\+Value@{get\+Option\+And\+Value}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{get\+Option\+And\+Value()}{getOptionAndValue()}}
+{\footnotesize\ttfamily bool get\+Option\+And\+Value (\begin{DoxyParamCaption}\item[{const char $\ast$}]{buf,  }\item[{char $\ast$const}]{opt,  }\item[{uint32\+\_\+t $\ast$}]{int\+Value }\end{DoxyParamCaption})}
+
+
+
+get\+Option\+And\+Value Split the message of Uart in an option and a value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & const char $\ast$ buffer that contains the message \\
+\hline
+{\em opt} & char $\ast$ const that recieves the option \\
+\hline
+{\em int\+Value} & uint32\+\_\+t that recieves the value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true is option and value were found. Otherwise, false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_ac2c3281fb230399f4ee052bea898eb0b}\label{interface___u_s_a_r_t__pincinato_8h_ac2c3281fb230399f4ee052bea898eb0b}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!init\+Interface@{init\+Interface}}
+\index{init\+Interface@{init\+Interface}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{init\+Interface()}{initInterface()}}
+{\footnotesize\ttfamily bool init\+Interface (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_table}{Table}} $\ast$}]{A,  }\item[{U\+A\+R\+T\+\_\+\+Handle\+Type\+Def $\ast$}]{huart }\end{DoxyParamCaption})}
+
+
+
+init\+Interface initialized variables of the interface, U\+A\+RT, D\+MA 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & table that will be assigned to the local table \\
+\hline
+{\em huart} & Uart that will be assigned to the local uart \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the interface was well initialized; otherwise false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_a4db953487d5941de34d94622ca65ee3b}\label{interface___u_s_a_r_t__pincinato_8h_a4db953487d5941de34d94622ca65ee3b}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!N\+A\+CK@{N\+A\+CK}}
+\index{N\+A\+CK@{N\+A\+CK}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{N\+A\+C\+K()}{NACK()}}
+{\footnotesize\ttfamily void N\+A\+CK (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{error }\end{DoxyParamCaption})}
+
+
+
+N\+A\+CK send an N\+A\+CK to the U\+A\+RT via D\+MA. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em error} & type of N\+A\+CK to be sent \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_a11dc5c5d9820318d1fa0e221e3576ef8}\label{interface___u_s_a_r_t__pincinato_8h_a11dc5c5d9820318d1fa0e221e3576ef8}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!select\+Option@{select\+Option}}
+\index{select\+Option@{select\+Option}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{select\+Option()}{selectOption()}}
+{\footnotesize\ttfamily void select\+Option (\begin{DoxyParamCaption}\item[{const char $\ast$}]{buf }\end{DoxyParamCaption})}
+
+
+
+select\+Option recognize the message sent via U\+A\+R\+T-\/dma 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & cosnt char buffer that contains the message \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_a4b8d23b41c5050ac13d61ceb25551f85}\label{interface___u_s_a_r_t__pincinato_8h_a4b8d23b41c5050ac13d61ceb25551f85}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!send\+Actual\+Config@{send\+Actual\+Config}}
+\index{send\+Actual\+Config@{send\+Actual\+Config}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{send\+Actual\+Config()}{sendActualConfig()}}
+{\footnotesize\ttfamily void send\+Actual\+Config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+send\+Actual\+Config send actual values of local\+Table 
+
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_a679d5f90b8fdc1be49125a35c373cdfd}\label{interface___u_s_a_r_t__pincinato_8h_a679d5f90b8fdc1be49125a35c373cdfd}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!send\+Heart\+Exercise@{send\+Heart\+Exercise}}
+\index{send\+Heart\+Exercise@{send\+Heart\+Exercise}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{send\+Heart\+Exercise()}{sendHeartExercise()}}
+{\footnotesize\ttfamily void send\+Heart\+Exercise (\begin{DoxyParamCaption}\item[{const char $\ast$}]{heart\+Rate,  }\item[{const char $\ast$}]{type\+Exercise }\end{DoxyParamCaption})}
+
+
+
+send\+Heart\+Exercise send the heart rate and exercise via U\+A\+RT 
+
+
+\begin{DoxyParams}{Parameters}
+{\em heart\+Rate} & fisrt const char to be sent \\
+\hline
+{\em type\+Exercise} & second const char to be sent \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_ae061c49c68d069f820bc57d628fdb14c}\label{interface___u_s_a_r_t__pincinato_8h_ae061c49c68d069f820bc57d628fdb14c}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!set\+High@{set\+High}}
+\index{set\+High@{set\+High}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{set\+High()}{setHigh()}}
+{\footnotesize\ttfamily void set\+High (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+set\+High set High value of local table 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & new value of table\textquotesingle{}s High variable \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_af4d502660568b0f74a3df9232cda8ae0}\label{interface___u_s_a_r_t__pincinato_8h_af4d502660568b0f74a3df9232cda8ae0}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!set\+Low@{set\+Low}}
+\index{set\+Low@{set\+Low}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{set\+Low()}{setLow()}}
+{\footnotesize\ttfamily void set\+Low (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+set\+Low set Low value of local table 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & new value of table\textquotesingle{}s Low variable \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_adee19e4d8632a8eee2f6988b265f5198}\label{interface___u_s_a_r_t__pincinato_8h_adee19e4d8632a8eee2f6988b265f5198}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!set\+Normal@{set\+Normal}}
+\index{set\+Normal@{set\+Normal}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{set\+Normal()}{setNormal()}}
+{\footnotesize\ttfamily void set\+Normal (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+set\+Normal set Normal value of local table 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & new value of table\textquotesingle{}s Normal variable \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_a2146c3905247040a35d456ae5544afdb}\label{interface___u_s_a_r_t__pincinato_8h_a2146c3905247040a35d456ae5544afdb}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!set\+Table@{set\+Table}}
+\index{set\+Table@{set\+Table}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{set\+Table()}{setTable()}}
+{\footnotesize\ttfamily void set\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_table}{Table}} $\ast$}]{A }\end{DoxyParamCaption})}
+
+
+
+set\+Table set local \mbox{\hyperlink{struct_table}{Table}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & new $\ast$table to be place in the local table \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface___u_s_a_r_t__pincinato_8h_ac27270939a09a2eff9e489bc36164966}\label{interface___u_s_a_r_t__pincinato_8h_ac27270939a09a2eff9e489bc36164966}} 
+\index{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}!set\+Uart@{set\+Uart}}
+\index{set\+Uart@{set\+Uart}!interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h@{interface\+\_\+\+U\+S\+A\+R\+T\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{set\+Uart()}{setUart()}}
+{\footnotesize\ttfamily void set\+Uart (\begin{DoxyParamCaption}\item[{U\+A\+R\+T\+\_\+\+Handle\+Type\+Def $\ast$}]{huart }\end{DoxyParamCaption})}
+
+
+
+set\+Uart set the local $\ast$\+Uart 
+
+
+\begin{DoxyParams}{Parameters}
+{\em huart} & uart to be refenced to the local uart \\
+\hline
+\end{DoxyParams}

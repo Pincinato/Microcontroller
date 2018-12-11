@@ -1,0 +1,95 @@
+\hypertarget{tmc260_8c}{}\section{Library/\+Library/src/tmc260.c File Reference}
+\label{tmc260_8c}\index{Library/\+Library/src/tmc260.\+c@{Library/\+Library/src/tmc260.\+c}}
+{\ttfamily \#include \char`\"{}tmc260.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tmc260\+\_\+driver.\+h\char`\"{}}\newline
+Include dependency graph for tmc260.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tmc260_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tmc260_8c_acc9bef23a03bcb5ec9e9f6f23d3fd545}{I\+S\+\_\+\+I\+N\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R\+\_\+\+R\+A\+N\+GE}}(parameter,  value)~((value) $<$= tmc260\+\_\+parameter\+Maximum\+Raitings\mbox{[}(parameter)\mbox{]})
+\item 
+\#define \mbox{\hyperlink{tmc260_8c_a72a7769aca8f61958e2509bf5c8d6f2b}{I\+S\+\_\+\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}(parameter)~((parameter)$>$=0 \&\& (parameter)$<$\mbox{\hyperlink{tmc260_8h_af9376d3cf645591c7044d834be46c514a9cb89e6c14665807160a0de734882418}{T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+RS}})
+\item 
+\#define \mbox{\hyperlink{tmc260_8c_aeaa59913a4ebfc9c21d1cc33bb114b2f}{T\+M\+C260\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+N\+O\+T\+\_\+\+C\+H\+A\+N\+G\+ED}}~0
+\item 
+\#define \mbox{\hyperlink{tmc260_8c_ac5b755879478862fb105c52fd9639c19}{T\+M\+C260\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+H\+A\+N\+G\+ED}}~1
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int8\+\_\+t \mbox{\hyperlink{tmc260_8c_a262a6cf5e8b10d0e07822d080b917ecc}{tmc260\+\_\+init}} (\mbox{\hyperlink{tmc260_8h_aaefc0cb3626497c34791e5e518c49e64}{tmc260\+\_\+\+Device}} $\ast$const device)
+\begin{DoxyCompactList}\small\item\em tmc260\+\_\+init \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{tmc260_8c_acc9bef23a03bcb5ec9e9f6f23d3fd545}\label{tmc260_8c_acc9bef23a03bcb5ec9e9f6f23d3fd545}} 
+\index{tmc260.\+c@{tmc260.\+c}!I\+S\+\_\+\+I\+N\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R\+\_\+\+R\+A\+N\+GE@{I\+S\+\_\+\+I\+N\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R\+\_\+\+R\+A\+N\+GE}}
+\index{I\+S\+\_\+\+I\+N\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R\+\_\+\+R\+A\+N\+GE@{I\+S\+\_\+\+I\+N\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R\+\_\+\+R\+A\+N\+GE}!tmc260.\+c@{tmc260.\+c}}
+\subsubsection{\texorpdfstring{I\+S\+\_\+\+I\+N\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R\+\_\+\+R\+A\+N\+GE}{IS\_IN\_PARAMETER\_RANGE}}
+{\footnotesize\ttfamily \#define I\+S\+\_\+\+I\+N\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R\+\_\+\+R\+A\+N\+GE(\begin{DoxyParamCaption}\item[{}]{parameter,  }\item[{}]{value }\end{DoxyParamCaption})~((value) $<$= tmc260\+\_\+parameter\+Maximum\+Raitings\mbox{[}(parameter)\mbox{]})}
+
+
+
+Definition at line 6 of file tmc260.\+c.
+
+\mbox{\Hypertarget{tmc260_8c_a72a7769aca8f61958e2509bf5c8d6f2b}\label{tmc260_8c_a72a7769aca8f61958e2509bf5c8d6f2b}} 
+\index{tmc260.\+c@{tmc260.\+c}!I\+S\+\_\+\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{I\+S\+\_\+\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+\index{I\+S\+\_\+\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{I\+S\+\_\+\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}!tmc260.\+c@{tmc260.\+c}}
+\subsubsection{\texorpdfstring{I\+S\+\_\+\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}{IS\_VALID\_PARAMETER}}
+{\footnotesize\ttfamily \#define I\+S\+\_\+\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER(\begin{DoxyParamCaption}\item[{}]{parameter }\end{DoxyParamCaption})~((parameter)$>$=0 \&\& (parameter)$<$\mbox{\hyperlink{tmc260_8h_af9376d3cf645591c7044d834be46c514a9cb89e6c14665807160a0de734882418}{T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+RS}})}
+
+
+
+Definition at line 7 of file tmc260.\+c.
+
+\mbox{\Hypertarget{tmc260_8c_ac5b755879478862fb105c52fd9639c19}\label{tmc260_8c_ac5b755879478862fb105c52fd9639c19}} 
+\index{tmc260.\+c@{tmc260.\+c}!T\+M\+C260\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+H\+A\+N\+G\+ED@{T\+M\+C260\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+H\+A\+N\+G\+ED}}
+\index{T\+M\+C260\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+H\+A\+N\+G\+ED@{T\+M\+C260\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+H\+A\+N\+G\+ED}!tmc260.\+c@{tmc260.\+c}}
+\subsubsection{\texorpdfstring{T\+M\+C260\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+H\+A\+N\+G\+ED}{TMC260\_REGISTER\_CHANGED}}
+{\footnotesize\ttfamily \#define T\+M\+C260\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+C\+H\+A\+N\+G\+ED~1}
+
+
+
+Definition at line 11 of file tmc260.\+c.
+
+\mbox{\Hypertarget{tmc260_8c_aeaa59913a4ebfc9c21d1cc33bb114b2f}\label{tmc260_8c_aeaa59913a4ebfc9c21d1cc33bb114b2f}} 
+\index{tmc260.\+c@{tmc260.\+c}!T\+M\+C260\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+N\+O\+T\+\_\+\+C\+H\+A\+N\+G\+ED@{T\+M\+C260\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+N\+O\+T\+\_\+\+C\+H\+A\+N\+G\+ED}}
+\index{T\+M\+C260\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+N\+O\+T\+\_\+\+C\+H\+A\+N\+G\+ED@{T\+M\+C260\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+N\+O\+T\+\_\+\+C\+H\+A\+N\+G\+ED}!tmc260.\+c@{tmc260.\+c}}
+\subsubsection{\texorpdfstring{T\+M\+C260\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+N\+O\+T\+\_\+\+C\+H\+A\+N\+G\+ED}{TMC260\_REGISTER\_NOT\_CHANGED}}
+{\footnotesize\ttfamily \#define T\+M\+C260\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+N\+O\+T\+\_\+\+C\+H\+A\+N\+G\+ED~0}
+
+
+
+Definition at line 10 of file tmc260.\+c.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{tmc260_8c_a262a6cf5e8b10d0e07822d080b917ecc}\label{tmc260_8c_a262a6cf5e8b10d0e07822d080b917ecc}} 
+\index{tmc260.\+c@{tmc260.\+c}!tmc260\+\_\+init@{tmc260\+\_\+init}}
+\index{tmc260\+\_\+init@{tmc260\+\_\+init}!tmc260.\+c@{tmc260.\+c}}
+\subsubsection{\texorpdfstring{tmc260\+\_\+init()}{tmc260\_init()}}
+{\footnotesize\ttfamily int8\+\_\+t tmc260\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tmc260_8h_aaefc0cb3626497c34791e5e518c49e64}{tmc260\+\_\+\+Device}} $\ast$const}]{device }\end{DoxyParamCaption})}
+
+
+
+tmc260\+\_\+init 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & pointer to a uninitialized structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+exit\+Status E\+X\+I\+T\+\_\+\+S\+U\+C\+C\+E\+SS or E\+X\+I\+T\+\_\+\+F\+A\+I\+L\+U\+RE 
+\end{DoxyReturn}
+
+
+Definition at line 54 of file tmc260.\+c.
+

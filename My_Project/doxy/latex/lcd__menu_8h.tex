@@ -1,0 +1,305 @@
+\hypertarget{lcd__menu_8h}{}\section{Library/\+Library/inc/lcd\+\_\+menu.h File Reference}
+\label{lcd__menu_8h}\index{Library/\+Library/inc/lcd\+\_\+menu.\+h@{Library/\+Library/inc/lcd\+\_\+menu.\+h}}
+{\ttfamily \#include \char`\"{}stdint.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stdio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lcd\+\_\+driver.\+h\char`\"{}}\newline
+Include dependency graph for lcd\+\_\+menu.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{lcd__menu_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{lcd__menu_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_menu_entry__}{Menu\+Entry\+\_\+}}
+\item 
+struct \mbox{\hyperlink{struct_menu__}{Menu\+\_\+}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{lcd__menu_8h_a4c2ef828f16a871742453ae7759cf9d3}{M\+E\+N\+U\+\_\+\+M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+ES}}~10
+\begin{DoxyCompactList}\small\item\em Add M\+E\+N\+U\+\_\+\+L\+E\+D\+\_\+\+B\+L\+U\+E\+\_\+\+E\+V\+E\+NT. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{lcd__menu_8h_aae0f97cffb61526f285912d7f9756cd4}{M\+E\+N\+U\+\_\+\+C\+H\+A\+R\+A\+C\+T\+E\+R\+S\+\_\+\+P\+E\+R\+\_\+\+L\+I\+NE}}~22
+\item 
+\#define \mbox{\hyperlink{lcd__menu_8h_aadea11c8fddf1df5153dc1bb3ae0e78d}{M\+E\+N\+U\+\_\+\+O\+P\+T\+I\+O\+N\+S\+\_\+\+P\+E\+R\+\_\+\+P\+A\+GE}}~3
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_menu__}{Menu\+\_\+}} \mbox{\hyperlink{lcd__menu_8h_afe0ab1c0311f677767b1588296b0f563}{Menu}}
+\item 
+typedef struct \mbox{\hyperlink{struct_menu_entry__}{Menu\+Entry\+\_\+}} \mbox{\hyperlink{lcd__menu_8h_a5562b957d336dc1492f008e49dac5f5d}{Menu\+Entry}}
+\item 
+typedef void($\ast$ \mbox{\hyperlink{lcd__menu_8h_af228269bbe2552ac2045f04d8bd39d19}{menu\+User\+Draw\+Item}}) (int)
+\item 
+typedef void($\ast$ \mbox{\hyperlink{lcd__menu_8h_af336c49ff8310ef7d0eef6c8148e2317}{menu\+User\+Draw\+Item2}}) (int, void $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165}{menu\+\_\+navigation}} \{ \newline
+\mbox{\hyperlink{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165a6a24693e7c74596bfab14552303bc15e}{M\+E\+N\+U\+\_\+\+N\+OP}}, 
+\mbox{\hyperlink{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165ab848ac49e4c4cbaac8fabbc7b19703ee}{M\+E\+N\+U\+\_\+\+UP}}, 
+\mbox{\hyperlink{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165ad37aeda5e4636a1cf0c59a877f5a070f}{M\+E\+N\+U\+\_\+\+D\+O\+WN}}, 
+\mbox{\hyperlink{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165a507395d57789527839d0ed0de8719544}{M\+E\+N\+U\+\_\+\+B\+A\+C\+K\+W\+A\+RD}}, 
+\newline
+\mbox{\hyperlink{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165aaf2f480973ae3c9f8ece3a9786498b62}{M\+E\+N\+U\+\_\+\+F\+O\+R\+W\+A\+RD}}, 
+\mbox{\hyperlink{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165a63b17a7a54a7c7e0be10914b9baa7dcc}{M\+E\+N\+U\+\_\+\+S\+E\+L\+E\+CT}}
+ \}
+\item 
+enum \mbox{\hyperlink{lcd__menu_8h_af281888756940391027a7bdddf347718}{menu\+\_\+event}} \{ \mbox{\hyperlink{lcd__menu_8h_af281888756940391027a7bdddf347718a7444e2f70dbc375bddb24cc6e36bbde3}{M\+E\+N\+U\+\_\+\+N\+O\+\_\+\+E\+V\+E\+NT}}, 
+\mbox{\hyperlink{lcd__menu_8h_af281888756940391027a7bdddf347718a4733d106a9a75358858cee2e3688f7a9}{M\+E\+N\+U\+\_\+\+S\+T\+O\+P\+\_\+\+E\+V\+E\+NT}}
+ \}
+\item 
+enum \mbox{\hyperlink{lcd__menu_8h_a8803db0b2985fc11bdaaff101b1b999d}{menu\+\_\+entry\+Type}} \{ \mbox{\hyperlink{lcd__menu_8h_a8803db0b2985fc11bdaaff101b1b999daf1cfb1a0c91f7b984eac35852d625983}{M\+E\+N\+U\+\_\+\+E\+V\+E\+NT}}, 
+\mbox{\hyperlink{lcd__menu_8h_a8803db0b2985fc11bdaaff101b1b999da4eec12d9adc28b260fe26c94d26c112d}{M\+E\+N\+U\+\_\+\+S\+U\+B\+M\+E\+NU}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{lcd__menu_8h_a241201125b49b0478d339a7c3a9f8f5a}{menu\+\_\+set\+Main\+Menu}} (\mbox{\hyperlink{lcd__menu_8h_afe0ab1c0311f677767b1588296b0f563}{Menu}} $\ast$const menu)
+\item 
+void \mbox{\hyperlink{lcd__menu_8h_a82d0bc5ed88880b96974496b879fa22b}{menu\+\_\+show}} (void)
+\item 
+\mbox{\hyperlink{lcd__menu_8h_af281888756940391027a7bdddf347718}{menu\+\_\+event}} \mbox{\hyperlink{lcd__menu_8h_a90ddf7b832aa21b33f2b27e7787e6329}{menu\+\_\+update}} (\mbox{\hyperlink{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165}{menu\+\_\+navigation}} navigation)
+\item 
+void \mbox{\hyperlink{lcd__menu_8h_a1ba9a4758a71c31c65aaa01ff05e6310}{menu\+\_\+register\+Draw\+Menu\+Item}} (\mbox{\hyperlink{lcd__menu_8h_af228269bbe2552ac2045f04d8bd39d19}{menu\+User\+Draw\+Item}} func)
+\item 
+void \mbox{\hyperlink{lcd__menu_8h_a375ecfefafd703a57877c819e5c0c698}{menu\+\_\+register\+Draw\+Menu\+Item2}} (\mbox{\hyperlink{lcd__menu_8h_af336c49ff8310ef7d0eef6c8148e2317}{menu\+User\+Draw\+Item2}} func, void $\ast$data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{lcd__menu_8h_aae0f97cffb61526f285912d7f9756cd4}\label{lcd__menu_8h_aae0f97cffb61526f285912d7f9756cd4}} 
+\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!M\+E\+N\+U\+\_\+\+C\+H\+A\+R\+A\+C\+T\+E\+R\+S\+\_\+\+P\+E\+R\+\_\+\+L\+I\+NE@{M\+E\+N\+U\+\_\+\+C\+H\+A\+R\+A\+C\+T\+E\+R\+S\+\_\+\+P\+E\+R\+\_\+\+L\+I\+NE}}
+\index{M\+E\+N\+U\+\_\+\+C\+H\+A\+R\+A\+C\+T\+E\+R\+S\+\_\+\+P\+E\+R\+\_\+\+L\+I\+NE@{M\+E\+N\+U\+\_\+\+C\+H\+A\+R\+A\+C\+T\+E\+R\+S\+\_\+\+P\+E\+R\+\_\+\+L\+I\+NE}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}
+\subsubsection{\texorpdfstring{M\+E\+N\+U\+\_\+\+C\+H\+A\+R\+A\+C\+T\+E\+R\+S\+\_\+\+P\+E\+R\+\_\+\+L\+I\+NE}{MENU\_CHARACTERS\_PER\_LINE}}
+{\footnotesize\ttfamily \#define M\+E\+N\+U\+\_\+\+C\+H\+A\+R\+A\+C\+T\+E\+R\+S\+\_\+\+P\+E\+R\+\_\+\+L\+I\+NE~22}
+
+
+
+Definition at line 16 of file lcd\+\_\+menu.\+h.
+
+\mbox{\Hypertarget{lcd__menu_8h_a4c2ef828f16a871742453ae7759cf9d3}\label{lcd__menu_8h_a4c2ef828f16a871742453ae7759cf9d3}} 
+\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!M\+E\+N\+U\+\_\+\+M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+ES@{M\+E\+N\+U\+\_\+\+M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+ES}}
+\index{M\+E\+N\+U\+\_\+\+M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+ES@{M\+E\+N\+U\+\_\+\+M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+ES}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}
+\subsubsection{\texorpdfstring{M\+E\+N\+U\+\_\+\+M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+ES}{MENU\_MAX\_ENTRIES}}
+{\footnotesize\ttfamily \#define M\+E\+N\+U\+\_\+\+M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+ES~10}
+
+
+
+Add M\+E\+N\+U\+\_\+\+L\+E\+D\+\_\+\+B\+L\+U\+E\+\_\+\+E\+V\+E\+NT. 
+
+\begin{DoxyDate}{Date}
+27.\+04.\+2018 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+
+
+Definition at line 15 of file lcd\+\_\+menu.\+h.
+
+\mbox{\Hypertarget{lcd__menu_8h_aadea11c8fddf1df5153dc1bb3ae0e78d}\label{lcd__menu_8h_aadea11c8fddf1df5153dc1bb3ae0e78d}} 
+\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!M\+E\+N\+U\+\_\+\+O\+P\+T\+I\+O\+N\+S\+\_\+\+P\+E\+R\+\_\+\+P\+A\+GE@{M\+E\+N\+U\+\_\+\+O\+P\+T\+I\+O\+N\+S\+\_\+\+P\+E\+R\+\_\+\+P\+A\+GE}}
+\index{M\+E\+N\+U\+\_\+\+O\+P\+T\+I\+O\+N\+S\+\_\+\+P\+E\+R\+\_\+\+P\+A\+GE@{M\+E\+N\+U\+\_\+\+O\+P\+T\+I\+O\+N\+S\+\_\+\+P\+E\+R\+\_\+\+P\+A\+GE}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}
+\subsubsection{\texorpdfstring{M\+E\+N\+U\+\_\+\+O\+P\+T\+I\+O\+N\+S\+\_\+\+P\+E\+R\+\_\+\+P\+A\+GE}{MENU\_OPTIONS\_PER\_PAGE}}
+{\footnotesize\ttfamily \#define M\+E\+N\+U\+\_\+\+O\+P\+T\+I\+O\+N\+S\+\_\+\+P\+E\+R\+\_\+\+P\+A\+GE~3}
+
+
+
+Definition at line 17 of file lcd\+\_\+menu.\+h.
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{lcd__menu_8h_afe0ab1c0311f677767b1588296b0f563}\label{lcd__menu_8h_afe0ab1c0311f677767b1588296b0f563}} 
+\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!Menu@{Menu}}
+\index{Menu@{Menu}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}
+\subsubsection{\texorpdfstring{Menu}{Menu}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_menu__}{Menu\+\_\+}} \mbox{\hyperlink{lcd__menu_8h_afe0ab1c0311f677767b1588296b0f563}{Menu}}}
+
+
+
+Definition at line 25 of file lcd\+\_\+menu.\+h.
+
+\mbox{\Hypertarget{lcd__menu_8h_a5562b957d336dc1492f008e49dac5f5d}\label{lcd__menu_8h_a5562b957d336dc1492f008e49dac5f5d}} 
+\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!Menu\+Entry@{Menu\+Entry}}
+\index{Menu\+Entry@{Menu\+Entry}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}
+\subsubsection{\texorpdfstring{Menu\+Entry}{MenuEntry}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_menu_entry__}{Menu\+Entry\+\_\+}} \mbox{\hyperlink{lcd__menu_8h_a5562b957d336dc1492f008e49dac5f5d}{Menu\+Entry}}}
+
+\mbox{\Hypertarget{lcd__menu_8h_af228269bbe2552ac2045f04d8bd39d19}\label{lcd__menu_8h_af228269bbe2552ac2045f04d8bd39d19}} 
+\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!menu\+User\+Draw\+Item@{menu\+User\+Draw\+Item}}
+\index{menu\+User\+Draw\+Item@{menu\+User\+Draw\+Item}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}
+\subsubsection{\texorpdfstring{menu\+User\+Draw\+Item}{menuUserDrawItem}}
+{\footnotesize\ttfamily typedef void($\ast$ menu\+User\+Draw\+Item) (int)}
+
+
+
+Definition at line 53 of file lcd\+\_\+menu.\+h.
+
+\mbox{\Hypertarget{lcd__menu_8h_af336c49ff8310ef7d0eef6c8148e2317}\label{lcd__menu_8h_af336c49ff8310ef7d0eef6c8148e2317}} 
+\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!menu\+User\+Draw\+Item2@{menu\+User\+Draw\+Item2}}
+\index{menu\+User\+Draw\+Item2@{menu\+User\+Draw\+Item2}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}
+\subsubsection{\texorpdfstring{menu\+User\+Draw\+Item2}{menuUserDrawItem2}}
+{\footnotesize\ttfamily typedef void($\ast$ menu\+User\+Draw\+Item2) (int, void $\ast$)}
+
+
+
+Definition at line 55 of file lcd\+\_\+menu.\+h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{lcd__menu_8h_a8803db0b2985fc11bdaaff101b1b999d}\label{lcd__menu_8h_a8803db0b2985fc11bdaaff101b1b999d}} 
+\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!menu\+\_\+entry\+Type@{menu\+\_\+entry\+Type}}
+\index{menu\+\_\+entry\+Type@{menu\+\_\+entry\+Type}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}
+\subsubsection{\texorpdfstring{menu\+\_\+entry\+Type}{menu\_entryType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{lcd__menu_8h_a8803db0b2985fc11bdaaff101b1b999d}{menu\+\_\+entry\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+E\+N\+U\+\_\+\+E\+V\+E\+NT@{M\+E\+N\+U\+\_\+\+E\+V\+E\+NT}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!M\+E\+N\+U\+\_\+\+E\+V\+E\+NT@{M\+E\+N\+U\+\_\+\+E\+V\+E\+NT}}}\mbox{\Hypertarget{lcd__menu_8h_a8803db0b2985fc11bdaaff101b1b999daf1cfb1a0c91f7b984eac35852d625983}\label{lcd__menu_8h_a8803db0b2985fc11bdaaff101b1b999daf1cfb1a0c91f7b984eac35852d625983}} 
+M\+E\+N\+U\+\_\+\+E\+V\+E\+NT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+E\+N\+U\+\_\+\+S\+U\+B\+M\+E\+NU@{M\+E\+N\+U\+\_\+\+S\+U\+B\+M\+E\+NU}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!M\+E\+N\+U\+\_\+\+S\+U\+B\+M\+E\+NU@{M\+E\+N\+U\+\_\+\+S\+U\+B\+M\+E\+NU}}}\mbox{\Hypertarget{lcd__menu_8h_a8803db0b2985fc11bdaaff101b1b999da4eec12d9adc28b260fe26c94d26c112d}\label{lcd__menu_8h_a8803db0b2985fc11bdaaff101b1b999da4eec12d9adc28b260fe26c94d26c112d}} 
+M\+E\+N\+U\+\_\+\+S\+U\+B\+M\+E\+NU&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 23 of file lcd\+\_\+menu.\+h.
+
+\mbox{\Hypertarget{lcd__menu_8h_af281888756940391027a7bdddf347718}\label{lcd__menu_8h_af281888756940391027a7bdddf347718}} 
+\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!menu\+\_\+event@{menu\+\_\+event}}
+\index{menu\+\_\+event@{menu\+\_\+event}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}
+\subsubsection{\texorpdfstring{menu\+\_\+event}{menu\_event}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{lcd__menu_8h_af281888756940391027a7bdddf347718}{menu\+\_\+event}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+E\+N\+U\+\_\+\+N\+O\+\_\+\+E\+V\+E\+NT@{M\+E\+N\+U\+\_\+\+N\+O\+\_\+\+E\+V\+E\+NT}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!M\+E\+N\+U\+\_\+\+N\+O\+\_\+\+E\+V\+E\+NT@{M\+E\+N\+U\+\_\+\+N\+O\+\_\+\+E\+V\+E\+NT}}}\mbox{\Hypertarget{lcd__menu_8h_af281888756940391027a7bdddf347718a7444e2f70dbc375bddb24cc6e36bbde3}\label{lcd__menu_8h_af281888756940391027a7bdddf347718a7444e2f70dbc375bddb24cc6e36bbde3}} 
+M\+E\+N\+U\+\_\+\+N\+O\+\_\+\+E\+V\+E\+NT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+E\+N\+U\+\_\+\+S\+T\+O\+P\+\_\+\+E\+V\+E\+NT@{M\+E\+N\+U\+\_\+\+S\+T\+O\+P\+\_\+\+E\+V\+E\+NT}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!M\+E\+N\+U\+\_\+\+S\+T\+O\+P\+\_\+\+E\+V\+E\+NT@{M\+E\+N\+U\+\_\+\+S\+T\+O\+P\+\_\+\+E\+V\+E\+NT}}}\mbox{\Hypertarget{lcd__menu_8h_af281888756940391027a7bdddf347718a4733d106a9a75358858cee2e3688f7a9}\label{lcd__menu_8h_af281888756940391027a7bdddf347718a4733d106a9a75358858cee2e3688f7a9}} 
+M\+E\+N\+U\+\_\+\+S\+T\+O\+P\+\_\+\+E\+V\+E\+NT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 22 of file lcd\+\_\+menu.\+h.
+
+\mbox{\Hypertarget{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165}\label{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165}} 
+\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!menu\+\_\+navigation@{menu\+\_\+navigation}}
+\index{menu\+\_\+navigation@{menu\+\_\+navigation}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}
+\subsubsection{\texorpdfstring{menu\+\_\+navigation}{menu\_navigation}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165}{menu\+\_\+navigation}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+E\+N\+U\+\_\+\+N\+OP@{M\+E\+N\+U\+\_\+\+N\+OP}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!M\+E\+N\+U\+\_\+\+N\+OP@{M\+E\+N\+U\+\_\+\+N\+OP}}}\mbox{\Hypertarget{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165a6a24693e7c74596bfab14552303bc15e}\label{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165a6a24693e7c74596bfab14552303bc15e}} 
+M\+E\+N\+U\+\_\+\+N\+OP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+E\+N\+U\+\_\+\+UP@{M\+E\+N\+U\+\_\+\+UP}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!M\+E\+N\+U\+\_\+\+UP@{M\+E\+N\+U\+\_\+\+UP}}}\mbox{\Hypertarget{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165ab848ac49e4c4cbaac8fabbc7b19703ee}\label{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165ab848ac49e4c4cbaac8fabbc7b19703ee}} 
+M\+E\+N\+U\+\_\+\+UP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+E\+N\+U\+\_\+\+D\+O\+WN@{M\+E\+N\+U\+\_\+\+D\+O\+WN}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!M\+E\+N\+U\+\_\+\+D\+O\+WN@{M\+E\+N\+U\+\_\+\+D\+O\+WN}}}\mbox{\Hypertarget{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165ad37aeda5e4636a1cf0c59a877f5a070f}\label{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165ad37aeda5e4636a1cf0c59a877f5a070f}} 
+M\+E\+N\+U\+\_\+\+D\+O\+WN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+E\+N\+U\+\_\+\+B\+A\+C\+K\+W\+A\+RD@{M\+E\+N\+U\+\_\+\+B\+A\+C\+K\+W\+A\+RD}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!M\+E\+N\+U\+\_\+\+B\+A\+C\+K\+W\+A\+RD@{M\+E\+N\+U\+\_\+\+B\+A\+C\+K\+W\+A\+RD}}}\mbox{\Hypertarget{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165a507395d57789527839d0ed0de8719544}\label{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165a507395d57789527839d0ed0de8719544}} 
+M\+E\+N\+U\+\_\+\+B\+A\+C\+K\+W\+A\+RD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+E\+N\+U\+\_\+\+F\+O\+R\+W\+A\+RD@{M\+E\+N\+U\+\_\+\+F\+O\+R\+W\+A\+RD}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!M\+E\+N\+U\+\_\+\+F\+O\+R\+W\+A\+RD@{M\+E\+N\+U\+\_\+\+F\+O\+R\+W\+A\+RD}}}\mbox{\Hypertarget{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165aaf2f480973ae3c9f8ece3a9786498b62}\label{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165aaf2f480973ae3c9f8ece3a9786498b62}} 
+M\+E\+N\+U\+\_\+\+F\+O\+R\+W\+A\+RD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+E\+N\+U\+\_\+\+S\+E\+L\+E\+CT@{M\+E\+N\+U\+\_\+\+S\+E\+L\+E\+CT}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!M\+E\+N\+U\+\_\+\+S\+E\+L\+E\+CT@{M\+E\+N\+U\+\_\+\+S\+E\+L\+E\+CT}}}\mbox{\Hypertarget{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165a63b17a7a54a7c7e0be10914b9baa7dcc}\label{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165a63b17a7a54a7c7e0be10914b9baa7dcc}} 
+M\+E\+N\+U\+\_\+\+S\+E\+L\+E\+CT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 20 of file lcd\+\_\+menu.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{lcd__menu_8h_a1ba9a4758a71c31c65aaa01ff05e6310}\label{lcd__menu_8h_a1ba9a4758a71c31c65aaa01ff05e6310}} 
+\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!menu\+\_\+register\+Draw\+Menu\+Item@{menu\+\_\+register\+Draw\+Menu\+Item}}
+\index{menu\+\_\+register\+Draw\+Menu\+Item@{menu\+\_\+register\+Draw\+Menu\+Item}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}
+\subsubsection{\texorpdfstring{menu\+\_\+register\+Draw\+Menu\+Item()}{menu\_registerDrawMenuItem()}}
+{\footnotesize\ttfamily void menu\+\_\+register\+Draw\+Menu\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lcd__menu_8h_af228269bbe2552ac2045f04d8bd39d19}{menu\+User\+Draw\+Item}}}]{func }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{lcd__menu_8h_a375ecfefafd703a57877c819e5c0c698}\label{lcd__menu_8h_a375ecfefafd703a57877c819e5c0c698}} 
+\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!menu\+\_\+register\+Draw\+Menu\+Item2@{menu\+\_\+register\+Draw\+Menu\+Item2}}
+\index{menu\+\_\+register\+Draw\+Menu\+Item2@{menu\+\_\+register\+Draw\+Menu\+Item2}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}
+\subsubsection{\texorpdfstring{menu\+\_\+register\+Draw\+Menu\+Item2()}{menu\_registerDrawMenuItem2()}}
+{\footnotesize\ttfamily void menu\+\_\+register\+Draw\+Menu\+Item2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lcd__menu_8h_af336c49ff8310ef7d0eef6c8148e2317}{menu\+User\+Draw\+Item2}}}]{func,  }\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 83 of file lcd\+\_\+menu.\+c.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{lcd__menu_8h_a375ecfefafd703a57877c819e5c0c698_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lcd__menu_8h_a241201125b49b0478d339a7c3a9f8f5a}\label{lcd__menu_8h_a241201125b49b0478d339a7c3a9f8f5a}} 
+\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!menu\+\_\+set\+Main\+Menu@{menu\+\_\+set\+Main\+Menu}}
+\index{menu\+\_\+set\+Main\+Menu@{menu\+\_\+set\+Main\+Menu}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}
+\subsubsection{\texorpdfstring{menu\+\_\+set\+Main\+Menu()}{menu\_setMainMenu()}}
+{\footnotesize\ttfamily void menu\+\_\+set\+Main\+Menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lcd__menu_8h_afe0ab1c0311f677767b1588296b0f563}{Menu}} $\ast$const}]{menu }\end{DoxyParamCaption})}
+
+
+
+Definition at line 10 of file lcd\+\_\+menu.\+c.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{lcd__menu_8h_a241201125b49b0478d339a7c3a9f8f5a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lcd__menu_8h_a82d0bc5ed88880b96974496b879fa22b}\label{lcd__menu_8h_a82d0bc5ed88880b96974496b879fa22b}} 
+\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!menu\+\_\+show@{menu\+\_\+show}}
+\index{menu\+\_\+show@{menu\+\_\+show}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}
+\subsubsection{\texorpdfstring{menu\+\_\+show()}{menu\_show()}}
+{\footnotesize\ttfamily void menu\+\_\+show (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 106 of file lcd\+\_\+menu.\+c.
+
+\mbox{\Hypertarget{lcd__menu_8h_a90ddf7b832aa21b33f2b27e7787e6329}\label{lcd__menu_8h_a90ddf7b832aa21b33f2b27e7787e6329}} 
+\index{lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}!menu\+\_\+update@{menu\+\_\+update}}
+\index{menu\+\_\+update@{menu\+\_\+update}!lcd\+\_\+menu.\+h@{lcd\+\_\+menu.\+h}}
+\subsubsection{\texorpdfstring{menu\+\_\+update()}{menu\_update()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lcd__menu_8h_af281888756940391027a7bdddf347718}{menu\+\_\+event}} menu\+\_\+update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lcd__menu_8h_acc7822c56ab54b113c6a9ee3d7fea165}{menu\+\_\+navigation}}}]{navigation }\end{DoxyParamCaption})}
+
+
+
+Definition at line 117 of file lcd\+\_\+menu.\+c.
+

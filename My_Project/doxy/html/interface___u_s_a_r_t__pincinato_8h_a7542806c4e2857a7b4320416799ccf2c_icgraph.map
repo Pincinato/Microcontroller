@@ -1,0 +1,17 @@
+<map id="checkUart" name="checkUart">
+<area shape="rect" id="node2" href="$interface___u_s_a_r_t__pincinato_8c.html#ac2c3281fb230399f4ee052bea898eb0b" title="initInterface initialized variables of the interface, UART, DMA " alt="" coords="157,5,245,32"/>
+<area shape="rect" id="node4" href="$interface___u_s_a_r_t__pincinato_8c.html#a4b8d23b41c5050ac13d61ceb25551f85" title="sendActualConfig send actual values of localTable " alt="" coords="139,56,262,83"/>
+<area shape="rect" id="node7" href="$interface___u_s_a_r_t__pincinato_8c.html#a679d5f90b8fdc1be49125a35c373cdfd" title="sendHeartExercise send the heart rate and exercise via UART " alt="" coords="135,107,267,133"/>
+<area shape="rect" id="node8" href="$interface___u_s_a_r_t__pincinato_8c.html#acb371df4a5baf1653834e8a129f74f78" title="ACK send an ACK to the UART via DMA. " alt="" coords="176,233,225,260"/>
+<area shape="rect" id="node16" href="$interface___u_s_a_r_t__pincinato_8c.html#a4db953487d5941de34d94622ca65ee3b" title="NACK send an NACK to the UART via DMA. " alt="" coords="171,157,230,184"/>
+<area shape="rect" id="node3" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point. " alt="" coords="337,5,387,32"/>
+<area shape="rect" id="node5" href="$interface___u_s_a_r_t__pincinato_8c.html#a11dc5c5d9820318d1fa0e221e3576ef8" title="selectOption recognize the message sent via UART&#45;dma " alt="" coords="315,81,409,108"/>
+<area shape="rect" id="node6" href="$interface___u_s_a_r_t__pincinato_8c.html#a6b4ec711b761ea5e19f31087f16c42d7" title="check_RX check if there is a valid message in the buffer " alt="" coords="488,81,568,108"/>
+<area shape="rect" id="node9" href="$interface___a_c_c_e_l__pincinato_8c.html#ace9c27270108e9c1e16634800babed8a" title="calibrate set the value of calibration by doing a fisrt measurement " alt="" coords="327,132,397,159"/>
+<area shape="rect" id="node10" href="$interface___a_c_c_e_l__pincinato_8c.html#a3026461e79c24f98e2ad7d3e16399881" title="getDistance read distance and clear integation " alt="" coords="317,233,407,260"/>
+<area shape="rect" id="node11" href="$interface___a_c_c_e_l__pincinato_8c.html#aeb17d34699a1c69f8f8dbcdb910e7122" title="getACCELCategory" alt="" coords="461,208,595,235"/>
+<area shape="rect" id="node12" href="$interface___a_n_a_l_y_s_i_s__pincinato_8c.html#a24faadb604f17391d05b528c96a9c433" title="getTypeOfActivity analyses the value of accel inteface and add the result in the AnalysisProcess ..." alt="" coords="467,284,589,311"/>
+<area shape="rect" id="node13" href="$interface___a_n_a_l_y_s_i_s__pincinato_8c.html#a43f852ff5bf75bcd4a95d38acd0fa2ec" title="getAnalysis " alt="" coords="647,335,737,361"/>
+<area shape="rect" id="node14" href="$interface___a_n_a_l_y_s_i_s__pincinato_8c.html#a3b17eadb8d65927d28952ff80c6756b4" title="getTypeOfHeartLevel analyses the value of ECG inteface and add the result in the AnalysisProcess ..." alt="" coords="457,385,599,412"/>
+<area shape="rect" id="node15" href="$interface___a_n_a_l_y_s_i_s__pincinato_8c.html#ae03d181b13cf025fb2c4f8c9228a8b97" title="isAbnormal check the myBuffer_ to verify with the HR is abnormal related with activity ..." alt="" coords="319,436,405,463"/>
+</map>

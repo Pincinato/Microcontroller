@@ -1,0 +1,166 @@
+\hypertarget{adc_8c}{}\section{adc.\+c File Reference}
+\label{adc_8c}\index{adc.\+c@{adc.\+c}}
+{\ttfamily \#include \char`\"{}adc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gpio.\+h\char`\"{}}\newline
+Include dependency graph for adc.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{adc_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{adc_8c_acccd58aa70215a6b184ad242312ffd0c}{M\+X\+\_\+\+A\+D\+C1\+\_\+\+Init}} (void)
+\item 
+void \mbox{\hyperlink{adc_8c_a101e2e3433dfe72bbbd0ae3a84489263}{M\+X\+\_\+\+A\+D\+C2\+\_\+\+Init}} (void)
+\item 
+void \mbox{\hyperlink{adc_8c_ac3139540667c403c5dfd37a99c610b1c}{H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+Init}} (A\+D\+C\+\_\+\+Handle\+Type\+Def $\ast$adc\+Handle)
+\item 
+void \mbox{\hyperlink{adc_8c_a3f61f2c2af0f122f81a87af8ad7b4360}{H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+De\+Init}} (A\+D\+C\+\_\+\+Handle\+Type\+Def $\ast$adc\+Handle)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+A\+D\+C\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{adc_8c_a22b804736f5648d52f639b2647d4ed13}{hadc1}}
+\item 
+A\+D\+C\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{adc_8c_acd9221f1aa19aebfe0b744947f2daf49}{hadc2}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{adc_8c_a3f61f2c2af0f122f81a87af8ad7b4360}\label{adc_8c_a3f61f2c2af0f122f81a87af8ad7b4360}} 
+\index{adc.\+c@{adc.\+c}!H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+De\+Init@{H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+De\+Init}}
+\index{H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+De\+Init@{H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+De\+Init}!adc.\+c@{adc.\+c}}
+\subsubsection{\texorpdfstring{H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+De\+Init()}{HAL\_ADC\_MspDeInit()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+De\+Init (\begin{DoxyParamCaption}\item[{A\+D\+C\+\_\+\+Handle\+Type\+Def $\ast$}]{adc\+Handle }\end{DoxyParamCaption})}
+
+A\+D\+C1 G\+P\+IO Configuration ~\newline
+~\newline
+~\newline
+~\newline
+P\+B1 ------$>$ A\+D\+C1\+\_\+\+I\+N9
+
+Uncomment the line below to disable the \char`\"{}\+A\+D\+C\+\_\+\+I\+R\+Qn\char`\"{} interrupt Be aware, disabling shared interrupt may affect other I\+Ps
+
+A\+D\+C2 G\+P\+IO Configuration ~\newline
+~\newline
+P\+A1 ------$>$ A\+D\+C2\+\_\+\+I\+N1
+
+Uncomment the line below to disable the \char`\"{}\+A\+D\+C\+\_\+\+I\+R\+Qn\char`\"{} interrupt Be aware, disabling shared interrupt may affect other I\+Ps
+
+Definition at line 185 of file adc.\+c.
+
+\mbox{\Hypertarget{adc_8c_ac3139540667c403c5dfd37a99c610b1c}\label{adc_8c_ac3139540667c403c5dfd37a99c610b1c}} 
+\index{adc.\+c@{adc.\+c}!H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+Init@{H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+Init}}
+\index{H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+Init@{H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+Init}!adc.\+c@{adc.\+c}}
+\subsubsection{\texorpdfstring{H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+Init()}{HAL\_ADC\_MspInit()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+Init (\begin{DoxyParamCaption}\item[{A\+D\+C\+\_\+\+Handle\+Type\+Def $\ast$}]{adc\+Handle }\end{DoxyParamCaption})}
+
+A\+D\+C1 G\+P\+IO Configuration ~\newline
+~\newline
+P\+B1 ------$>$ A\+D\+C1\+\_\+\+I\+N9
+
+A\+D\+C2 G\+P\+IO Configuration ~\newline
+P\+A1 -\/-\/-\/---$>$ A\+D\+C2\+\_\+\+I\+N1
+
+Definition at line 133 of file adc.\+c.
+
+\mbox{\Hypertarget{adc_8c_acccd58aa70215a6b184ad242312ffd0c}\label{adc_8c_acccd58aa70215a6b184ad242312ffd0c}} 
+\index{adc.\+c@{adc.\+c}!M\+X\+\_\+\+A\+D\+C1\+\_\+\+Init@{M\+X\+\_\+\+A\+D\+C1\+\_\+\+Init}}
+\index{M\+X\+\_\+\+A\+D\+C1\+\_\+\+Init@{M\+X\+\_\+\+A\+D\+C1\+\_\+\+Init}!adc.\+c@{adc.\+c}}
+\subsubsection{\texorpdfstring{M\+X\+\_\+\+A\+D\+C1\+\_\+\+Init()}{MX\_ADC1\_Init()}}
+{\footnotesize\ttfamily void M\+X\+\_\+\+A\+D\+C1\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Configure the global features of the A\+DC (Clock, Resolution, Data Alignment and number of conversion)
+
+Configure for the selected A\+DC regular channel its corresponding rank in the sequencer and its sample time.
+
+Definition at line 63 of file adc.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{adc_8c_acccd58aa70215a6b184ad242312ffd0c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{adc_8c_acccd58aa70215a6b184ad242312ffd0c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{adc_8c_a101e2e3433dfe72bbbd0ae3a84489263}\label{adc_8c_a101e2e3433dfe72bbbd0ae3a84489263}} 
+\index{adc.\+c@{adc.\+c}!M\+X\+\_\+\+A\+D\+C2\+\_\+\+Init@{M\+X\+\_\+\+A\+D\+C2\+\_\+\+Init}}
+\index{M\+X\+\_\+\+A\+D\+C2\+\_\+\+Init@{M\+X\+\_\+\+A\+D\+C2\+\_\+\+Init}!adc.\+c@{adc.\+c}}
+\subsubsection{\texorpdfstring{M\+X\+\_\+\+A\+D\+C2\+\_\+\+Init()}{MX\_ADC2\_Init()}}
+{\footnotesize\ttfamily void M\+X\+\_\+\+A\+D\+C2\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Configure the global features of the A\+DC (Clock, Resolution, Data Alignment and number of conversion)
+
+Configure for the selected A\+DC regular channel its corresponding rank in the sequencer and its sample time.
+
+Definition at line 98 of file adc.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{adc_8c_a101e2e3433dfe72bbbd0ae3a84489263_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{adc_8c_a101e2e3433dfe72bbbd0ae3a84489263_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{adc_8c_a22b804736f5648d52f639b2647d4ed13}\label{adc_8c_a22b804736f5648d52f639b2647d4ed13}} 
+\index{adc.\+c@{adc.\+c}!hadc1@{hadc1}}
+\index{hadc1@{hadc1}!adc.\+c@{adc.\+c}}
+\subsubsection{\texorpdfstring{hadc1}{hadc1}}
+{\footnotesize\ttfamily A\+D\+C\+\_\+\+Handle\+Type\+Def hadc1}
+
+File Name \+: \mbox{\hyperlink{adc_8c}{A\+D\+C.\+c}} Description \+: This file provides code for the configuration of the A\+DC instances.
+
+This notice applies to any and all portions of this file that are not between comment pairs U\+S\+ER C\+O\+DE B\+E\+G\+IN and U\+S\+ER C\+O\+DE E\+ND. Other portions of this file, whether inserted by the user or by software development tools are owned by their respective copyright owners.
+
+Copyright (c) 2018 S\+T\+Microelectronics International N.\+V. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted, provided that the following conditions are met\+:
+
+
+\begin{DoxyEnumerate}
+\item Redistribution of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+\item Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+\item Neither the name of S\+T\+Microelectronics nor the names of other contributors to this software may be used to endorse or promote products derived from this software without specific written permission.
+\item This software, including modifications and/or derivative works of this software, must execute solely and exclusively on microcontroller or microprocessor devices manufactured by or for S\+T\+Microelectronics.
+\item Redistribution and use of this software other than as permitted under this license is void and will automatically terminate your rights under this license.
+\end{DoxyEnumerate}
+
+T\+H\+IS S\+O\+F\+T\+W\+A\+RE IS P\+R\+O\+V\+I\+D\+ED BY S\+T\+M\+I\+C\+R\+O\+E\+L\+E\+C\+T\+R\+O\+N\+I\+CS A\+ND C\+O\+N\+T\+R\+I\+B\+U\+T\+O\+RS \char`\"{}\+A\+S I\+S\char`\"{} A\+ND A\+NY E\+X\+P\+R\+E\+SS, I\+M\+P\+L\+I\+ED OR S\+T\+A\+T\+U\+T\+O\+RY W\+A\+R\+R\+A\+N\+T\+I\+ES, I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, T\+HE I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES OF M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY, F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE A\+ND N\+O\+N-\/\+I\+N\+F\+R\+I\+N\+G\+E\+M\+E\+NT OF T\+H\+I\+RD P\+A\+R\+TY I\+N\+T\+E\+L\+L\+E\+C\+T\+U\+AL P\+R\+O\+P\+E\+R\+TY R\+I\+G\+H\+TS A\+RE D\+I\+S\+C\+L\+A\+I\+M\+ED TO T\+HE F\+U\+L\+L\+E\+ST E\+X\+T\+E\+NT P\+E\+R\+M\+I\+T\+T\+ED BY L\+AW. IN NO E\+V\+E\+NT S\+H\+A\+LL S\+T\+M\+I\+C\+R\+O\+E\+L\+E\+C\+T\+R\+O\+N\+I\+CS OR C\+O\+N\+T\+R\+I\+B\+U\+T\+O\+RS BE L\+I\+A\+B\+LE F\+OR A\+NY D\+I\+R\+E\+CT, I\+N\+D\+I\+R\+E\+CT, I\+N\+C\+I\+D\+E\+N\+T\+AL, S\+P\+E\+C\+I\+AL, E\+X\+E\+M\+P\+L\+A\+RY, OR C\+O\+N\+S\+E\+Q\+U\+E\+N\+T\+I\+AL D\+A\+M\+A\+G\+ES (I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, P\+R\+O\+C\+U\+R\+E\+M\+E\+NT OF S\+U\+B\+S\+T\+I\+T\+U\+TE G\+O\+O\+DS OR S\+E\+R\+V\+I\+C\+ES; L\+O\+SS OF U\+SE, D\+A\+TA, OR P\+R\+O\+F\+I\+TS; OR B\+U\+S\+I\+N\+E\+SS I\+N\+T\+E\+R\+R\+U\+P\+T\+I\+ON) H\+O\+W\+E\+V\+ER C\+A\+U\+S\+ED A\+ND ON A\+NY T\+H\+E\+O\+RY OF L\+I\+A\+B\+I\+L\+I\+TY, W\+H\+E\+T\+H\+ER IN C\+O\+N\+T\+R\+A\+CT, S\+T\+R\+I\+CT L\+I\+A\+B\+I\+L\+I\+TY, OR T\+O\+RT (I\+N\+C\+L\+U\+D\+I\+NG N\+E\+G\+L\+I\+G\+E\+N\+CE OR O\+T\+H\+E\+R\+W\+I\+SE) A\+R\+I\+S\+I\+NG IN A\+NY W\+AY O\+UT OF T\+HE U\+SE OF T\+H\+IS S\+O\+F\+T\+W\+A\+RE, E\+V\+EN IF A\+D\+V\+I\+S\+ED OF T\+HE P\+O\+S\+S\+I\+B\+I\+L\+I\+TY OF S\+U\+CH D\+A\+M\+A\+GE. 
+
+Definition at line 59 of file adc.\+c.
+
+\mbox{\Hypertarget{adc_8c_acd9221f1aa19aebfe0b744947f2daf49}\label{adc_8c_acd9221f1aa19aebfe0b744947f2daf49}} 
+\index{adc.\+c@{adc.\+c}!hadc2@{hadc2}}
+\index{hadc2@{hadc2}!adc.\+c@{adc.\+c}}
+\subsubsection{\texorpdfstring{hadc2}{hadc2}}
+{\footnotesize\ttfamily A\+D\+C\+\_\+\+Handle\+Type\+Def hadc2}
+
+
+
+Definition at line 60 of file adc.\+c.
+

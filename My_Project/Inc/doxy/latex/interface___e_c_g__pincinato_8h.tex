@@ -1,0 +1,143 @@
+\hypertarget{interface___e_c_g__pincinato_8h}{}\section{C\+:/\+Users/\+T\+H\+P/\+Desktop/\+Unibern/2018\+\_\+02/\+Subjects/\+Programming\+\_\+\+Microcontroller/\+Paeks/samples/\+My\+\_\+\+Project/\+Library/\+Library/inc/interface\+\_\+\+E\+C\+G\+\_\+pincinato.h File Reference}
+\label{interface___e_c_g__pincinato_8h}\index{C\+:/\+Users/\+T\+H\+P/\+Desktop/\+Unibern/2018\+\_\+02/\+Subjects/\+Programming\+\_\+\+Microcontroller/\+Paeks/samples/\+My\+\_\+\+Project/\+Library/\+Library/inc/interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{C\+:/\+Users/\+T\+H\+P/\+Desktop/\+Unibern/2018\+\_\+02/\+Subjects/\+Programming\+\_\+\+Microcontroller/\+Paeks/samples/\+My\+\_\+\+Project/\+Library/\+Library/inc/interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}}
+{\ttfamily \#include \char`\"{}filter\+\_\+math\+\_\+pincinato.\+h\char`\"{}}\newline
+Include dependency graph for interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{interface___e_c_g__pincinato_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{interface___e_c_g__pincinato_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_process_data______}{Process\+Data\+\_\+\+\_\+\+\_\+}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{interface___e_c_g__pincinato_8h_aa57c4fd3ea06cc9a9c4e8ecda369ed58}{low\+Filter\+Item\+Count}}~5
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_process_data______}{Process\+Data\+\_\+\+\_\+\+\_\+}} \mbox{\hyperlink{interface___e_c_g__pincinato_8h_a0d4dbbe3fe0df9624ee648db96d59005}{\+\_\+\+\_\+\+Process\+Data}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interface___e_c_g__pincinato_8h_a42cf80a0418fc0bc1a7d8b7a81e447c1}{init\+Filter\+HR}} (void)
+\begin{DoxyCompactList}\small\item\em init\+Filter\+HR not used \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___e_c_g__pincinato_8h_a29035cd5205e1edf4d8da7560c4ddc0a}{init\+E\+C\+G\+Interface}} (void)
+\begin{DoxyCompactList}\small\item\em init\+E\+C\+G\+Interface initialize variables, filter and A\+DC interafece \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___e_c_g__pincinato_8h_a3cb06487d698938baa28442d8c73d8b5}{start\+E\+C\+G\+Interface}} (void)
+\begin{DoxyCompactList}\small\item\em start\+E\+C\+G\+Interface start A\+DC interface \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface___e_c_g__pincinato_8h_adc2a8dc3b4aaa39924bf189917b58da0}{stop\+E\+C\+G\+Interface}} (void)
+\begin{DoxyCompactList}\small\item\em stop\+E\+C\+G\+Interface stop A\+DC interface \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{interface___e_c_g__pincinato_8h_ab0cf44dab74c9c9f45d72c025b6ff759}{get\+Heart\+Rate}} (void)
+\begin{DoxyCompactList}\small\item\em get\+Heart\+Rate Compute the Heart Rate based on the result of the A\+DC interfeace filter \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{interface___e_c_g__pincinato_8h_a84c265b1e5b00238aa8fbd94f32162cf}{update\+Heart\+Rate}} (float $\ast$destination\+Value)
+\begin{DoxyCompactList}\small\item\em update\+Heart\+Rate return the last computed Heart Rate \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{interface___e_c_g__pincinato_8h_aa57c4fd3ea06cc9a9c4e8ecda369ed58}\label{interface___e_c_g__pincinato_8h_aa57c4fd3ea06cc9a9c4e8ecda369ed58}} 
+\index{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}!low\+Filter\+Item\+Count@{low\+Filter\+Item\+Count}}
+\index{low\+Filter\+Item\+Count@{low\+Filter\+Item\+Count}!interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{low\+Filter\+Item\+Count}{lowFilterItemCount}}
+{\footnotesize\ttfamily \#define low\+Filter\+Item\+Count~5}
+
+
+
+Definition at line 17 of file interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h.
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{interface___e_c_g__pincinato_8h_a0d4dbbe3fe0df9624ee648db96d59005}\label{interface___e_c_g__pincinato_8h_a0d4dbbe3fe0df9624ee648db96d59005}} 
+\index{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}!\+\_\+\+\_\+\+Process\+Data@{\+\_\+\+\_\+\+Process\+Data}}
+\index{\+\_\+\+\_\+\+Process\+Data@{\+\_\+\+\_\+\+Process\+Data}!interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+\+Process\+Data}{\_\_ProcessData}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_process_data______}{Process\+Data\+\_\+\+\_\+\+\_\+}}  \mbox{\hyperlink{interface___e_c_g__pincinato_8h_a0d4dbbe3fe0df9624ee648db96d59005}{\+\_\+\+\_\+\+Process\+Data}}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{interface___e_c_g__pincinato_8h_ab0cf44dab74c9c9f45d72c025b6ff759}\label{interface___e_c_g__pincinato_8h_ab0cf44dab74c9c9f45d72c025b6ff759}} 
+\index{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}!get\+Heart\+Rate@{get\+Heart\+Rate}}
+\index{get\+Heart\+Rate@{get\+Heart\+Rate}!interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{get\+Heart\+Rate()}{getHeartRate()}}
+{\footnotesize\ttfamily float get\+Heart\+Rate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+get\+Heart\+Rate Compute the Heart Rate based on the result of the A\+DC interfeace filter 
+
+\begin{DoxyReturn}{Returns}
+float with the Heart Rate 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface___e_c_g__pincinato_8h_a29035cd5205e1edf4d8da7560c4ddc0a}\label{interface___e_c_g__pincinato_8h_a29035cd5205e1edf4d8da7560c4ddc0a}} 
+\index{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}!init\+E\+C\+G\+Interface@{init\+E\+C\+G\+Interface}}
+\index{init\+E\+C\+G\+Interface@{init\+E\+C\+G\+Interface}!interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{init\+E\+C\+G\+Interface()}{initECGInterface()}}
+{\footnotesize\ttfamily void init\+E\+C\+G\+Interface (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+init\+E\+C\+G\+Interface initialize variables, filter and A\+DC interafece 
+
+\mbox{\Hypertarget{interface___e_c_g__pincinato_8h_a42cf80a0418fc0bc1a7d8b7a81e447c1}\label{interface___e_c_g__pincinato_8h_a42cf80a0418fc0bc1a7d8b7a81e447c1}} 
+\index{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}!init\+Filter\+HR@{init\+Filter\+HR}}
+\index{init\+Filter\+HR@{init\+Filter\+HR}!interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{init\+Filter\+H\+R()}{initFilterHR()}}
+{\footnotesize\ttfamily void init\+Filter\+HR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+init\+Filter\+HR not used 
+
+\mbox{\Hypertarget{interface___e_c_g__pincinato_8h_a3cb06487d698938baa28442d8c73d8b5}\label{interface___e_c_g__pincinato_8h_a3cb06487d698938baa28442d8c73d8b5}} 
+\index{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}!start\+E\+C\+G\+Interface@{start\+E\+C\+G\+Interface}}
+\index{start\+E\+C\+G\+Interface@{start\+E\+C\+G\+Interface}!interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{start\+E\+C\+G\+Interface()}{startECGInterface()}}
+{\footnotesize\ttfamily void start\+E\+C\+G\+Interface (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+start\+E\+C\+G\+Interface start A\+DC interface 
+
+\mbox{\Hypertarget{interface___e_c_g__pincinato_8h_adc2a8dc3b4aaa39924bf189917b58da0}\label{interface___e_c_g__pincinato_8h_adc2a8dc3b4aaa39924bf189917b58da0}} 
+\index{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}!stop\+E\+C\+G\+Interface@{stop\+E\+C\+G\+Interface}}
+\index{stop\+E\+C\+G\+Interface@{stop\+E\+C\+G\+Interface}!interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{stop\+E\+C\+G\+Interface()}{stopECGInterface()}}
+{\footnotesize\ttfamily void stop\+E\+C\+G\+Interface (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+stop\+E\+C\+G\+Interface stop A\+DC interface 
+
+\mbox{\Hypertarget{interface___e_c_g__pincinato_8h_a84c265b1e5b00238aa8fbd94f32162cf}\label{interface___e_c_g__pincinato_8h_a84c265b1e5b00238aa8fbd94f32162cf}} 
+\index{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}!update\+Heart\+Rate@{update\+Heart\+Rate}}
+\index{update\+Heart\+Rate@{update\+Heart\+Rate}!interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h@{interface\+\_\+\+E\+C\+G\+\_\+pincinato.\+h}}
+\subsubsection{\texorpdfstring{update\+Heart\+Rate()}{updateHeartRate()}}
+{\footnotesize\ttfamily bool update\+Heart\+Rate (\begin{DoxyParamCaption}\item[{float $\ast$}]{destination\+Value }\end{DoxyParamCaption})}
+
+
+
+update\+Heart\+Rate return the last computed Heart Rate 
+
+
+\begin{DoxyParams}{Parameters}
+{\em destination\+Value} & float pointer that recieves the Heart Rate value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the value was updated , otherwise false 
+\end{DoxyReturn}

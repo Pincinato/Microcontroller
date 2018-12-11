@@ -1,0 +1,478 @@
+\hypertarget{ffconf_8h}{}\section{ffconf.\+h File Reference}
+\label{ffconf_8h}\index{ffconf.\+h@{ffconf.\+h}}
+{\ttfamily \#include \char`\"{}stm32f4xx\+\_\+hal.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for ffconf.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{ffconf_8h__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a45082af332369ed49492446a2d4d4c5a}{\+\_\+\+F\+F\+C\+O\+NF}}~68300	/$\ast$ Revision ID $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_afb8d35370cfe0c23832ac2d82e854ec6}{\+\_\+\+F\+S\+\_\+\+R\+E\+A\+D\+O\+N\+LY}}~0      /$\ast$ 0\+:Read/Write or 1\+:Read only $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_abefed32e4f049538ff7d7101cd8e3643}{\+\_\+\+F\+S\+\_\+\+M\+I\+N\+I\+M\+I\+ZE}}~0      /$\ast$ 0 to 3 $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_aaab0313f867bb008b64236239f5c2660}{\+\_\+\+U\+S\+E\+\_\+\+S\+T\+R\+F\+U\+NC}}~2      /$\ast$ 0\+:Disable or 1-\/2\+:Enable $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_abf97f960987a4a2be3b876cc45612b06}{\+\_\+\+U\+S\+E\+\_\+\+F\+I\+ND}}~0
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a62cdce547af40f0c1599698ee151bbd7}{\+\_\+\+U\+S\+E\+\_\+\+M\+K\+FS}}~1
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a85f4bdb33729ebdaaf9edeec948ac0e7}{\+\_\+\+U\+S\+E\+\_\+\+F\+A\+S\+T\+S\+E\+EK}}~1
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a89e14a6d520a11044b87a947e83a5acb}{\+\_\+\+U\+S\+E\+\_\+\+E\+X\+P\+A\+ND}}~0
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_adff028cbd80032c637fe1bb4e9b6fdfd}{\+\_\+\+U\+S\+E\+\_\+\+C\+H\+M\+OD}}~0
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a281a4fc4668e40fc896fc865f52f9421}{\+\_\+\+U\+S\+E\+\_\+\+L\+A\+B\+EL}}~0
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_ae49b948c9a92ff7082b88bd36f63d988}{\+\_\+\+U\+S\+E\+\_\+\+F\+O\+R\+W\+A\+RD}}~0
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_aaf9b5cee569d93f1ebe43ea70916569f}{\+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+GE}}~850
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_ae471cce284bf1888f9e991f5a811fc11}{\+\_\+\+U\+S\+E\+\_\+\+L\+FN}}~0    /$\ast$ 0 to 3 $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a14e73a5c703a586c614b3e40b849f82c}{\+\_\+\+M\+A\+X\+\_\+\+L\+FN}}~255  /$\ast$ Maximum L\+FN length to handle (12 to 255) $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a8dd7e7f166bb146970b394d53cf01d80}{\+\_\+\+L\+F\+N\+\_\+\+U\+N\+I\+C\+O\+DE}}~0 /$\ast$ 0\+:A\+N\+SI/O\+EM or 1\+:Unicode $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a36a53af63e05351562e34f082eec3f33}{\+\_\+\+S\+T\+R\+F\+\_\+\+E\+N\+C\+O\+DE}}~3
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a52faf11025401372f71e9d81905b7af4}{\+\_\+\+F\+S\+\_\+\+R\+P\+A\+TH}}~0 /$\ast$ 0 to 2 $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a366da9a40c8ceb3103a6b72ca02b9969}{\+\_\+\+V\+O\+L\+U\+M\+ES}}~1
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_ae89b13dba7638cb22b5587fcb335ffe3}{\+\_\+\+S\+T\+R\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+ID}}~0	/$\ast$ 0\+:Use only 0-\/9 for drive ID, 1\+:Use strings for drive ID $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a75c97afb8b06935364e42e3ec3fdc6c4}{\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+S\+T\+RS}}~\char`\"{}R\+AM\char`\"{},\char`\"{}N\+A\+ND\char`\"{},\char`\"{}CF\char`\"{},\char`\"{}S\+D1\char`\"{},\char`\"{}S\+D2\char`\"{},\char`\"{}U\+S\+B1\char`\"{},\char`\"{}U\+S\+B2\char`\"{},\char`\"{}U\+S\+B3\char`\"{}
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_adc02609ba893fe8706a2f8af0e3a3bb5}{\+\_\+\+M\+U\+L\+T\+I\+\_\+\+P\+A\+R\+T\+I\+T\+I\+ON}}~0 /$\ast$ 0\+:Single partition, 1\+:Multiple partition $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_ad03aa6d0e294709ae15898ee2c14dc3a}{\+\_\+\+M\+I\+N\+\_\+\+SS}}~512  /$\ast$ 512, 1024, 2048 or 4096 $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_ac271b697378912f17132cb9c7d0de024}{\+\_\+\+M\+A\+X\+\_\+\+SS}}~512  /$\ast$ 512, 1024, 2048 or 4096 $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a1f93ee7e57bb9d1221f34bfe80e18a61}{\+\_\+\+U\+S\+E\+\_\+\+T\+R\+IM}}~0
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_aaa0caa2085332d2febf0e392559ad138}{\+\_\+\+F\+S\+\_\+\+N\+O\+F\+S\+I\+N\+FO}}~0 /$\ast$ 0,1,2 or 3 $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_aa21b30e70610594d3af3a28832b584f6}{\+\_\+\+F\+S\+\_\+\+T\+I\+NY}}~0      /$\ast$ 0\+:Normal or 1\+:Tiny $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a104309dc91be2af9375923ed7b03490e}{\+\_\+\+F\+S\+\_\+\+E\+X\+F\+AT}}~0
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a851cace7cfb7afdb4e892230cc075bbd}{\+\_\+\+F\+S\+\_\+\+N\+O\+R\+TC}}~0
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a47a493ecf767b65199e1425795f1d61d}{\+\_\+\+N\+O\+R\+T\+C\+\_\+\+M\+ON}}~6
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_aa3cf28aa915cb9081fa1aa5b44858dd6}{\+\_\+\+N\+O\+R\+T\+C\+\_\+\+M\+D\+AY}}~4
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_add853644b85a7633bb782dfddb51bda5}{\+\_\+\+N\+O\+R\+T\+C\+\_\+\+Y\+E\+AR}}~2015
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a01410fcb45c2d2d2c5692c56d4f0a481}{\+\_\+\+F\+S\+\_\+\+L\+O\+CK}}~2     /$\ast$ 0\+:Disable or $>$=1\+:Enable $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a4e07d7fcae4241b73eb5b70fab5f676d}{\+\_\+\+F\+S\+\_\+\+R\+E\+E\+N\+T\+R\+A\+NT}}~0  /$\ast$ 0\+:Disable or 1\+:Enable $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a526e3cac667f53cc9a48507873348e60}{\+\_\+\+F\+S\+\_\+\+T\+I\+M\+E\+O\+UT}}~1000 /$\ast$ Timeout period in unit of time ticks $\ast$/
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a9a3f0670343e51652dd12b18fa90a9eb}{\+\_\+\+S\+Y\+N\+C\+\_\+t}}~os\+Semaphore\+Id
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_a1eee011a3d69ab8a3d199b985fe2ad36}{ff\+\_\+malloc}}~malloc
+\item 
+\#define \mbox{\hyperlink{ffconf_8h_ac7b5118894bfc43cc0d19f7290a7be0c}{ff\+\_\+free}}~free
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{ffconf_8h_aaf9b5cee569d93f1ebe43ea70916569f}\label{ffconf_8h_aaf9b5cee569d93f1ebe43ea70916569f}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+GE@{\+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+GE}}
+\index{\+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+GE@{\+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+GE}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+GE}{\_CODE\_PAGE}}
+{\footnotesize\ttfamily \#define \+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+GE~850}
+
+
+
+Definition at line 111 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a45082af332369ed49492446a2d4d4c5a}\label{ffconf_8h_a45082af332369ed49492446a2d4d4c5a}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+F\+F\+C\+O\+NF@{\+\_\+\+F\+F\+C\+O\+NF}}
+\index{\+\_\+\+F\+F\+C\+O\+NF@{\+\_\+\+F\+F\+C\+O\+NF}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+F\+F\+C\+O\+NF}{\_FFCONF}}
+{\footnotesize\ttfamily \#define \+\_\+\+F\+F\+C\+O\+NF~68300	/$\ast$ Revision ID $\ast$/}
+
+Fat\+Fs -\/ Generic F\+AT file system module R0.\+12c (C)ChaN, 2017
+
+This notice applies to any and all portions of this file that are not between comment pairs U\+S\+ER C\+O\+DE B\+E\+G\+IN and U\+S\+ER C\+O\+DE E\+ND. Other portions of this file, whether inserted by the user or by software development tools are owned by their respective copyright owners.
+
+Copyright (c) 2018 S\+T\+Microelectronics International N.\+V. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted, provided that the following conditions are met\+:
+
+
+\begin{DoxyEnumerate}
+\item Redistribution of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+\item Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+\item Neither the name of S\+T\+Microelectronics nor the names of other contributors to this software may be used to endorse or promote products derived from this software without specific written permission.
+\item This software, including modifications and/or derivative works of this software, must execute solely and exclusively on microcontroller or microprocessor devices manufactured by or for S\+T\+Microelectronics.
+\item Redistribution and use of this software other than as permitted under this license is void and will automatically terminate your rights under this license.
+\end{DoxyEnumerate}
+
+T\+H\+IS S\+O\+F\+T\+W\+A\+RE IS P\+R\+O\+V\+I\+D\+ED BY S\+T\+M\+I\+C\+R\+O\+E\+L\+E\+C\+T\+R\+O\+N\+I\+CS A\+ND C\+O\+N\+T\+R\+I\+B\+U\+T\+O\+RS \char`\"{}\+A\+S I\+S\char`\"{} A\+ND A\+NY E\+X\+P\+R\+E\+SS, I\+M\+P\+L\+I\+ED OR S\+T\+A\+T\+U\+T\+O\+RY W\+A\+R\+R\+A\+N\+T\+I\+ES, I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, T\+HE I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES OF M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY, F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE A\+ND N\+O\+N-\/\+I\+N\+F\+R\+I\+N\+G\+E\+M\+E\+NT OF T\+H\+I\+RD P\+A\+R\+TY I\+N\+T\+E\+L\+L\+E\+C\+T\+U\+AL P\+R\+O\+P\+E\+R\+TY R\+I\+G\+H\+TS A\+RE D\+I\+S\+C\+L\+A\+I\+M\+ED TO T\+HE F\+U\+L\+L\+E\+ST E\+X\+T\+E\+NT P\+E\+R\+M\+I\+T\+T\+ED BY L\+AW. IN NO E\+V\+E\+NT S\+H\+A\+LL S\+T\+M\+I\+C\+R\+O\+E\+L\+E\+C\+T\+R\+O\+N\+I\+CS OR C\+O\+N\+T\+R\+I\+B\+U\+T\+O\+RS BE L\+I\+A\+B\+LE F\+OR A\+NY D\+I\+R\+E\+CT, I\+N\+D\+I\+R\+E\+CT, I\+N\+C\+I\+D\+E\+N\+T\+AL, S\+P\+E\+C\+I\+AL, E\+X\+E\+M\+P\+L\+A\+RY, OR C\+O\+N\+S\+E\+Q\+U\+E\+N\+T\+I\+AL D\+A\+M\+A\+G\+ES (I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, P\+R\+O\+C\+U\+R\+E\+M\+E\+NT OF S\+U\+B\+S\+T\+I\+T\+U\+TE G\+O\+O\+DS OR S\+E\+R\+V\+I\+C\+ES; L\+O\+SS OF U\+SE, D\+A\+TA, OR P\+R\+O\+F\+I\+TS; OR B\+U\+S\+I\+N\+E\+SS I\+N\+T\+E\+R\+R\+U\+P\+T\+I\+ON) H\+O\+W\+E\+V\+ER C\+A\+U\+S\+ED A\+ND ON A\+NY T\+H\+E\+O\+RY OF L\+I\+A\+B\+I\+L\+I\+TY, W\+H\+E\+T\+H\+ER IN C\+O\+N\+T\+R\+A\+CT, S\+T\+R\+I\+CT L\+I\+A\+B\+I\+L\+I\+TY, OR T\+O\+RT (I\+N\+C\+L\+U\+D\+I\+NG N\+E\+G\+L\+I\+G\+E\+N\+CE OR O\+T\+H\+E\+R\+W\+I\+SE) A\+R\+I\+S\+I\+NG IN A\+NY W\+AY O\+UT OF T\+HE U\+SE OF T\+H\+IS S\+O\+F\+T\+W\+A\+RE, E\+V\+EN IF A\+D\+V\+I\+S\+ED OF T\+HE P\+O\+S\+S\+I\+B\+I\+L\+I\+TY OF S\+U\+CH D\+A\+M\+A\+GE. 
+
+Definition at line 49 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a104309dc91be2af9375923ed7b03490e}\label{ffconf_8h_a104309dc91be2af9375923ed7b03490e}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+F\+S\+\_\+\+E\+X\+F\+AT@{\+\_\+\+F\+S\+\_\+\+E\+X\+F\+AT}}
+\index{\+\_\+\+F\+S\+\_\+\+E\+X\+F\+AT@{\+\_\+\+F\+S\+\_\+\+E\+X\+F\+AT}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+F\+S\+\_\+\+E\+X\+F\+AT}{\_FS\_EXFAT}}
+{\footnotesize\ttfamily \#define \+\_\+\+F\+S\+\_\+\+E\+X\+F\+AT~0}
+
+
+
+Definition at line 239 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a01410fcb45c2d2d2c5692c56d4f0a481}\label{ffconf_8h_a01410fcb45c2d2d2c5692c56d4f0a481}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+F\+S\+\_\+\+L\+O\+CK@{\+\_\+\+F\+S\+\_\+\+L\+O\+CK}}
+\index{\+\_\+\+F\+S\+\_\+\+L\+O\+CK@{\+\_\+\+F\+S\+\_\+\+L\+O\+CK}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+F\+S\+\_\+\+L\+O\+CK}{\_FS\_LOCK}}
+{\footnotesize\ttfamily \#define \+\_\+\+F\+S\+\_\+\+L\+O\+CK~2     /$\ast$ 0\+:Disable or $>$=1\+:Enable $\ast$/}
+
+
+
+Definition at line 257 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_abefed32e4f049538ff7d7101cd8e3643}\label{ffconf_8h_abefed32e4f049538ff7d7101cd8e3643}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+F\+S\+\_\+\+M\+I\+N\+I\+M\+I\+ZE@{\+\_\+\+F\+S\+\_\+\+M\+I\+N\+I\+M\+I\+ZE}}
+\index{\+\_\+\+F\+S\+\_\+\+M\+I\+N\+I\+M\+I\+ZE@{\+\_\+\+F\+S\+\_\+\+M\+I\+N\+I\+M\+I\+ZE}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+F\+S\+\_\+\+M\+I\+N\+I\+M\+I\+ZE}{\_FS\_MINIMIZE}}
+{\footnotesize\ttfamily \#define \+\_\+\+F\+S\+\_\+\+M\+I\+N\+I\+M\+I\+ZE~0      /$\ast$ 0 to 3 $\ast$/}
+
+
+
+Definition at line 66 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_aaa0caa2085332d2febf0e392559ad138}\label{ffconf_8h_aaa0caa2085332d2febf0e392559ad138}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+F\+S\+\_\+\+N\+O\+F\+S\+I\+N\+FO@{\+\_\+\+F\+S\+\_\+\+N\+O\+F\+S\+I\+N\+FO}}
+\index{\+\_\+\+F\+S\+\_\+\+N\+O\+F\+S\+I\+N\+FO@{\+\_\+\+F\+S\+\_\+\+N\+O\+F\+S\+I\+N\+FO}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+F\+S\+\_\+\+N\+O\+F\+S\+I\+N\+FO}{\_FS\_NOFSINFO}}
+{\footnotesize\ttfamily \#define \+\_\+\+F\+S\+\_\+\+N\+O\+F\+S\+I\+N\+FO~0 /$\ast$ 0,1,2 or 3 $\ast$/}
+
+
+
+Definition at line 218 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a851cace7cfb7afdb4e892230cc075bbd}\label{ffconf_8h_a851cace7cfb7afdb4e892230cc075bbd}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+F\+S\+\_\+\+N\+O\+R\+TC@{\+\_\+\+F\+S\+\_\+\+N\+O\+R\+TC}}
+\index{\+\_\+\+F\+S\+\_\+\+N\+O\+R\+TC@{\+\_\+\+F\+S\+\_\+\+N\+O\+R\+TC}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+F\+S\+\_\+\+N\+O\+R\+TC}{\_FS\_NORTC}}
+{\footnotesize\ttfamily \#define \+\_\+\+F\+S\+\_\+\+N\+O\+R\+TC~0}
+
+
+
+Definition at line 244 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_afb8d35370cfe0c23832ac2d82e854ec6}\label{ffconf_8h_afb8d35370cfe0c23832ac2d82e854ec6}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+F\+S\+\_\+\+R\+E\+A\+D\+O\+N\+LY@{\+\_\+\+F\+S\+\_\+\+R\+E\+A\+D\+O\+N\+LY}}
+\index{\+\_\+\+F\+S\+\_\+\+R\+E\+A\+D\+O\+N\+LY@{\+\_\+\+F\+S\+\_\+\+R\+E\+A\+D\+O\+N\+LY}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+F\+S\+\_\+\+R\+E\+A\+D\+O\+N\+LY}{\_FS\_READONLY}}
+{\footnotesize\ttfamily \#define \+\_\+\+F\+S\+\_\+\+R\+E\+A\+D\+O\+N\+LY~0      /$\ast$ 0\+:Read/Write or 1\+:Read only $\ast$/}
+
+
+
+Definition at line 60 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a4e07d7fcae4241b73eb5b70fab5f676d}\label{ffconf_8h_a4e07d7fcae4241b73eb5b70fab5f676d}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+F\+S\+\_\+\+R\+E\+E\+N\+T\+R\+A\+NT@{\+\_\+\+F\+S\+\_\+\+R\+E\+E\+N\+T\+R\+A\+NT}}
+\index{\+\_\+\+F\+S\+\_\+\+R\+E\+E\+N\+T\+R\+A\+NT@{\+\_\+\+F\+S\+\_\+\+R\+E\+E\+N\+T\+R\+A\+NT}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+F\+S\+\_\+\+R\+E\+E\+N\+T\+R\+A\+NT}{\_FS\_REENTRANT}}
+{\footnotesize\ttfamily \#define \+\_\+\+F\+S\+\_\+\+R\+E\+E\+N\+T\+R\+A\+NT~0  /$\ast$ 0\+:Disable or 1\+:Enable $\ast$/}
+
+
+
+Definition at line 268 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a52faf11025401372f71e9d81905b7af4}\label{ffconf_8h_a52faf11025401372f71e9d81905b7af4}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+F\+S\+\_\+\+R\+P\+A\+TH@{\+\_\+\+F\+S\+\_\+\+R\+P\+A\+TH}}
+\index{\+\_\+\+F\+S\+\_\+\+R\+P\+A\+TH@{\+\_\+\+F\+S\+\_\+\+R\+P\+A\+TH}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+F\+S\+\_\+\+R\+P\+A\+TH}{\_FS\_RPATH}}
+{\footnotesize\ttfamily \#define \+\_\+\+F\+S\+\_\+\+R\+P\+A\+TH~0 /$\ast$ 0 to 2 $\ast$/}
+
+
+
+Definition at line 172 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a526e3cac667f53cc9a48507873348e60}\label{ffconf_8h_a526e3cac667f53cc9a48507873348e60}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+F\+S\+\_\+\+T\+I\+M\+E\+O\+UT@{\+\_\+\+F\+S\+\_\+\+T\+I\+M\+E\+O\+UT}}
+\index{\+\_\+\+F\+S\+\_\+\+T\+I\+M\+E\+O\+UT@{\+\_\+\+F\+S\+\_\+\+T\+I\+M\+E\+O\+UT}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+F\+S\+\_\+\+T\+I\+M\+E\+O\+UT}{\_FS\_TIMEOUT}}
+{\footnotesize\ttfamily \#define \+\_\+\+F\+S\+\_\+\+T\+I\+M\+E\+O\+UT~1000 /$\ast$ Timeout period in unit of time ticks $\ast$/}
+
+
+
+Definition at line 269 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_aa21b30e70610594d3af3a28832b584f6}\label{ffconf_8h_aa21b30e70610594d3af3a28832b584f6}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+F\+S\+\_\+\+T\+I\+NY@{\+\_\+\+F\+S\+\_\+\+T\+I\+NY}}
+\index{\+\_\+\+F\+S\+\_\+\+T\+I\+NY@{\+\_\+\+F\+S\+\_\+\+T\+I\+NY}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+F\+S\+\_\+\+T\+I\+NY}{\_FS\_TINY}}
+{\footnotesize\ttfamily \#define \+\_\+\+F\+S\+\_\+\+T\+I\+NY~0      /$\ast$ 0\+:Normal or 1\+:Tiny $\ast$/}
+
+
+
+Definition at line 233 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a8dd7e7f166bb146970b394d53cf01d80}\label{ffconf_8h_a8dd7e7f166bb146970b394d53cf01d80}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+L\+F\+N\+\_\+\+U\+N\+I\+C\+O\+DE@{\+\_\+\+L\+F\+N\+\_\+\+U\+N\+I\+C\+O\+DE}}
+\index{\+\_\+\+L\+F\+N\+\_\+\+U\+N\+I\+C\+O\+DE@{\+\_\+\+L\+F\+N\+\_\+\+U\+N\+I\+C\+O\+DE}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+L\+F\+N\+\_\+\+U\+N\+I\+C\+O\+DE}{\_LFN\_UNICODE}}
+{\footnotesize\ttfamily \#define \+\_\+\+L\+F\+N\+\_\+\+U\+N\+I\+C\+O\+DE~0 /$\ast$ 0\+:A\+N\+SI/O\+EM or 1\+:Unicode $\ast$/}
+
+
+
+Definition at line 156 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a14e73a5c703a586c614b3e40b849f82c}\label{ffconf_8h_a14e73a5c703a586c614b3e40b849f82c}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+M\+A\+X\+\_\+\+L\+FN@{\+\_\+\+M\+A\+X\+\_\+\+L\+FN}}
+\index{\+\_\+\+M\+A\+X\+\_\+\+L\+FN@{\+\_\+\+M\+A\+X\+\_\+\+L\+FN}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+M\+A\+X\+\_\+\+L\+FN}{\_MAX\_LFN}}
+{\footnotesize\ttfamily \#define \+\_\+\+M\+A\+X\+\_\+\+L\+FN~255  /$\ast$ Maximum L\+FN length to handle (12 to 255) $\ast$/}
+
+
+
+Definition at line 140 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_ac271b697378912f17132cb9c7d0de024}\label{ffconf_8h_ac271b697378912f17132cb9c7d0de024}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+M\+A\+X\+\_\+\+SS@{\+\_\+\+M\+A\+X\+\_\+\+SS}}
+\index{\+\_\+\+M\+A\+X\+\_\+\+SS@{\+\_\+\+M\+A\+X\+\_\+\+SS}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+M\+A\+X\+\_\+\+SS}{\_MAX\_SS}}
+{\footnotesize\ttfamily \#define \+\_\+\+M\+A\+X\+\_\+\+SS~512  /$\ast$ 512, 1024, 2048 or 4096 $\ast$/}
+
+
+
+Definition at line 205 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_ad03aa6d0e294709ae15898ee2c14dc3a}\label{ffconf_8h_ad03aa6d0e294709ae15898ee2c14dc3a}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+M\+I\+N\+\_\+\+SS@{\+\_\+\+M\+I\+N\+\_\+\+SS}}
+\index{\+\_\+\+M\+I\+N\+\_\+\+SS@{\+\_\+\+M\+I\+N\+\_\+\+SS}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+M\+I\+N\+\_\+\+SS}{\_MIN\_SS}}
+{\footnotesize\ttfamily \#define \+\_\+\+M\+I\+N\+\_\+\+SS~512  /$\ast$ 512, 1024, 2048 or 4096 $\ast$/}
+
+
+
+Definition at line 204 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_adc02609ba893fe8706a2f8af0e3a3bb5}\label{ffconf_8h_adc02609ba893fe8706a2f8af0e3a3bb5}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+M\+U\+L\+T\+I\+\_\+\+P\+A\+R\+T\+I\+T\+I\+ON@{\+\_\+\+M\+U\+L\+T\+I\+\_\+\+P\+A\+R\+T\+I\+T\+I\+ON}}
+\index{\+\_\+\+M\+U\+L\+T\+I\+\_\+\+P\+A\+R\+T\+I\+T\+I\+ON@{\+\_\+\+M\+U\+L\+T\+I\+\_\+\+P\+A\+R\+T\+I\+T\+I\+ON}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+M\+U\+L\+T\+I\+\_\+\+P\+A\+R\+T\+I\+T\+I\+ON}{\_MULTI\_PARTITION}}
+{\footnotesize\ttfamily \#define \+\_\+\+M\+U\+L\+T\+I\+\_\+\+P\+A\+R\+T\+I\+T\+I\+ON~0 /$\ast$ 0\+:Single partition, 1\+:Multiple partition $\ast$/}
+
+
+
+Definition at line 197 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_aa3cf28aa915cb9081fa1aa5b44858dd6}\label{ffconf_8h_aa3cf28aa915cb9081fa1aa5b44858dd6}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+N\+O\+R\+T\+C\+\_\+\+M\+D\+AY@{\+\_\+\+N\+O\+R\+T\+C\+\_\+\+M\+D\+AY}}
+\index{\+\_\+\+N\+O\+R\+T\+C\+\_\+\+M\+D\+AY@{\+\_\+\+N\+O\+R\+T\+C\+\_\+\+M\+D\+AY}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+N\+O\+R\+T\+C\+\_\+\+M\+D\+AY}{\_NORTC\_MDAY}}
+{\footnotesize\ttfamily \#define \+\_\+\+N\+O\+R\+T\+C\+\_\+\+M\+D\+AY~4}
+
+
+
+Definition at line 246 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a47a493ecf767b65199e1425795f1d61d}\label{ffconf_8h_a47a493ecf767b65199e1425795f1d61d}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+N\+O\+R\+T\+C\+\_\+\+M\+ON@{\+\_\+\+N\+O\+R\+T\+C\+\_\+\+M\+ON}}
+\index{\+\_\+\+N\+O\+R\+T\+C\+\_\+\+M\+ON@{\+\_\+\+N\+O\+R\+T\+C\+\_\+\+M\+ON}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+N\+O\+R\+T\+C\+\_\+\+M\+ON}{\_NORTC\_MON}}
+{\footnotesize\ttfamily \#define \+\_\+\+N\+O\+R\+T\+C\+\_\+\+M\+ON~6}
+
+
+
+Definition at line 245 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_add853644b85a7633bb782dfddb51bda5}\label{ffconf_8h_add853644b85a7633bb782dfddb51bda5}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+N\+O\+R\+T\+C\+\_\+\+Y\+E\+AR@{\+\_\+\+N\+O\+R\+T\+C\+\_\+\+Y\+E\+AR}}
+\index{\+\_\+\+N\+O\+R\+T\+C\+\_\+\+Y\+E\+AR@{\+\_\+\+N\+O\+R\+T\+C\+\_\+\+Y\+E\+AR}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+N\+O\+R\+T\+C\+\_\+\+Y\+E\+AR}{\_NORTC\_YEAR}}
+{\footnotesize\ttfamily \#define \+\_\+\+N\+O\+R\+T\+C\+\_\+\+Y\+E\+AR~2015}
+
+
+
+Definition at line 247 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_ae89b13dba7638cb22b5587fcb335ffe3}\label{ffconf_8h_ae89b13dba7638cb22b5587fcb335ffe3}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+S\+T\+R\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+ID@{\+\_\+\+S\+T\+R\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+ID}}
+\index{\+\_\+\+S\+T\+R\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+ID@{\+\_\+\+S\+T\+R\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+ID}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+S\+T\+R\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+ID}{\_STR\_VOLUME\_ID}}
+{\footnotesize\ttfamily \#define \+\_\+\+S\+T\+R\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+ID~0	/$\ast$ 0\+:Use only 0-\/9 for drive ID, 1\+:Use strings for drive ID $\ast$/}
+
+
+
+Definition at line 188 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a36a53af63e05351562e34f082eec3f33}\label{ffconf_8h_a36a53af63e05351562e34f082eec3f33}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+S\+T\+R\+F\+\_\+\+E\+N\+C\+O\+DE@{\+\_\+\+S\+T\+R\+F\+\_\+\+E\+N\+C\+O\+DE}}
+\index{\+\_\+\+S\+T\+R\+F\+\_\+\+E\+N\+C\+O\+DE@{\+\_\+\+S\+T\+R\+F\+\_\+\+E\+N\+C\+O\+DE}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+S\+T\+R\+F\+\_\+\+E\+N\+C\+O\+DE}{\_STRF\_ENCODE}}
+{\footnotesize\ttfamily \#define \+\_\+\+S\+T\+R\+F\+\_\+\+E\+N\+C\+O\+DE~3}
+
+
+
+Definition at line 161 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a9a3f0670343e51652dd12b18fa90a9eb}\label{ffconf_8h_a9a3f0670343e51652dd12b18fa90a9eb}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+S\+Y\+N\+C\+\_\+t@{\+\_\+\+S\+Y\+N\+C\+\_\+t}}
+\index{\+\_\+\+S\+Y\+N\+C\+\_\+t@{\+\_\+\+S\+Y\+N\+C\+\_\+t}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+S\+Y\+N\+C\+\_\+t}{\_SYNC\_t}}
+{\footnotesize\ttfamily \#define \+\_\+\+S\+Y\+N\+C\+\_\+t~os\+Semaphore\+Id}
+
+
+
+Definition at line 270 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_adff028cbd80032c637fe1bb4e9b6fdfd}\label{ffconf_8h_adff028cbd80032c637fe1bb4e9b6fdfd}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+U\+S\+E\+\_\+\+C\+H\+M\+OD@{\+\_\+\+U\+S\+E\+\_\+\+C\+H\+M\+OD}}
+\index{\+\_\+\+U\+S\+E\+\_\+\+C\+H\+M\+OD@{\+\_\+\+U\+S\+E\+\_\+\+C\+H\+M\+OD}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+S\+E\+\_\+\+C\+H\+M\+OD}{\_USE\_CHMOD}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+S\+E\+\_\+\+C\+H\+M\+OD~0}
+
+
+
+Definition at line 96 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a89e14a6d520a11044b87a947e83a5acb}\label{ffconf_8h_a89e14a6d520a11044b87a947e83a5acb}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+U\+S\+E\+\_\+\+E\+X\+P\+A\+ND@{\+\_\+\+U\+S\+E\+\_\+\+E\+X\+P\+A\+ND}}
+\index{\+\_\+\+U\+S\+E\+\_\+\+E\+X\+P\+A\+ND@{\+\_\+\+U\+S\+E\+\_\+\+E\+X\+P\+A\+ND}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+S\+E\+\_\+\+E\+X\+P\+A\+ND}{\_USE\_EXPAND}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+S\+E\+\_\+\+E\+X\+P\+A\+ND~0}
+
+
+
+Definition at line 93 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a85f4bdb33729ebdaaf9edeec948ac0e7}\label{ffconf_8h_a85f4bdb33729ebdaaf9edeec948ac0e7}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+U\+S\+E\+\_\+\+F\+A\+S\+T\+S\+E\+EK@{\+\_\+\+U\+S\+E\+\_\+\+F\+A\+S\+T\+S\+E\+EK}}
+\index{\+\_\+\+U\+S\+E\+\_\+\+F\+A\+S\+T\+S\+E\+EK@{\+\_\+\+U\+S\+E\+\_\+\+F\+A\+S\+T\+S\+E\+EK}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+S\+E\+\_\+\+F\+A\+S\+T\+S\+E\+EK}{\_USE\_FASTSEEK}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+S\+E\+\_\+\+F\+A\+S\+T\+S\+E\+EK~1}
+
+
+
+Definition at line 90 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_abf97f960987a4a2be3b876cc45612b06}\label{ffconf_8h_abf97f960987a4a2be3b876cc45612b06}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+U\+S\+E\+\_\+\+F\+I\+ND@{\+\_\+\+U\+S\+E\+\_\+\+F\+I\+ND}}
+\index{\+\_\+\+U\+S\+E\+\_\+\+F\+I\+ND@{\+\_\+\+U\+S\+E\+\_\+\+F\+I\+ND}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+S\+E\+\_\+\+F\+I\+ND}{\_USE\_FIND}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+S\+E\+\_\+\+F\+I\+ND~0}
+
+
+
+Definition at line 83 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_ae49b948c9a92ff7082b88bd36f63d988}\label{ffconf_8h_ae49b948c9a92ff7082b88bd36f63d988}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+U\+S\+E\+\_\+\+F\+O\+R\+W\+A\+RD@{\+\_\+\+U\+S\+E\+\_\+\+F\+O\+R\+W\+A\+RD}}
+\index{\+\_\+\+U\+S\+E\+\_\+\+F\+O\+R\+W\+A\+RD@{\+\_\+\+U\+S\+E\+\_\+\+F\+O\+R\+W\+A\+RD}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+S\+E\+\_\+\+F\+O\+R\+W\+A\+RD}{\_USE\_FORWARD}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+S\+E\+\_\+\+F\+O\+R\+W\+A\+RD~0}
+
+
+
+Definition at line 104 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a281a4fc4668e40fc896fc865f52f9421}\label{ffconf_8h_a281a4fc4668e40fc896fc865f52f9421}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+U\+S\+E\+\_\+\+L\+A\+B\+EL@{\+\_\+\+U\+S\+E\+\_\+\+L\+A\+B\+EL}}
+\index{\+\_\+\+U\+S\+E\+\_\+\+L\+A\+B\+EL@{\+\_\+\+U\+S\+E\+\_\+\+L\+A\+B\+EL}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+S\+E\+\_\+\+L\+A\+B\+EL}{\_USE\_LABEL}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+S\+E\+\_\+\+L\+A\+B\+EL~0}
+
+
+
+Definition at line 100 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_ae471cce284bf1888f9e991f5a811fc11}\label{ffconf_8h_ae471cce284bf1888f9e991f5a811fc11}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+U\+S\+E\+\_\+\+L\+FN@{\+\_\+\+U\+S\+E\+\_\+\+L\+FN}}
+\index{\+\_\+\+U\+S\+E\+\_\+\+L\+FN@{\+\_\+\+U\+S\+E\+\_\+\+L\+FN}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+S\+E\+\_\+\+L\+FN}{\_USE\_LFN}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+S\+E\+\_\+\+L\+FN~0    /$\ast$ 0 to 3 $\ast$/}
+
+
+
+Definition at line 139 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a62cdce547af40f0c1599698ee151bbd7}\label{ffconf_8h_a62cdce547af40f0c1599698ee151bbd7}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+U\+S\+E\+\_\+\+M\+K\+FS@{\+\_\+\+U\+S\+E\+\_\+\+M\+K\+FS}}
+\index{\+\_\+\+U\+S\+E\+\_\+\+M\+K\+FS@{\+\_\+\+U\+S\+E\+\_\+\+M\+K\+FS}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+S\+E\+\_\+\+M\+K\+FS}{\_USE\_MKFS}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+S\+E\+\_\+\+M\+K\+FS~1}
+
+
+
+Definition at line 87 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_aaab0313f867bb008b64236239f5c2660}\label{ffconf_8h_aaab0313f867bb008b64236239f5c2660}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+U\+S\+E\+\_\+\+S\+T\+R\+F\+U\+NC@{\+\_\+\+U\+S\+E\+\_\+\+S\+T\+R\+F\+U\+NC}}
+\index{\+\_\+\+U\+S\+E\+\_\+\+S\+T\+R\+F\+U\+NC@{\+\_\+\+U\+S\+E\+\_\+\+S\+T\+R\+F\+U\+NC}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+S\+E\+\_\+\+S\+T\+R\+F\+U\+NC}{\_USE\_STRFUNC}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+S\+E\+\_\+\+S\+T\+R\+F\+U\+NC~2      /$\ast$ 0\+:Disable or 1-\/2\+:Enable $\ast$/}
+
+
+
+Definition at line 75 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a1f93ee7e57bb9d1221f34bfe80e18a61}\label{ffconf_8h_a1f93ee7e57bb9d1221f34bfe80e18a61}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+U\+S\+E\+\_\+\+T\+R\+IM@{\+\_\+\+U\+S\+E\+\_\+\+T\+R\+IM}}
+\index{\+\_\+\+U\+S\+E\+\_\+\+T\+R\+IM@{\+\_\+\+U\+S\+E\+\_\+\+T\+R\+IM}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+S\+E\+\_\+\+T\+R\+IM}{\_USE\_TRIM}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+S\+E\+\_\+\+T\+R\+IM~0}
+
+
+
+Definition at line 213 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a75c97afb8b06935364e42e3ec3fdc6c4}\label{ffconf_8h_a75c97afb8b06935364e42e3ec3fdc6c4}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+S\+T\+RS@{\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+S\+T\+RS}}
+\index{\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+S\+T\+RS@{\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+S\+T\+RS}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+S\+T\+RS}{\_VOLUME\_STRS}}
+{\footnotesize\ttfamily \#define \+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+S\+T\+RS~\char`\"{}R\+AM\char`\"{},\char`\"{}N\+A\+ND\char`\"{},\char`\"{}CF\char`\"{},\char`\"{}S\+D1\char`\"{},\char`\"{}S\+D2\char`\"{},\char`\"{}U\+S\+B1\char`\"{},\char`\"{}U\+S\+B2\char`\"{},\char`\"{}U\+S\+B3\char`\"{}}
+
+
+
+Definition at line 189 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a366da9a40c8ceb3103a6b72ca02b9969}\label{ffconf_8h_a366da9a40c8ceb3103a6b72ca02b9969}} 
+\index{ffconf.\+h@{ffconf.\+h}!\+\_\+\+V\+O\+L\+U\+M\+ES@{\+\_\+\+V\+O\+L\+U\+M\+ES}}
+\index{\+\_\+\+V\+O\+L\+U\+M\+ES@{\+\_\+\+V\+O\+L\+U\+M\+ES}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+V\+O\+L\+U\+M\+ES}{\_VOLUMES}}
+{\footnotesize\ttfamily \#define \+\_\+\+V\+O\+L\+U\+M\+ES~1}
+
+
+
+Definition at line 184 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_ac7b5118894bfc43cc0d19f7290a7be0c}\label{ffconf_8h_ac7b5118894bfc43cc0d19f7290a7be0c}} 
+\index{ffconf.\+h@{ffconf.\+h}!ff\+\_\+free@{ff\+\_\+free}}
+\index{ff\+\_\+free@{ff\+\_\+free}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{ff\+\_\+free}{ff\_free}}
+{\footnotesize\ttfamily \#define ff\+\_\+free~free}
+
+
+
+Definition at line 292 of file ffconf.\+h.
+
+\mbox{\Hypertarget{ffconf_8h_a1eee011a3d69ab8a3d199b985fe2ad36}\label{ffconf_8h_a1eee011a3d69ab8a3d199b985fe2ad36}} 
+\index{ffconf.\+h@{ffconf.\+h}!ff\+\_\+malloc@{ff\+\_\+malloc}}
+\index{ff\+\_\+malloc@{ff\+\_\+malloc}!ffconf.\+h@{ffconf.\+h}}
+\subsubsection{\texorpdfstring{ff\+\_\+malloc}{ff\_malloc}}
+{\footnotesize\ttfamily \#define ff\+\_\+malloc~malloc}
+
+
+
+Definition at line 291 of file ffconf.\+h.
+

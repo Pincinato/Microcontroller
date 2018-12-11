@@ -1,0 +1,11 @@
+<map id="Inc/gpio.h" name="Inc/gpio.h">
+<area shape="rect" id="node2" href="$tmc260__driver_8h.html" title="Library/Library/inc\l/tmc260_driver.h" alt="" coords="81,80,206,121"/>
+<area shape="rect" id="node5" href="$adc_8c.html" title="Src/adc.c" alt="" coords="231,87,309,114"/>
+<area shape="rect" id="node6" href="$gpio_8c.html" title="Src/gpio.c" alt="" coords="333,87,415,114"/>
+<area shape="rect" id="node7" href="$i2c_8c.html" title="Src/i2c.c" alt="" coords="439,87,514,114"/>
+<area shape="rect" id="node8" href="$main_8c.html" title=": Main program body " alt="" coords="538,87,623,114"/>
+<area shape="rect" id="node9" href="$spi_8c.html" title="Src/spi.c" alt="" coords="647,87,722,114"/>
+<area shape="rect" id="node10" href="$usart_8c.html" title="Src/usart.c" alt="" coords="747,87,833,114"/>
+<area shape="rect" id="node3" href="$tmc260_8c.html" title="Library/Library/src\l/tmc260.c" alt="" coords="5,169,132,211"/>
+<area shape="rect" id="node4" href="$tmc260__driver_8c.html" title="Library/Library/src\l/tmc260_driver.c" alt="" coords="156,169,283,211"/>
+</map>

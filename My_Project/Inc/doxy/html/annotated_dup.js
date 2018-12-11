@@ -1,0 +1,26 @@
+var annotated_dup =
+[
+    [ "_IntegratalData_", "struct___integratal_data__.html", "struct___integratal_data__" ],
+    [ "AverageFilter_", "struct_average_filter__.html", "struct_average_filter__" ],
+    [ "BiquadsFilter_", "struct_biquads_filter__.html", "struct_biquads_filter__" ],
+    [ "Button_", "struct_button__.html", "struct_button__" ],
+    [ "CoolStepControlRegister_", "union_cool_step_control_register__.html", "union_cool_step_control_register__" ],
+    [ "DataBuffer", "struct_data_buffer.html", "struct_data_buffer" ],
+    [ "DataBuffer_", "struct_data_buffer__.html", "struct_data_buffer__" ],
+    [ "DataProcess___", "struct_data_process______.html", "struct_data_process______" ],
+    [ "InputFilter_", "struct_input_filter__.html", "struct_input_filter__" ],
+    [ "Joystick_", "struct_joystick__.html", "struct_joystick__" ],
+    [ "Menu_", "struct_menu__.html", "struct_menu__" ],
+    [ "MenuEntry_", "struct_menu_entry__.html", "struct_menu_entry__" ],
+    [ "ProcessData_", "struct_process_data__.html", "struct_process_data__" ],
+    [ "ProcessData__", "struct_process_data____.html", "struct_process_data____" ],
+    [ "ProcessData___", "struct_process_data______.html", "struct_process_data______" ],
+    [ "Table", "struct_table.html", "struct_table" ],
+    [ "tmc260_ChopperControlRegister_", "uniontmc260___chopper_control_register__.html", "uniontmc260___chopper_control_register__" ],
+    [ "tmc260_Device_", "structtmc260___device__.html", "structtmc260___device__" ],
+    [ "tmc260_DriverConfigurationRegister_", "uniontmc260___driver_configuration_register__.html", "uniontmc260___driver_configuration_register__" ],
+    [ "tmc260_DriverControlRegister_", "uniontmc260___driver_control_register__.html", "uniontmc260___driver_control_register__" ],
+    [ "tmc260_ReadResponse_", "uniontmc260___read_response__.html", "uniontmc260___read_response__" ],
+    [ "tmc260_RegisterSet_", "structtmc260___register_set__.html", "structtmc260___register_set__" ],
+    [ "tmc260_StallGuard2ControlRegister_", "uniontmc260___stall_guard2_control_register__.html", "uniontmc260___stall_guard2_control_register__" ]
+];

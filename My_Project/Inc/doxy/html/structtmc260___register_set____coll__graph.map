@@ -1,0 +1,8 @@
+<map id="tmc260_RegisterSet_" name="tmc260_RegisterSet_">
+<area shape="rect" id="node2" href="$uniontmc260___read_response__.html" title="tmc260_ReadResponse_" alt="" coords="30,5,197,32"/>
+<area shape="rect" id="node3" href="$union_cool_step_control_register__.html" title="CoolStepControlRegister_" alt="" coords="28,56,199,83"/>
+<area shape="rect" id="node4" href="$uniontmc260___chopper_control_register__.html" title="tmc260_ChopperControlRegister_" alt="" coords="5,107,221,133"/>
+<area shape="rect" id="node5" href="$uniontmc260___driver_control_register__.html" title="tmc260_DriverControlRegister_" alt="" coords="13,157,213,184"/>
+<area shape="rect" id="node6" href="$uniontmc260___driver_configuration_register__.html" title="tmc260_DriverConfiguration\lRegister_" alt="" coords="24,209,203,250"/>
+<area shape="rect" id="node7" href="$uniontmc260___stall_guard2_control_register__.html" title="tmc260_StallGuard2Control\lRegister_" alt="" coords="23,274,204,315"/>
+</map>

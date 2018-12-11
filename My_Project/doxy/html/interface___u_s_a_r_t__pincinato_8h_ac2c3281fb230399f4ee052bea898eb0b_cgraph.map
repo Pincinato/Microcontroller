@@ -1,0 +1,9 @@
+<map id="initInterface" name="initInterface">
+<area shape="rect" id="node2" href="$usart_8h.html#a052088fe5bb3f807a4b2502e664fd4fd" title="MX_USART2_UART_Init" alt="" coords="141,5,304,32"/>
+<area shape="rect" id="node4" href="$dma_8h.html#a323249dac769f9855c10b4ec9446b707" title="MX_DMA_Init" alt="" coords="173,56,273,83"/>
+<area shape="rect" id="node5" href="$interface___u_s_a_r_t__pincinato_8c.html#ac27270939a09a2eff9e489bc36164966" title="setUart set the local *Uart " alt="" coords="191,107,255,133"/>
+<area shape="rect" id="node6" href="$interface___u_s_a_r_t__pincinato_8c.html#a2146c3905247040a35d456ae5544afdb" title="setTable set local Table " alt="" coords="187,157,258,184"/>
+<area shape="rect" id="node7" href="$interface___u_s_a_r_t__pincinato_8c.html#a5e7bd52dc7b42b00ee51e11599d0d2a5" title="checkTable Check if a Table was assigned to the local Table " alt="" coords="179,208,267,235"/>
+<area shape="rect" id="node8" href="$interface___u_s_a_r_t__pincinato_8c.html#a7542806c4e2857a7b4320416799ccf2c" title="checkUart Check if a Uart was configured " alt="" coords="182,259,263,285"/>
+<area shape="rect" id="node3" href="$adc_8h.html#a47642651029b93e3f9c9edad46bd27b4" title="This function is executed in case of error occurrence. " alt="" coords="352,5,460,32"/>
+</map>

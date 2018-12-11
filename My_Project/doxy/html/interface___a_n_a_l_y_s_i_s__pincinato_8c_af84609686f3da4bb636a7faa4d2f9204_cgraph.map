@@ -1,0 +1,5 @@
+<map id="stopANALYSISInterface" name="stopANALYSISInterface">
+<area shape="rect" id="node2" href="$interface___a_c_c_e_l__pincinato_8h.html#ada1c73bd592f8c58ce134ada893630e5" title="stopACCELInterface Stop timer interruption " alt="" coords="213,5,352,32"/>
+<area shape="rect" id="node3" href="$interface___e_c_g__pincinato_8h.html#adc2a8dc3b4aaa39924bf189917b58da0" title="stopECGInterface stop ADC interface " alt="" coords="221,56,345,83"/>
+<area shape="rect" id="node4" href="$interface___a_d_c__pincinato_8h.html#a5404ec7b3bbcea85079e7c0c8ff9cbd9" title="stopADCInterface stop ADC and timer interruption " alt="" coords="400,56,523,83"/>
+</map>

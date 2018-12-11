@@ -1,0 +1,11 @@
+my_project\fatfs.o: ../Src/fatfs.c
+my_project\fatfs.o: ../Inc/fatfs.h
+my_project\fatfs.o: ..\..\Library\Library\sd_spi\fatfs\ff.h
+my_project\fatfs.o: ..\..\Library\Library\sd_spi\fatfs\integer.h
+my_project\fatfs.o: ..\..\Library\Library\sd_spi\fatfs\ffconf.h
+my_project\fatfs.o: ..\..\Library\Library\sd_spi\fatfs\ff_gen_drv.h
+my_project\fatfs.o: ..\..\Library\Library\sd_spi\fatfs\diskio.h
+my_project\fatfs.o: ..\..\Library\Library\sd_spi\fatfs\defines.h
+my_project\fatfs.o: ..\..\Library\Library\sd_spi\fatfs\attributes.h
+my_project\fatfs.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+my_project\fatfs.o: ../Inc/user_diskio.h

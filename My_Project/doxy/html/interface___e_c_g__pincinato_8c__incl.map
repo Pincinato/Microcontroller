@@ -1,0 +1,8 @@
+<map id="Library/Library/src/interface_ECG_pincinato.c" name="Library/Library/src/interface_ECG_pincinato.c">
+<area shape="rect" id="node2" href="$interface___e_c_g__pincinato_8h.html" title="interface_ECG_pincinato.h" alt="" coords="5,95,181,121"/>
+<area shape="rect" id="node6" href="$interface___a_d_c__pincinato_8h.html" title="interface_ADC_pincinato.h" alt="" coords="206,95,381,121"/>
+<area shape="rect" id="node3" href="$filter__math__pincinato_8h.html" title="filter_math_pincinato.h" alt="" coords="35,169,187,196"/>
+<area shape="rect" id="node7" href="$adc_8h.html" title="adc.h" alt="" coords="387,169,442,196"/>
+<area shape="rect" id="node10" href="$tim_8h.html" title="tim.h" alt="" coords="312,169,363,196"/>
+<area shape="rect" id="node9" href="$main_8h.html" title=": Header for main.c file. This file contains the common defines of the application. " alt="" coords="367,244,428,271"/>
+</map>

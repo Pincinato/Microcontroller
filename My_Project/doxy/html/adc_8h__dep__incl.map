@@ -1,0 +1,8 @@
+<map id="Inc/adc.h" name="Inc/adc.h">
+<area shape="rect" id="node2" href="$interface___a_d_c__pincinato_8h.html" title="Library/Library/inc\l/interface_ADC_pincinato.h" alt="" coords="321,80,500,121"/>
+<area shape="rect" id="node4" href="$main_8c.html" title=": Main program body " alt="" coords="327,259,412,285"/>
+<area shape="rect" id="node7" href="$adc_8c.html" title="Src/adc.c" alt="" coords="678,87,757,114"/>
+<area shape="rect" id="node3" href="$interrupt___t_i_m_e_r__pincinato_8h.html" title="Library/Library/inc\l/interrupt_TIMER_pincinato.h" alt="" coords="5,169,195,211"/>
+<area shape="rect" id="node5" href="$interface___a_d_c__pincinato_8c.html" title="Library/Library/src\l/interface_ADC_pincinato.c" alt="" coords="219,169,397,211"/>
+<area shape="rect" id="node6" href="$interface___e_c_g__pincinato_8c.html" title="Library/Library/src\l/interface_ECG_pincinato.c" alt="" coords="422,169,602,211"/>
+</map>

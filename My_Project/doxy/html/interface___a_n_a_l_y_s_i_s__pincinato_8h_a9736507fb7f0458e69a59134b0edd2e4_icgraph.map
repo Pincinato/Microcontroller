@@ -1,0 +1,5 @@
+<map id="clearANALYSISData" name="clearANALYSISData">
+<area shape="rect" id="node2" href="$interface___a_n_a_l_y_s_i_s__pincinato_8c.html#a066c88d702a85716f4fe28459ec620aa" title="initANALYSISInterface clear data and set local table " alt="" coords="199,5,351,32"/>
+<area shape="rect" id="node4" href="$interface___a_n_a_l_y_s_i_s__pincinato_8c.html#aa06483b4301e53448aef3c55003b8bde" title="startANALYSISInterface clear data and initialize ECG and ACCEL interface " alt="" coords="195,56,356,83"/>
+<area shape="rect" id="node3" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point. " alt="" coords="404,5,455,32"/>
+</map>

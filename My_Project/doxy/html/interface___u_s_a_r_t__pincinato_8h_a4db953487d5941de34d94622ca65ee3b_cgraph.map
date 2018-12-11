@@ -1,0 +1,4 @@
+<map id="NACK" name="NACK">
+<area shape="rect" id="node2" href="$interface___u_s_a_r_t__pincinato_8c.html#a76d5b69e096504f0c2307de48102599f" title="clearMsg clear buffer " alt="" coords="115,5,190,32"/>
+<area shape="rect" id="node3" href="$interface___u_s_a_r_t__pincinato_8c.html#a7542806c4e2857a7b4320416799ccf2c" title="checkUart Check if a Uart was configured " alt="" coords="112,56,193,83"/>
+</map>

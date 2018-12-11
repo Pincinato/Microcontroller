@@ -1,0 +1,6 @@
+<map id="Library/Library/inc/interface_ACCEL_pincinato.h" name="Library/Library/inc/interface_ACCEL_pincinato.h">
+<area shape="rect" id="node4" href="$i2c_8h.html" title="i2c.h" alt="" coords="80,95,131,121"/>
+<area shape="rect" id="node7" href="$tim_8h.html" title="tim.h" alt="" coords="5,95,56,121"/>
+<area shape="rect" id="node9" href="$filter__math__pincinato_8h.html" title="filter_math_pincinato.h" alt="" coords="205,95,357,121"/>
+<area shape="rect" id="node6" href="$main_8h.html" title=": Header for main.c file. This file contains the common defines of the application. " alt="" coords="37,169,99,196"/>
+</map>

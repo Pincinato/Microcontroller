@@ -1,0 +1,258 @@
+\hypertarget{tmc260__driver_8h}{}\section{Library/\+Library/inc/tmc260\+\_\+driver.h File Reference}
+\label{tmc260__driver_8h}\index{Library/\+Library/inc/tmc260\+\_\+driver.\+h@{Library/\+Library/inc/tmc260\+\_\+driver.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}stm32f4xx\+\_\+hal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gpio.\+h\char`\"{}}\newline
+Include dependency graph for tmc260\+\_\+driver.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tmc260__driver_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{tmc260__driver_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{uniontmc260___driver_control_register__}{tmc260\+\_\+\+Driver\+Control\+Register\+\_\+}}
+\item 
+union \mbox{\hyperlink{uniontmc260___chopper_control_register__}{tmc260\+\_\+\+Chopper\+Control\+Register\+\_\+}}
+\item 
+union \mbox{\hyperlink{union_cool_step_control_register__}{Cool\+Step\+Control\+Register\+\_\+}}
+\item 
+union \mbox{\hyperlink{uniontmc260___stall_guard2_control_register__}{tmc260\+\_\+\+Stall\+Guard2\+Control\+Register\+\_\+}}
+\item 
+union \mbox{\hyperlink{uniontmc260___driver_configuration_register__}{tmc260\+\_\+\+Driver\+Configuration\+Register\+\_\+}}
+\item 
+union \mbox{\hyperlink{uniontmc260___read_response__}{tmc260\+\_\+\+Read\+Response\+\_\+}}
+\item 
+struct \mbox{\hyperlink{structtmc260___register_set__}{tmc260\+\_\+\+Register\+Set\+\_\+}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tmc260__driver_8h_ade4ac907bf170e5e942a74d95da0d5be}{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+P\+E\+R\+\_\+\+T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+ON}}~((uint8\+\_\+t) 1)
+\item 
+\#define \mbox{\hyperlink{tmc260__driver_8h_ad18f095b4481940b2529f934042734f4}{T\+I\+M\+E\+O\+U\+T\+\_\+\+F\+O\+R\+\_\+\+T\+R\+A\+N\+S\+M\+U\+S\+S\+I\+ON}}~((uint8\+\_\+t) 1)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint8\+\_\+t \mbox{\hyperlink{tmc260__driver_8h_a280b01a3b5bb4294fcee278b00c030d6}{Register}}\mbox{[}\mbox{\hyperlink{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3fa52ad1b1e1c1e9352f4d936f76cc57d93}{T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+I\+N\+\_\+\+R\+E\+G\+I\+S\+T\+ER}}\mbox{]}
+\item 
+typedef union \mbox{\hyperlink{uniontmc260___driver_control_register__}{tmc260\+\_\+\+Driver\+Control\+Register\+\_\+}} \mbox{\hyperlink{tmc260__driver_8h_a42b84b84bc4d9625475d9ec4ed84b568}{tmc260\+\_\+\+Driver\+Control\+Register}}
+\item 
+typedef union \mbox{\hyperlink{uniontmc260___chopper_control_register__}{tmc260\+\_\+\+Chopper\+Control\+Register\+\_\+}} \mbox{\hyperlink{tmc260__driver_8h_ad9441788a191da34195daab49d56df8d}{tmc260\+\_\+\+Chopper\+Control\+Register}}
+\item 
+typedef union \mbox{\hyperlink{union_cool_step_control_register__}{Cool\+Step\+Control\+Register\+\_\+}} \mbox{\hyperlink{tmc260__driver_8h_a7cfa3ad8edba4fb6683885768a43f4f4}{tmc260\+\_\+\+Cool\+Step\+Control\+Register}}
+\item 
+typedef union \mbox{\hyperlink{uniontmc260___stall_guard2_control_register__}{tmc260\+\_\+\+Stall\+Guard2\+Control\+Register\+\_\+}} \mbox{\hyperlink{tmc260__driver_8h_afa0a9cd31ee349e1fea8ff665665ad45}{tmc260\+\_\+\+Stall\+Guard2\+Control\+Register}}
+\item 
+typedef union \mbox{\hyperlink{uniontmc260___driver_configuration_register__}{tmc260\+\_\+\+Driver\+Configuration\+Register\+\_\+}} \mbox{\hyperlink{tmc260__driver_8h_abfbbe7f0019af5812f509ef9866d375b}{tmc260\+\_\+\+Driver\+Configuration\+Register}}
+\item 
+typedef union \mbox{\hyperlink{uniontmc260___read_response__}{tmc260\+\_\+\+Read\+Response\+\_\+}} \mbox{\hyperlink{tmc260__driver_8h_a09ad0d94646027ff63c22456ac9c2436}{tmc260\+\_\+\+Read\+Response}}
+\item 
+typedef struct \mbox{\hyperlink{structtmc260___register_set__}{tmc260\+\_\+\+Register\+Set\+\_\+}} \mbox{\hyperlink{tmc260__driver_8h_a71348958a41c5e0cfdf99d907eb2ab3c}{tmc260\+\_\+\+Register\+Set}}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7}{tmc260\+\_\+register}} \{ \newline
+\mbox{\hyperlink{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7aee6764ec04b2c59b43760ef85f8d6191}{T\+M\+C260\+\_\+\+D\+R\+V\+C\+T\+RL}}, 
+\mbox{\hyperlink{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7acdbee96eba272e8944ff43a1fb2e9653}{T\+M\+C260\+\_\+\+C\+H\+O\+P\+C\+O\+NF}}, 
+\mbox{\hyperlink{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7a26c04e3d707351451470b4b4f6132eab}{T\+M\+C260\+\_\+\+S\+M\+A\+R\+T\+EN}}, 
+\mbox{\hyperlink{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7affdbb7c66f59c7302bd341e420373c23}{T\+M\+C260\+\_\+\+S\+G\+S\+C\+O\+NF}}, 
+\newline
+\mbox{\hyperlink{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7a2be083bd51b29e765b567909a29fdcdf}{T\+M\+C260\+\_\+\+D\+R\+V\+C\+O\+NF}}, 
+\mbox{\hyperlink{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7a74d64f53bf0c63a7535a62e62da0f4c8}{T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+R\+E\+G\+I\+S\+T\+E\+RS}}
+ \}
+\item 
+enum \mbox{\hyperlink{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3f}{tmc260\+\_\+byte\+Of\+Register}} \{ \mbox{\hyperlink{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3fa345b09f5951e6b20d83aaad24ff6d645}{T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+0}}, 
+\mbox{\hyperlink{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3fafdee7f68065f77daa13c76177516cc35}{T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+1}}, 
+\mbox{\hyperlink{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3fafbc8e98ebe71eb2d49170f0d1846d655}{T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+2}}, 
+\mbox{\hyperlink{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3fa52ad1b1e1c1e9352f4d936f76cc57d93}{T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+I\+N\+\_\+\+R\+E\+G\+I\+S\+T\+ER}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int8\+\_\+t \mbox{\hyperlink{tmc260__driver_8h_a41285d5564a6dd86fee6bd203f3fbfc0}{tmc260\+\_\+\+Registers\+\_\+init}} (\mbox{\hyperlink{tmc260_8h_a71348958a41c5e0cfdf99d907eb2ab3c}{tmc260\+\_\+\+Register\+Set}} $\ast$device)
+\begin{DoxyCompactList}\small\item\em T\+M\+C260\+\_\+\+Registers\+\_\+init. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{tmc260__driver_8h_ade4ac907bf170e5e942a74d95da0d5be}\label{tmc260__driver_8h_ade4ac907bf170e5e942a74d95da0d5be}} 
+\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+P\+E\+R\+\_\+\+T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+ON@{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+P\+E\+R\+\_\+\+T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+ON}}
+\index{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+P\+E\+R\+\_\+\+T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+ON@{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+P\+E\+R\+\_\+\+T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+ON}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+P\+E\+R\+\_\+\+T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+ON}{NUMBER\_OF\_BYTES\_PER\_TRANSMISSION}}
+{\footnotesize\ttfamily \#define N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+P\+E\+R\+\_\+\+T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+ON~((uint8\+\_\+t) 1)}
+
+
+
+Definition at line 10 of file tmc260\+\_\+driver.\+h.
+
+\mbox{\Hypertarget{tmc260__driver_8h_ad18f095b4481940b2529f934042734f4}\label{tmc260__driver_8h_ad18f095b4481940b2529f934042734f4}} 
+\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!T\+I\+M\+E\+O\+U\+T\+\_\+\+F\+O\+R\+\_\+\+T\+R\+A\+N\+S\+M\+U\+S\+S\+I\+ON@{T\+I\+M\+E\+O\+U\+T\+\_\+\+F\+O\+R\+\_\+\+T\+R\+A\+N\+S\+M\+U\+S\+S\+I\+ON}}
+\index{T\+I\+M\+E\+O\+U\+T\+\_\+\+F\+O\+R\+\_\+\+T\+R\+A\+N\+S\+M\+U\+S\+S\+I\+ON@{T\+I\+M\+E\+O\+U\+T\+\_\+\+F\+O\+R\+\_\+\+T\+R\+A\+N\+S\+M\+U\+S\+S\+I\+ON}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{T\+I\+M\+E\+O\+U\+T\+\_\+\+F\+O\+R\+\_\+\+T\+R\+A\+N\+S\+M\+U\+S\+S\+I\+ON}{TIMEOUT\_FOR\_TRANSMUSSION}}
+{\footnotesize\ttfamily \#define T\+I\+M\+E\+O\+U\+T\+\_\+\+F\+O\+R\+\_\+\+T\+R\+A\+N\+S\+M\+U\+S\+S\+I\+ON~((uint8\+\_\+t) 1)}
+
+
+
+Definition at line 11 of file tmc260\+\_\+driver.\+h.
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{tmc260__driver_8h_a280b01a3b5bb4294fcee278b00c030d6}\label{tmc260__driver_8h_a280b01a3b5bb4294fcee278b00c030d6}} 
+\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!Register@{Register}}
+\index{Register@{Register}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{Register}{Register}}
+{\footnotesize\ttfamily typedef uint8\+\_\+t Register\mbox{[}\mbox{\hyperlink{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3fa52ad1b1e1c1e9352f4d936f76cc57d93}{T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+I\+N\+\_\+\+R\+E\+G\+I\+S\+T\+ER}}\mbox{]}}
+
+The array \textquotesingle{}Register\textquotesingle{} represents bits of a tmc260 device register as bytes 
+
+Definition at line 26 of file tmc260\+\_\+driver.\+h.
+
+\mbox{\Hypertarget{tmc260__driver_8h_ad9441788a191da34195daab49d56df8d}\label{tmc260__driver_8h_ad9441788a191da34195daab49d56df8d}} 
+\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!tmc260\+\_\+\+Chopper\+Control\+Register@{tmc260\+\_\+\+Chopper\+Control\+Register}}
+\index{tmc260\+\_\+\+Chopper\+Control\+Register@{tmc260\+\_\+\+Chopper\+Control\+Register}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{tmc260\+\_\+\+Chopper\+Control\+Register}{tmc260\_ChopperControlRegister}}
+{\footnotesize\ttfamily typedef union \mbox{\hyperlink{uniontmc260___chopper_control_register__}{tmc260\+\_\+\+Chopper\+Control\+Register\+\_\+}} \mbox{\hyperlink{tmc260__driver_8h_ad9441788a191da34195daab49d56df8d}{tmc260\+\_\+\+Chopper\+Control\+Register}}}
+
+Union to represent the chopper control register (C\+H\+O\+P\+C\+O\+NF) of a tmc260 device as bitfield \mbox{\Hypertarget{tmc260__driver_8h_a7cfa3ad8edba4fb6683885768a43f4f4}\label{tmc260__driver_8h_a7cfa3ad8edba4fb6683885768a43f4f4}} 
+\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!tmc260\+\_\+\+Cool\+Step\+Control\+Register@{tmc260\+\_\+\+Cool\+Step\+Control\+Register}}
+\index{tmc260\+\_\+\+Cool\+Step\+Control\+Register@{tmc260\+\_\+\+Cool\+Step\+Control\+Register}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{tmc260\+\_\+\+Cool\+Step\+Control\+Register}{tmc260\_CoolStepControlRegister}}
+{\footnotesize\ttfamily typedef union \mbox{\hyperlink{union_cool_step_control_register__}{Cool\+Step\+Control\+Register\+\_\+}} \mbox{\hyperlink{tmc260__driver_8h_a7cfa3ad8edba4fb6683885768a43f4f4}{tmc260\+\_\+\+Cool\+Step\+Control\+Register}}}
+
+Union to represent the cool\+Step control register (S\+M\+A\+R\+T\+EN) of a tmc260 device as bitfield \mbox{\Hypertarget{tmc260__driver_8h_abfbbe7f0019af5812f509ef9866d375b}\label{tmc260__driver_8h_abfbbe7f0019af5812f509ef9866d375b}} 
+\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!tmc260\+\_\+\+Driver\+Configuration\+Register@{tmc260\+\_\+\+Driver\+Configuration\+Register}}
+\index{tmc260\+\_\+\+Driver\+Configuration\+Register@{tmc260\+\_\+\+Driver\+Configuration\+Register}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{tmc260\+\_\+\+Driver\+Configuration\+Register}{tmc260\_DriverConfigurationRegister}}
+{\footnotesize\ttfamily typedef union \mbox{\hyperlink{uniontmc260___driver_configuration_register__}{tmc260\+\_\+\+Driver\+Configuration\+Register\+\_\+}} \mbox{\hyperlink{tmc260__driver_8h_abfbbe7f0019af5812f509ef9866d375b}{tmc260\+\_\+\+Driver\+Configuration\+Register}}}
+
+Union to represent the driver configuration register (D\+R\+V\+C\+O\+NF) of a tmc260 device as bitfield \mbox{\Hypertarget{tmc260__driver_8h_a42b84b84bc4d9625475d9ec4ed84b568}\label{tmc260__driver_8h_a42b84b84bc4d9625475d9ec4ed84b568}} 
+\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!tmc260\+\_\+\+Driver\+Control\+Register@{tmc260\+\_\+\+Driver\+Control\+Register}}
+\index{tmc260\+\_\+\+Driver\+Control\+Register@{tmc260\+\_\+\+Driver\+Control\+Register}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{tmc260\+\_\+\+Driver\+Control\+Register}{tmc260\_DriverControlRegister}}
+{\footnotesize\ttfamily typedef union \mbox{\hyperlink{uniontmc260___driver_control_register__}{tmc260\+\_\+\+Driver\+Control\+Register\+\_\+}} \mbox{\hyperlink{tmc260__driver_8h_a42b84b84bc4d9625475d9ec4ed84b568}{tmc260\+\_\+\+Driver\+Control\+Register}}}
+
+Union to represent the driver control register (D\+R\+V\+C\+T\+RL) of a tmc260 device as bitfield \mbox{\Hypertarget{tmc260__driver_8h_a09ad0d94646027ff63c22456ac9c2436}\label{tmc260__driver_8h_a09ad0d94646027ff63c22456ac9c2436}} 
+\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!tmc260\+\_\+\+Read\+Response@{tmc260\+\_\+\+Read\+Response}}
+\index{tmc260\+\_\+\+Read\+Response@{tmc260\+\_\+\+Read\+Response}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{tmc260\+\_\+\+Read\+Response}{tmc260\_ReadResponse}}
+{\footnotesize\ttfamily typedef union \mbox{\hyperlink{uniontmc260___read_response__}{tmc260\+\_\+\+Read\+Response\+\_\+}} \mbox{\hyperlink{tmc260__driver_8h_a09ad0d94646027ff63c22456ac9c2436}{tmc260\+\_\+\+Read\+Response}}}
+
+Union to represent the read response of a tmc260 device as bitfield \mbox{\Hypertarget{tmc260__driver_8h_a71348958a41c5e0cfdf99d907eb2ab3c}\label{tmc260__driver_8h_a71348958a41c5e0cfdf99d907eb2ab3c}} 
+\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!tmc260\+\_\+\+Register\+Set@{tmc260\+\_\+\+Register\+Set}}
+\index{tmc260\+\_\+\+Register\+Set@{tmc260\+\_\+\+Register\+Set}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{tmc260\+\_\+\+Register\+Set}{tmc260\_RegisterSet}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structtmc260___register_set__}{tmc260\+\_\+\+Register\+Set\+\_\+}} \mbox{\hyperlink{tmc260_8h_a71348958a41c5e0cfdf99d907eb2ab3c}{tmc260\+\_\+\+Register\+Set}}}
+
+Structure to represent the registers of a tmc260 device as set of bitfields \mbox{\Hypertarget{tmc260__driver_8h_afa0a9cd31ee349e1fea8ff665665ad45}\label{tmc260__driver_8h_afa0a9cd31ee349e1fea8ff665665ad45}} 
+\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!tmc260\+\_\+\+Stall\+Guard2\+Control\+Register@{tmc260\+\_\+\+Stall\+Guard2\+Control\+Register}}
+\index{tmc260\+\_\+\+Stall\+Guard2\+Control\+Register@{tmc260\+\_\+\+Stall\+Guard2\+Control\+Register}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{tmc260\+\_\+\+Stall\+Guard2\+Control\+Register}{tmc260\_StallGuard2ControlRegister}}
+{\footnotesize\ttfamily typedef union \mbox{\hyperlink{uniontmc260___stall_guard2_control_register__}{tmc260\+\_\+\+Stall\+Guard2\+Control\+Register\+\_\+}} \mbox{\hyperlink{tmc260__driver_8h_afa0a9cd31ee349e1fea8ff665665ad45}{tmc260\+\_\+\+Stall\+Guard2\+Control\+Register}}}
+
+Union to represent the stall\+Guard2 control register (S\+G\+C\+S\+C\+O\+NF) of a tmc260 device as bitfield 
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3f}\label{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3f}} 
+\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!tmc260\+\_\+byte\+Of\+Register@{tmc260\+\_\+byte\+Of\+Register}}
+\index{tmc260\+\_\+byte\+Of\+Register@{tmc260\+\_\+byte\+Of\+Register}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{tmc260\+\_\+byte\+Of\+Register}{tmc260\_byteOfRegister}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3f}{tmc260\+\_\+byte\+Of\+Register}}}
+
+The enumeration of bytes in following type \textquotesingle{}Register\textquotesingle{} \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+0@{T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+0}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+0@{T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+0}}}\mbox{\Hypertarget{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3fa345b09f5951e6b20d83aaad24ff6d645}\label{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3fa345b09f5951e6b20d83aaad24ff6d645}} 
+T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+1@{T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+1}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+1@{T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+1}}}\mbox{\Hypertarget{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3fafdee7f68065f77daa13c76177516cc35}\label{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3fafdee7f68065f77daa13c76177516cc35}} 
+T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+2@{T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+2}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+2@{T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+2}}}\mbox{\Hypertarget{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3fafbc8e98ebe71eb2d49170f0d1846d655}\label{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3fafbc8e98ebe71eb2d49170f0d1846d655}} 
+T\+M\+C260\+\_\+\+B\+Y\+T\+E\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+I\+N\+\_\+\+R\+E\+G\+I\+S\+T\+ER@{T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+I\+N\+\_\+\+R\+E\+G\+I\+S\+T\+ER}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+I\+N\+\_\+\+R\+E\+G\+I\+S\+T\+ER@{T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+I\+N\+\_\+\+R\+E\+G\+I\+S\+T\+ER}}}\mbox{\Hypertarget{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3fa52ad1b1e1c1e9352f4d936f76cc57d93}\label{tmc260__driver_8h_a91fa177c0c812f50627e0be973318d3fa52ad1b1e1c1e9352f4d936f76cc57d93}} 
+T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+Y\+T\+E\+S\+\_\+\+I\+N\+\_\+\+R\+E\+G\+I\+S\+T\+ER&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 21 of file tmc260\+\_\+driver.\+h.
+
+\mbox{\Hypertarget{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7}\label{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7}} 
+\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!tmc260\+\_\+register@{tmc260\+\_\+register}}
+\index{tmc260\+\_\+register@{tmc260\+\_\+register}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{tmc260\+\_\+register}{tmc260\_register}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7}{tmc260\+\_\+register}}}
+
+The enumeration of registers in tmc260 device \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+M\+C260\+\_\+\+D\+R\+V\+C\+T\+RL@{T\+M\+C260\+\_\+\+D\+R\+V\+C\+T\+RL}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!T\+M\+C260\+\_\+\+D\+R\+V\+C\+T\+RL@{T\+M\+C260\+\_\+\+D\+R\+V\+C\+T\+RL}}}\mbox{\Hypertarget{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7aee6764ec04b2c59b43760ef85f8d6191}\label{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7aee6764ec04b2c59b43760ef85f8d6191}} 
+T\+M\+C260\+\_\+\+D\+R\+V\+C\+T\+RL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+M\+C260\+\_\+\+C\+H\+O\+P\+C\+O\+NF@{T\+M\+C260\+\_\+\+C\+H\+O\+P\+C\+O\+NF}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!T\+M\+C260\+\_\+\+C\+H\+O\+P\+C\+O\+NF@{T\+M\+C260\+\_\+\+C\+H\+O\+P\+C\+O\+NF}}}\mbox{\Hypertarget{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7acdbee96eba272e8944ff43a1fb2e9653}\label{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7acdbee96eba272e8944ff43a1fb2e9653}} 
+T\+M\+C260\+\_\+\+C\+H\+O\+P\+C\+O\+NF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+M\+C260\+\_\+\+S\+M\+A\+R\+T\+EN@{T\+M\+C260\+\_\+\+S\+M\+A\+R\+T\+EN}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!T\+M\+C260\+\_\+\+S\+M\+A\+R\+T\+EN@{T\+M\+C260\+\_\+\+S\+M\+A\+R\+T\+EN}}}\mbox{\Hypertarget{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7a26c04e3d707351451470b4b4f6132eab}\label{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7a26c04e3d707351451470b4b4f6132eab}} 
+T\+M\+C260\+\_\+\+S\+M\+A\+R\+T\+EN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+M\+C260\+\_\+\+S\+G\+S\+C\+O\+NF@{T\+M\+C260\+\_\+\+S\+G\+S\+C\+O\+NF}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!T\+M\+C260\+\_\+\+S\+G\+S\+C\+O\+NF@{T\+M\+C260\+\_\+\+S\+G\+S\+C\+O\+NF}}}\mbox{\Hypertarget{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7affdbb7c66f59c7302bd341e420373c23}\label{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7affdbb7c66f59c7302bd341e420373c23}} 
+T\+M\+C260\+\_\+\+S\+G\+S\+C\+O\+NF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+M\+C260\+\_\+\+D\+R\+V\+C\+O\+NF@{T\+M\+C260\+\_\+\+D\+R\+V\+C\+O\+NF}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!T\+M\+C260\+\_\+\+D\+R\+V\+C\+O\+NF@{T\+M\+C260\+\_\+\+D\+R\+V\+C\+O\+NF}}}\mbox{\Hypertarget{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7a2be083bd51b29e765b567909a29fdcdf}\label{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7a2be083bd51b29e765b567909a29fdcdf}} 
+T\+M\+C260\+\_\+\+D\+R\+V\+C\+O\+NF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+R\+E\+G\+I\+S\+T\+E\+RS@{T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+R\+E\+G\+I\+S\+T\+E\+RS}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+R\+E\+G\+I\+S\+T\+E\+RS@{T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+R\+E\+G\+I\+S\+T\+E\+RS}}}\mbox{\Hypertarget{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7a74d64f53bf0c63a7535a62e62da0f4c8}\label{tmc260__driver_8h_a4552d2ee758c08501723a6dc78d26dc7a74d64f53bf0c63a7535a62e62da0f4c8}} 
+T\+M\+C260\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+R\+E\+G\+I\+S\+T\+E\+RS&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 16 of file tmc260\+\_\+driver.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{tmc260__driver_8h_a41285d5564a6dd86fee6bd203f3fbfc0}\label{tmc260__driver_8h_a41285d5564a6dd86fee6bd203f3fbfc0}} 
+\index{tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}!tmc260\+\_\+\+Registers\+\_\+init@{tmc260\+\_\+\+Registers\+\_\+init}}
+\index{tmc260\+\_\+\+Registers\+\_\+init@{tmc260\+\_\+\+Registers\+\_\+init}!tmc260\+\_\+driver.\+h@{tmc260\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{tmc260\+\_\+\+Registers\+\_\+init()}{tmc260\_Registers\_init()}}
+{\footnotesize\ttfamily int8\+\_\+t tmc260\+\_\+\+Registers\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tmc260_8h_a71348958a41c5e0cfdf99d907eb2ab3c}{tmc260\+\_\+\+Register\+Set}} $\ast$}]{device }\end{DoxyParamCaption})}
+
+
+
+T\+M\+C260\+\_\+\+Registers\+\_\+init. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & pointer to a uninitialized structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+exit\+Status E\+X\+I\+T\+\_\+\+S\+U\+C\+C\+E\+SS or E\+X\+I\+T\+\_\+\+F\+A\+I\+L\+U\+RE 
+\end{DoxyReturn}
+
+
+Definition at line 93 of file tmc260\+\_\+driver.\+c.
+

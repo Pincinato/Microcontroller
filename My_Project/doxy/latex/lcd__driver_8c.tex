@@ -1,0 +1,583 @@
+\hypertarget{lcd__driver_8c}{}\section{Library/\+Library/src/lcd\+\_\+driver.c File Reference}
+\label{lcd__driver_8c}\index{Library/\+Library/src/lcd\+\_\+driver.\+c@{Library/\+Library/src/lcd\+\_\+driver.\+c}}
+{\ttfamily \#include \char`\"{}lcd\+\_\+driver.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lcd\+\_\+symbols.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lcd\+\_\+font6x8.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lcd\+\_\+font16x24.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32f4xx\+\_\+hal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spi.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+Include dependency graph for lcd\+\_\+driver.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lcd__driver_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_font_size__}{Font\+Size\+\_\+}}
+\item 
+union \mbox{\hyperlink{union_column_buffer__}{Column\+Buffer\+\_\+}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{lcd__driver_8c_a00ad6a3a94ffdd1bc6b55e789f9dfda9}{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+R\+O\+WS}}~((uint8\+\_\+t) 128)
+\item 
+\#define \mbox{\hyperlink{lcd__driver_8c_a0240364487a54a70da4ffb51459ada98}{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+C\+O\+L\+U\+M\+NS}}~((uint8\+\_\+t) 32)
+\item 
+\#define \mbox{\hyperlink{lcd__driver_8c_a66dfd8dedf4b17144f36e139cce0d1ad}{E\+L\+E\+C\+T\+R\+O\+N\+I\+C\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+A\+X\+I\+M\+U\+M\+\_\+\+R\+A\+I\+T\+I\+NG}}~((uint8\+\_\+t) 63)
+\item 
+\#define \mbox{\hyperlink{lcd__driver_8c_a558990598d0f9a2251ad7ffdb285150a}{A\+S\+C\+I\+I\+\_\+\+T\+A\+B\+L\+E\+\_\+\+O\+F\+F\+S\+ET}}~((uint8\+\_\+t) 32)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_font_size__}{Font\+Size\+\_\+}} \mbox{\hyperlink{lcd__driver_8c_ae51498cab8842a6e48c915f39161ee50}{Font\+Size}}
+\item 
+typedef uint8\+\_\+t \mbox{\hyperlink{lcd__driver_8c_aec9ff445f657af291adb50cd8880fd5f}{page}}
+\item 
+typedef \mbox{\hyperlink{lcd__driver_8c_aec9ff445f657af291adb50cd8880fd5f}{page}} \mbox{\hyperlink{lcd__driver_8c_ae33ca92ca3f3b4e58ec3d3c0d32c1d8e}{page\+Set}}\mbox{[}\mbox{\hyperlink{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0a41f491abf3904075efd74c7e152508b5}{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+A\+G\+ES}}\mbox{]}
+\item 
+typedef union \mbox{\hyperlink{union_column_buffer__}{Column\+Buffer\+\_\+}} \mbox{\hyperlink{lcd__driver_8c_a304ae0ed0bbd59ab6b9fc422459648d1}{Column\+Buffer}}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3}{instruction}} \{ \newline
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3acf49bc1c29a95c65aacddadb4dac7218}{D\+I\+S\+P\+L\+A\+Y\+\_\+\+O\+FF}} = 0x\+AE, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a474066ce108b971d3d963cf3ec8b84bd}{D\+I\+S\+P\+L\+A\+Y\+\_\+\+ON}} = 0x\+AF, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3ae58688800227d2e53c5c826f175d0676}{A\+D\+C\+\_\+\+N\+O\+R\+M\+AL}} = 0x\+A0, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a04496ab7797bda95ba55458596aa0f6a}{A\+D\+C\+\_\+\+R\+E\+V\+E\+R\+SE}} = 0x\+A1, 
+\newline
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3aebde2c4248e0ff8d93186c913ff87922}{B\+I\+A\+S\+\_\+\+O\+N\+E\+\_\+\+N\+I\+N\+TH}} = 0x\+A2, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a8bf4b26dd0da975e2329a1e8459ae0d3}{B\+I\+A\+S\+\_\+\+O\+N\+E\+\_\+\+S\+E\+V\+E\+N\+TH}} = 0x\+A3, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3af3fbe2552ff7b49edf4248ff77604042}{C\+O\+M\+M\+O\+N\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+O\+D\+E\+\_\+\+N\+O\+R\+M\+AL}} = 0x\+C0, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3ae6caebdeb9ae6ee9d0899804ebc88008}{C\+O\+M\+M\+O\+N\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+O\+D\+E\+\_\+\+R\+E\+V\+E\+R\+SE}} = 0x\+C8, 
+\newline
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a5ed43aeb54360dee1327408a11d449c0}{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+0}} = 0x28, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a0edbe97b74adf61da012b6cd83fd63b9}{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+1}} = 0x29, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a0f92f138252fe1cd1bc0332c1352b554}{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+3}} = 0x2C, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a341682f90c3025b802d37f544ce80a09}{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+7}} = 0x2F, 
+\newline
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a4630244029bce4cdff27f6b2cd811e2c}{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+0}} = 0x20, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a67c2bcb289fa472f9e5c327f1dbfb4ad}{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+1}} = 0x21, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3ab3ab55a31f5891d879e8fd4bcd65d5ed}{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+2}} = 0x22, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3ad1fce47e9678ed4920ac85debbfc8466}{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+3}} = 0x23, 
+\newline
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a92b4488cb9143ae49d92baaedcd32b89}{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+4}} = 0x24, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a86b14073d32fe084e8454d2e70707dfc}{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+5}} = 0x25, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a6088b9dd82b344998a49575ce5a71562}{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+6}} = 0x26, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3acf037878d9d8b0214fa76aaf39759076}{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+7}} = 0x27, 
+\newline
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3abd695a5e67a4770c185ee5c391603a13}{E\+L\+E\+C\+T\+R\+O\+N\+I\+C\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+O\+D\+E\+\_\+\+S\+ET}} = 0x81, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3ac1734bfb9366542ed6e5ec25a4658d11}{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+0}} = 0x\+B0, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a629304c110ce0e1f68d4d21daa4e52bb}{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+1}} = 0x\+B1, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a498b8c8c80b711f9505ffec3bd4d10c2}{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+2}} = 0x\+B2, 
+\newline
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a8361f888e2549e27f4b31848fa88f57b}{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+3}} = 0x\+B3, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a13fd75b2ef66aaee48587d7a398e4a86}{C\+O\+L\+U\+M\+N\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+\+B\+IT}} = 0x10, 
+\mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a762cc80420d2c376c54c4f753c7f0500}{B\+O\+O\+S\+T\+E\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+\+S\+ET}} = 0x00
+ \}
+\item 
+enum \mbox{\hyperlink{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0}{pages}} \{ \newline
+\mbox{\hyperlink{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0a2718e776b3d709390c124450db84085b}{P\+A\+G\+E\+\_\+0}}, 
+\mbox{\hyperlink{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0af5504232f33cd213b277e62ce046a424}{P\+A\+G\+E\+\_\+1}}, 
+\mbox{\hyperlink{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0a13a14184d6688e0f2b91304a8af460cd}{P\+A\+G\+E\+\_\+2}}, 
+\mbox{\hyperlink{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0a260c0a1e147ba1ea89ce41eb80c8acc8}{P\+A\+G\+E\+\_\+3}}, 
+\newline
+\mbox{\hyperlink{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0a41f491abf3904075efd74c7e152508b5}{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+A\+G\+ES}}
+ \}
+\item 
+enum \mbox{\hyperlink{lcd__driver_8c_a8d39a85fdb6168889e75ae8d2a924330}{lcd\+Register}} \{ \mbox{\hyperlink{lcd__driver_8c_a8d39a85fdb6168889e75ae8d2a924330a607a5a118ff65218f70c04612cc62402}{I\+N\+S\+T\+R\+U\+C\+T\+I\+O\+N\+\_\+\+R\+E\+G\+I\+S\+T\+ER}}, 
+\mbox{\hyperlink{lcd__driver_8c_a8d39a85fdb6168889e75ae8d2a924330a56a95f359d62d7985fbfe96d567b11ce}{D\+A\+T\+A\+\_\+\+R\+E\+G\+I\+S\+T\+ER}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{lcd__driver_8c_a5a18286d5a8b9cb3a7149987b595fc03}{send\+Data}} (uint8\+\_\+t data)
+\item 
+void \mbox{\hyperlink{lcd__driver_8c_a01af79135674b85725f569e8676b56ed}{lcd\+\_\+set\+Contrast}} (uint8\+\_\+t electronic\+Volume)
+\item 
+void \mbox{\hyperlink{lcd__driver_8c_a6842775ba83d166f02b8fef8bb63b1e6}{lcd\+\_\+init}} (void)
+\item 
+void \mbox{\hyperlink{lcd__driver_8c_aa76a5521efe086a9d26cbf44af732e8b}{lcd\+\_\+set\+Pixel}} (uint8\+\_\+t x\+Position, uint8\+\_\+t y\+Position, bool pixel\+Is\+Set)
+\item 
+void \mbox{\hyperlink{lcd__driver_8c_ad235a86241458b1e7b8771688bfdaf9a}{lcd\+\_\+clear}} (void)
+\item 
+void \mbox{\hyperlink{lcd__driver_8c_a4f59541ea134603bee01a883f996e4ba}{lcd\+\_\+set\+Char}} (uint8\+\_\+t x\+Position, uint8\+\_\+t y\+Position, unsigned char char\+To\+Set, \mbox{\hyperlink{lcd__driver_8h_a438e9a5e935271711f6a0b377ba365fc}{lcd\+\_\+font\+Size}} size, bool contrast\+Is\+Inverted)
+\item 
+void \mbox{\hyperlink{lcd__driver_8c_aa6b1e5b4910ace65815c78a3da51f964}{lcd\+\_\+set\+String}} (uint8\+\_\+t x\+Position, uint8\+\_\+t y\+Position, char const $\ast$string, \mbox{\hyperlink{lcd__driver_8h_a438e9a5e935271711f6a0b377ba365fc}{lcd\+\_\+font\+Size}} size, bool contrast\+Is\+Inverted)
+\item 
+void \mbox{\hyperlink{lcd__driver_8c_aceada75059c9ce992fa7e7f38bea8fb3}{lcd\+\_\+set\+String2}} (uint8\+\_\+t x\+Position, uint8\+\_\+t y\+Position, char const $\ast$string, \mbox{\hyperlink{lcd__driver_8h_a438e9a5e935271711f6a0b377ba365fc}{lcd\+\_\+font\+Size}} size, bool contrast\+Is\+Inverted)
+\item 
+void \mbox{\hyperlink{lcd__driver_8c_ae6ba6c6161cf3ec1ade0a72595cda0ce}{lcd\+\_\+set\+Line}} (int16\+\_\+t x1, int16\+\_\+t y1, int16\+\_\+t x2, int16\+\_\+t y2, uint8\+\_\+t state)
+\item 
+void \mbox{\hyperlink{lcd__driver_8c_a3d045005d00fc4525d582d0f7559a313}{lcd\+\_\+show}} (void)
+\item 
+void \mbox{\hyperlink{lcd__driver_8c_a9bcf73809a621cc65f9ae004404ecf4e}{lcd\+\_\+set\+Frame}} (uint8\+\_\+t x\+Position\+UL, uint8\+\_\+t y\+Position\+UL, uint8\+\_\+t x\+Position\+DR, uint8\+\_\+t y\+Position\+DR)
+\item 
+void \mbox{\hyperlink{lcd__driver_8c_acc135402ee97c717da0e94d4f35ab220}{lcd\+\_\+set\+Bar}} (uint8\+\_\+t x\+Position\+UL, uint8\+\_\+t y\+Position\+UL, uint8\+\_\+t x\+Position\+DR, uint8\+\_\+t y\+Position\+DR)
+\item 
+void \mbox{\hyperlink{lcd__driver_8c_a1b56ac880918035df02119018094cfdb}{lcd\+\_\+set\+Symbol8}} (uint8\+\_\+t x\+Position, uint8\+\_\+t y\+Position, \mbox{\hyperlink{lcd__driver_8h_a85e540e9ffc9be3c6e946ccfc7dd2358}{lcd\+\_\+symbol}} symbol, bool contrast\+Is\+Inverted)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{lcd__driver_8c_a558990598d0f9a2251ad7ffdb285150a}\label{lcd__driver_8c_a558990598d0f9a2251ad7ffdb285150a}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!A\+S\+C\+I\+I\+\_\+\+T\+A\+B\+L\+E\+\_\+\+O\+F\+F\+S\+ET@{A\+S\+C\+I\+I\+\_\+\+T\+A\+B\+L\+E\+\_\+\+O\+F\+F\+S\+ET}}
+\index{A\+S\+C\+I\+I\+\_\+\+T\+A\+B\+L\+E\+\_\+\+O\+F\+F\+S\+ET@{A\+S\+C\+I\+I\+\_\+\+T\+A\+B\+L\+E\+\_\+\+O\+F\+F\+S\+ET}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{A\+S\+C\+I\+I\+\_\+\+T\+A\+B\+L\+E\+\_\+\+O\+F\+F\+S\+ET}{ASCII\_TABLE\_OFFSET}}
+{\footnotesize\ttfamily \#define A\+S\+C\+I\+I\+\_\+\+T\+A\+B\+L\+E\+\_\+\+O\+F\+F\+S\+ET~((uint8\+\_\+t) 32)}
+
+\mbox{\Hypertarget{lcd__driver_8c_a66dfd8dedf4b17144f36e139cce0d1ad}\label{lcd__driver_8c_a66dfd8dedf4b17144f36e139cce0d1ad}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!E\+L\+E\+C\+T\+R\+O\+N\+I\+C\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+A\+X\+I\+M\+U\+M\+\_\+\+R\+A\+I\+T\+I\+NG@{E\+L\+E\+C\+T\+R\+O\+N\+I\+C\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+A\+X\+I\+M\+U\+M\+\_\+\+R\+A\+I\+T\+I\+NG}}
+\index{E\+L\+E\+C\+T\+R\+O\+N\+I\+C\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+A\+X\+I\+M\+U\+M\+\_\+\+R\+A\+I\+T\+I\+NG@{E\+L\+E\+C\+T\+R\+O\+N\+I\+C\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+A\+X\+I\+M\+U\+M\+\_\+\+R\+A\+I\+T\+I\+NG}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{E\+L\+E\+C\+T\+R\+O\+N\+I\+C\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+A\+X\+I\+M\+U\+M\+\_\+\+R\+A\+I\+T\+I\+NG}{ELECTRONIC\_VOLUME\_MAXIMUM\_RAITING}}
+{\footnotesize\ttfamily \#define E\+L\+E\+C\+T\+R\+O\+N\+I\+C\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+A\+X\+I\+M\+U\+M\+\_\+\+R\+A\+I\+T\+I\+NG~((uint8\+\_\+t) 63)}
+
+\mbox{\Hypertarget{lcd__driver_8c_a0240364487a54a70da4ffb51459ada98}\label{lcd__driver_8c_a0240364487a54a70da4ffb51459ada98}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+C\+O\+L\+U\+M\+NS@{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+C\+O\+L\+U\+M\+NS}}
+\index{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+C\+O\+L\+U\+M\+NS@{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+C\+O\+L\+U\+M\+NS}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+C\+O\+L\+U\+M\+NS}{NUMBER\_OF\_COLUMNS}}
+{\footnotesize\ttfamily \#define N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+C\+O\+L\+U\+M\+NS~((uint8\+\_\+t) 32)}
+
+
+
+Definition at line 34 of file lcd\+\_\+driver.\+c.
+
+\mbox{\Hypertarget{lcd__driver_8c_a00ad6a3a94ffdd1bc6b55e789f9dfda9}\label{lcd__driver_8c_a00ad6a3a94ffdd1bc6b55e789f9dfda9}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+R\+O\+WS@{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+R\+O\+WS}}
+\index{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+R\+O\+WS@{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+R\+O\+WS}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+R\+O\+WS}{NUMBER\_OF\_ROWS}}
+{\footnotesize\ttfamily \#define N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+R\+O\+WS~((uint8\+\_\+t) 128)}
+
+
+
+Definition at line 33 of file lcd\+\_\+driver.\+c.
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{lcd__driver_8c_a304ae0ed0bbd59ab6b9fc422459648d1}\label{lcd__driver_8c_a304ae0ed0bbd59ab6b9fc422459648d1}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!Column\+Buffer@{Column\+Buffer}}
+\index{Column\+Buffer@{Column\+Buffer}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{Column\+Buffer}{ColumnBuffer}}
+{\footnotesize\ttfamily typedef union \mbox{\hyperlink{union_column_buffer__}{Column\+Buffer\+\_\+}} \mbox{\hyperlink{lcd__driver_8c_a304ae0ed0bbd59ab6b9fc422459648d1}{Column\+Buffer}}}
+
+\mbox{\Hypertarget{lcd__driver_8c_ae51498cab8842a6e48c915f39161ee50}\label{lcd__driver_8c_ae51498cab8842a6e48c915f39161ee50}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!Font\+Size@{Font\+Size}}
+\index{Font\+Size@{Font\+Size}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{Font\+Size}{FontSize}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_font_size__}{Font\+Size\+\_\+}} \mbox{\hyperlink{lcd__driver_8c_ae51498cab8842a6e48c915f39161ee50}{Font\+Size}}}
+
+\mbox{\Hypertarget{lcd__driver_8c_aec9ff445f657af291adb50cd8880fd5f}\label{lcd__driver_8c_aec9ff445f657af291adb50cd8880fd5f}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!page@{page}}
+\index{page@{page}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{page}{page}}
+{\footnotesize\ttfamily typedef uint8\+\_\+t \mbox{\hyperlink{lcd__driver_8c_aec9ff445f657af291adb50cd8880fd5f}{page}}}
+
+
+
+Definition at line 79 of file lcd\+\_\+driver.\+c.
+
+\mbox{\Hypertarget{lcd__driver_8c_ae33ca92ca3f3b4e58ec3d3c0d32c1d8e}\label{lcd__driver_8c_ae33ca92ca3f3b4e58ec3d3c0d32c1d8e}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!page\+Set@{page\+Set}}
+\index{page\+Set@{page\+Set}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{page\+Set}{pageSet}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{lcd__driver_8c_aec9ff445f657af291adb50cd8880fd5f}{page}} page\+Set\mbox{[}\mbox{\hyperlink{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0a41f491abf3904075efd74c7e152508b5}{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+A\+G\+ES}}\mbox{]}}
+
+
+
+Definition at line 80 of file lcd\+\_\+driver.\+c.
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!instruction@{instruction}}
+\index{instruction@{instruction}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{instruction}{instruction}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3}{instruction}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+I\+S\+P\+L\+A\+Y\+\_\+\+O\+FF@{D\+I\+S\+P\+L\+A\+Y\+\_\+\+O\+FF}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!D\+I\+S\+P\+L\+A\+Y\+\_\+\+O\+FF@{D\+I\+S\+P\+L\+A\+Y\+\_\+\+O\+FF}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3acf49bc1c29a95c65aacddadb4dac7218}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3acf49bc1c29a95c65aacddadb4dac7218}} 
+D\+I\+S\+P\+L\+A\+Y\+\_\+\+O\+FF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+I\+S\+P\+L\+A\+Y\+\_\+\+ON@{D\+I\+S\+P\+L\+A\+Y\+\_\+\+ON}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!D\+I\+S\+P\+L\+A\+Y\+\_\+\+ON@{D\+I\+S\+P\+L\+A\+Y\+\_\+\+ON}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a474066ce108b971d3d963cf3ec8b84bd}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a474066ce108b971d3d963cf3ec8b84bd}} 
+D\+I\+S\+P\+L\+A\+Y\+\_\+\+ON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{A\+D\+C\+\_\+\+N\+O\+R\+M\+AL@{A\+D\+C\+\_\+\+N\+O\+R\+M\+AL}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!A\+D\+C\+\_\+\+N\+O\+R\+M\+AL@{A\+D\+C\+\_\+\+N\+O\+R\+M\+AL}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3ae58688800227d2e53c5c826f175d0676}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3ae58688800227d2e53c5c826f175d0676}} 
+A\+D\+C\+\_\+\+N\+O\+R\+M\+AL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{A\+D\+C\+\_\+\+R\+E\+V\+E\+R\+SE@{A\+D\+C\+\_\+\+R\+E\+V\+E\+R\+SE}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!A\+D\+C\+\_\+\+R\+E\+V\+E\+R\+SE@{A\+D\+C\+\_\+\+R\+E\+V\+E\+R\+SE}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a04496ab7797bda95ba55458596aa0f6a}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a04496ab7797bda95ba55458596aa0f6a}} 
+A\+D\+C\+\_\+\+R\+E\+V\+E\+R\+SE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+I\+A\+S\+\_\+\+O\+N\+E\+\_\+\+N\+I\+N\+TH@{B\+I\+A\+S\+\_\+\+O\+N\+E\+\_\+\+N\+I\+N\+TH}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!B\+I\+A\+S\+\_\+\+O\+N\+E\+\_\+\+N\+I\+N\+TH@{B\+I\+A\+S\+\_\+\+O\+N\+E\+\_\+\+N\+I\+N\+TH}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3aebde2c4248e0ff8d93186c913ff87922}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3aebde2c4248e0ff8d93186c913ff87922}} 
+B\+I\+A\+S\+\_\+\+O\+N\+E\+\_\+\+N\+I\+N\+TH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+I\+A\+S\+\_\+\+O\+N\+E\+\_\+\+S\+E\+V\+E\+N\+TH@{B\+I\+A\+S\+\_\+\+O\+N\+E\+\_\+\+S\+E\+V\+E\+N\+TH}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!B\+I\+A\+S\+\_\+\+O\+N\+E\+\_\+\+S\+E\+V\+E\+N\+TH@{B\+I\+A\+S\+\_\+\+O\+N\+E\+\_\+\+S\+E\+V\+E\+N\+TH}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a8bf4b26dd0da975e2329a1e8459ae0d3}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a8bf4b26dd0da975e2329a1e8459ae0d3}} 
+B\+I\+A\+S\+\_\+\+O\+N\+E\+\_\+\+S\+E\+V\+E\+N\+TH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+M\+M\+O\+N\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+O\+D\+E\+\_\+\+N\+O\+R\+M\+AL@{C\+O\+M\+M\+O\+N\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+O\+D\+E\+\_\+\+N\+O\+R\+M\+AL}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!C\+O\+M\+M\+O\+N\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+O\+D\+E\+\_\+\+N\+O\+R\+M\+AL@{C\+O\+M\+M\+O\+N\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+O\+D\+E\+\_\+\+N\+O\+R\+M\+AL}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3af3fbe2552ff7b49edf4248ff77604042}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3af3fbe2552ff7b49edf4248ff77604042}} 
+C\+O\+M\+M\+O\+N\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+O\+D\+E\+\_\+\+N\+O\+R\+M\+AL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+M\+M\+O\+N\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+O\+D\+E\+\_\+\+R\+E\+V\+E\+R\+SE@{C\+O\+M\+M\+O\+N\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+O\+D\+E\+\_\+\+R\+E\+V\+E\+R\+SE}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!C\+O\+M\+M\+O\+N\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+O\+D\+E\+\_\+\+R\+E\+V\+E\+R\+SE@{C\+O\+M\+M\+O\+N\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+O\+D\+E\+\_\+\+R\+E\+V\+E\+R\+SE}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3ae6caebdeb9ae6ee9d0899804ebc88008}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3ae6caebdeb9ae6ee9d0899804ebc88008}} 
+C\+O\+M\+M\+O\+N\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+O\+D\+E\+\_\+\+R\+E\+V\+E\+R\+SE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+0@{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+0}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+0@{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+0}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a5ed43aeb54360dee1327408a11d449c0}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a5ed43aeb54360dee1327408a11d449c0}} 
+P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+1@{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+1}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+1@{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+1}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a0edbe97b74adf61da012b6cd83fd63b9}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a0edbe97b74adf61da012b6cd83fd63b9}} 
+P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+3@{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+3}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+3@{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+3}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a0f92f138252fe1cd1bc0332c1352b554}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a0f92f138252fe1cd1bc0332c1352b554}} 
+P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+7@{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+7}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+7@{P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+7}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a341682f90c3025b802d37f544ce80a09}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a341682f90c3025b802d37f544ce80a09}} 
+P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+E\+T\+\_\+7&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+0@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+0}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+0@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+0}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a4630244029bce4cdff27f6b2cd811e2c}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a4630244029bce4cdff27f6b2cd811e2c}} 
+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+1@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+1}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+1@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+1}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a67c2bcb289fa472f9e5c327f1dbfb4ad}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a67c2bcb289fa472f9e5c327f1dbfb4ad}} 
+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+2@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+2}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+2@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+2}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3ab3ab55a31f5891d879e8fd4bcd65d5ed}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3ab3ab55a31f5891d879e8fd4bcd65d5ed}} 
+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+3@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+3}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+3@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+3}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3ad1fce47e9678ed4920ac85debbfc8466}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3ad1fce47e9678ed4920ac85debbfc8466}} 
+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+4@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+4}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+4@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+4}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a92b4488cb9143ae49d92baaedcd32b89}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a92b4488cb9143ae49d92baaedcd32b89}} 
+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+5@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+5}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+5@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+5}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a86b14073d32fe084e8454d2e70707dfc}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a86b14073d32fe084e8454d2e70707dfc}} 
+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+5&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+6@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+6}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+6@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+6}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a6088b9dd82b344998a49575ce5a71562}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a6088b9dd82b344998a49575ce5a71562}} 
+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+6&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+7@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+7}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+7@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+7}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3acf037878d9d8b0214fa76aaf39759076}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3acf037878d9d8b0214fa76aaf39759076}} 
+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+R\+E\+S\+I\+S\+T\+O\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+7&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+L\+E\+C\+T\+R\+O\+N\+I\+C\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+O\+D\+E\+\_\+\+S\+ET@{E\+L\+E\+C\+T\+R\+O\+N\+I\+C\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+O\+D\+E\+\_\+\+S\+ET}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!E\+L\+E\+C\+T\+R\+O\+N\+I\+C\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+O\+D\+E\+\_\+\+S\+ET@{E\+L\+E\+C\+T\+R\+O\+N\+I\+C\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+O\+D\+E\+\_\+\+S\+ET}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3abd695a5e67a4770c185ee5c391603a13}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3abd695a5e67a4770c185ee5c391603a13}} 
+E\+L\+E\+C\+T\+R\+O\+N\+I\+C\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+O\+D\+E\+\_\+\+S\+ET&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+0@{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+0}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+0@{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+0}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3ac1734bfb9366542ed6e5ec25a4658d11}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3ac1734bfb9366542ed6e5ec25a4658d11}} 
+P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+1@{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+1}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+1@{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+1}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a629304c110ce0e1f68d4d21daa4e52bb}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a629304c110ce0e1f68d4d21daa4e52bb}} 
+P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+2@{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+2}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+2@{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+2}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a498b8c8c80b711f9505ffec3bd4d10c2}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a498b8c8c80b711f9505ffec3bd4d10c2}} 
+P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+3@{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+3}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+3@{P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+3}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a8361f888e2549e27f4b31848fa88f57b}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a8361f888e2549e27f4b31848fa88f57b}} 
+P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+L\+U\+M\+N\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+\+B\+IT@{C\+O\+L\+U\+M\+N\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+\+B\+IT}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!C\+O\+L\+U\+M\+N\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+\+B\+IT@{C\+O\+L\+U\+M\+N\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+\+B\+IT}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a13fd75b2ef66aaee48587d7a398e4a86}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a13fd75b2ef66aaee48587d7a398e4a86}} 
+C\+O\+L\+U\+M\+N\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+S\+E\+T\+\_\+\+B\+IT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+O\+O\+S\+T\+E\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+\+S\+ET@{B\+O\+O\+S\+T\+E\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+\+S\+ET}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!B\+O\+O\+S\+T\+E\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+\+S\+ET@{B\+O\+O\+S\+T\+E\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+\+S\+ET}}}\mbox{\Hypertarget{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a762cc80420d2c376c54c4f753c7f0500}\label{lcd__driver_8c_a8d53f52811787ac7b91d1fd31f23c5e3a762cc80420d2c376c54c4f753c7f0500}} 
+B\+O\+O\+S\+T\+E\+R\+\_\+\+R\+A\+T\+I\+O\+\_\+\+S\+ET&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 38 of file lcd\+\_\+driver.\+c.
+
+\mbox{\Hypertarget{lcd__driver_8c_a8d39a85fdb6168889e75ae8d2a924330}\label{lcd__driver_8c_a8d39a85fdb6168889e75ae8d2a924330}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcd\+Register@{lcd\+Register}}
+\index{lcd\+Register@{lcd\+Register}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcd\+Register}{lcdRegister}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{lcd__driver_8c_a8d39a85fdb6168889e75ae8d2a924330}{lcd\+Register}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+S\+T\+R\+U\+C\+T\+I\+O\+N\+\_\+\+R\+E\+G\+I\+S\+T\+ER@{I\+N\+S\+T\+R\+U\+C\+T\+I\+O\+N\+\_\+\+R\+E\+G\+I\+S\+T\+ER}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!I\+N\+S\+T\+R\+U\+C\+T\+I\+O\+N\+\_\+\+R\+E\+G\+I\+S\+T\+ER@{I\+N\+S\+T\+R\+U\+C\+T\+I\+O\+N\+\_\+\+R\+E\+G\+I\+S\+T\+ER}}}\mbox{\Hypertarget{lcd__driver_8c_a8d39a85fdb6168889e75ae8d2a924330a607a5a118ff65218f70c04612cc62402}\label{lcd__driver_8c_a8d39a85fdb6168889e75ae8d2a924330a607a5a118ff65218f70c04612cc62402}} 
+I\+N\+S\+T\+R\+U\+C\+T\+I\+O\+N\+\_\+\+R\+E\+G\+I\+S\+T\+ER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+A\+T\+A\+\_\+\+R\+E\+G\+I\+S\+T\+ER@{D\+A\+T\+A\+\_\+\+R\+E\+G\+I\+S\+T\+ER}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!D\+A\+T\+A\+\_\+\+R\+E\+G\+I\+S\+T\+ER@{D\+A\+T\+A\+\_\+\+R\+E\+G\+I\+S\+T\+ER}}}\mbox{\Hypertarget{lcd__driver_8c_a8d39a85fdb6168889e75ae8d2a924330a56a95f359d62d7985fbfe96d567b11ce}\label{lcd__driver_8c_a8d39a85fdb6168889e75ae8d2a924330a56a95f359d62d7985fbfe96d567b11ce}} 
+D\+A\+T\+A\+\_\+\+R\+E\+G\+I\+S\+T\+ER&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 69 of file lcd\+\_\+driver.\+c.
+
+\mbox{\Hypertarget{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0}\label{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!pages@{pages}}
+\index{pages@{pages}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{pages}{pages}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0}{pages}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+A\+G\+E\+\_\+0@{P\+A\+G\+E\+\_\+0}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!P\+A\+G\+E\+\_\+0@{P\+A\+G\+E\+\_\+0}}}\mbox{\Hypertarget{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0a2718e776b3d709390c124450db84085b}\label{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0a2718e776b3d709390c124450db84085b}} 
+P\+A\+G\+E\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+A\+G\+E\+\_\+1@{P\+A\+G\+E\+\_\+1}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!P\+A\+G\+E\+\_\+1@{P\+A\+G\+E\+\_\+1}}}\mbox{\Hypertarget{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0af5504232f33cd213b277e62ce046a424}\label{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0af5504232f33cd213b277e62ce046a424}} 
+P\+A\+G\+E\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+A\+G\+E\+\_\+2@{P\+A\+G\+E\+\_\+2}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!P\+A\+G\+E\+\_\+2@{P\+A\+G\+E\+\_\+2}}}\mbox{\Hypertarget{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0a13a14184d6688e0f2b91304a8af460cd}\label{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0a13a14184d6688e0f2b91304a8af460cd}} 
+P\+A\+G\+E\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+A\+G\+E\+\_\+3@{P\+A\+G\+E\+\_\+3}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!P\+A\+G\+E\+\_\+3@{P\+A\+G\+E\+\_\+3}}}\mbox{\Hypertarget{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0a260c0a1e147ba1ea89ce41eb80c8acc8}\label{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0a260c0a1e147ba1ea89ce41eb80c8acc8}} 
+P\+A\+G\+E\+\_\+3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+A\+G\+ES@{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+A\+G\+ES}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+A\+G\+ES@{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+A\+G\+ES}}}\mbox{\Hypertarget{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0a41f491abf3904075efd74c7e152508b5}\label{lcd__driver_8c_a498d041f9402a250ae456764e4506fb0a41f491abf3904075efd74c7e152508b5}} 
+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+A\+G\+ES&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 67 of file lcd\+\_\+driver.\+c.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{lcd__driver_8c_ad235a86241458b1e7b8771688bfdaf9a}\label{lcd__driver_8c_ad235a86241458b1e7b8771688bfdaf9a}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcd\+\_\+clear@{lcd\+\_\+clear}}
+\index{lcd\+\_\+clear@{lcd\+\_\+clear}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+clear()}{lcd\_clear()}}
+{\footnotesize\ttfamily void lcd\+\_\+clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 164 of file lcd\+\_\+driver.\+c.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lcd__driver_8c_ad235a86241458b1e7b8771688bfdaf9a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lcd__driver_8c_a6842775ba83d166f02b8fef8bb63b1e6}\label{lcd__driver_8c_a6842775ba83d166f02b8fef8bb63b1e6}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcd\+\_\+init@{lcd\+\_\+init}}
+\index{lcd\+\_\+init@{lcd\+\_\+init}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+init()}{lcd\_init()}}
+{\footnotesize\ttfamily void lcd\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 139 of file lcd\+\_\+driver.\+c.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{lcd__driver_8c_a6842775ba83d166f02b8fef8bb63b1e6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{lcd__driver_8c_a6842775ba83d166f02b8fef8bb63b1e6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lcd__driver_8c_acc135402ee97c717da0e94d4f35ab220}\label{lcd__driver_8c_acc135402ee97c717da0e94d4f35ab220}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcd\+\_\+set\+Bar@{lcd\+\_\+set\+Bar}}
+\index{lcd\+\_\+set\+Bar@{lcd\+\_\+set\+Bar}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+set\+Bar()}{lcd\_setBar()}}
+{\footnotesize\ttfamily void lcd\+\_\+set\+Bar (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x\+Position\+UL,  }\item[{uint8\+\_\+t}]{y\+Position\+UL,  }\item[{uint8\+\_\+t}]{x\+Position\+DR,  }\item[{uint8\+\_\+t}]{y\+Position\+DR }\end{DoxyParamCaption})}
+
+
+
+Definition at line 266 of file lcd\+\_\+driver.\+c.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{lcd__driver_8c_acc135402ee97c717da0e94d4f35ab220_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lcd__driver_8c_a4f59541ea134603bee01a883f996e4ba}\label{lcd__driver_8c_a4f59541ea134603bee01a883f996e4ba}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcd\+\_\+set\+Char@{lcd\+\_\+set\+Char}}
+\index{lcd\+\_\+set\+Char@{lcd\+\_\+set\+Char}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+set\+Char()}{lcd\_setChar()}}
+{\footnotesize\ttfamily void lcd\+\_\+set\+Char (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x\+Position,  }\item[{uint8\+\_\+t}]{y\+Position,  }\item[{unsigned char}]{char\+To\+Set,  }\item[{\mbox{\hyperlink{lcd__driver_8h_a438e9a5e935271711f6a0b377ba365fc}{lcd\+\_\+font\+Size}}}]{size,  }\item[{bool}]{contrast\+Is\+Inverted }\end{DoxyParamCaption})}
+
+
+
+Definition at line 172 of file lcd\+\_\+driver.\+c.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{lcd__driver_8c_a4f59541ea134603bee01a883f996e4ba_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lcd__driver_8c_a01af79135674b85725f569e8676b56ed}\label{lcd__driver_8c_a01af79135674b85725f569e8676b56ed}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcd\+\_\+set\+Contrast@{lcd\+\_\+set\+Contrast}}
+\index{lcd\+\_\+set\+Contrast@{lcd\+\_\+set\+Contrast}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+set\+Contrast()}{lcd\_setContrast()}}
+{\footnotesize\ttfamily void lcd\+\_\+set\+Contrast (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{electronic\+Volume }\end{DoxyParamCaption})}
+
+
+
+Definition at line 128 of file lcd\+\_\+driver.\+c.
+
+\mbox{\Hypertarget{lcd__driver_8c_a9bcf73809a621cc65f9ae004404ecf4e}\label{lcd__driver_8c_a9bcf73809a621cc65f9ae004404ecf4e}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcd\+\_\+set\+Frame@{lcd\+\_\+set\+Frame}}
+\index{lcd\+\_\+set\+Frame@{lcd\+\_\+set\+Frame}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+set\+Frame()}{lcd\_setFrame()}}
+{\footnotesize\ttfamily void lcd\+\_\+set\+Frame (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x\+Position\+UL,  }\item[{uint8\+\_\+t}]{y\+Position\+UL,  }\item[{uint8\+\_\+t}]{x\+Position\+DR,  }\item[{uint8\+\_\+t}]{y\+Position\+DR }\end{DoxyParamCaption})}
+
+
+
+Definition at line 253 of file lcd\+\_\+driver.\+c.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{lcd__driver_8c_a9bcf73809a621cc65f9ae004404ecf4e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lcd__driver_8c_ae6ba6c6161cf3ec1ade0a72595cda0ce}\label{lcd__driver_8c_ae6ba6c6161cf3ec1ade0a72595cda0ce}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcd\+\_\+set\+Line@{lcd\+\_\+set\+Line}}
+\index{lcd\+\_\+set\+Line@{lcd\+\_\+set\+Line}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+set\+Line()}{lcd\_setLine()}}
+{\footnotesize\ttfamily void lcd\+\_\+set\+Line (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x1,  }\item[{int16\+\_\+t}]{y1,  }\item[{int16\+\_\+t}]{x2,  }\item[{int16\+\_\+t}]{y2,  }\item[{uint8\+\_\+t}]{state }\end{DoxyParamCaption})}
+
+
+
+Definition at line 212 of file lcd\+\_\+driver.\+c.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{lcd__driver_8c_ae6ba6c6161cf3ec1ade0a72595cda0ce_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lcd__driver_8c_aa76a5521efe086a9d26cbf44af732e8b}\label{lcd__driver_8c_aa76a5521efe086a9d26cbf44af732e8b}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcd\+\_\+set\+Pixel@{lcd\+\_\+set\+Pixel}}
+\index{lcd\+\_\+set\+Pixel@{lcd\+\_\+set\+Pixel}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+set\+Pixel()}{lcd\_setPixel()}}
+{\footnotesize\ttfamily void lcd\+\_\+set\+Pixel (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x\+Position,  }\item[{uint8\+\_\+t}]{y\+Position,  }\item[{bool}]{pixel\+Is\+Set }\end{DoxyParamCaption})}
+
+
+
+Definition at line 154 of file lcd\+\_\+driver.\+c.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lcd__driver_8c_aa76a5521efe086a9d26cbf44af732e8b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lcd__driver_8c_aa6b1e5b4910ace65815c78a3da51f964}\label{lcd__driver_8c_aa6b1e5b4910ace65815c78a3da51f964}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcd\+\_\+set\+String@{lcd\+\_\+set\+String}}
+\index{lcd\+\_\+set\+String@{lcd\+\_\+set\+String}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+set\+String()}{lcd\_setString()}}
+{\footnotesize\ttfamily void lcd\+\_\+set\+String (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x\+Position,  }\item[{uint8\+\_\+t}]{y\+Position,  }\item[{char const $\ast$}]{string,  }\item[{\mbox{\hyperlink{lcd__driver_8h_a438e9a5e935271711f6a0b377ba365fc}{lcd\+\_\+font\+Size}}}]{size,  }\item[{bool}]{contrast\+Is\+Inverted }\end{DoxyParamCaption})}
+
+
+
+Definition at line 190 of file lcd\+\_\+driver.\+c.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{lcd__driver_8c_aa6b1e5b4910ace65815c78a3da51f964_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lcd__driver_8c_aceada75059c9ce992fa7e7f38bea8fb3}\label{lcd__driver_8c_aceada75059c9ce992fa7e7f38bea8fb3}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcd\+\_\+set\+String2@{lcd\+\_\+set\+String2}}
+\index{lcd\+\_\+set\+String2@{lcd\+\_\+set\+String2}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+set\+String2()}{lcd\_setString2()}}
+{\footnotesize\ttfamily void lcd\+\_\+set\+String2 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x\+Position,  }\item[{uint8\+\_\+t}]{y\+Position,  }\item[{char const $\ast$}]{string,  }\item[{\mbox{\hyperlink{lcd__driver_8h_a438e9a5e935271711f6a0b377ba365fc}{lcd\+\_\+font\+Size}}}]{size,  }\item[{bool}]{contrast\+Is\+Inverted }\end{DoxyParamCaption})}
+
+
+
+Definition at line 201 of file lcd\+\_\+driver.\+c.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{lcd__driver_8c_aceada75059c9ce992fa7e7f38bea8fb3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lcd__driver_8c_a1b56ac880918035df02119018094cfdb}\label{lcd__driver_8c_a1b56ac880918035df02119018094cfdb}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcd\+\_\+set\+Symbol8@{lcd\+\_\+set\+Symbol8}}
+\index{lcd\+\_\+set\+Symbol8@{lcd\+\_\+set\+Symbol8}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+set\+Symbol8()}{lcd\_setSymbol8()}}
+{\footnotesize\ttfamily void lcd\+\_\+set\+Symbol8 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x\+Position,  }\item[{uint8\+\_\+t}]{y\+Position,  }\item[{\mbox{\hyperlink{lcd__driver_8h_a85e540e9ffc9be3c6e946ccfc7dd2358}{lcd\+\_\+symbol}}}]{symbol,  }\item[{bool}]{contrast\+Is\+Inverted }\end{DoxyParamCaption})}
+
+
+
+Definition at line 274 of file lcd\+\_\+driver.\+c.
+
+\mbox{\Hypertarget{lcd__driver_8c_a3d045005d00fc4525d582d0f7559a313}\label{lcd__driver_8c_a3d045005d00fc4525d582d0f7559a313}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!lcd\+\_\+show@{lcd\+\_\+show}}
+\index{lcd\+\_\+show@{lcd\+\_\+show}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{lcd\+\_\+show()}{lcd\_show()}}
+{\footnotesize\ttfamily void lcd\+\_\+show (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 242 of file lcd\+\_\+driver.\+c.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{lcd__driver_8c_a3d045005d00fc4525d582d0f7559a313_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lcd__driver_8c_a5a18286d5a8b9cb3a7149987b595fc03}\label{lcd__driver_8c_a5a18286d5a8b9cb3a7149987b595fc03}} 
+\index{lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}!send\+Data@{send\+Data}}
+\index{send\+Data@{send\+Data}!lcd\+\_\+driver.\+c@{lcd\+\_\+driver.\+c}}
+\subsubsection{\texorpdfstring{send\+Data()}{sendData()}}
+{\footnotesize\ttfamily void send\+Data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 120 of file lcd\+\_\+driver.\+c.
+

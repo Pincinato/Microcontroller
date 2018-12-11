@@ -1,0 +1,9 @@
+<map id="getTypeOfHeartLevel" name="getTypeOfHeartLevel">
+<area shape="rect" id="node2" href="$interface___u_s_a_r_t__pincinato_8h.html#acb371df4a5baf1653834e8a129f74f78" title="ACK send an ACK to the UART via DMA. " alt="" coords="229,56,279,83"/>
+<area shape="rect" id="node5" href="$interface___e_c_g__pincinato_8h.html#a84c265b1e5b00238aa8fbd94f32162cf" title="updateHeartRate return the last computed Heart Rate " alt="" coords="195,107,313,133"/>
+<area shape="rect" id="node8" href="$interface___a_n_a_l_y_s_i_s__pincinato_8c.html#abe4cd628a331b2aeaaeed4ba1d5d21ad" title="includeInBuffer Include value in the myBuffer " alt="" coords="201,157,307,184"/>
+<area shape="rect" id="node3" href="$interface___u_s_a_r_t__pincinato_8c.html#a76d5b69e096504f0c2307de48102599f" title="clearMsg clear buffer " alt="" coords="396,5,471,32"/>
+<area shape="rect" id="node4" href="$interface___u_s_a_r_t__pincinato_8c.html#a7542806c4e2857a7b4320416799ccf2c" title="checkUart Check if a Uart was configured " alt="" coords="393,56,474,83"/>
+<area shape="rect" id="node6" href="$interface___a_d_c__pincinato_8h.html#a74cb317cbdd6810ff93997cbe6a881ce" title="getReadyToUpdate return the value that indicates if the interface is ready to update ..." alt="" coords="367,107,499,133"/>
+<area shape="rect" id="node7" href="$filter__math__pincinato_8h.html#a63b52e2d6e8763a3cb94cd22bde95731" title="filterAverageCompute include the value in the filter and compute the average " alt="" coords="361,157,505,184"/>
+</map>

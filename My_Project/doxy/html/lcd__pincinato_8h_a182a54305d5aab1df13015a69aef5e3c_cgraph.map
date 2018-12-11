@@ -1,0 +1,7 @@
+<map id="initLCD" name="initLCD">
+<area shape="rect" id="node2" href="$spi_8h.html#af81398f9775695df0b172367651ca3e6" title="MX_SPI1_Init" alt="" coords="117,5,216,32"/>
+<area shape="rect" id="node4" href="$lcd__driver_8h.html#a6842775ba83d166f02b8fef8bb63b1e6" title="lcd_init" alt="" coords="135,56,198,83"/>
+<area shape="rect" id="node6" href="$lcd__driver_8h.html#ad235a86241458b1e7b8771688bfdaf9a" title="lcd_clear" alt="" coords="129,107,204,133"/>
+<area shape="rect" id="node3" href="$adc_8h.html#a47642651029b93e3f9c9edad46bd27b4" title="This function is executed in case of error occurrence. " alt="" coords="264,5,372,32"/>
+<area shape="rect" id="node5" href="$lcd__driver_8c.html#ad235a86241458b1e7b8771688bfdaf9a" title="lcd_clear" alt="" coords="281,56,355,83"/>
+</map>

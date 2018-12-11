@@ -1,0 +1,140 @@
+\hypertarget{button__driver_8h}{}\section{C\+:/\+Users/\+T\+H\+P/\+Desktop/\+Unibern/2018\+\_\+02/\+Subjects/\+Programming\+\_\+\+Microcontroller/\+Paeks/samples/\+My\+\_\+\+Project/\+Library/\+Library/inc/button\+\_\+driver.h File Reference}
+\label{button__driver_8h}\index{C\+:/\+Users/\+T\+H\+P/\+Desktop/\+Unibern/2018\+\_\+02/\+Subjects/\+Programming\+\_\+\+Microcontroller/\+Paeks/samples/\+My\+\_\+\+Project/\+Library/\+Library/inc/button\+\_\+driver.\+h@{C\+:/\+Users/\+T\+H\+P/\+Desktop/\+Unibern/2018\+\_\+02/\+Subjects/\+Programming\+\_\+\+Microcontroller/\+Paeks/samples/\+My\+\_\+\+Project/\+Library/\+Library/inc/button\+\_\+driver.\+h}}
+{\ttfamily \#include \char`\"{}stm32f4xx\+\_\+hal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stdbool.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stdlib.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stdint.\+h\char`\"{}}\newline
+Include dependency graph for button\+\_\+driver.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button__driver_8h__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_input_filter__}{Input\+Filter\+\_\+}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{button__driver_8h_a15336ba289605e6744d084ae8e4f37cc}{I\+N\+P\+U\+T\+\_\+\+L\+OW}}~((uint16\+\_\+t)  0)
+\item 
+\#define \mbox{\hyperlink{button__driver_8h_a36700c52f8a492d9045ceacdd6b98101}{I\+N\+P\+U\+T\+\_\+\+H\+I\+GH}}~((uint16\+\_\+t)  65535)
+\item 
+\#define \mbox{\hyperlink{button__driver_8h_ac243bfa96aa2c28014159ff098bd2324}{E\+D\+GE}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_input_filter__}{Input\+Filter\+\_\+}} \mbox{\hyperlink{button__driver_8h_aa0f38bbf6320aea7cc99c3a77ed46d80}{Input\+Filter}}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189}{edge}} \{ \newline
+\mbox{\hyperlink{button_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189ab88c132109a78c131815f270b8bef045}{F\+A\+L\+L\+I\+N\+G\+\_\+\+E\+D\+GE}}, 
+\mbox{\hyperlink{button_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189a568c13a92a1e1635d9bd20282d67a336}{N\+O\+\_\+\+E\+D\+GE}}, 
+\mbox{\hyperlink{button_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189a86445853271053ed37f404b9ca4fa434}{R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE}}, 
+\mbox{\hyperlink{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189ab88c132109a78c131815f270b8bef045}{F\+A\+L\+L\+I\+N\+G\+\_\+\+E\+D\+GE}}, 
+\newline
+\mbox{\hyperlink{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189a568c13a92a1e1635d9bd20282d67a336}{N\+O\+\_\+\+E\+D\+GE}}, 
+\mbox{\hyperlink{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189a86445853271053ed37f404b9ca4fa434}{R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{button__driver_8h_a61dbff7d557fc276d145eddf49b0bbe1}{Input\+Filter\+\_\+init}} (\mbox{\hyperlink{button_8h_aa0f38bbf6320aea7cc99c3a77ed46d80}{Input\+Filter}} $\ast$const \+\_\+this, G\+P\+I\+O\+\_\+\+Type\+Def $\ast$const port, uint16\+\_\+t pin)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{button__driver_8h_ac243bfa96aa2c28014159ff098bd2324}\label{button__driver_8h_ac243bfa96aa2c28014159ff098bd2324}} 
+\index{button\+\_\+driver.\+h@{button\+\_\+driver.\+h}!E\+D\+GE@{E\+D\+GE}}
+\index{E\+D\+GE@{E\+D\+GE}!button\+\_\+driver.\+h@{button\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{E\+D\+GE}{EDGE}}
+{\footnotesize\ttfamily \#define E\+D\+GE}
+
+
+
+Definition at line 14 of file button\+\_\+driver.\+h.
+
+\mbox{\Hypertarget{button__driver_8h_a36700c52f8a492d9045ceacdd6b98101}\label{button__driver_8h_a36700c52f8a492d9045ceacdd6b98101}} 
+\index{button\+\_\+driver.\+h@{button\+\_\+driver.\+h}!I\+N\+P\+U\+T\+\_\+\+H\+I\+GH@{I\+N\+P\+U\+T\+\_\+\+H\+I\+GH}}
+\index{I\+N\+P\+U\+T\+\_\+\+H\+I\+GH@{I\+N\+P\+U\+T\+\_\+\+H\+I\+GH}!button\+\_\+driver.\+h@{button\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+P\+U\+T\+\_\+\+H\+I\+GH}{INPUT\_HIGH}}
+{\footnotesize\ttfamily \#define I\+N\+P\+U\+T\+\_\+\+H\+I\+GH~((uint16\+\_\+t)  65535)}
+
+
+
+Definition at line 10 of file button\+\_\+driver.\+h.
+
+\mbox{\Hypertarget{button__driver_8h_a15336ba289605e6744d084ae8e4f37cc}\label{button__driver_8h_a15336ba289605e6744d084ae8e4f37cc}} 
+\index{button\+\_\+driver.\+h@{button\+\_\+driver.\+h}!I\+N\+P\+U\+T\+\_\+\+L\+OW@{I\+N\+P\+U\+T\+\_\+\+L\+OW}}
+\index{I\+N\+P\+U\+T\+\_\+\+L\+OW@{I\+N\+P\+U\+T\+\_\+\+L\+OW}!button\+\_\+driver.\+h@{button\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+P\+U\+T\+\_\+\+L\+OW}{INPUT\_LOW}}
+{\footnotesize\ttfamily \#define I\+N\+P\+U\+T\+\_\+\+L\+OW~((uint16\+\_\+t)  0)}
+
+
+
+Definition at line 9 of file button\+\_\+driver.\+h.
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{button__driver_8h_aa0f38bbf6320aea7cc99c3a77ed46d80}\label{button__driver_8h_aa0f38bbf6320aea7cc99c3a77ed46d80}} 
+\index{button\+\_\+driver.\+h@{button\+\_\+driver.\+h}!Input\+Filter@{Input\+Filter}}
+\index{Input\+Filter@{Input\+Filter}!button\+\_\+driver.\+h@{button\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{Input\+Filter}{InputFilter}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_input_filter__}{Input\+Filter\+\_\+}} \mbox{\hyperlink{button_8h_aa0f38bbf6320aea7cc99c3a77ed46d80}{Input\+Filter}}}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189}\label{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189}} 
+\index{button\+\_\+driver.\+h@{button\+\_\+driver.\+h}!edge@{edge}}
+\index{edge@{edge}!button\+\_\+driver.\+h@{button\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{edge}{edge}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{button_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189}{edge}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+A\+L\+L\+I\+N\+G\+\_\+\+E\+D\+GE@{F\+A\+L\+L\+I\+N\+G\+\_\+\+E\+D\+GE}!button\+\_\+driver.\+h@{button\+\_\+driver.\+h}}\index{button\+\_\+driver.\+h@{button\+\_\+driver.\+h}!F\+A\+L\+L\+I\+N\+G\+\_\+\+E\+D\+GE@{F\+A\+L\+L\+I\+N\+G\+\_\+\+E\+D\+GE}}}\mbox{\Hypertarget{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189ab88c132109a78c131815f270b8bef045}\label{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189ab88c132109a78c131815f270b8bef045}} 
+F\+A\+L\+L\+I\+N\+G\+\_\+\+E\+D\+GE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N\+O\+\_\+\+E\+D\+GE@{N\+O\+\_\+\+E\+D\+GE}!button\+\_\+driver.\+h@{button\+\_\+driver.\+h}}\index{button\+\_\+driver.\+h@{button\+\_\+driver.\+h}!N\+O\+\_\+\+E\+D\+GE@{N\+O\+\_\+\+E\+D\+GE}}}\mbox{\Hypertarget{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189a568c13a92a1e1635d9bd20282d67a336}\label{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189a568c13a92a1e1635d9bd20282d67a336}} 
+N\+O\+\_\+\+E\+D\+GE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE@{R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE}!button\+\_\+driver.\+h@{button\+\_\+driver.\+h}}\index{button\+\_\+driver.\+h@{button\+\_\+driver.\+h}!R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE@{R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE}}}\mbox{\Hypertarget{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189a86445853271053ed37f404b9ca4fa434}\label{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189a86445853271053ed37f404b9ca4fa434}} 
+R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+A\+L\+L\+I\+N\+G\+\_\+\+E\+D\+GE@{F\+A\+L\+L\+I\+N\+G\+\_\+\+E\+D\+GE}!button\+\_\+driver.\+h@{button\+\_\+driver.\+h}}\index{button\+\_\+driver.\+h@{button\+\_\+driver.\+h}!F\+A\+L\+L\+I\+N\+G\+\_\+\+E\+D\+GE@{F\+A\+L\+L\+I\+N\+G\+\_\+\+E\+D\+GE}}}\mbox{\Hypertarget{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189ab88c132109a78c131815f270b8bef045}\label{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189ab88c132109a78c131815f270b8bef045}} 
+F\+A\+L\+L\+I\+N\+G\+\_\+\+E\+D\+GE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N\+O\+\_\+\+E\+D\+GE@{N\+O\+\_\+\+E\+D\+GE}!button\+\_\+driver.\+h@{button\+\_\+driver.\+h}}\index{button\+\_\+driver.\+h@{button\+\_\+driver.\+h}!N\+O\+\_\+\+E\+D\+GE@{N\+O\+\_\+\+E\+D\+GE}}}\mbox{\Hypertarget{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189a568c13a92a1e1635d9bd20282d67a336}\label{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189a568c13a92a1e1635d9bd20282d67a336}} 
+N\+O\+\_\+\+E\+D\+GE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE@{R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE}!button\+\_\+driver.\+h@{button\+\_\+driver.\+h}}\index{button\+\_\+driver.\+h@{button\+\_\+driver.\+h}!R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE@{R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE}}}\mbox{\Hypertarget{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189a86445853271053ed37f404b9ca4fa434}\label{button__driver_8h_a4ef43ff5c6d42dacbc8ffd9c8cfdc189a86445853271053ed37f404b9ca4fa434}} 
+R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 15 of file button\+\_\+driver.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{button__driver_8h_a61dbff7d557fc276d145eddf49b0bbe1}\label{button__driver_8h_a61dbff7d557fc276d145eddf49b0bbe1}} 
+\index{button\+\_\+driver.\+h@{button\+\_\+driver.\+h}!Input\+Filter\+\_\+init@{Input\+Filter\+\_\+init}}
+\index{Input\+Filter\+\_\+init@{Input\+Filter\+\_\+init}!button\+\_\+driver.\+h@{button\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{Input\+Filter\+\_\+init()}{InputFilter\_init()}}
+{\footnotesize\ttfamily uint8\+\_\+t Input\+Filter\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{button_8h_aa0f38bbf6320aea7cc99c3a77ed46d80}{Input\+Filter}} $\ast$const}]{\+\_\+this,  }\item[{G\+P\+I\+O\+\_\+\+Type\+Def $\ast$const}]{port,  }\item[{uint16\+\_\+t}]{pin }\end{DoxyParamCaption})}
+
