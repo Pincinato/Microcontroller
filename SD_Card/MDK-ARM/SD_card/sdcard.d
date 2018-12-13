@@ -37,6 +37,7 @@ sd_card\sdcard.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 sd_card\sdcard.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 sd_card\sdcard.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 sd_card\sdcard.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+sd_card\sdcard.o: ../Inc/spi.h
 sd_card\sdcard.o: ..\Middlewares\Third_Party\FatFs\src\ff.h
 sd_card\sdcard.o: ..\Middlewares\Third_Party\FatFs\src\integer.h
 sd_card\sdcard.o: ../Inc/ffconf.h

@@ -53,4 +53,3 @@ sd_card\main.o: ../Inc/usart.h
 sd_card\main.o: ../Inc/gpio.h
 sd_card\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 sd_card\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-sd_card\main.o: ../Middlewares/Third_Party/FatFs/src/sdcard.h
