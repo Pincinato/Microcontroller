@@ -28,13 +28,15 @@ bool initSDCARDInterface(){
 
 void configPins(void){
 
-		GPIO_InitTypeDef GPIO_InitStruct;
+    /*
+    GPIO_InitTypeDef GPIO_InitStruct;
     GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_15;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+    */
     GPIO_InitStruct.Pin = GPIO_PIN_14; //MISO
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_PULLUP;
@@ -75,10 +77,10 @@ bool initSDCard(void){
     Command[0]=0xFF;
     Command[1]= 0xFF;
     for(int i=0;i<10;++i){
-        HAL_SPI_Transmit(&SDCARDSPI,&Command[0],1,100);
-        HAL_SPI_Receive(&SDCARDSPI,&ACKCommand[i],1,1000);
+        HAL_SPI_TransmitReceive(&SDCARDSPI,&Command[0],&ACKCommand[0],1,1000);
+        if(ACKCOmmand[0]==0x01) break;
      }
-    if(checkIfACK(ACKCommand,10,0x01)){
+    if(ACKCommand[0]==0x01){
         for(int i=0;i<3;++i){
             Command[0]= CMD1;
             Command[1]=0x00;
@@ -89,11 +91,9 @@ bool initSDCard(void){
             HAL_SPI_Transmit(&hspi2,&Command[0],6,100);
             for(int j=0;j<2000;++j){
                 Command[0]= 0xff;
-                HAL_SPI_Transmit(&SDCARDSPI,&Command[0],1,100);
-                HAL_SPI_Receive(&SDCARDSPI,&ACKCommand[0],1,100);
+                HAL_SPI_TransmitReceive(&SDCARDSPI,&Command[0],&ACKCommand[0],1,100);
                 if(ACKCommand[0]==0x00){
-                    j=5000;
-                    i=5;
+                    j=5000;i=5;
                     ACK=true;
                     break;
                 }
@@ -122,14 +122,77 @@ bool checkIfACK(uint8_t * buf, uint8_t size, uint8_t msgACK){
 }
 
 
-bool write3Bytes(uint8_t first, uint8_t second, uint8_t third){
+bool writeBytes(uint8_t * toWrite, uint16_t size, uint32_t startPosition){
     bool ACK=false;
+    bool sdCardBusy=false;
+    uint16_t dataWritten=0;
+    if(size>100){
+        uint8_t ACKCommand[7]="";
+        uint8_t Command[7]="";
+        uint8_t Msg[101]="";
+        Msg[0]= TOKEN_ACK;
+        strcat(Msg,toWrite);
+        Command[0]=CMD24;
+        Command[1]=0x00;
+        Command[2]=0x00;
+        Command[3]=0x00;
+        Command[4]=startPosition;
+        Command[5]=0x01;
+        HAL_SPI_Transmit(&hspi2,&Command[0],6,100);
+        clearACKbuffer(&Command[0],6);
+        clearACKbuffer(&ACKCommand[0],6);
+        HAL_SPI_Transmit(&SDCARDSPI,&Command[0],&ACKCommand[0],5,100);
+        if(checkIfACK(ACKCommand,4,0x00)){
+            HAL_SPI_Transmit(&SDCARDSPI,&Msg[0],size,100);
+            ACKCommand[0]=0xFF;
+            Command[0]=0xFF;
+            for(int i=0;i<5000;++i){
+            //HAL_SPI_Transmit(&SDCARDSPI,&Command[0],1,100);
+                HAL_SPI_TransmitReceive(&SDCARDSPI,&Command[0],&ACKCommand[0],1,100);
+                if(ACKCommand[0]==0x00){ //start
+                    sdCardBusy=true;
+                    ++dataWritten;
+                }
+                if((ACKCommand[0]==0xFF) && (sdCardBusy)){ //finish
+                    break;
+                }
+            }
+            if(dataWritten>=size) {ACK=true;}
+        }
+    }
     return ACK;
 
 }
 
-bool read3Bytes(uint8_t *first, uint8_t *second, uint8_t *third){
+bool readBytes(uint8_t * toRead, uint16_t size, uint32_t startPosition){
+
     bool ACK=false;
+    bool getValues=false;
+    uint8_t ACKCommand[3]="";
+    uint8_t Command[7]="";
+    uint32_t index=0;
+    //Read block cMD17 + adr + Crc OK - Working
+    Command[0]=CMD17;
+    Command[1]=0x00;
+    Command[2]=0x00;
+    Command[3]=0x00;
+    Command[4]=startPosition;
+    Command[5]=0x01;
+    HAL_SPI_Transmit(&SDCARDSPI,&Command[0],6,100);
+    for(int i=0;i<2000;++i){
+        Command[0]= 0xFF;
+        //HAL_SPI_Transmit(&hspi2,&Command[0],1,100);
+        HAL_SPI_TransmitReceive(&SDCARDSPI,&Command[0],&ACKCommand[0],1,100);
+        if(getValues){
+            if(index<size){
+                toRead[index]=ACKCommand[0];
+                index++;
+            }
+        }
+        else if(ACKCommand==TOKEN_ACK){
+            getValues=true;
+        }
+    }
     return ACK;
 
 }

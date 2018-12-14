@@ -33,20 +33,68 @@
 #define CMD25	(0x40+25)	// WRITE_MULTIPLE_BLOCK
 #define CMD55	(0x40+55)	// APP_CMD
 #define CMD58	(0x40+58)	// READ_OCR
+#define TOKEN_ACK (0xFE)        // ACK Token for cmd17 and 24
 
 #define SDCARDSPI hspi2
 
+ /*!
+ * \brief initSDCARDInterface       Configuration of SPI pins, starut up and init of SDcard
+ * \return                          true if the initialize was sucesseful, false otherwise
+ */
 bool initSDCARDInterface(void);
+
+/*!
+ * \brief configPins                Assure that Di is used as pullup
+ */
 void configPins(void);
+
+/*!
+ * \brief startUpSDCard             initial procedure to "start up" Sd.
+ */
 void startUpSDCard(void);
+
+/*!
+ * \brief initSDCard                first two message to indicate a spi mode
+ * \return                          true if the initialization was sucesseful, false otherwise
+ */
 bool initSDCard(void);
+
+/*!
+ * \brief clearACKbuffer            assing 0xFF to all values in the buffers
+ * \param buf                       buffer to be cleared
+ * \param size                      size of the buffer
+ */
 void clearACKbuffer(uint8_t * buf, uint8_t size);
+
+/*!
+ * \brief checkIfACK                look if the buffer contain at leat on msgACK
+ * \param buf                       buffer to be checked
+ * \param size                      size of the buffer
+ * \param msgACK                    msg that is searched in the the buffer
+ * \return                          true if the there is, at least, one msgACK, false otherwise
+ */
 bool checkIfACK(uint8_t * buf, uint8_t size,uint8_t msgACK);
-bool write3Bytes(uint8_t first, uint8_t second, uint8_t third);
-bool read3Bytes(uint8_t *first, uint8_t *second, uint8_t *third);
+
+/*!
+ * \brief writeBytes                write Bytes into SD card
+ * \param toWrite                   buffer that contain the values to be written
+ * \param size                      amount of data to be written
+ * \param startPosition             position to start writing process
+ * \return                          true if the writing process was sucesseful, false otherwise
+ */
+bool writeBytes(uint8_t * toWrite, uint16_t size, uint32_t startPosition);
+
+/*!
+ * \brief readBytes                 read Bytes from SD card
+ * \param toRead                    buffer that will recieve the read Bytes
+ * \param size                      amount of data to be read
+ * \param startPosition             position to start the reading process
+ * \return                          true if the reading process was sucesseful, false otherwise
+ */
+bool readBytes(uint8_t * toRead, uint16_t size, uint32_t startPosition);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /*INTERFACE_ANALYSIS_PINCINATO_H*/
+#endif /*INTERFACE_SDCARD_PINCINATO_H*/
