@@ -62,6 +62,7 @@
 #include "stdio.h"
 #include "string.h"
 #include "stdbool.h"
+#include "interface_SDCARD_pincinato.h"
 //#include "sdcard.h"
 //#include "fatfs.h"
 
@@ -158,13 +159,11 @@ int main(void)
 	HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_SET);
 	HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,GPIO_PIN_SET);
 	
-	
-	//Start up
-	HAL_Delay(1);
-	uint8_t ACKCommand[2];
-	ACKCommand[0]=0xFF;
-	ACKCommand[1]=0xFF;
+	static uint8_t ACKCommand[12]="";
 	uint8_t Command[7];
+	/*
+	//Start up
+	HAL_Delay(1);	
 	Command[0]=0xFF;
 	Command[1]= 0xFF;
 	HAL_GPIO_WritePin(SPI2_CS_GPIO_Port,SPI2_CS_Pin,GPIO_PIN_SET);
@@ -187,6 +186,7 @@ int main(void)
 	Command[1]= 0xFF;
 	for(int i=0;i<10;++i){
 		HAL_SPI_Transmit(&hspi2,&Command[0],1,100);
+		HAL_SPI_Receive(&hspi2,&ACKCommand[i],1,1000);
 	}
 	for(int i=0;i<3;++i){
 		Command[0]= CMD1;
@@ -199,10 +199,11 @@ int main(void)
 		for(int i=0;i<2000;++i){
 			Command[0]= 0xff;
 			HAL_SPI_Transmit(&hspi2,&Command[0],1,100);
-			//HAL_Delay();
 		}
 	}
-	
+	*/
+	static bool ret;
+	ret = initSDCard();	
 	//Read block cMD17 + adr + Crc OK - Working
 	Command[0]=CMD17;
 	Command[1]=0x00;
@@ -216,7 +217,7 @@ int main(void)
 			HAL_SPI_Transmit(&hspi2,&Command[0],1,100);
 			//HAL_Delay();
 	}	
-	
+	ret=!ret;
 	
 	//Write block 			Working
 	/*

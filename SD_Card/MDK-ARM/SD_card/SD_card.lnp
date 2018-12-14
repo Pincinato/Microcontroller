@@ -12,6 +12,7 @@
 "sd_card\usart.o"
 "sd_card\stm32f4xx_it.o"
 "sd_card\stm32f4xx_hal_msp.o"
+"sd_card\interface_sdcard_pincinato.o"
 "sd_card\stm32f4xx_hal_adc.o"
 "sd_card\stm32f4xx_hal_adc_ex.o"
 "sd_card\stm32f4xx_hal_i2c.o"
