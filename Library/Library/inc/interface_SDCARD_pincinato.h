@@ -1,6 +1,6 @@
 /******************************************************************************
 * @file     interface_SDCARD_pincinato.h
-* @brief    This file analysis the results of ECG and ACCEL interface
+* @brief    This file handles the SD card
 * @author   Thiago Henrique Pincinato
 * @version  V1.0
 * @date     10.12.2012
@@ -94,9 +94,17 @@ bool SDCardWriteBytes(uint8_t * toWrite, uint16_t size, uint32_t startPosition);
  */
 bool SDCardReadBytes(uint8_t * toRead, uint16_t size, uint32_t startPosition);
 
-
+/*!
+ * \brief sendCommand0              send fisrt command CMD0
+ * \return                          true is sucessful, false otherwise
+ */
 bool sendCommand0(void);
 
+/*!
+ * \brief sendCommand               send the command cmd
+ * \param cmd                       command to be sent
+ * \return                          true is sucessful, false otherwise
+ */
 bool sendCommand(uint8_t cmd);
 
 #ifdef __cplusplus

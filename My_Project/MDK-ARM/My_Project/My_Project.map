@@ -3308,15 +3308,15 @@ Image component sizes
        108         18          0          1        200       4106   button.o
        118          8          0          0          0       3259   button_driver.o
         72          4          0          0          0        874   dma.o
-       744         14          0          0          0       8704   filter_math_pincinato.o
+       744         14          0          0          0       8696   filter_math_pincinato.o
        332         18          0          0          0       1167   gpio.o
        172         40          0          0         84       1829   i2c.o
-       684        136          0         12       2116     743143   interface_accel_pincinato.o
-       406         98         40          1       6496       9175   interface_adc_pincinato.o
-       766         68          0         16       2212      10046   interface_analysis_pincinato.o
+       684        136          0         12       2116     743135   interface_accel_pincinato.o
+       406         98         40          1       6496       9167   interface_adc_pincinato.o
+       766         68          0         16       2212      10042   interface_analysis_pincinato.o
        384         36          0          8       6536       4391   interface_ecg_pincinato.o
-       938         42          0          0          0       8860   interface_sdcard_pincinato.o
-      1104        196          0         12         59      13294   interface_usart_pincinato.o
+       938         42          0          0          0       8856   interface_sdcard_pincinato.o
+      1104        196          0         12         59      13290   interface_usart_pincinato.o
        240         42          0          0         60       4052   joystick.o
        852         68       6292          0        512      14323   lcd_driver.o
        698         76          0         16          0       7986   lcd_menu.o
@@ -3346,7 +3346,7 @@ Image component sizes
        352         66          0          0        256       2084   usart.o
 
     ----------------------------------------------------------------------
-     25772       1946       6904        204      28812     985651   Object Totals
+     25772       1946       6904        204      28812     985615   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         42          0          2         12          9          0   (incl. Padding)
 
@@ -3408,8 +3408,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     29736       2048       6904        204      28812     962995   Grand Totals
-     29736       2048       6904        204      28812     962995   ELF Image Totals
+     29736       2048       6904        204      28812     962959   Grand Totals
+     29736       2048       6904        204      28812     962959   ELF Image Totals
      29736       2048       6904        204          0          0   ROM Totals
 
 ==============================================================================

@@ -1,18 +1,3 @@
-/***************************************************************************************************
-  * @file
-  * @author     ?? original author has to be given as well !!	
-  * @version    V0.4
-	* @date       30.09.2018
-	* @date       20.04.2018
-  * @brief      Display setup and communication for LCD on mbed16-application-shield
-	* @brief      V0.4;dnd1;add;drawLine() function
-  * @hardware   NucleoF446RE with mbed-016.1-application-shield
-  **************************************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; COPYRIGHT 2018 BFH-TI </center></h2>
-  *
-  */
 #include "interface_ACCEL_pincinato.h"
 #include "string.h"
 #include "lcd_pincinato.h"

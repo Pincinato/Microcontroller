@@ -30,8 +30,19 @@ typedef struct{
  */
 void initTable(Table *A);
 
+/*!
+ * \brief loadTableValues   Load values from the SD card and using those values
+ *                          set attributes of table A
+ * \param A                 table to be set
+ * \return                  true if values are loaded
+ */
 bool loadTableValues(Table *A);
 
+/*!
+ * \brief saveTableValues    Save values into the SD card and using table A values
+ * \param A                  tables in which values are used
+ * \return                   true if values are saved
+ */
 bool saveTableValues(Table *A);
 
 #ifdef __cplusplus
