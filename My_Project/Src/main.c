@@ -4,45 +4,35 @@
   * @file           : main.c
   * @brief          : Main program body
   ******************************************************************************
-  * This notice applies to any and all portions of this file
+  ** This notice applies to any and all portions of this file
   * that are not between comment pairs USER CODE BEGIN and
   * USER CODE END. Other portions of this file, whether 
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * Copyright (c) 2018 STMicroelectronics International N.V. 
-  * All rights reserved.
+  * COPYRIGHT(c) 2018 STMicroelectronics
   *
-  * Redistribution and use in source and binary forms, with or without 
-  * modification, are permitted, provided that the following conditions are met:
+  * Redistribution and use in source and binary forms, with or without modification,
+  * are permitted provided that the following conditions are met:
+  *   1. Redistributions of source code must retain the above copyright notice,
+  *      this list of conditions and the following disclaimer.
+  *   2. Redistributions in binary form must reproduce the above copyright notice,
+  *      this list of conditions and the following disclaimer in the documentation
+  *      and/or other materials provided with the distribution.
+  *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  *      may be used to endorse or promote products derived from this software
+  *      without specific prior written permission.
   *
-  * 1. Redistribution of source code must retain the above copyright notice, 
-  *    this list of conditions and the following disclaimer.
-  * 2. Redistributions in binary form must reproduce the above copyright notice,
-  *    this list of conditions and the following disclaimer in the documentation
-  *    and/or other materials provided with the distribution.
-  * 3. Neither the name of STMicroelectronics nor the names of other 
-  *    contributors to this software may be used to endorse or promote products 
-  *    derived from this software without specific written permission.
-  * 4. This software, including modifications and/or derivative works of this 
-  *    software, must execute solely and exclusively on microcontroller or
-  *    microprocessor devices manufactured by or for STMicroelectronics.
-  * 5. Redistribution and use of this software other than as permitted under 
-  *    this license is void and will automatically terminate your rights under 
-  *    this license. 
-  *
-  * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS" 
-  * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT 
-  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
-  * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
-  * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT 
-  * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, 
-  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
-  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
-  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *
   ******************************************************************************
   */
@@ -51,7 +41,6 @@
 #include "stm32f4xx_hal.h"
 #include "adc.h"
 #include "dma.h"
-#include "fatfs.h"
 #include "i2c.h"
 #include "spi.h"
 #include "tim.h"
@@ -72,6 +61,7 @@
 #include "interface_ECG_pincinato.h"
 #include "interface_USART_pincinato.h"
 #include "interface_ANALYSIS_pincinato.h"
+#include "interface_SDCARD_pincinato.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -99,10 +89,8 @@ static AppData myData;
 static int MainEvent;
 static int last_MainEvent;
 //
-
-FIL myfile;
-FATFS fs = {0};
-
+static bool sdCardStatus;
+Table myTable;
 /* Private variables ---------------------------------------------------------*/
 //#define POT_1_HANDLE hadc1
 #define POT_2_HANDLE hadc2 
@@ -163,18 +151,19 @@ int main(void)
   MX_I2C1_Init();
   MX_ADC1_Init();
   MX_SPI2_Init();
-  MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	HAL_GPIO_WritePin(LedBlue_GPIO_Port,LedBlue_Pin,GPIO_PIN_SET);
-	HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_SET);
 	
 	//Init Pincinato's Interface
-	Table myTable;
+	sdCardStatus=initSDCARDInterface();
 	initTable(&myTable);
+	if(sdCardStatus){
+		loadTableValues(&myTable);
+		myTable.sdCardStatus=sdCardStatus;
+	}
 	initInterface(&myTable,&huart2);
 	initANALYSISInterface(&myTable);
 	initLCD();
@@ -182,22 +171,12 @@ int main(void)
 	initACCELInterface();
 	lcd_clear();
 	lcd_setString(2,10," Start ",LCD_FONT_8,false);
-	lcd_show();
+	lcd_show();	
+	HAL_GPIO_WritePin(LedBlue_GPIO_Port,LedBlue_Pin,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_SET);
 	HAL_Delay(100);
 	lcd_clear();
-	
-/*
-	//SD test
-	disk_initialize(fs.drv);
-	f_mount(&fs,"SDCARD",FA_WRITE);
-	f_open(&myfile,"data.txt",FA_WRITE);
-	uint32_t written;
-	f_write(&myfile,"test ",5,&written);
-	f_close(&myfile);
-	f_mount(0,NULL,FA_WRITE);	
-	
-*/	
-	
+
 	//Menu initialization
 	menu_setMainMenu(&mainMenu);
 	Joystick joystick;
@@ -357,8 +336,6 @@ void updateData(AppData *data) {
 	char bufHR[9]="";
 	char bufActivity[9]="";
 	bool abnormality;
-	  // Keep all data of last process image
-	data->previous = data->current;
 
 	if(last_MainEvent != MainEvent){
 		switch (last_MainEvent) {
@@ -370,7 +347,8 @@ void updateData(AppData *data) {
 						HAL_GPIO_WritePin(LedBlue_GPIO_Port,LedBlue_Pin,GPIO_PIN_SET);
 						HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_SET);
 			break;
-		case 4: 
+		case 4:	myTable.sdCardStatus=saveTableValues(&myTable);
+			break;
 		default:stopACCELInterface();
 						stopECGInterface();
 						stopANALYSISInterface();
@@ -387,14 +365,14 @@ void updateData(AppData *data) {
 						lcd_show();
 			break;
 		case 3: startANALYSISInterface();
-						HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_RESET);						
-						lcd_setString(2,10, "HR:              ",LCD_FONT_8,false); 					
+						HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_RESET);
+						lcd_setString(2,10, "HR:              ",LCD_FONT_8,false);
 						lcd_setString(2,20, "Act:              ",LCD_FONT_8,false); 
 						lcd_show();
 			break;
 		default:
 			break;
-		}
+		}		
 	}
 	switch (MainEvent) {
 		case 1: readAccel();
@@ -417,13 +395,15 @@ void updateData(AppData *data) {
 								HAL_GPIO_WritePin(LedGreen_GPIO_Port,LedGreen_Pin,GPIO_PIN_SET);
 								HAL_GPIO_WritePin(LedBlue_GPIO_Port,LedBlue_Pin,GPIO_PIN_RESET);						
 							}						
-			}							
+						}				
 			break;
 		case 4: check_RX();
 			break;
 		default:
 			break;
-		}
+		}	
+  // Keep all data of last process image
+	data->previous = data->current;
 		
 }
 

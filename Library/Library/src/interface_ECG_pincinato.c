@@ -15,6 +15,7 @@
   */
 #include "interface_ECG_pincinato.h"
 #include "interface_ADC_pincinato.h"
+#include "gpio.h"
 
 void initECGInterface(void){
     initAverageFilter(&ECGprocess.HR,&ECGprocess.HRbuf[0],lowFilterItemCount);
@@ -71,5 +72,6 @@ bool updateHeartRate(float* destinationValue){
 	}
 	return ack;
 }
+
 
 /****** END OF FILE ******/

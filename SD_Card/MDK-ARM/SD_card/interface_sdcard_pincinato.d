@@ -39,3 +39,4 @@ sd_card\interface_sdcard_pincinato.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f
 sd_card\interface_sdcard_pincinato.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 sd_card\interface_sdcard_pincinato.o: ../Inc/gpio.h
 sd_card\interface_sdcard_pincinato.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+sd_card\interface_sdcard_pincinato.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

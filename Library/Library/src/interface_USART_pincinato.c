@@ -117,18 +117,15 @@ void selectOption(const char * buf){
 void setHigh(uint32_t value){
 
 		localTable->High_HeartRate=value;
-		localTable->HasBeenEdited=true;
 }
 void setNormal(uint32_t value){
 	
 		localTable->Normal_HeartRate=value;
-		localTable->HasBeenEdited=true;
 }
 
 void setLow(uint32_t value){
 	
 		localTable->Low_HeartRate=value;
-		localTable->HasBeenEdited=true;
 }
 
 void sendActualConfig(void) {
@@ -137,11 +134,11 @@ void sendActualConfig(void) {
 	char Low[4]="";
 	char Normal[4]="";
 	char High[4]="";
-	char Edited[2]="";
+	char SD[2]="";
 	clearMsg(msgToSend,30);
 	if(checkUart()){
-		if(localTable->HasBeenEdited){Edited[0]=0x31;}
-		else{Edited[0]=0x30;}
+		if(localTable->sdCardStatus){SD[0]=0x31;}
+		else{SD[0]=0x30;}
 		sprintf(Low, "%d", localTable->Low_HeartRate);
 		sprintf(Normal, "%d", localTable->Normal_HeartRate);
 		sprintf(High, "%d", localTable->High_HeartRate);
@@ -151,8 +148,8 @@ void sendActualConfig(void) {
 		strcat(msgToSend,Normal);
 		strcat(msgToSend,"High");
 		strcat(msgToSend,High);
-		strcat(msgToSend,"Ed");	
-		strcat(msgToSend,Edited);
+		strcat(msgToSend,"SD");	
+		strcat(msgToSend,SD);
 		strcat(msgToSend,"! ");			
 		HAL_UART_Transmit_DMA(localUart,(uint8_t*) msgToSend,strlen((const char *) &msgToSend));
 	}

@@ -38,15 +38,6 @@ my_project\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 my_project\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 my_project\main.o: ../Inc/adc.h
 my_project\main.o: ../Inc/dma.h
-my_project\main.o: ../Inc/fatfs.h
-my_project\main.o: ..\..\Library\Library\sd_spi\fatfs\ff.h
-my_project\main.o: ..\..\Library\Library\sd_spi\fatfs\integer.h
-my_project\main.o: ..\..\Library\Library\sd_spi\fatfs\ffconf.h
-my_project\main.o: ..\..\Library\Library\sd_spi\fatfs\ff_gen_drv.h
-my_project\main.o: ..\..\Library\Library\sd_spi\fatfs\diskio.h
-my_project\main.o: ..\..\Library\Library\sd_spi\fatfs\defines.h
-my_project\main.o: ..\..\Library\Library\sd_spi\fatfs\attributes.h
-my_project\main.o: ../Inc/user_diskio.h
 my_project\main.o: ../Inc/i2c.h
 my_project\main.o: ../Inc/spi.h
 my_project\main.o: ../Inc/tim.h
@@ -70,3 +61,4 @@ my_project\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 my_project\main.o: ..\..\Library\Library\inc\interface_ECG_pincinato.h
 my_project\main.o: ..\..\Library\Library\inc\interface_USART_pincinato.h
 my_project\main.o: ..\..\Library\Library\inc\interface_ANALYSIS_pincinato.h
+my_project\main.o: ..\..\Library\Library\inc\interface_SDCARD_pincinato.h

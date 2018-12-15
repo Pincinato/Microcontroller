@@ -67,26 +67,6 @@
 //#include "fatfs.h"
 
 
-
-#define CMD0	(0x40+0)	// GO_IDLE_STATE 
-#define CMD1	(0x40+1)	// SEND_OP_COND (MMC) 
-#define ACMD41	(0xC0+41)	// SEND_OP_COND (SDC) 
-#define CMD8	(0x40+8)	// SEND_IF_COND 
-#define CMD9	(0x40+9)	// SEND_CSD 
-#define CMD10	(0x40+10)	// SEND_CID 
-#define CMD12	(0x40+12)	// STOP_TRANSMISSION 
-#define ACMD13	(0xC0+13)	// SD_STATUS (SDC) 
-#define CMD16	(0x40+16)	// SET_BLOCKLEN 
-#define CMD17	(0x40+17)	// READ_SINGLE_BLOCK 
-#define CMD18	(0x40+18)	// READ_MULTIPLE_BLOCK 
-#define CMD23	(0x40+23)	// SET_BLOCK_COUNT (MMC) 
-#define ACMD23	(0xC0+23)	// SET_WR_BLK_ERASE_COUNT (SDC) 
-#define CMD24	(0x40+24)	// WRITE_BLOCK 
-#define CMD25	(0x40+25)	// WRITE_MULTIPLE_BLOCK 
-#define CMD55	(0x40+55)	// APP_CMD
-#define CMD58	(0x40+58)	// READ_OCR 
-
-
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -149,7 +129,7 @@ int main(void)
   MX_I2C1_Init();
   MX_ADC1_Init();
   MX_SPI2_Init();
-  MX_FATFS_Init();
+  //MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE END 2 */
 
@@ -161,64 +141,20 @@ int main(void)
 	
 	static uint8_t ACKCommand[12]="";
 	uint8_t Command[7];
-	/*
-	//Start up
-	HAL_Delay(1);	
-	Command[0]=0xFF;
-	Command[1]= 0xFF;
-	HAL_GPIO_WritePin(SPI2_CS_GPIO_Port,SPI2_CS_Pin,GPIO_PIN_SET);
-	for(int i=0;i<100;++i){
-		HAL_SPI_Transmit(&hspi2,&Command[0],1,100);
-	}
-	//Initialization
-	HAL_Delay(5);
-	HAL_GPIO_WritePin(SPI2_CS_GPIO_Port,SPI2_CS_Pin,GPIO_PIN_RESET);
-	HAL_Delay(5);
-	Command[0]= CMD0;
-	Command[1]=0x00;
-	Command[2]=0x00;
-	Command[3]=0x00;
-	Command[4]=0x00;
-	Command[5]=0x95;
-	HAL_SPI_Transmit(&hspi2,&Command[0],6,1000);
-	//Wait R1
-	Command[0]=0xFF;
-	Command[1]= 0xFF;
-	for(int i=0;i<10;++i){
-		HAL_SPI_Transmit(&hspi2,&Command[0],1,100);
-		HAL_SPI_Receive(&hspi2,&ACKCommand[i],1,1000);
-	}
-	for(int i=0;i<3;++i){
-		Command[0]= CMD1;
-		Command[1]=0x00;
-		Command[2]=0x00;
-		Command[3]=0x00;
-		Command[4]=0x00;
-		Command[5]=0x01;
-		HAL_SPI_Transmit(&hspi2,&Command[0],6,100);
-		for(int i=0;i<2000;++i){
-			Command[0]= 0xff;
-			HAL_SPI_Transmit(&hspi2,&Command[0],1,100);
-		}
-	}
-	*/
 	static bool ret;
-	ret = initSDCard();	
-	//Read block cMD17 + adr + Crc OK - Working
-	Command[0]=CMD17;
-	Command[1]=0x00;
-	Command[2]=0x00;
-	Command[3]=0x00;
-	Command[4]=0x90;
-	Command[5]=0x01;
-	HAL_SPI_Transmit(&hspi2,&Command[0],6,100);
-	for(int i=0;i<2000;++i){
-			Command[0]= 0xff;
-			HAL_SPI_Transmit(&hspi2,&Command[0],1,100);
-			//HAL_Delay();
-	}	
+	static uint8_t dataRead[4]="";
+	static uint8_t dataWrite[4]={73,98,122,0x00};
+
+	if(initSDCARDInterface()){
+			if(SDCardWriteBytes(&dataWrite[0],3,0x90)){
+					//if(SDCardReadBytes(&dataRead[0],3, 0x90)){
+						ret=!ret;
+					//}
+			}
+	}
+	HAL_Delay(5000);
+	SDCardReadBytes(&dataRead[0],3, 0x90);
 	ret=!ret;
-	
 	//Write block 			Working
 	/*
 	Command[0]=CMD24;

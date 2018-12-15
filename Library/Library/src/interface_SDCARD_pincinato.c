@@ -14,11 +14,11 @@
   *
   */
 #include "interface_SDCARD_pincinato.h"
-
+#include <string.h>
 
 //Table *localTableAnalysis=NULL;
 
-bool initSDCARDInterface(){
+bool initSDCARDInterface(void){
 
     configPins();
     startUpSDCard();
@@ -28,16 +28,9 @@ bool initSDCARDInterface(){
 
 void configPins(void){
 
-    /*
+    
     GPIO_InitTypeDef GPIO_InitStruct;
-    GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_15;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-    GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
-    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-    */
-    GPIO_InitStruct.Pin = GPIO_PIN_14; //MISO
+    GPIO_InitStruct.Pin = GPIO_PIN_14 | GPIO_PIN_15; //MISO and MOSI
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_PULLUP;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -47,11 +40,10 @@ void configPins(void){
 
 void startUpSDCard(){
 
-    uint8_t Command[7];
-    Command[0]=0xFF;
-    Command[1]= 0xFF;
+    uint8_t Command[7]="";
+		clearACKbuffer(&Command[0],6);
     HAL_GPIO_WritePin(SPI2_CS_GPIO_Port,SPI2_CS_Pin,GPIO_PIN_SET);
-    for(int i=0;i<100;++i){
+    for(int i=0;i<80;++i){
         HAL_SPI_Transmit(&SDCARDSPI,&Command[0],1,100);
      }
 }
@@ -59,9 +51,21 @@ void startUpSDCard(){
 
 bool initSDCard(void){
 
-    bool ACK=false;
+	bool ACK=false;
+		if(sendCommand0()){
+				if(sendCommand(CMD1)){ 
+					ACK=true;
+				}
+    }
+    return ACK;
+}
+
+bool sendCommand0(void){
+	  
+		bool ACK=false;
     uint8_t ACKCommand[12]="";
-    uint8_t Command[7];
+    uint8_t Command[7]="";
+		int attempt =0;
     clearACKbuffer(&ACKCommand[0],12);
     HAL_Delay(5);
     HAL_GPIO_WritePin(SPI2_CS_GPIO_Port,SPI2_CS_Pin,GPIO_PIN_RESET);
@@ -74,33 +78,35 @@ bool initSDCard(void){
     Command[5]=0x95;
     HAL_SPI_Transmit(&SDCARDSPI,&Command[0],6,1000);
     //Wait R1
-    Command[0]=0xFF;
-    Command[1]= 0xFF;
-    for(int i=0;i<10;++i){
+    ACKCommand[0]=0xFF;
+    clearACKbuffer(&Command[0],6);
+   while((ACKCommand[0]!=0x01) && (attempt<100)){
         HAL_SPI_TransmitReceive(&SDCARDSPI,&Command[0],&ACKCommand[0],1,1000);
-        if(ACKCOmmand[0]==0x01) break;
+        ++attempt;
      }
-    if(ACKCommand[0]==0x01){
-        for(int i=0;i<3;++i){
-            Command[0]= CMD1;
-            Command[1]=0x00;
-            Command[2]=0x00;
-            Command[3]=0x00;
-            Command[4]=0x00;
-            Command[5]=0x01;
-            HAL_SPI_Transmit(&hspi2,&Command[0],6,100);
-            for(int j=0;j<2000;++j){
-                Command[0]= 0xff;
-                HAL_SPI_TransmitReceive(&SDCARDSPI,&Command[0],&ACKCommand[0],1,100);
-                if(ACKCommand[0]==0x00){
-                    j=5000;i=5;
-                    ACK=true;
-                    break;
-                }
-            }
-        }
+	 if(ACKCommand[0]==0x01) {ACK=true;}
+	return ACK;
+}
+
+bool sendCommand(uint8_t cmd){
+		bool ACK=false;
+		int attempt=0;
+    uint8_t ACKCommand[31]="";
+    uint8_t Command[31]="";
+		clearACKbuffer(&ACKCommand[0],30);
+		clearACKbuffer(&Command[0],30);
+		while((!ACK) && (attempt<100)){
+			Command[0]= cmd;
+			Command[1]=0x00;
+			Command[2]=0x00;
+			Command[3]=0x00;
+			Command[4]=0x00;
+			Command[5]=0x01;
+			HAL_SPI_TransmitReceive(&SDCARDSPI,&Command[0],&ACKCommand[0],30,100);
+			++attempt;
+			ACK=checkIfACK(&ACKCommand[0], 30,0x00);
     }
-    return ACK;
+		return ACK;
 }
 
 void clearACKbuffer(uint8_t * buf, uint8_t size){
@@ -112,7 +118,7 @@ void clearACKbuffer(uint8_t * buf, uint8_t size){
 
 bool checkIfACK(uint8_t * buf, uint8_t size, uint8_t msgACK){
     bool ACK=false;
-    for(int i=0;i>size;++i){
+    for(int i=0;i<size;++i){
         if(buf[i]==msgACK){
             ACK=true;
             return ACK;
@@ -122,32 +128,32 @@ bool checkIfACK(uint8_t * buf, uint8_t size, uint8_t msgACK){
 }
 
 
-bool writeBytes(uint8_t * toWrite, uint16_t size, uint32_t startPosition){
+bool SDCardWriteBytes(uint8_t * toWrite, uint16_t size, uint32_t startPosition){
+	
     bool ACK=false;
     bool sdCardBusy=false;
     uint16_t dataWritten=0;
-    if(size>100){
-        uint8_t ACKCommand[7]="";
-        uint8_t Command[7]="";
+    if(size<100){
+        uint8_t ACKCommand[11]="";
+        uint8_t Command[11]="";
         uint8_t Msg[101]="";
+        clearACKbuffer(&Command[0],10);
+        clearACKbuffer(&ACKCommand[0],10);
         Msg[0]= TOKEN_ACK;
-        strcat(Msg,toWrite);
+				//Msg[1]= SD_DATA_BEGIN;
+        strcat((char *)Msg,(char *)toWrite);
         Command[0]=CMD24;
         Command[1]=0x00;
         Command[2]=0x00;
         Command[3]=0x00;
         Command[4]=startPosition;
         Command[5]=0x01;
-        HAL_SPI_Transmit(&hspi2,&Command[0],6,100);
-        clearACKbuffer(&Command[0],6);
-        clearACKbuffer(&ACKCommand[0],6);
-        HAL_SPI_Transmit(&SDCARDSPI,&Command[0],&ACKCommand[0],5,100);
-        if(checkIfACK(ACKCommand,4,0x00)){
-            HAL_SPI_Transmit(&SDCARDSPI,&Msg[0],size,100);
+        HAL_SPI_TransmitReceive(&SDCARDSPI,&Command[0],&ACKCommand[0],10,100);
+        if(checkIfACK(ACKCommand,10,0x00)){
+            HAL_SPI_Transmit(&SDCARDSPI,&Msg[0],size+1,100);
             ACKCommand[0]=0xFF;
             Command[0]=0xFF;
             for(int i=0;i<5000;++i){
-            //HAL_SPI_Transmit(&SDCARDSPI,&Command[0],1,100);
                 HAL_SPI_TransmitReceive(&SDCARDSPI,&Command[0],&ACKCommand[0],1,100);
                 if(ACKCommand[0]==0x00){ //start
                     sdCardBusy=true;
@@ -164,13 +170,15 @@ bool writeBytes(uint8_t * toWrite, uint16_t size, uint32_t startPosition){
 
 }
 
-bool readBytes(uint8_t * toRead, uint16_t size, uint32_t startPosition){
+bool SDCardReadBytes(uint8_t * toRead, uint16_t size, uint32_t startPosition){
 
     bool ACK=false;
     bool getValues=false;
-    uint8_t ACKCommand[3]="";
-    uint8_t Command[7]="";
+    uint8_t ACKCommand[11]="";
+    uint8_t Command[11]="";
     uint32_t index=0;
+    clearACKbuffer(&Command[0],10);
+    clearACKbuffer(&ACKCommand[0],10);
     //Read block cMD17 + adr + Crc OK - Working
     Command[0]=CMD17;
     Command[1]=0x00;
@@ -178,10 +186,10 @@ bool readBytes(uint8_t * toRead, uint16_t size, uint32_t startPosition){
     Command[3]=0x00;
     Command[4]=startPosition;
     Command[5]=0x01;
-    HAL_SPI_Transmit(&SDCARDSPI,&Command[0],6,100);
-    for(int i=0;i<2000;++i){
-        Command[0]= 0xFF;
-        //HAL_SPI_Transmit(&hspi2,&Command[0],1,100);
+    HAL_SPI_TransmitReceive(&SDCARDSPI,&Command[0],&ACKCommand[0],10,100);
+		if(checkIfACK(&ACKCommand[0],10,0x00)){
+			Command[0]=0xFF;
+	    for(int i=0;i<1000;++i){
         HAL_SPI_TransmitReceive(&SDCARDSPI,&Command[0],&ACKCommand[0],1,100);
         if(getValues){
             if(index<size){
@@ -189,11 +197,13 @@ bool readBytes(uint8_t * toRead, uint16_t size, uint32_t startPosition){
                 index++;
             }
         }
-        else if(ACKCommand==TOKEN_ACK){
+        else if(ACKCommand[0] == TOKEN_ACK){ //|| (ACKCommand[0]==SD_DATA_BEGIN)){
             getValues=true;
         }
-    }
+			}
+			if((index<=size)&&(getValues)){ACK=true;}
+		}
     return ACK;
-
 }
+
 /****** END OF FILE ******/

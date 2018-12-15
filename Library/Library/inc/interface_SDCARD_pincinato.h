@@ -1,5 +1,5 @@
 /******************************************************************************
-* @file     interface_ANALYSIS_pincinato.h
+* @file     interface_SDCARD_pincinato.h
 * @brief    This file analysis the results of ECG and ACCEL interface
 * @author   Thiago Henrique Pincinato
 * @version  V1.0
@@ -34,6 +34,7 @@
 #define CMD55	(0x40+55)	// APP_CMD
 #define CMD58	(0x40+58)	// READ_OCR
 #define TOKEN_ACK (0xFE)        // ACK Token for cmd17 and 24
+#define SD_DATA_BEGIN 	(0xFC)
 
 #define SDCARDSPI hspi2
 
@@ -76,13 +77,13 @@ void clearACKbuffer(uint8_t * buf, uint8_t size);
 bool checkIfACK(uint8_t * buf, uint8_t size,uint8_t msgACK);
 
 /*!
- * \brief writeBytes                write Bytes into SD card
+ * \brief SDCardWriteBytes                write Bytes into SD card
  * \param toWrite                   buffer that contain the values to be written
  * \param size                      amount of data to be written
  * \param startPosition             position to start writing process
  * \return                          true if the writing process was sucesseful, false otherwise
  */
-bool writeBytes(uint8_t * toWrite, uint16_t size, uint32_t startPosition);
+bool SDCardWriteBytes(uint8_t * toWrite, uint16_t size, uint32_t startPosition);
 
 /*!
  * \brief readBytes                 read Bytes from SD card
@@ -91,7 +92,12 @@ bool writeBytes(uint8_t * toWrite, uint16_t size, uint32_t startPosition);
  * \param startPosition             position to start the reading process
  * \return                          true if the reading process was sucesseful, false otherwise
  */
-bool readBytes(uint8_t * toRead, uint16_t size, uint32_t startPosition);
+bool SDCardReadBytes(uint8_t * toRead, uint16_t size, uint32_t startPosition);
+
+
+bool sendCommand0(void);
+
+bool sendCommand(uint8_t cmd);
 
 #ifdef __cplusplus
 }

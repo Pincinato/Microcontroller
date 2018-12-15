@@ -22,13 +22,17 @@ typedef struct{
 	uint32_t High_HeartRate; //Minimal rate to hard activity
 	uint32_t Normal_HeartRate; // Minimal rate to normal Acitity
 	uint32_t Low_HeartRate; // Minimal rate to low acitiviy
-        bool HasBeenEdited; //
+  bool sdCardStatus; //
 }Table;
  /*!
  * \brief initTable     Initialize table with standart values
  * \param A             table to be initialized
  */
 void initTable(Table *A);
+
+bool loadTableValues(Table *A);
+
+bool saveTableValues(Table *A);
 
 #ifdef __cplusplus
 }
