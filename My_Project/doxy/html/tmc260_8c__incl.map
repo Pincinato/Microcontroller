@@ -1,7 +1,0 @@
-<map id="Library/Library/src/tmc260.c" name="Library/Library/src/tmc260.c">
-<area shape="rect" id="node2" href="$tmc260_8h.html" title="tmc260.h" alt="" coords="20,95,96,121"/>
-<area shape="rect" id="node4" href="$tmc260__driver_8h.html" title="tmc260_driver.h" alt="" coords="129,95,243,121"/>
-<area shape="rect" id="node7" href="$spi_8h.html" title="spi.h" alt="" coords="234,169,285,196"/>
-<area shape="rect" id="node9" href="$gpio_8h.html" title="gpio.h" alt="" coords="309,169,367,196"/>
-<area shape="rect" id="node8" href="$main_8h.html" title=": Header for main.c file. This file contains the common defines of the application. " alt="" coords="285,244,346,271"/>
-</map>

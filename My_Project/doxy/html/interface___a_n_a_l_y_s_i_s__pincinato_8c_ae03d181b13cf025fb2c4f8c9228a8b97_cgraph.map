@@ -1,5 +1,0 @@
-<map id="isAbnormal" name="isAbnormal">
-<area shape="rect" id="node2" href="$interface___u_s_a_r_t__pincinato_8h.html#acb371df4a5baf1653834e8a129f74f78" title="ACK send an ACK to the UART via DMA. " alt="" coords="140,31,189,57"/>
-<area shape="rect" id="node3" href="$interface___u_s_a_r_t__pincinato_8c.html#a76d5b69e096504f0c2307de48102599f" title="clearMsg clear buffer " alt="" coords="241,5,315,32"/>
-<area shape="rect" id="node4" href="$interface___u_s_a_r_t__pincinato_8c.html#a7542806c4e2857a7b4320416799ccf2c" title="checkUart Check if a Uart was configured " alt="" coords="237,56,319,83"/>
-</map>

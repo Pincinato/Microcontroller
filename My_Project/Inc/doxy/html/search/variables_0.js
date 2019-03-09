@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['_5f_5fpad0_5f_5f',['__pad0__',['../uniontmc260___driver_control_register__.html#a3e57c2ef1c3ffb36722f000cc1156824',1,'tmc260_DriverControlRegister_::__pad0__()'],['../uniontmc260___chopper_control_register__.html#a3e57c2ef1c3ffb36722f000cc1156824',1,'tmc260_ChopperControlRegister_::__pad0__()'],['../union_cool_step_control_register__.html#a3e57c2ef1c3ffb36722f000cc1156824',1,'CoolStepControlRegister_::__pad0__()'],['../uniontmc260___stall_guard2_control_register__.html#a3e57c2ef1c3ffb36722f000cc1156824',1,'tmc260_StallGuard2ControlRegister_::__pad0__()'],['../uniontmc260___driver_configuration_register__.html#a3e57c2ef1c3ffb36722f000cc1156824',1,'tmc260_DriverConfigurationRegister_::__pad0__()'],['../uniontmc260___read_response__.html#a3e57c2ef1c3ffb36722f000cc1156824',1,'tmc260_ReadResponse_::__pad0__()']]]
-];

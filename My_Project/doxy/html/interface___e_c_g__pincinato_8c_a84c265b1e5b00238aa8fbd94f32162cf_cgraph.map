@@ -1,4 +1,0 @@
-<map id="updateHeartRate" name="updateHeartRate">
-<area shape="rect" id="node2" href="$interface___a_d_c__pincinato_8h.html#a74cb317cbdd6810ff93997cbe6a881ce" title="getReadyToUpdate return the value that indicates if the interface is ready to update ..." alt="" coords="178,5,310,32"/>
-<area shape="rect" id="node3" href="$filter__math__pincinato_8h.html#a63b52e2d6e8763a3cb94cd22bde95731" title="filterAverageCompute include the value in the filter and compute the average " alt="" coords="172,56,316,83"/>
-</map>

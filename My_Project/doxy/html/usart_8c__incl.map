@@ -1,6 +1,0 @@
-<map id="Src/usart.c" name="Src/usart.c">
-<area shape="rect" id="node2" href="$usart_8h.html" title="usart.h" alt="" coords="5,80,68,107"/>
-<area shape="rect" id="node5" href="$gpio_8h.html" title="gpio.h" alt="" coords="92,80,149,107"/>
-<area shape="rect" id="node6" href="$dma_8h.html" title="dma.h" alt="" coords="174,80,233,107"/>
-<area shape="rect" id="node4" href="$main_8h.html" title=": Header for main.c file. This file contains the common defines of the application. " alt="" coords="65,155,126,181"/>
-</map>

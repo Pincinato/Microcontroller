@@ -1,0 +1,52 @@
+/**	
+  ******************************************************************************
+  * @file           : F446_MBED016_PinDefinitions.txt
+  * @brief          : 
+  *                   
+  ******************************************************************************
+
+#define SWITCH_RIGHT_Pin GPIO_PIN_0
+#define SWITCH_RIGHT_GPIO_Port GPIOC
+#define SWITCH_LEFT_Pin GPIO_PIN_1
+#define SWITCH_LEFT_GPIO_Port GPIOC
+#define POT_1_Pin GPIO_PIN_0
+#define POT_1_GPIO_Port GPIOA
+#define POT_2_Pin GPIO_PIN_1
+#define POT_2_GPIO_Port GPIOA
+#define XBEE_TX_Pin GPIO_PIN_2
+#define XBEE_TX_GPIO_Port GPIOA
+#define XBEE_RX_Pin GPIO_PIN_3
+#define XBEE_RX_GPIO_Port GPIOA
+#define SWITCH_UP_Pin GPIO_PIN_4
+#define SWITCH_UP_GPIO_Port GPIOA
+#define LCD_SCK_Pin GPIO_PIN_5
+#define LCD_SCK_GPIO_Port GPIOA
+#define LCD_RESET_Pin GPIO_PIN_6
+#define LCD_RESET_GPIO_Port GPIOA
+#define LCD_MOSI_Pin GPIO_PIN_7
+#define LCD_MOSI_GPIO_Port GPIOA
+#define SWITCH_DOWN_Pin GPIO_PIN_0
+#define SWITCH_DOWN_GPIO_Port GPIOB
+#define SPEAKER_Pin GPIO_PIN_10
+#define SPEAKER_GPIO_Port GPIOB
+#define LED_GREEN_Pin GPIO_PIN_7
+#define LED_GREEN_GPIO_Port GPIOC
+#define LCD_A0_Pin GPIO_PIN_8
+#define LCD_A0_GPIO_Port GPIOA
+#define LED_BLUE_Pin GPIO_PIN_9
+#define LED_BLUE_GPIO_Port GPIOA
+#define XBEE_STATUS_Pin GPIO_PIN_10
+#define XBEE_STATUS_GPIO_Port GPIOA
+#define XBEE_RESET_N_Pin GPIO_PIN_3
+#define XBEE_RESET_N_GPIO_Port GPIOB
+#define LED_RED_Pin GPIO_PIN_4
+#define LED_RED_GPIO_Port GPIOB
+#define SWITCH_CENTER_Pin GPIO_PIN_5
+#define SWITCH_CENTER_GPIO_Port GPIOB
+#define LCD_CS_N_Pin GPIO_PIN_6
+#define LCD_CS_N_GPIO_Port GPIOB
+#define I2C1_SCL_Pin GPIO_PIN_8
+#define I2C1_SCL_GPIO_Port GPIOB
+#define I2C1_SDA_Pin GPIO_PIN_9
+#define I2C1_SDA_GPIO_Port GPIOB
+

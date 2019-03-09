@@ -1,5 +1,0 @@
-<map id="getReadyToUpdate" name="getReadyToUpdate">
-<area shape="rect" id="node2" href="$interface___e_c_g__pincinato_8c.html#a84c265b1e5b00238aa8fbd94f32162cf" title="updateHeartRate return the last computed Heart Rate " alt="" coords="185,5,304,32"/>
-<area shape="rect" id="node3" href="$interface___a_n_a_l_y_s_i_s__pincinato_8c.html#a3b17eadb8d65927d28952ff80c6756b4" title="getTypeOfHeartLevel analyses the value of ECG inteface and add the result in the AnalysisProcess ..." alt="" coords="352,5,493,32"/>
-<area shape="rect" id="node4" href="$interface___a_n_a_l_y_s_i_s__pincinato_8c.html#a43f852ff5bf75bcd4a95d38acd0fa2ec" title="getAnalysis " alt="" coords="541,5,632,32"/>
-</map>

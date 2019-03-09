@@ -1,6 +1,0 @@
-<map id="Library/Library/inc/lcd_pincinato.h" name="Library/Library/inc/lcd_pincinato.h">
-<area shape="rect" id="node2" href="$main_8c.html" title=": Main program body " alt="" coords="5,102,91,129"/>
-<area shape="rect" id="node3" href="$interface___a_c_c_e_l__pincinato_8c.html" title="Library/Library/src\l/interface_ACCEL_pincinato.c" alt="" coords="115,95,309,136"/>
-<area shape="rect" id="node4" href="$interface___a_d_c__pincinato_8c.html" title="Library/Library/src\l/interface_ADC_pincinato.c" alt="" coords="333,95,512,136"/>
-<area shape="rect" id="node5" href="$lcd__pincinato_8c.html" title="Library/Library/src\l/lcd_pincinato.c" alt="" coords="537,95,663,136"/>
-</map>

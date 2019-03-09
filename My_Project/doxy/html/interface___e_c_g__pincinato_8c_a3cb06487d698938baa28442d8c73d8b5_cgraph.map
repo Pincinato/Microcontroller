@@ -1,4 +1,0 @@
-<map id="startECGInterface" name="startECGInterface">
-<area shape="rect" id="node2" href="$interface___a_d_c__pincinato_8h.html#a7be941a43b4f439c481e71bd6c4efdeb" title="startADCInterface call initfilter() and start interruption timer " alt="" coords="179,5,303,32"/>
-<area shape="rect" id="node3" href="$interface___a_d_c__pincinato_8c.html#ac0efe9596a654400ef8be8720c3138d7" title="initFilter clear filters " alt="" coords="351,5,419,32"/>
-</map>

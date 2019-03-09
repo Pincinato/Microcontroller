@@ -1,8 +1,0 @@
-<map id="Library/Library/src/lcd_driver.c" name="Library/Library/src/lcd_driver.c">
-<area shape="rect" id="node2" href="$lcd__driver_8h.html" title="lcd_driver.h" alt="" coords="115,95,202,121"/>
-<area shape="rect" id="node6" href="$lcd__symbols_8h.html" title="lcd_symbols.h" alt="" coords="284,95,391,121"/>
-<area shape="rect" id="node7" href="$lcd__font6x8_8h.html" title="lcd_font6x8.h" alt="" coords="415,95,513,121"/>
-<area shape="rect" id="node8" href="$lcd__font16x24_8h.html" title="lcd_font16x24.h" alt="" coords="538,95,651,121"/>
-<area shape="rect" id="node10" href="$spi_8h.html" title="spi.h" alt="" coords="727,95,777,121"/>
-<area shape="rect" id="node11" href="$main_8h.html" title=": Header for main.c file. This file contains the common defines of the application. " alt="" coords="777,169,839,196"/>
-</map>

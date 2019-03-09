@@ -1,8 +1,0 @@
-<map id="getTypeOfActivity" name="getTypeOfActivity">
-<area shape="rect" id="node2" href="$interface___u_s_a_r_t__pincinato_8h.html#acb371df4a5baf1653834e8a129f74f78" title="ACK send an ACK to the UART via DMA. " alt="" coords="331,31,380,57"/>
-<area shape="rect" id="node5" href="$interface___a_c_c_e_l__pincinato_8h.html#a82a51afce6f33aea9486e6fdad232a0d" title="readAccel If a value is valid, it read the last accelometer data, convertes, and in the filter and in..." alt="" coords="189,31,269,57"/>
-<area shape="rect" id="node6" href="$interface___a_c_c_e_l__pincinato_8h.html#a3026461e79c24f98e2ad7d3e16399881" title="getDistance read distance and clear integation " alt="" coords="184,81,275,108"/>
-<area shape="rect" id="node7" href="$interface___a_n_a_l_y_s_i_s__pincinato_8c.html#abe4cd628a331b2aeaaeed4ba1d5d21ad" title="includeInBuffer Include value in the myBuffer " alt="" coords="176,132,283,159"/>
-<area shape="rect" id="node3" href="$interface___u_s_a_r_t__pincinato_8c.html#a76d5b69e096504f0c2307de48102599f" title="clearMsg clear buffer " alt="" coords="431,5,506,32"/>
-<area shape="rect" id="node4" href="$interface___u_s_a_r_t__pincinato_8c.html#a7542806c4e2857a7b4320416799ccf2c" title="checkUart Check if a Uart was configured " alt="" coords="428,56,509,83"/>
-</map>

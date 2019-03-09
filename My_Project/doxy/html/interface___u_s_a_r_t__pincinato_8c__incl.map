@@ -1,7 +1,0 @@
-<map id="Library/Library/src/interface_USART_pincinato.c" name="Library/Library/src/interface_USART_pincinato.c">
-<area shape="rect" id="node2" href="$interface___u_s_a_r_t__pincinato_8h.html" title="interface_USART_pincinato.h" alt="" coords="151,95,342,121"/>
-<area shape="rect" id="node5" href="$usart_8h.html" title="usart.h" alt="" coords="285,169,347,196"/>
-<area shape="rect" id="node8" href="$dma_8h.html" title="dma.h" alt="" coords="372,169,431,196"/>
-<area shape="rect" id="node9" href="$structs__pincinato_8h.html" title="structs_pincinato.h" alt="" coords="77,169,209,196"/>
-<area shape="rect" id="node7" href="$main_8h.html" title=": Header for main.c file. This file contains the common defines of the application. " alt="" coords="328,244,389,271"/>
-</map>

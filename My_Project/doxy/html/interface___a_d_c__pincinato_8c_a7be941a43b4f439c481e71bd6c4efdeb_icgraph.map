@@ -1,4 +1,0 @@
-<map id="startADCInterface" name="startADCInterface">
-<area shape="rect" id="node2" href="$interface___e_c_g__pincinato_8c.html#a3cb06487d698938baa28442d8c73d8b5" title="startECGInterface start ADC interface " alt="" coords="177,5,303,32"/>
-<area shape="rect" id="node3" href="$interface___a_n_a_l_y_s_i_s__pincinato_8c.html#aa06483b4301e53448aef3c55003b8bde" title="startANALYSISInterface clear data and initialize ECG and ACCEL interface " alt="" coords="351,5,512,32"/>
-</map>

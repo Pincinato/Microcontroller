@@ -1,4 +1,0 @@
-<map id="HAL_TIM_PeriodElapsedCallback" name="HAL_TIM_PeriodElapsedCallback">
-<area shape="rect" id="node2" href="$interface___a_d_c__pincinato_8h.html#a3600f4f837c16ec2da1f17790e310f25" title="interruptTimerADCCallback handle interruption and start ADC interruption " alt="" coords="277,5,456,32"/>
-<area shape="rect" id="node3" href="$interface___a_c_c_e_l__pincinato_8h.html#a86e8ae59804edca8ccce2cd0df75dba1" title="interruptTimerACCELCallback Handles interruption of time. Set variable to indicate ready to read..." alt="" coords="269,56,464,83"/>
-</map>

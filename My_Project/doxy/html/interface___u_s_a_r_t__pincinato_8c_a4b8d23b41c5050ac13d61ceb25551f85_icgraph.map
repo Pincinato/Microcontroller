@@ -1,4 +1,0 @@
-<map id="sendActualConfig" name="sendActualConfig">
-<area shape="rect" id="node2" href="$interface___u_s_a_r_t__pincinato_8c.html#a11dc5c5d9820318d1fa0e221e3576ef8" title="selectOption recognize the message sent via UART&#45;dma " alt="" coords="176,5,271,32"/>
-<area shape="rect" id="node3" href="$interface___u_s_a_r_t__pincinato_8c.html#a6b4ec711b761ea5e19f31087f16c42d7" title="check_RX check if there is a valid message in the buffer " alt="" coords="319,5,399,32"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="Inc/i2c.h" name="Inc/i2c.h">
-<area shape="rect" id="node2" href="$interface___a_c_c_e_l__pincinato_8h.html" title="Library/Library/inc\l/interface_ACCEL_pincinato.h" alt="" coords="389,80,584,121"/>
-<area shape="rect" id="node4" href="$main_8c.html" title=": Main program body " alt="" coords="403,288,488,315"/>
-<area shape="rect" id="node8" href="$i2c_8c.html" title="Src/i2c.c" alt="" coords="709,87,784,114"/>
-<area shape="rect" id="node3" href="$interface___a_n_a_l_y_s_i_s__pincinato_8h.html" title="Library/Library/inc\l/interface_ANALYSIS\l_pincinato.h" alt="" coords="5,169,152,225"/>
-<area shape="rect" id="node6" href="$interrupt___t_i_m_e_r__pincinato_8h.html" title="Library/Library/inc\l/interrupt_TIMER_pincinato.h" alt="" coords="176,177,365,218"/>
-<area shape="rect" id="node7" href="$interface___a_c_c_e_l__pincinato_8c.html" title="Library/Library/src\l/interface_ACCEL_pincinato.c" alt="" coords="389,177,584,218"/>
-<area shape="rect" id="node5" href="$interface___a_n_a_l_y_s_i_s__pincinato_8c.html" title="Library/Library/src\l/interface_ANALYSIS\l_pincinato.c" alt="" coords="5,273,152,329"/>
-</map>
